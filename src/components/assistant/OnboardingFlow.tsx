@@ -345,7 +345,6 @@ type Phase = "welcome" | "intro" | "carousel";
 export function OnboardingFlow() {
   const [phase, setPhase] = useState<Phase>("welcome");
   const [currentStep, setCurrentStep] = useState(0);
-  const [bubbleShown, setBubbleShown] = useState<Record<number, boolean>>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -385,13 +384,8 @@ export function OnboardingFlow() {
   };
 
   const handleAction = (stepIndex: number, action: "now" | "later") => {
-    if (action === "now") {
-      setBubbleShown((prev) => ({ ...prev, [stepIndex]: true }));
-      setTimeout(() => {
-        if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
-      }, 600);
-    } else {
-      if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
+    if (stepIndex < steps.length - 1) {
+      scrollToStep(stepIndex + 1);
     }
   };
 
