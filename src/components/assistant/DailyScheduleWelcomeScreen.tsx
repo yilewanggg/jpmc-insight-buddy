@@ -201,11 +201,11 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
   }, [calendarVisible, followUpVisible]);
 
   useEffect(() => {
-    if (followUpVisible && !thumbsVisible) {
+    if (followUp.done && !thumbsVisible) {
       const t = setTimeout(() => setThumbsVisible(true), 400);
       return () => clearTimeout(t);
     }
-  }, [followUpVisible, thumbsVisible]);
+  }, [followUp.done, thumbsVisible]);
 
   const followUpText = "At 11 AM you've got an Internal onsite in Room 03. Want me to book you a seat at the office for the Internal?";
   const followUp = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
