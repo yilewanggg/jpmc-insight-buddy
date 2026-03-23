@@ -128,8 +128,16 @@ function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClos
 }
 
 function InlineCalendarWidget() {
+  const [hovered, setHovered] = useState(false);
   return (
-    <img src={calendarCardImage} alt="Daily schedule calendar" className="w-full rounded-2xl" style={{ maxWidth: '740px' }} />
+    <img
+      src={hovered ? calendarCardHoverImage : calendarCardImage}
+      alt="Daily schedule calendar"
+      className="w-full rounded-2xl"
+      style={{ maxWidth: '740px' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    />
   );
 }
 
