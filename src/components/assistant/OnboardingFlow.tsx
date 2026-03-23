@@ -245,7 +245,11 @@ function CarouselStepView({
       style={{ minHeight: "100vh" }}
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
-        <span className="text-[40px] mb-4 block">{step.icon}</span>
+        {step.iconSvg ? (
+          <img src={step.iconSvg} alt="" className="w-10 h-10 mb-4 block" />
+        ) : (
+          <span className="text-[40px] mb-4 block">{step.icon}</span>
+        )}
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
           style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
