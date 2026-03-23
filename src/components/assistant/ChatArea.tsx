@@ -14,7 +14,7 @@ import handIcon from "@/assets/hand-icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
-import { DailyScheduleWelcomeScreen, DailyScheduleResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
+import { DailyScheduleWelcomeScreen, DailyScheduleResponse, MoveDesignJamResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
 
 export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
 
@@ -55,6 +55,7 @@ const REFINED_FEEDBACK_RESPONSE = "__REFINED_FEEDBACK__";
 const REVIEW_FEEDBACK_RESPONSE = "__REVIEW_FEEDBACK__";
 const FEEDBACK_SENT_RESPONSE = "__FEEDBACK_SENT__";
 const DAILY_SCHEDULE_RESPONSE = "__DAILY_SCHEDULE__";
+const MOVE_DESIGN_JAM_RESPONSE = "__MOVE_DESIGN_JAM__";
 
 function getResponse(input: string): string {
   const lower = input.toLowerCase();
@@ -72,6 +73,7 @@ function getResponse(input: string): string {
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("meeting schedule")) return DAILY_SCHEDULE_RESPONSE;
+  if (lower.includes("move design jam")) return MOVE_DESIGN_JAM_RESPONSE;
   if (lower.includes("compliance")) return mockResponses.compliance;
   if (lower.includes("task") || lower.includes("pending")) return mockResponses.tasks;
   if (lower.includes("meeting") || lower.includes("agenda")) return mockResponses.meeting;
@@ -1910,6 +1912,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <FeedbackSentResponse onSend={onSend} />
         ) : msg.content === DAILY_SCHEDULE_RESPONSE ? (
           <DailyScheduleResponse onSend={onSend} />
+        ) : msg.content === MOVE_DESIGN_JAM_RESPONSE ? (
+          <MoveDesignJamResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>

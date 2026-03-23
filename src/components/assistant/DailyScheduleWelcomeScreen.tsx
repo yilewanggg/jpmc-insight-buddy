@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown, CornerDownRight } from "lucide-react";
 import calendarCardImage from "@/assets/calendar-card.png";
 import calendarCardHoverImage from "@/assets/calendar-card-hover.jpg";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
+import calendarCardUpdated from "@/assets/calendar-card-updated.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 function useTypewriter(text: string, speed = 25, delay = 0) {
@@ -200,7 +201,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
     }
   }, [calendarVisible, followUpVisible]);
 
-  const followUpText = "At 11 AM you've got an Internal onsite in Room 03. Want me to book you a seat at the office for the Internal?";
+  const followUpText = "I noticed you have a clash at 9 AM between **QA Review** and **Design Jam**.\n\nI can move Design Jam to 10 AM — Anna is available then. Would you like me to reschedule it?";
   const followUp = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
 
   useEffect(() => {
@@ -237,6 +238,105 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
           >
             <p className="mb-4">
               <TypedText text={followUp.displayed} showCursor={!followUp.done} />
+            </p>
+          </motion.div>
+        )}
+
+        {thumbsVisible && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              {[
+                { label: "Move Design Jam to 10", message: "Move Design Jam to 10" },
+                { label: "Move QA Review to 10", message: "Move QA Review to 10" },
+                { label: "Book a room for 11", message: "Book a room for 11" },
+              ].map((chip) => (
+                <button
+                  key={chip.label}
+                  onClick={() => onSend(chip.message)}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                  style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+                >
+                  <CornerDownRight className="w-4 h-4" />
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+              <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+              <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+              <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function MoveDesignJamResponse({ onSend }: { onSend: (text: string) => void }) {
+  const [cardVisible, setCardVisible] = useState(false);
+  const [closingVisible, setClosingVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  const paraText = "Done! **Design Jam** has been moved to **10 AM**.";
+  const para = useTypewriter(paraText, 15, 100);
+
+  useEffect(() => {
+    if (para.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [para.done, cardVisible]);
+
+  const closingText = "Let me know if you'd like me to adjust anything else.";
+  const closing = useTypewriter(closingText, 15, cardVisible ? 800 : 99999);
+
+  useEffect(() => {
+    if (cardVisible && !closingVisible) {
+      const t = setTimeout(() => setClosingVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, closingVisible]);
+
+  useEffect(() => {
+    if (closing.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [closing.done, thumbsVisible]);
+
+  return (
+    <div>
+      <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ maxWidth: '616px' }}>
+        <p className="mb-4">
+          <TypedText text={para.displayed} showCursor={!para.done} />
+        </p>
+
+        {cardVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-6"
+            style={{ maxWidth: '740px' }}
+          >
+            <img
+              src={calendarCardUpdated}
+              alt="Updated daily schedule"
+              className="w-full rounded-2xl"
+              style={{ maxWidth: '740px' }}
+            />
+          </motion.div>
+        )}
+
+        {closingVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <p className="mb-4">
+              <TypedText text={closing.displayed} showCursor={!closing.done} />
             </p>
           </motion.div>
         )}
