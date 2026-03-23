@@ -14,7 +14,7 @@ import handIcon from "@/assets/hand-icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
-import { DailyScheduleWelcomeScreen } from "@/components/assistant/DailyScheduleWelcomeScreen";
+import { DailyScheduleWelcomeScreen, DailyScheduleResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
 
 export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
 
@@ -54,6 +54,7 @@ const SETUP_AUTOBOOK_RESPONSE = "__SETUP_AUTOBOOK__";
 const REFINED_FEEDBACK_RESPONSE = "__REFINED_FEEDBACK__";
 const REVIEW_FEEDBACK_RESPONSE = "__REVIEW_FEEDBACK__";
 const FEEDBACK_SENT_RESPONSE = "__FEEDBACK_SENT__";
+const DAILY_SCHEDULE_RESPONSE = "__DAILY_SCHEDULE__";
 
 function getResponse(input: string): string {
   const lower = input.toLowerCase();
@@ -70,6 +71,7 @@ function getResponse(input: string): string {
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
+  if (lower.includes("meeting schedule")) return DAILY_SCHEDULE_RESPONSE;
   if (lower.includes("compliance")) return mockResponses.compliance;
   if (lower.includes("task") || lower.includes("pending")) return mockResponses.tasks;
   if (lower.includes("meeting") || lower.includes("agenda")) return mockResponses.meeting;
@@ -1906,6 +1908,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <ReviewFeedbackResponse onSend={onSend} />
         ) : msg.content === FEEDBACK_SENT_RESPONSE ? (
           <FeedbackSentResponse onSend={onSend} />
+        ) : msg.content === DAILY_SCHEDULE_RESPONSE ? (
+          <DailyScheduleResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
@@ -1936,6 +1940,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [feedbackAutoTyped, setFeedbackAutoTyped] = useState(false);
+  const [scheduleAutoTyped, setScheduleAutoTyped] = useState(false);
   const [isWaitingForAssistant, setIsWaitingForAssistant] = useState(false);
   
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -1947,6 +1952,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     setMessages([]);
     setInput("");
     setFeedbackAutoTyped(false);
+    setScheduleAutoTyped(false);
     setIsWaitingForAssistant(false);
     
   }, [activeFlow]);
@@ -2012,6 +2018,16 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     if (activeFlow === "feedback" && !feedbackAutoTyped && messages.length === 0) {
       setFeedbackAutoTyped(true);
       const text = "Listens well in meetings, ideas are good but unclearly communicated";
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setInput(text.slice(0, i));
+        if (i >= text.length) clearInterval(interval);
+      }, 25);
+    }
+    if (activeFlow === "daily-schedule" && !scheduleAutoTyped && messages.length === 0) {
+      setScheduleAutoTyped(true);
+      const text = "Show my meeting schedule for tomorrow";
       let i = 0;
       const interval = setInterval(() => {
         i++;
