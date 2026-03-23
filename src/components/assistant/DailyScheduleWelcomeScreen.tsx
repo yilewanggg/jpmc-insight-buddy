@@ -264,7 +264,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <p className="mb-4 underline decoration-foreground/30 underline-offset-4">
+            <p className="mb-4">
               <TypedText text={followUp.displayed} showCursor={!followUp.done} />
             </p>
           </motion.div>
