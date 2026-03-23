@@ -418,7 +418,12 @@ export function OnboardingFlow() {
   }
 
   return (
-    <div className="flex-1 flex h-full bg-background relative overflow-hidden">
+    <motion.div
+      className="flex-1 flex h-full bg-background relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2.5">
         {steps.map((_, i) => (
           <button key={i} onClick={() => scrollToStep(i)} className="transition-all duration-300">
@@ -448,6 +453,6 @@ export function OnboardingFlow() {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
