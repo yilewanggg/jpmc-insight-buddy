@@ -209,62 +209,6 @@ function InlineCalendarWidget() {
           </div>
         ))}
       </div>
-      {/* Events */}
-      <div className="flex flex-col">
-        {scheduleEvents.map((event, idx) => (
-          <div
-            key={idx}
-            className="flex items-stretch border-b border-border relative"
-          >
-            {/* Time label */}
-            <div className="w-[60px] shrink-0 flex items-start justify-end pr-3 pt-3 pb-3">
-              <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{event.time}</span>
-            </div>
-            {/* Event bar */}
-            <div className="flex-1 py-2.5 pr-6 flex items-center group/event">
-              <div
-                className="rounded-md px-3 py-2.5 flex-1"
-                style={{
-                  backgroundColor: event.status === "declined" ? '#F0EDED' : '#E8F4FA',
-                  opacity: event.status === "declined" ? 0.7 : 1,
-                }}
-              >
-                <p className="text-[13px] leading-[18px] font-medium" style={{ color: event.status === "declined" ? '#999' : '#202020' }}>
-                  {event.title}
-                </p>
-                <p className="text-[11px] leading-[16px]" style={{ color: event.status === "declined" ? '#AAA' : '#666663' }}>
-                  {event.location}
-                </p>
-              </div>
-              {/* Overflow button */}
-              <div className="relative ml-2 shrink-0 opacity-0 group-hover/event:opacity-100 transition-opacity">
-                <button
-                  ref={(el) => { buttonRefs.current[idx] = el; }}
-                  onClick={() => setOpenMenu(openMenu === idx ? null : idx)}
-                  className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[#DDD5C8] transition-colors"
-                  style={{ color: '#666663' }}
-                >
-                  <MoreHorizontal className="w-4 h-4" strokeWidth={1.5} />
-                </button>
-                <EventOverflowMenu
-                  open={openMenu === idx}
-                  onClose={() => setOpenMenu(null)}
-                  anchorRef={{ current: buttonRefs.current[idx] } as React.RefObject<HTMLButtonElement>}
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-        {/* Empty time slots */}
-        {["1 PM", "2 PM"].map((time) => (
-          <div key={time} className="flex items-stretch border-b border-border">
-            <div className="w-[60px] shrink-0 flex items-start justify-end pr-3 pt-3 pb-3">
-              <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{time}</span>
-            </div>
-            <div className="flex-1 py-4" />
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
