@@ -256,6 +256,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-6"
+            style={{ maxWidth: '740px' }}
           >
             <InlineCalendarWidget />
           </motion.div>
