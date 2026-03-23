@@ -2104,7 +2104,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                     onClick={() => { onSelect(cmd.label); setOpen(false); onClose?.(); }}
                     className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors flex items-baseline gap-3"
                   >
-                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground min-w-[72px]">
+                    <span className="text-[14px] leading-[21px] font-bold text-foreground min-w-[72px]">
                       {matchIndex >= 0 ? (
                         <>
                           {cmd.label.slice(0, matchIndex)}
@@ -2113,7 +2113,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                         </>
                       ) : cmd.label}
                     </span>
-                    <span className="text-[12px] font-normal text-[#B5B3AE]">{cmd.desc}</span>
+                    <span className="text-[14px] leading-[21px] font-normal text-[#666663]">{cmd.desc}</span>
                   </button>
                 );
               })}
