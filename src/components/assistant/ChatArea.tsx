@@ -2041,18 +2041,21 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   };
 
-function SlashCommandMenu({ onSelect }: { onSelect: (cmd: string) => void }) {
+function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect: (cmd: string) => void; inputValue?: string; onOpen?: () => void; onClose?: () => void }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setOpen(false);
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+        onClose?.();
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [open]);
+  }, [open, onClose]);
 
   const commands = [
     { label: "Profile", desc: "View someone's profile" },
@@ -2064,39 +2067,61 @@ function SlashCommandMenu({ onSelect }: { onSelect: (cmd: string) => void }) {
     { label: "Recognize", desc: "Send a recognition to someone" },
   ];
 
+  // Filter commands based on input value when menu is open
+  const filterText = inputValue?.startsWith("/") ? inputValue.slice(1).toLowerCase().trim() : "";
+  const filtered = filterText
+    ? commands.filter(c => c.label.toLowerCase().includes(filterText) || c.desc.toLowerCase().includes(filterText))
+    : commands;
+
   return (
-    <div ref={menuRef} className="relative">
+    <>
       <button
-        onClick={() => setOpen(o => !o)}
+        onClick={() => {
+          const next = !open;
+          setOpen(next);
+          if (next) onOpen?.(); else onClose?.();
+        }}
         className="w-9 h-9 rounded-lg bg-[#E9E0D3] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
       >
         <span className="text-base font-medium">/</span>
       </button>
       <AnimatePresence>
-        {open && (
+        {open && filtered.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            ref={menuRef}
+            initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.15 }}
-            className="absolute bottom-full right-0 mb-2 w-[420px] rounded-xl bg-card shadow-lg border border-border/50 overflow-hidden z-50"
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.12 }}
+            className="absolute bottom-full left-0 right-0 mb-1 mx-0 z-50"
           >
-            <div className="py-2">
-              {commands.map((cmd, i) => (
-                <button
-                  key={cmd.label}
-                  onClick={() => { onSelect(cmd.label); setOpen(false); }}
-                  className="w-full text-left px-5 py-3 hover:bg-[#E9E0D3]/40 transition-colors flex items-baseline gap-2"
-                >
-                  <span className="text-[14px] font-semibold text-foreground">{cmd.label}</span>
-                  <span className="text-[14px] text-[#666663]">{cmd.desc}</span>
-                </button>
-              ))}
+            <div className="bg-white rounded-[10px] shadow-[0_2px_16px_rgba(0,0,0,0.10)] py-1.5 px-0">
+              {filtered.map((cmd) => {
+                const matchIndex = filterText ? cmd.label.toLowerCase().indexOf(filterText) : -1;
+                return (
+                  <button
+                    key={cmd.label}
+                    onClick={() => { onSelect(cmd.label); setOpen(false); onClose?.(); }}
+                    className="w-full text-left px-4 py-2.5 hover:bg-[#F5F5F5] transition-colors flex items-baseline gap-3"
+                  >
+                    <span className="text-[14px] font-semibold text-[#1A1714] min-w-[72px]">
+                      {matchIndex >= 0 ? (
+                        <>
+                          {cmd.label.slice(0, matchIndex)}
+                          <span className="text-[#0060A9]">{cmd.label.slice(matchIndex, matchIndex + filterText.length)}</span>
+                          {cmd.label.slice(matchIndex + filterText.length)}
+                        </>
+                      ) : cmd.label}
+                    </span>
+                    <span className="text-[13px] font-normal text-[#999996]">{cmd.desc}</span>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
@@ -2194,7 +2219,7 @@ function SlashCommandMenu({ onSelect }: { onSelect: (cmd: string) => void }) {
         <div className="absolute inset-x-0 -top-8 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         <div className="bg-background pb-4 pt-2 flex justify-center">
           <div style={{ width: '740px' }}>
-            <div className="flex items-center bg-card rounded-xl px-4 py-2.5 ml-16">
+            <div className="relative flex items-center bg-card rounded-xl px-4 py-2.5 ml-16">
               <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#1A17140a] active:bg-[#1A17141a] transition-all duration-200" style={{ color: '#666663' }}>
                 <Plus className="w-5 h-5 transition-transform duration-200 hover:scale-110" strokeWidth={1.5} />
               </button>
@@ -2210,8 +2235,9 @@ function SlashCommandMenu({ onSelect }: { onSelect: (cmd: string) => void }) {
                 rows={1}
                 className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground placeholder:text-[#666663] resize-none outline-none max-h-32"
               />
-              <div className="flex items-center gap-1.5 shrink-0 ml-2 relative">
+              <div className="flex items-center gap-1.5 shrink-0 ml-2">
                 <SlashCommandMenu
+                  inputValue={input}
                   onSelect={(cmd) => {
                     setInput("/" + cmd.toLowerCase() + " ");
                     inputRef.current?.focus();
