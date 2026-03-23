@@ -159,8 +159,6 @@ interface CarouselStep {
   icon: string;
   heading: string;
   description: string;
-  userBubble?: string;
-  showBubbleOnAction?: boolean;
   options?: { icon: string; label: string }[];
 }
 
@@ -170,22 +168,18 @@ const steps: CarouselStep[] = [
     heading: "I can manage and schedule\nmeetings for you.",
     description:
       "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
-    userBubble: "Yes, manage my calendar",
-    showBubbleOnAction: true,
   },
   {
     icon: "✈️",
     heading: "I can take care of travel\nplanning for you.",
     description:
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
-    userBubble: "Yes, handle travel for me",
   },
   {
     icon: "📢",
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
-    userBubble: "Yes, optimize the way I work",
   },
   {
     icon: "🔲",
@@ -212,12 +206,10 @@ const steps: CarouselStep[] = [
 function CarouselStepView({
   step,
   onAction,
-  showBubble,
   isActive,
 }: {
   step: CarouselStep;
   onAction: (action: "now" | "later") => void;
-  showBubble: boolean;
   isActive: boolean;
 }) {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -233,7 +225,6 @@ function CarouselStepView({
   const heading = useTypewriter(plainHeading, 30, 200, hasBeenActive);
   const desc = useTypewriter(plainDesc, 15, 0, heading.done);
 
-  const shouldShowBubble = step.userBubble && (step.showBubbleOnAction ? showBubble : true);
 
   // Render description with bold markdown
   const renderDesc = (text: string) => {
@@ -258,45 +249,9 @@ function CarouselStepView({
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-center px-16 py-20 relative"
+      className="min-h-screen flex flex-col items-center justify-center py-20 relative"
       style={{ minHeight: "100vh" }}
     >
-      <AnimatePresence>
-        {shouldShowBubble && (
-          <motion.div
-            className="absolute top-[20%] right-16"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <div
-              className="inline-flex items-center relative"
-              style={{
-                backgroundColor: "#E9E0D3",
-                borderRadius: "16px",
-                padding: "12px 24px",
-              }}
-            >
-              <p className="text-[15px] leading-[22.5px] text-foreground">
-                {step.userBubble}
-              </p>
-              <svg
-                className="absolute bottom-0 right-[16px]"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                style={{ transform: "translateY(10px)" }}
-              >
-                <path
-                  d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z"
-                  fill="#E9E0D3"
-                />
-              </svg>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div style={{ maxWidth: "616px" }}>
         <span className="text-[40px] mb-4 block">{step.icon}</span>
@@ -367,7 +322,7 @@ function CarouselStepView({
               className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
               style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
             >
-              Do it now
+              Yes, please
             </button>
             <button
               onClick={() => onAction("later")}
@@ -390,7 +345,6 @@ type Phase = "welcome" | "intro" | "carousel";
 export function OnboardingFlow() {
   const [phase, setPhase] = useState<Phase>("welcome");
   const [currentStep, setCurrentStep] = useState(0);
-  const [bubbleShown, setBubbleShown] = useState<Record<number, boolean>>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -430,13 +384,8 @@ export function OnboardingFlow() {
   };
 
   const handleAction = (stepIndex: number, action: "now" | "later") => {
-    if (action === "now") {
-      setBubbleShown((prev) => ({ ...prev, [stepIndex]: true }));
-      setTimeout(() => {
-        if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
-      }, 600);
-    } else {
-      if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
+    if (stepIndex < steps.length - 1) {
+      scrollToStep(stepIndex + 1);
     }
   };
 
@@ -483,7 +432,6 @@ export function OnboardingFlow() {
             <CarouselStepView
               step={step}
               onAction={(action) => handleAction(i, action)}
-              showBubble={!!bubbleShown[i]}
               isActive={currentStep === i}
             />
           </div>
