@@ -39,11 +39,13 @@ const Index = () => {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        <AssistantSidebar
-          onSelectChat={setCurrentChatId}
-          currentChatId={currentChatId}
-          onNewChat={() => setCurrentChatId(null)}
-        />
+        {activeFlow !== "onboarding" && (
+          <AssistantSidebar
+            onSelectChat={setCurrentChatId}
+            currentChatId={currentChatId}
+            onNewChat={() => setCurrentChatId(null)}
+          />
+        )}
         <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
       </div>
     </div>
