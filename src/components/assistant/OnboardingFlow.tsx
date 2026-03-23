@@ -159,8 +159,6 @@ interface CarouselStep {
   icon: string;
   heading: string;
   description: string;
-  userBubble?: string;
-  showBubbleOnAction?: boolean;
   options?: { icon: string; label: string }[];
 }
 
