@@ -154,7 +154,7 @@ function InlineCalendarWidget() {
         onClick={() => setMenuOpen(!menuOpen)}
       />
       {menuOpen && (
-        <div className="absolute z-50" style={{ top: '12px', right: '12px' }}>
+        <div className="absolute z-50" style={{ top: '36px', right: '12px' }}>
           <div className="rounded-xl shadow-lg py-1.5 px-1.5 w-[210px]" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E4DE' }}>
             {overflowMenuItems.map((item, idx) => (
               <button
