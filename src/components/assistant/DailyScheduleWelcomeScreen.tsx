@@ -87,15 +87,14 @@ const timeSlots: TimeSlot[] = [
 
 const overflowMenuItems = [
   "Join via Zoom",
-  "Message all",
   "Message host",
+  "Message all",
   "Email all",
   "Open calendar invite",
-  "Open Zoom controller",
   "Cancel meeting",
 ];
 
-function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClose: () => void; anchorRef: React.RefObject<HTMLButtonElement> }) {
+function CalendarOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClose: () => void; anchorRef: React.RefObject<HTMLDivElement> }) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -129,15 +128,22 @@ function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClos
 
 function InlineCalendarWidget() {
   const [hovered, setHovered] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
   return (
-    <img
-      src={hovered ? calendarCardHoverImage : calendarCardImage}
-      alt="Daily schedule calendar"
-      className="w-full rounded-2xl"
-      style={{ maxWidth: '740px' }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    />
+    <div className="relative inline-block" ref={cardRef}>
+      <img
+        src={hovered ? calendarCardHoverImage : calendarCardImage}
+        alt="Daily schedule calendar"
+        className="w-full rounded-2xl cursor-pointer"
+        style={{ maxWidth: '740px' }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setMenuOpen(!menuOpen)}
+      />
+      <CalendarOverflowMenu open={menuOpen} onClose={() => setMenuOpen(false)} anchorRef={cardRef} />
+    </div>
   );
 }
 
