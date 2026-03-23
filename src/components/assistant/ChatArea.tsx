@@ -2032,7 +2032,11 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
       const interval = setInterval(() => {
         i++;
         setInput(text.slice(0, i));
-        if (i >= text.length) clearInterval(interval);
+        if (i >= text.length) {
+          clearInterval(interval);
+          // Auto-send after a brief pause so user sees the full text
+          setTimeout(() => handleSend(text), 600);
+        }
       }, 25);
     }
   };
