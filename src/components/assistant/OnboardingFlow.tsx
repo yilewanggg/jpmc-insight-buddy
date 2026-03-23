@@ -108,7 +108,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
           {headingDisplayed}
         </h2>
 
-        <div className="flex flex-col gap-5 mb-8">
+        <div className="flex flex-col gap-5 mb-8" style={{ marginTop: "20px" }}>
           {features.map((f, i) => {
             const show = i === 0 ? headingDone : featDisplayed[i - 1].done;
             if (!show && featDisplayed[i].displayed === "") return null;
