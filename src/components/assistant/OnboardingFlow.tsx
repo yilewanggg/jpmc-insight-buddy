@@ -208,12 +208,10 @@ const steps: CarouselStep[] = [
 function CarouselStepView({
   step,
   onAction,
-  showBubble,
   isActive,
 }: {
   step: CarouselStep;
   onAction: (action: "now" | "later") => void;
-  showBubble: boolean;
   isActive: boolean;
 }) {
   const [selectedOption, setSelectedOption] = useState(0);
