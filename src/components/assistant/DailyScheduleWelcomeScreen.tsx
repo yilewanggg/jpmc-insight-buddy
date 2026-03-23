@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown } from "lucide-react";
+import calendarCardImage from "@/assets/calendar-card.png";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -127,81 +128,7 @@ function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClos
 
 function InlineCalendarWidget() {
   return (
-    <div className="bg-card rounded-2xl overflow-hidden" style={{ border: '1px solid #E8E4DE' }}>
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-5">
-        <div className="flex items-center gap-3">
-          <span className="text-[16px] leading-[22px] font-medium text-foreground">August 27, 2025</span>
-          <div className="flex items-center gap-1.5">
-            <button className="w-6 h-6 flex items-center justify-center rounded text-foreground">
-              <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
-            </button>
-            <button className="w-6 h-6 flex items-center justify-center rounded text-foreground">
-              <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-            </button>
-          </div>
-        </div>
-        <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-transparent text-[14px] leading-[20px] font-medium"
-          style={{ border: '1px solid #99A1AF', color: '#0A0A0A' }}
-        >
-          Open Outlook <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
-        </button>
-      </div>
-
-      {/* Time slots */}
-      <div className="flex flex-col">
-        {timeSlots.map((slot, slotIdx) => {
-          const hasEvents = slot.events.length > 0;
-          const isTentativeRow = slot.events.some(e => e.status === "tentative");
-          const isLastSlot = slotIdx === timeSlots.length - 1;
-
-          return (
-            <div
-              key={slotIdx}
-              className="flex items-stretch relative"
-              style={{
-                borderTop: '1px solid rgba(16, 16, 16, 0.1)',
-                ...(isLastSlot ? {} : {}),
-                backgroundColor: isTentativeRow ? '#A6D7F01A' : 'transparent',
-              }}
-            >
-              {/* Time label */}
-              <div className="w-[85px] shrink-0 flex items-start justify-start pl-6 pt-4 pb-4">
-                <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>{slot.time}</span>
-              </div>
-              {/* Events */}
-              {!hasEvents ? (
-                <div className="flex-1 py-5" />
-              ) : (
-                <div className="flex-1 py-3 pr-6 flex items-center gap-2">
-                  {slot.events.map((event, evIdx) => {
-                    const isDeclined = event.status === "declined";
-                    const isTentative = event.status === "tentative";
-                    return (
-                      <div
-                        key={evIdx}
-                        className="rounded-xl px-4 py-3 flex-1 min-w-0"
-                        style={{
-                          backgroundColor: isDeclined ? '#FFFFFF' : isTentative ? '#A6D7F020' : '#A6D7F0',
-                          border: isDeclined ? '1px solid #A6D7F0' : isTentative ? '2px dashed #A6D7F0' : 'none',
-                        }}
-                      >
-                        <p className="text-[14px] leading-[20px] font-semibold truncate" style={{ color: '#0A0A0A' }}>
-                          {event.title}
-                        </p>
-                        <p className="text-[13px] leading-[18px] truncate" style={{ color: '#4A5565' }}>
-                          {event.location}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <img src={calendarCardImage} alt="Daily schedule calendar" className="w-full rounded-2xl" style={{ maxWidth: '740px' }} />
   );
 }
 
