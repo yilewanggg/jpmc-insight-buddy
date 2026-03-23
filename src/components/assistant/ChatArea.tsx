@@ -14,7 +14,7 @@ import handIcon from "@/assets/hand-icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
-import { DailyScheduleWelcomeScreen, DailyScheduleResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
+import { DailyScheduleWelcomeScreen, DailyScheduleResponse, MoveDesignJamResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
 
 export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
 
