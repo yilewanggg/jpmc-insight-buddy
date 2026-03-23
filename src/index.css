@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('/fonts/TiemposHeadline-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('/fonts/TiemposHeadline-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('/fonts/TiemposHeadline-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('/fonts/TiemposHeadline-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('/fonts/TiemposHeadline-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core brand palette — from JPMC Brand Guidelines June 2024 */
+    --background: 36 30% 93%; /* Travertine #F4EFE7 */
+    --foreground: 0 0% 0%; /* Black #000000 */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Bronze as primary brand accent */
+    --primary: 21 43% 39%; /* Bronze #8F5A39 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 36 30% 93%; /* Travertine */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 30 14% 80%;
+    --muted-foreground: 0 0% 40%; /* #666663 approx */
+
+    --accent: 199 65% 80%; /* Sky Blue #A6D7F0 */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 67% 41%; /* Error red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 6% / 0.1; /* #101010 at 10% */
+    --input: 30 14% 80%;
+    --ring: 21 43% 39%; /* Bronze */
+
+    --radius: 0.5rem;
+
+    /* Brand tokens */
+    --jpmc-bronze: 21 43% 39%; /* #8F5A39 */
+    --jpmc-bronze-light: 24 35% 60%; /* lighter bronze for hover */
+    --jpmc-travertine: 36 30% 93%; /* #F4EFE7 */
+    --jpmc-sky-blue: 199 65% 80%; /* #A6D7F0 */
+    --jpmc-black: 0 0% 0%;
+    --jpmc-white: 0 0% 100%;
+
+    /* Data viz colors */
+    --jpmc-success: 122 34% 33%; /* #367138 */
+    --jpmc-info: 214 40% 30%; /* #2E4770 */
+    --jpmc-error: 0 67% 41%;
+    --jpmc-gold: 37 38% 65%;
+    --jpmc-green: 122 34% 33%;
+
+    /* Text hierarchy */
+    --text-primary: 0 0% 0%;
+    --text-secondary: 0 0% 40%;
+    --text-disabled: 0 0% 60%;
+
+    /* Chat */
+    --jpmc-chat-user: 0 0% 0%; /* Black bubble for user */
+    --jpmc-chat-assistant: 36 30% 93%; /* Travertine for assistant */
+
+    /* Sidebar — black per brand */
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 36 20% 88%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 21 43% 39%;
+    --sidebar-muted: 0 0% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tiempos Headline', 'Times New Roman', serif;
+  }
+}
+
+@layer utilities {
+  .font-headline {
+    font-family: 'Tiempos Headline', 'Times New Roman', serif;
+  }
+  .font-body {
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 20px;
+  }
+}
