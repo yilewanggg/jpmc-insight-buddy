@@ -67,9 +67,9 @@ interface ScheduleEvent {
 }
 
 const scheduleEvents: ScheduleEvent[] = [
-  { time: "9 AM", title: "QA Review", location: "Microsoft Teams", color: "#7EC8E3", width: "85%" },
-  { time: "10AM", title: "QA Review", location: "Microsoft Teams", color: "#7EC8E3", width: "100%" },
-  { time: "11AM", title: "Tentative: Internal", location: "Room 03", color: "#7EC8E3", width: "60%", status: "tentative" },
+  { time: "9 AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "85%" },
+  { time: "10AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "100%" },
+  { time: "11AM", title: "Tentative: Internal", location: "Room 03", color: "#A6D7F0", width: "60%", status: "tentative" },
   { time: "12 AM", title: "Declined: Priya 1:1", location: "Microsoft Teams", color: "#D4D4D4", width: "50%", status: "declined" },
 ];
 
