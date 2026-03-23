@@ -15,8 +15,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 import { DailyScheduleWelcomeScreen, DailyScheduleResponse, MoveDesignJamResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
+import { OnboardingFlow } from "@/components/assistant/OnboardingFlow";
 
-export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
+export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule" | "onboarding";
 
 
 interface Message {
@@ -2162,6 +2163,10 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
       handleSend();
     }
   };
+
+  if (activeFlow === "onboarding") {
+    return <OnboardingFlow />;
+  }
 
   return (
     <div className="flex-1 flex flex-col h-full bg-background relative">

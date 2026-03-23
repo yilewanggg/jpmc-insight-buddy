@@ -4,6 +4,7 @@ import { ChatArea, type ChatFlow } from "@/components/assistant/ChatArea";
 import { cn } from "@/lib/utils";
 
 const flowTabs: { id: ChatFlow; label: string }[] = [
+  { id: "onboarding", label: "Onboarding" },
   { id: "daily-digest", label: "Daily Digest" },
   { id: "feedback", label: "Give Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
@@ -12,7 +13,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
 
 const Index = () => {
   const [currentChatId, setCurrentChatId] = useState<string | null>(null);
-  const [activeFlow, setActiveFlow] = useState<ChatFlow>("daily-digest");
+  const [activeFlow, setActiveFlow] = useState<ChatFlow>("onboarding");
 
   return (
     <div className="flex flex-col h-screen w-full overflow-hidden">
