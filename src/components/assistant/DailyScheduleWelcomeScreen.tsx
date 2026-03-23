@@ -261,6 +261,16 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
           <TypedText text={para.displayed} showCursor={!para.done} />
         </p>
 
+        {calendarVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-6"
+          >
+            <InlineCalendarWidget />
+          </motion.div>
+        )}
 
         {followUpVisible && (
           <motion.div
