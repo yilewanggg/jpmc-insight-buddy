@@ -271,3 +271,85 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
     </div>
   );
 }
+
+export function MoveDesignJamResponse({ onSend }: { onSend: (text: string) => void }) {
+  const [cardVisible, setCardVisible] = useState(false);
+  const [closingVisible, setClosingVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  const paraText = "Done! **Design Jam** has been moved to **10 AM**.";
+  const para = useTypewriter(paraText, 15, 100);
+
+  useEffect(() => {
+    if (para.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [para.done, cardVisible]);
+
+  const closingText = "Let me know if you'd like me to adjust anything else.";
+  const closing = useTypewriter(closingText, 15, cardVisible ? 800 : 99999);
+
+  useEffect(() => {
+    if (cardVisible && !closingVisible) {
+      const t = setTimeout(() => setClosingVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, closingVisible]);
+
+  useEffect(() => {
+    if (closing.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [closing.done, thumbsVisible]);
+
+  return (
+    <div>
+      <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ maxWidth: '616px' }}>
+        <p className="mb-4">
+          <TypedText text={para.displayed} showCursor={!para.done} />
+        </p>
+
+        {cardVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-6"
+            style={{ maxWidth: '740px' }}
+          >
+            <img
+              src={calendarCardUpdated}
+              alt="Updated daily schedule"
+              className="w-full rounded-2xl"
+              style={{ maxWidth: '740px' }}
+            />
+          </motion.div>
+        )}
+
+        {closingVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <p className="mb-4">
+              <TypedText text={closing.displayed} showCursor={!closing.done} />
+            </p>
+          </motion.div>
+        )}
+
+        {thumbsVisible && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+            <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+              <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+              <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+              <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
