@@ -129,28 +129,32 @@ function CalendarOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onC
 function InlineCalendarWidget() {
   const [hovered, setHovered] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const dotsRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
 
   return (
-    <div className="relative inline-block" ref={cardRef}>
+    <div className="relative inline-block" ref={containerRef}>
       <img
         src={hovered ? calendarCardHoverImage : calendarCardImage}
         alt="Daily schedule calendar"
-        className="w-full rounded-2xl"
+        className="w-full rounded-2xl cursor-pointer"
         style={{ maxWidth: '740px' }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-      />
-      {/* Invisible click target over the three dots area on the card */}
-      <button
-        ref={dotsRef}
-        className="absolute cursor-pointer bg-transparent border-none p-0"
-        style={{ top: '16px', right: '16px', width: '32px', height: '32px' }}
         onClick={() => setMenuOpen(!menuOpen)}
       />
       {menuOpen && (
-        <div className="absolute z-50" style={{ top: '48px', right: '12px' }}>
+        <div className="absolute z-50" style={{ top: '12px', right: '12px' }}>
           <div className="rounded-xl shadow-lg py-1.5 px-1.5 w-[210px]" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E4DE' }}>
             {overflowMenuItems.map((item, idx) => (
               <button
