@@ -188,7 +188,7 @@ const steps: CarouselStep[] = [
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
   },
   {
-    icon: "🎉",
+    iconSvg: celebrationIcon,
     heading: "You're off to a great start!",
     description:
       "I can't wait to get to know you more as we work together. You can always **manage your preferences** later.",
