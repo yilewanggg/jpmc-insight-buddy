@@ -243,6 +243,23 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
 
         {thumbsVisible && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              {[
+                { label: "Move Design Jam to 10", message: "Move Design Jam to 10" },
+                { label: "Move QA Review to 10", message: "Move QA Review to 10" },
+                { label: "Book a room for 11", message: "Book a room for 11" },
+              ].map((chip) => (
+                <button
+                  key={chip.label}
+                  onClick={() => onSend(chip.message)}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                  style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+                >
+                  <CornerDownRight className="w-4 h-4" />
+                  {chip.label}
+                </button>
+              ))}
+            </div>
             <div className="flex items-center gap-3" style={{ color: '#202020' }}>
               <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
               <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
