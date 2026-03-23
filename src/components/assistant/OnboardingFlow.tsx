@@ -246,9 +246,9 @@ function CarouselStepView({
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
         {step.iconSvg ? (
-          <img src={step.iconSvg} alt="" className="w-10 h-10 mb-4 block" />
+          <img src={step.iconSvg} alt="" className="w-16 h-16 mb-4 block" />
         ) : (
-          <span className="text-[40px] mb-4 block">{step.icon}</span>
+          <span className="text-[64px] mb-4 block leading-none">{step.icon}</span>
         )}
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
