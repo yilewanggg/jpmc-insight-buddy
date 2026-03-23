@@ -1928,6 +1928,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
   { id: "daily-digest", label: "Daily Digest" },
   { id: "feedback", label: "Give Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
+  { id: "daily-schedule", label: "Daily Schedule" },
 ];
 
 export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; onFlowChange: (flow: ChatFlow) => void }) {
