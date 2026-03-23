@@ -7,6 +7,8 @@ import confirmationIcon from "@/assets/confirmation-icon.svg";
 import trainingIcon from "@/assets/training-icon.svg";
 import calendarCarouselIcon from "@/assets/calendar-carousel-icon.svg";
 import planeIcon from "@/assets/plane-icon.svg";
+import megaphoneIcon from "@/assets/megaphone-icon.svg";
+import celebrationIcon from "@/assets/celebration-icon.svg";
 
 // ─── Typewriter hook ─────────────────────────────────────────────────
 
@@ -180,13 +182,13 @@ const steps: CarouselStep[] = [
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
   },
   {
-    icon: "📢",
+    iconSvg: megaphoneIcon,
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
   },
   {
-    icon: "🎉",
+    iconSvg: celebrationIcon,
     heading: "You're off to a great start!",
     description:
       "I can't wait to get to know you more as we work together. You can always **manage your preferences** later.",
