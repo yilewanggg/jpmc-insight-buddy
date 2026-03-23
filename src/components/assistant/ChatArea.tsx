@@ -2068,6 +2068,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
         {activeFlow === "daily-digest" && <WelcomeScreen key="daily-digest" onSend={handleSend} />}
         {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} />}
         {activeFlow === "book-a-seat" && <BookASeatWelcomeScreen key="book-a-seat" onSend={handleSend} />}
+        {activeFlow === "daily-schedule" && <DailyScheduleWelcomeScreen key="daily-schedule" onSend={handleSend} />}
 
         {messages.length > 0 && (
           <div className="mx-auto flex flex-col" style={{ width: '740px', gap: '32px', marginTop: '32px', paddingBottom: '50vh' }}>
