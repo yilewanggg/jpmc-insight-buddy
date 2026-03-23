@@ -14,8 +14,9 @@ import handIcon from "@/assets/hand-icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
+import { DailyScheduleWelcomeScreen } from "@/components/assistant/DailyScheduleWelcomeScreen";
 
-export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat";
+export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
 
 
 interface Message {
@@ -1928,6 +1929,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
   { id: "daily-digest", label: "Daily Digest" },
   { id: "feedback", label: "Give Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
+  { id: "daily-schedule", label: "Daily Schedule" },
 ];
 
 export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; onFlowChange: (flow: ChatFlow) => void }) {
@@ -2067,6 +2069,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
         {activeFlow === "daily-digest" && <WelcomeScreen key="daily-digest" onSend={handleSend} />}
         {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} />}
         {activeFlow === "book-a-seat" && <BookASeatWelcomeScreen key="book-a-seat" onSend={handleSend} />}
+        {activeFlow === "daily-schedule" && <DailyScheduleWelcomeScreen key="daily-schedule" onSend={handleSend} />}
 
         {messages.length > 0 && (
           <div className="mx-auto flex flex-col" style={{ width: '740px', gap: '32px', marginTop: '32px', paddingBottom: '50vh' }}>
