@@ -103,7 +103,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
       <div style={{ maxWidth: "616px", width: "100%" }}>
         <h2
           className="text-[32px] leading-[24px] tracking-[-0.5px] text-foreground font-light"
-          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif", minHeight: "80px" }}
+          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
         >
           {headingDisplayed}
         </h2>
