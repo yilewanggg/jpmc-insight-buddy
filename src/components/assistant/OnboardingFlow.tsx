@@ -102,8 +102,8 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
       className="flex-1 flex flex-col items-center pt-[30vh] h-full bg-background px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1.2 }}
+      exit={{ opacity: 0, scale: 0.97 }}
+      transition={{ duration: 1.8, ease: "easeInOut" }}
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
         <h2
