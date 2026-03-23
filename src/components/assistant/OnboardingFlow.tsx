@@ -444,7 +444,6 @@ export function OnboardingFlow() {
           <div
             key={i}
             ref={(el) => { stepRefs.current[i] = el; }}
-            style={{ scrollSnapAlign: "start" }}
           >
             <CarouselStepView
               step={step}
