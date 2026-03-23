@@ -73,6 +73,7 @@ function getResponse(input: string): string {
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("meeting schedule")) return DAILY_SCHEDULE_RESPONSE;
+  if (lower.includes("move design jam")) return MOVE_DESIGN_JAM_RESPONSE;
   if (lower.includes("compliance")) return mockResponses.compliance;
   if (lower.includes("task") || lower.includes("pending")) return mockResponses.tasks;
   if (lower.includes("meeting") || lower.includes("agenda")) return mockResponses.meeting;
