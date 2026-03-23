@@ -2219,7 +2219,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
         <div className="absolute inset-x-0 -top-8 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         <div className="bg-background pb-4 pt-2 flex justify-center">
           <div style={{ width: '740px' }}>
-            <div className="flex items-center bg-card rounded-xl px-4 py-2.5 ml-16">
+            <div className="relative flex items-center bg-card rounded-xl px-4 py-2.5 ml-16">
               <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#1A17140a] active:bg-[#1A17141a] transition-all duration-200" style={{ color: '#666663' }}>
                 <Plus className="w-5 h-5 transition-transform duration-200 hover:scale-110" strokeWidth={1.5} />
               </button>
@@ -2235,8 +2235,9 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                 rows={1}
                 className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground placeholder:text-[#666663] resize-none outline-none max-h-32"
               />
-              <div className="flex items-center gap-1.5 shrink-0 ml-2 relative">
+              <div className="flex items-center gap-1.5 shrink-0 ml-2">
                 <SlashCommandMenu
+                  inputValue={input}
                   onSelect={(cmd) => {
                     setInput("/" + cmd.toLowerCase() + " ");
                     inputRef.current?.focus();
