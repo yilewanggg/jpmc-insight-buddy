@@ -438,8 +438,7 @@ export function OnboardingFlow() {
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto scroll-smooth"
-        style={{ scrollSnapType: "y mandatory" }}
+        className="flex-1 overflow-y-auto"
       >
         {steps.map((step, i) => (
           <div
