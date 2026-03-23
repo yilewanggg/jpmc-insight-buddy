@@ -252,7 +252,7 @@ function CarouselStepView({
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-center px-16 py-20 relative"
+      className="min-h-screen flex flex-col items-center justify-center py-20 relative"
       style={{ minHeight: "100vh" }}
     >
       <AnimatePresence>
