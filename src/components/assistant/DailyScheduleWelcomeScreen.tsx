@@ -126,27 +126,23 @@ function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClos
 }
 
 function InlineCalendarWidget() {
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-
   return (
-    <div className="bg-card rounded-2xl shadow-sm overflow-visible">
+    <div className="bg-card rounded-2xl overflow-hidden" style={{ border: '1px solid #E8E4DE' }}>
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+      <div className="flex items-center justify-between px-6 py-5">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
-          <span className="text-[14px] leading-[20px] tracking-[0.16px] font-medium text-foreground">August 27, 2025</span>
-          <div className="flex items-center gap-1">
-            <button className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted/50 transition-colors text-muted-foreground">
+          <span className="text-[16px] leading-[22px] font-medium text-foreground">August 27, 2025</span>
+          <div className="flex items-center gap-1.5">
+            <button className="w-6 h-6 flex items-center justify-center rounded text-foreground">
               <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
             </button>
-            <button className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted/50 transition-colors text-muted-foreground">
+            <button className="w-6 h-6 flex items-center justify-center rounded text-foreground">
               <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
             </button>
           </div>
         </div>
-        <button className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium"
-          style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+        <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-transparent text-[14px] leading-[20px] font-medium"
+          style={{ border: '1px solid #99A1AF', color: '#0A0A0A' }}
         >
           Open Outlook <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
         </button>
@@ -154,63 +150,56 @@ function InlineCalendarWidget() {
 
       {/* Time slots */}
       <div className="flex flex-col">
-        {timeSlots.map((slot, slotIdx) => (
-          <div
-            key={slotIdx}
-            className="flex items-stretch border-b border-border relative"
-          >
-            {/* Time label */}
-            <div className="w-[60px] shrink-0 flex items-start justify-end pr-3 pt-3 pb-3">
-              <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{slot.time}</span>
-            </div>
-            {/* Events */}
-            {slot.events.length === 0 ? (
-              <div className="flex-1 py-4" />
-            ) : (
-              <div className="flex-1 py-2.5 pr-6 flex items-center gap-2 group/event">
-                {slot.events.map((event, evIdx) => {
-                  const key = `${slotIdx}-${evIdx}`;
-                  const isDeclined = event.status === "declined";
-                  const isTentative = event.status === "tentative";
-                  return (
-                    <div
-                      key={evIdx}
-                      className="rounded-lg px-3 py-2.5 flex-1 min-w-0"
-                      style={{
-                        backgroundColor: isDeclined ? '#FFFFFF' : '#A6D7F0',
-                        opacity: isTentative ? 0.25 : 1,
-                        border: isDeclined ? '1px solid #A6D7F0' : isTentative ? '1px solid #A6D7F0' : 'none',
-                      }}
-                    >
-                      <p className="text-[13px] leading-[18px] font-medium truncate" style={{ color: isDeclined ? '#4A5565' : '#0A0A0A' }}>
-                        {event.title}
-                      </p>
-                      <p className="text-[11px] leading-[16px] truncate" style={{ color: isDeclined ? '#4A5565' : '#4A5565' }}>
-                        {event.location}
-                      </p>
-                    </div>
-                  );
-                })}
-                {/* Overflow button */}
-                <div className="relative shrink-0 opacity-0 group-hover/event:opacity-100 transition-opacity">
-                  <button
-                    ref={(el) => { buttonRefs.current[`${slotIdx}`] = el; }}
-                    onClick={() => setOpenMenu(openMenu === `${slotIdx}` ? null : `${slotIdx}`)}
-                    className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[#DDD5C8] transition-colors"
-                    style={{ color: '#666663' }}
-                  >
-                    <MoreHorizontal className="w-4 h-4" strokeWidth={1.5} />
-                  </button>
-                  <EventOverflowMenu
-                    open={openMenu === `${slotIdx}`}
-                    onClose={() => setOpenMenu(null)}
-                    anchorRef={{ current: buttonRefs.current[`${slotIdx}`] } as React.RefObject<HTMLButtonElement>}
-                  />
-                </div>
+        {timeSlots.map((slot, slotIdx) => {
+          const hasEvents = slot.events.length > 0;
+          const isTentativeRow = slot.events.some(e => e.status === "tentative");
+          const isLastSlot = slotIdx === timeSlots.length - 1;
+
+          return (
+            <div
+              key={slotIdx}
+              className="flex items-stretch relative"
+              style={{
+                borderTop: '1px solid rgba(16, 16, 16, 0.1)',
+                ...(isLastSlot ? {} : {}),
+                backgroundColor: isTentativeRow ? '#A6D7F01A' : 'transparent',
+              }}
+            >
+              {/* Time label */}
+              <div className="w-[85px] shrink-0 flex items-start justify-start pl-6 pt-4 pb-4">
+                <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>{slot.time}</span>
               </div>
-            )}
-          </div>
-        ))}
+              {/* Events */}
+              {!hasEvents ? (
+                <div className="flex-1 py-5" />
+              ) : (
+                <div className="flex-1 py-3 pr-6 flex items-center gap-2">
+                  {slot.events.map((event, evIdx) => {
+                    const isDeclined = event.status === "declined";
+                    const isTentative = event.status === "tentative";
+                    return (
+                      <div
+                        key={evIdx}
+                        className="rounded-xl px-4 py-3 flex-1 min-w-0"
+                        style={{
+                          backgroundColor: isDeclined ? '#FFFFFF' : isTentative ? '#A6D7F020' : '#A6D7F0',
+                          border: isDeclined ? '1px solid #A6D7F0' : isTentative ? '2px dashed #A6D7F0' : 'none',
+                        }}
+                      >
+                        <p className="text-[14px] leading-[20px] font-semibold truncate" style={{ color: '#0A0A0A' }}>
+                          {event.title}
+                        </p>
+                        <p className="text-[13px] leading-[18px] truncate" style={{ color: '#4A5565' }}>
+                          {event.location}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
