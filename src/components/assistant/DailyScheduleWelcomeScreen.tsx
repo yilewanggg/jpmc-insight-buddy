@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown } from "lucide-react";
+import calendarCardImage from "@/assets/calendar-card.png";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 import { motion, AnimatePresence } from "framer-motion";
 
