@@ -2164,6 +2164,10 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
     }
   };
 
+  if (activeFlow === "onboarding") {
+    return <OnboardingFlow />;
+  }
+
   return (
     <div className="flex-1 flex flex-col h-full bg-background relative">
       {/* Top gradient */}
