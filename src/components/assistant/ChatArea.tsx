@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 
-export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat";
+export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
 
 
 interface Message {
