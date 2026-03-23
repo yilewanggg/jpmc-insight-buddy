@@ -130,19 +130,40 @@ function InlineCalendarWidget() {
   const [hovered, setHovered] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const dotsRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className="relative inline-block" ref={cardRef}>
       <img
         src={hovered ? calendarCardHoverImage : calendarCardImage}
         alt="Daily schedule calendar"
-        className="w-full rounded-2xl cursor-pointer"
+        className="w-full rounded-2xl"
         style={{ maxWidth: '740px' }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+      />
+      {/* Invisible click target over the three dots area on the card */}
+      <button
+        ref={dotsRef}
+        className="absolute cursor-pointer bg-transparent border-none p-0"
+        style={{ top: '16px', right: '16px', width: '32px', height: '32px' }}
         onClick={() => setMenuOpen(!menuOpen)}
       />
-      <CalendarOverflowMenu open={menuOpen} onClose={() => setMenuOpen(false)} anchorRef={cardRef} />
+      {menuOpen && (
+        <div className="absolute z-50" style={{ top: '48px', right: '12px' }}>
+          <div className="rounded-xl shadow-lg py-1.5 px-1.5 w-[210px]" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E4DE' }}>
+            {overflowMenuItems.map((item, idx) => (
+              <button
+                key={idx}
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors"
+              >
+                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">{item}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={1.5} />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
