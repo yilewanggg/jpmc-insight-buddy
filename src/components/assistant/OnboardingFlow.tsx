@@ -170,22 +170,18 @@ const steps: CarouselStep[] = [
     heading: "I can manage and schedule\nmeetings for you.",
     description:
       "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
-    userBubble: "Yes, manage my calendar",
-    showBubbleOnAction: true,
   },
   {
     icon: "✈️",
     heading: "I can take care of travel\nplanning for you.",
     description:
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
-    userBubble: "Yes, handle travel for me",
   },
   {
     icon: "📢",
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
-    userBubble: "Yes, optimize the way I work",
   },
   {
     icon: "🔲",
