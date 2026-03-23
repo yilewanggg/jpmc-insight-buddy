@@ -103,7 +103,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 1.2 }}
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
         <h2
@@ -424,7 +424,7 @@ export function OnboardingFlow() {
       className="flex-1 flex h-full bg-background relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
+      transition={{ duration: 1.2, delay: 0.6 }}
     >
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2.5">
         {steps.map((_, i) => (
