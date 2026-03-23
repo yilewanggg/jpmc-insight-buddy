@@ -58,19 +58,29 @@ function TypedText({ text, showCursor }: { text: string; showCursor?: boolean })
 }
 
 interface ScheduleEvent {
-  time: string;
   title: string;
   location: string;
-  color: string;
-  width: string;
   status?: "tentative" | "declined";
 }
 
-const scheduleEvents: ScheduleEvent[] = [
-  { time: "9 AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "85%" },
-  { time: "10AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "100%" },
-  { time: "11AM", title: "Tentative: Internal", location: "Room 03", color: "#A6D7F0", width: "60%", status: "tentative" },
-  { time: "12 AM", title: "Declined: Priya 1:1", location: "Microsoft Teams", color: "#D4D4D4", width: "50%", status: "declined" },
+interface TimeSlot {
+  time: string;
+  events: ScheduleEvent[];
+}
+
+const timeSlots: TimeSlot[] = [
+  {
+    time: "9 AM",
+    events: [
+      { title: "QA Review", location: "Microsoft Teams" },
+      { title: "Design Jam", location: "Microsoft Teams" },
+    ],
+  },
+  { time: "10AM", events: [] },
+  { time: "11AM", events: [{ title: "Tentative: Internal", location: "Room 03", status: "tentative" }] },
+  { time: "12 AM", events: [{ title: "Declined: Priya 1:1", location: "Microsoft Teams", status: "declined" }] },
+  { time: "1 PM", events: [] },
+  { time: "2 PM", events: [] },
 ];
 
 const overflowMenuItems = [
@@ -116,8 +126,8 @@ function EventOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onClos
 }
 
 function InlineCalendarWidget() {
-  const [openMenu, setOpenMenu] = useState<number | null>(null);
-  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   return (
     <div className="bg-card rounded-2xl shadow-sm overflow-visible">
@@ -142,6 +152,63 @@ function InlineCalendarWidget() {
         </button>
       </div>
 
+      {/* Time slots */}
+      <div className="flex flex-col">
+        {timeSlots.map((slot, slotIdx) => (
+          <div
+            key={slotIdx}
+            className="flex items-stretch border-b border-border relative"
+          >
+            {/* Time label */}
+            <div className="w-[60px] shrink-0 flex items-start justify-end pr-3 pt-3 pb-3">
+              <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{slot.time}</span>
+            </div>
+            {/* Events */}
+            {slot.events.length === 0 ? (
+              <div className="flex-1 py-4" />
+            ) : (
+              <div className="flex-1 py-2.5 pr-6 flex items-center gap-2 group/event">
+                {slot.events.map((event, evIdx) => {
+                  const key = `${slotIdx}-${evIdx}`;
+                  return (
+                    <div
+                      key={evIdx}
+                      className="rounded-md px-3 py-2.5 flex-1 min-w-0"
+                      style={{
+                        backgroundColor: event.status === "declined" ? '#F0EDED' : '#D9EEF7',
+                        opacity: event.status === "declined" ? 0.7 : 1,
+                      }}
+                    >
+                      <p className="text-[13px] leading-[18px] font-medium truncate" style={{ color: event.status === "declined" ? '#999' : '#202020' }}>
+                        {event.title}
+                      </p>
+                      <p className="text-[11px] leading-[16px] truncate" style={{ color: event.status === "declined" ? '#AAA' : '#666663' }}>
+                        {event.location}
+                      </p>
+                    </div>
+                  );
+                })}
+                {/* Overflow button */}
+                <div className="relative shrink-0 opacity-0 group-hover/event:opacity-100 transition-opacity">
+                  <button
+                    ref={(el) => { buttonRefs.current[`${slotIdx}`] = el; }}
+                    onClick={() => setOpenMenu(openMenu === `${slotIdx}` ? null : `${slotIdx}`)}
+                    className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[#DDD5C8] transition-colors"
+                    style={{ color: '#666663' }}
+                  >
+                    <MoreHorizontal className="w-4 h-4" strokeWidth={1.5} />
+                  </button>
+                  <EventOverflowMenu
+                    open={openMenu === `${slotIdx}`}
+                    onClose={() => setOpenMenu(null)}
+                    anchorRef={{ current: buttonRefs.current[`${slotIdx}`] } as React.RefObject<HTMLButtonElement>}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
       {/* Events */}
       <div className="flex flex-col">
         {scheduleEvents.map((event, idx) => (
