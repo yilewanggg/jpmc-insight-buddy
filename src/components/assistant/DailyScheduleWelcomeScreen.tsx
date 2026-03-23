@@ -124,7 +124,7 @@ function InlineCalendarWidget() {
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#7EC8E3' }} />
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
           <span className="text-[14px] leading-[20px] tracking-[0.16px] font-medium text-foreground">August 27, 2025</span>
           <div className="flex items-center gap-1">
             <button className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted/50 transition-colors text-muted-foreground">
