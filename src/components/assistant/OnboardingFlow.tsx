@@ -7,6 +7,8 @@ import confirmationIcon from "@/assets/confirmation-icon.svg";
 import trainingIcon from "@/assets/training-icon.svg";
 import calendarCarouselIcon from "@/assets/calendar-carousel-icon.svg";
 import planeIcon from "@/assets/plane-icon.svg";
+import megaphoneIcon from "@/assets/megaphone-icon.svg";
+import celebrationIcon from "@/assets/celebration-icon.svg";
 
 // ─── Typewriter hook ─────────────────────────────────────────────────
 
