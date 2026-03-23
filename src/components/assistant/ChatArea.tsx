@@ -2041,6 +2041,65 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   };
 
+function SlashCommandMenu({ onSelect }: { onSelect: (cmd: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  const commands = [
+    { label: "Profile", desc: "View someone's profile" },
+    { label: "SID", desc: "Copy SID to clipboard" },
+    { label: "Org", desc: "See org chart" },
+    { label: "Zoom", desc: "Start a Zoom call with someone" },
+    { label: "Message", desc: "Send a message in Teams" },
+    { label: "Go", desc: "Navigate to an internal go/link" },
+    { label: "Recognize", desc: "Send a recognition to someone" },
+  ];
+
+  return (
+    <div ref={menuRef} className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="w-9 h-9 rounded-lg bg-[#E9E0D3] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <span className="text-base font-medium">/</span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-full right-0 mb-2 w-[420px] rounded-xl bg-card shadow-lg border border-border/50 overflow-hidden z-50"
+          >
+            <div className="py-2">
+              {commands.map((cmd, i) => (
+                <button
+                  key={cmd.label}
+                  onClick={() => { onSelect(cmd.label); setOpen(false); }}
+                  className="w-full text-left px-5 py-3 hover:bg-[#E9E0D3]/40 transition-colors flex items-baseline gap-2"
+                >
+                  <span className="text-[14px] font-semibold text-foreground">{cmd.label}</span>
+                  <span className="text-[14px] text-[#666663]">{cmd.desc}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
   const handleSend = async (text?: string) => {
     const message = text || input.trim();
     if (!message) return;
