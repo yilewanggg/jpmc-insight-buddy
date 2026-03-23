@@ -477,7 +477,6 @@ export function OnboardingFlow() {
             <CarouselStepView
               step={step}
               onAction={(action) => handleAction(i, action)}
-              showBubble={!!bubbleShown[i]}
               isActive={currentStep === i}
             />
           </div>
