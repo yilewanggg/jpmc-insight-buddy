@@ -227,7 +227,6 @@ function CarouselStepView({
   const heading = useTypewriter(plainHeading, 30, 200, hasBeenActive);
   const desc = useTypewriter(plainDesc, 15, 0, heading.done);
 
-  const shouldShowBubble = step.userBubble && (step.showBubbleOnAction ? showBubble : true);
 
   // Render description with bold markdown
   const renderDesc = (text: string) => {
