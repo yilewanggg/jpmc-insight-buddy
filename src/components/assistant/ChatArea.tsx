@@ -1912,6 +1912,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <FeedbackSentResponse onSend={onSend} />
         ) : msg.content === DAILY_SCHEDULE_RESPONSE ? (
           <DailyScheduleResponse onSend={onSend} />
+        ) : msg.content === MOVE_DESIGN_JAM_RESPONSE ? (
+          <MoveDesignJamResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
