@@ -1948,6 +1948,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     setMessages([]);
     setInput("");
     setFeedbackAutoTyped(false);
+    setScheduleAutoTyped(false);
     setIsWaitingForAssistant(false);
     
   }, [activeFlow]);
