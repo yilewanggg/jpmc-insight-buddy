@@ -1,38 +1,125 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import calendarIcon from "@/assets/calendar-icon.svg";
+import handIcon from "@/assets/hand-icon.svg";
+import confirmationIcon from "@/assets/confirmation-icon.svg";
+import trainingIcon from "@/assets/training-icon.svg";
 
-interface OnboardingStep {
+// ─── Pre-carousel screens ────────────────────────────────────────────
+
+function WelcomeScreen({ onFadeComplete }: { onFadeComplete: () => void }) {
+  useEffect(() => {
+    const timer = setTimeout(onFadeComplete, 3000);
+    return () => clearTimeout(timer);
+  }, [onFadeComplete]);
+
+  return (
+    <motion.div
+      className="flex-1 flex flex-col items-center justify-center h-full bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <span className="text-[40px] mb-6">👋</span>
+      <h1
+        className="text-[36px] leading-[44px] tracking-[-0.5px] text-foreground font-light text-center"
+        style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
+      >
+        Hello Kyra, I'm your JPMC Assistant.
+      </h1>
+    </motion.div>
+  );
+}
+
+function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
+  const features = [
+    { icon: calendarIcon, text: "Helping you manage your time by optimizing your calendar" },
+    { icon: handIcon, text: "Seamlessly connecting you to people throughout the organization" },
+    { icon: confirmationIcon, text: "Keeping you on top of your essential tasks such as gathering feedback and training" },
+  ];
+
+  return (
+    <motion.div
+      className="flex-1 flex flex-col items-center justify-center h-full bg-background px-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <div style={{ maxWidth: "616px", width: "100%" }}>
+        <h2
+          className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground font-light mb-8"
+          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
+        >
+          I'm here to make your work life a little easier by:
+        </h2>
+
+        <div className="flex flex-col gap-5 mb-8">
+          {features.map((f, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <img src={f.icon} alt="" className="w-10 h-10 shrink-0" />
+              <p className="text-[16px] leading-[24px] text-foreground font-light">{f.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-6" style={{ maxWidth: "520px" }}>
+          Over time I will get to know you and get smarter about how to work for you.
+          For now, let's start by setting up a few things I can help you with.
+        </p>
+
+        <button
+          onClick={onGetStarted}
+          className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
+          style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+        >
+          Get started
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Carousel data ───────────────────────────────────────────────────
+
+interface CarouselStep {
   icon: string;
   heading: string;
   description: string;
   userBubble?: string;
+  showBubbleOnAction?: boolean; // bubble only shows after "Do it now"
   options?: { icon: string; label: string }[];
 }
 
-const steps: OnboardingStep[] = [
+const steps: CarouselStep[] = [
+  {
+    icon: "📅",
+    heading: "I can manage and schedule\nmeetings for you.",
+    description:
+      "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
+    userBubble: "Yes, manage my calendar",
+    showBubbleOnAction: true, // only after clicking "Do it now"
+  },
   {
     icon: "✈️",
     heading: "I can take care of travel\nplanning for you.",
-    description: "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
-    userBubble: "Yes, manage my calendar",
+    description:
+      "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
+    userBubble: "Yes, handle travel for me",
   },
   {
     icon: "📢",
     heading: "I can make suggestions to\noptimize the way you work.",
-    description: "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
-    userBubble: "Yes, handle travel for me",
-  },
-  {
-    icon: "📅",
-    heading: "I can manage and schedule\nmeetings for you.",
-    description: "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
+    description:
+      "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
     userBubble: "Yes, optimize the way I work",
   },
   {
     icon: "🔲",
     heading: "I can adapt to how\nyou like to work.",
-    description: "You can always drag the corner and resize this window or you can choose from a few default sizes below.",
+    description:
+      "You can always drag the corner and resize this window or you can choose from a few default sizes below.",
     options: [
       { icon: "⬜", label: "Default" },
       { icon: "🖥️", label: "Fullscreen" },
@@ -43,53 +130,68 @@ const steps: OnboardingStep[] = [
   {
     icon: "🎉",
     heading: "You're off to a great start!",
-    description: "I can't wait to get to know you more as we work together. You can always **manage your preferences** later.",
+    description:
+      "I can't wait to get to know you more as we work together. You can always **manage your preferences** later.",
   },
 ];
 
-function OnboardingStep({
+// ─── Single carousel step ───────────────────────────────────────────
+
+function CarouselStepView({
   step,
-  isActive,
   onAction,
+  showBubble,
 }: {
-  step: OnboardingStep;
-  isActive: boolean;
+  step: CarouselStep;
   onAction: (action: "now" | "later") => void;
+  showBubble: boolean;
 }) {
   const [selectedOption, setSelectedOption] = useState(0);
 
+  const shouldShowBubble = step.userBubble && (step.showBubbleOnAction ? showBubble : true);
+
   return (
-    <div className="min-h-screen flex flex-col justify-center px-16 py-20 relative" style={{ minHeight: '100vh' }}>
+    <div
+      className="min-h-screen flex flex-col justify-center px-16 py-20 relative"
+      style={{ minHeight: "100vh" }}
+    >
       {/* User bubble top-right */}
-      {step.userBubble && (
-        <div className="absolute top-[20%] right-16">
-          <div
-            className="inline-flex items-center relative"
-            style={{
-              backgroundColor: "#E9E0D3",
-              borderRadius: "16px",
-              padding: "12px 24px",
-            }}
+      <AnimatePresence>
+        {shouldShowBubble && (
+          <motion.div
+            className="absolute top-[20%] right-16"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            <p className="text-[15px] leading-[22.5px] text-foreground">
-              {step.userBubble}
-            </p>
-            <svg
-              className="absolute bottom-0 right-[16px]"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              style={{ transform: "translateY(10px)" }}
+            <div
+              className="inline-flex items-center relative"
+              style={{
+                backgroundColor: "#E9E0D3",
+                borderRadius: "16px",
+                padding: "12px 24px",
+              }}
             >
-              <path
-                d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z"
-                fill="#E9E0D3"
-              />
-            </svg>
-          </div>
-        </div>
-      )}
+              <p className="text-[15px] leading-[22.5px] text-foreground">
+                {step.userBubble}
+              </p>
+              <svg
+                className="absolute bottom-0 right-[16px]"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                style={{ transform: "translateY(10px)" }}
+              >
+                <path
+                  d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z"
+                  fill="#E9E0D3"
+                />
+              </svg>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main content */}
       <div style={{ maxWidth: "616px" }}>
@@ -100,7 +202,10 @@ function OnboardingStep({
         >
           {step.heading}
         </h2>
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-6" style={{ maxWidth: "520px" }}>
+        <p
+          className="text-[16px] leading-[24px] text-foreground font-light mb-6"
+          style={{ maxWidth: "520px" }}
+        >
           {step.description.includes("**") ? (
             <>
               {step.description.split("**").map((part, i) =>
@@ -135,7 +240,9 @@ function OnboardingStep({
               >
                 <div className="flex items-center gap-3">
                   <span className="text-[18px]">{opt.icon}</span>
-                  <span className="text-[15px] text-foreground font-medium">{opt.label}</span>
+                  <span className="text-[15px] text-foreground font-medium">
+                    {opt.label}
+                  </span>
                 </div>
                 <div
                   className={cn(
@@ -143,7 +250,9 @@ function OnboardingStep({
                     selectedOption === i ? "border-foreground" : "border-[#C4C0B9]"
                   )}
                 >
-                  {selectedOption === i && <div className="w-2.5 h-2.5 rounded-full bg-foreground" />}
+                  {selectedOption === i && (
+                    <div className="w-2.5 h-2.5 rounded-full bg-foreground" />
+                  )}
                 </div>
               </button>
             ))}
@@ -172,13 +281,20 @@ function OnboardingStep({
   );
 }
 
+// ─── Main flow ───────────────────────────────────────────────────────
+
+type Phase = "welcome" | "intro" | "carousel";
+
 export function OnboardingFlow() {
+  const [phase, setPhase] = useState<Phase>("welcome");
   const [currentStep, setCurrentStep] = useState(0);
+  const [bubbleShown, setBubbleShown] = useState<Record<number, boolean>>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Scroll-based step tracking
   useEffect(() => {
+    if (phase !== "carousel") return;
     const container = scrollRef.current;
     if (!container) return;
 
@@ -203,7 +319,7 @@ export function OnboardingFlow() {
 
     container.addEventListener("scroll", handleScroll);
     return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [phase]);
 
   const scrollToStep = (index: number) => {
     const ref = stepRefs.current[index];
@@ -212,11 +328,38 @@ export function OnboardingFlow() {
     }
   };
 
-  const handleAction = (action: "now" | "later") => {
-    if (currentStep < steps.length - 1) {
-      scrollToStep(currentStep + 1);
+  const handleAction = (stepIndex: number, action: "now" | "later") => {
+    if (action === "now") {
+      setBubbleShown((prev) => ({ ...prev, [stepIndex]: true }));
+      // Delay scrolling so the bubble can animate in
+      setTimeout(() => {
+        if (stepIndex < steps.length - 1) {
+          scrollToStep(stepIndex + 1);
+        }
+      }, 600);
+    } else {
+      if (stepIndex < steps.length - 1) {
+        scrollToStep(stepIndex + 1);
+      }
     }
   };
+
+  // ─── Render phases ─────────────────────────────────────────────────
+
+  if (phase === "welcome" || phase === "intro") {
+    return (
+      <div className="flex-1 flex h-full bg-background relative overflow-hidden">
+        <AnimatePresence mode="wait">
+          {phase === "welcome" && (
+            <WelcomeScreen key="welcome" onFadeComplete={() => setPhase("intro")} />
+          )}
+          {phase === "intro" && (
+            <IntroScreen key="intro" onGetStarted={() => setPhase("carousel")} />
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 flex h-full bg-background relative overflow-hidden">
@@ -237,7 +380,7 @@ export function OnboardingFlow() {
         ))}
       </div>
 
-      {/* Scrollable content */}
+      {/* Scrollable carousel */}
       <div
         ref={scrollRef}
         className="flex-1 overflow-y-auto scroll-smooth"
@@ -246,13 +389,15 @@ export function OnboardingFlow() {
         {steps.map((step, i) => (
           <div
             key={i}
-            ref={(el) => { stepRefs.current[i] = el; }}
+            ref={(el) => {
+              stepRefs.current[i] = el;
+            }}
             style={{ scrollSnapAlign: "start" }}
           >
-            <OnboardingStep
+            <CarouselStepView
               step={step}
-              isActive={currentStep === i}
-              onAction={handleAction}
+              onAction={(action) => handleAction(i, action)}
+              showBubble={!!bubbleShown[i]}
             />
           </div>
         ))}
