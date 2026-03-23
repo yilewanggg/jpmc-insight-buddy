@@ -254,42 +254,6 @@ function CarouselStepView({
       className="min-h-screen flex flex-col items-center justify-center py-20 relative"
       style={{ minHeight: "100vh" }}
     >
-      <AnimatePresence>
-        {shouldShowBubble && (
-          <motion.div
-            className="absolute top-[20%] right-16"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <div
-              className="inline-flex items-center relative"
-              style={{
-                backgroundColor: "#E9E0D3",
-                borderRadius: "16px",
-                padding: "12px 24px",
-              }}
-            >
-              <p className="text-[15px] leading-[22.5px] text-foreground">
-                {step.userBubble}
-              </p>
-              <svg
-                className="absolute bottom-0 right-[16px]"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                style={{ transform: "translateY(10px)" }}
-              >
-                <path
-                  d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z"
-                  fill="#E9E0D3"
-                />
-              </svg>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div style={{ maxWidth: "616px" }}>
         <span className="text-[40px] mb-4 block">{step.icon}</span>
