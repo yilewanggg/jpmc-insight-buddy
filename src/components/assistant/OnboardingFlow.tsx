@@ -5,6 +5,8 @@ import calendarIcon from "@/assets/calendar-icon.svg";
 import handIcon from "@/assets/hand-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
 import trainingIcon from "@/assets/training-icon.svg";
+import calendarCarouselIcon from "@/assets/calendar-carousel-icon.svg";
+import planeIcon from "@/assets/plane-icon.svg";
 
 // ─── Typewriter hook ─────────────────────────────────────────────────
 
