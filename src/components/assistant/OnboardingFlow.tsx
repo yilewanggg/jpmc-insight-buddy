@@ -98,6 +98,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
       className="flex-1 flex flex-col items-center pt-[30vh] h-full bg-background px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
@@ -437,14 +438,12 @@ export function OnboardingFlow() {
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto scroll-smooth"
-        style={{ scrollSnapType: "y mandatory" }}
+        className="flex-1 overflow-y-auto"
       >
         {steps.map((step, i) => (
           <div
             key={i}
             ref={(el) => { stepRefs.current[i] = el; }}
-            style={{ scrollSnapAlign: "start" }}
           >
             <CarouselStepView
               step={step}
