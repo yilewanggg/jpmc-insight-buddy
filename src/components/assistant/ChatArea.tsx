@@ -1908,6 +1908,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <ReviewFeedbackResponse onSend={onSend} />
         ) : msg.content === FEEDBACK_SENT_RESPONSE ? (
           <FeedbackSentResponse onSend={onSend} />
+        ) : msg.content === DAILY_SCHEDULE_RESPONSE ? (
+          <DailyScheduleResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
