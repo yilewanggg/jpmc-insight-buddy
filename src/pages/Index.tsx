@@ -13,7 +13,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
 
 const Index = () => {
   const [currentChatId, setCurrentChatId] = useState<string | null>(null);
-  const [activeFlow, setActiveFlow] = useState<ChatFlow>("daily-digest");
+  const [activeFlow, setActiveFlow] = useState<ChatFlow>("onboarding");
 
   return (
     <div className="flex flex-col h-screen w-full overflow-hidden">
