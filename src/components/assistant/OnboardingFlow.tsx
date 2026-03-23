@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import calendarIcon from "@/assets/calendar-icon.svg";
@@ -6,13 +6,52 @@ import handIcon from "@/assets/hand-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
 import trainingIcon from "@/assets/training-icon.svg";
 
+// ─── Typewriter hook ─────────────────────────────────────────────────
+
+function useTypewriter(text: string, speed = 30, startDelay = 0, enabled = true) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (!enabled) {
+      setDisplayed("");
+      setDone(false);
+      return;
+    }
+
+    setDisplayed("");
+    setDone(false);
+
+    const delayTimer = setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+
+    return () => clearTimeout(delayTimer);
+  }, [text, speed, startDelay, enabled]);
+
+  return { displayed, done };
+}
+
 // ─── Pre-carousel screens ────────────────────────────────────────────
 
 function WelcomeScreen({ onFadeComplete }: { onFadeComplete: () => void }) {
+  const { displayed, done } = useTypewriter("Hello Kyra, I'm your JPMC Assistant.", 40, 500);
+
   useEffect(() => {
-    const timer = setTimeout(onFadeComplete, 3000);
-    return () => clearTimeout(timer);
-  }, [onFadeComplete]);
+    if (done) {
+      const timer = setTimeout(onFadeComplete, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [done, onFadeComplete]);
 
   return (
     <motion.div
@@ -27,18 +66,32 @@ function WelcomeScreen({ onFadeComplete }: { onFadeComplete: () => void }) {
         className="text-[36px] leading-[44px] tracking-[-0.5px] text-foreground font-light text-center"
         style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
       >
-        Hello Kyra, I'm your JPMC Assistant.
+        {displayed}
+        <span className="inline-block w-[2px] h-[36px] bg-foreground/40 ml-1 animate-pulse align-middle" />
       </h1>
     </motion.div>
   );
 }
 
 function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
+  const headingText = "I'm here to make your work life a little easier by:";
+  const { displayed: headingDisplayed, done: headingDone } = useTypewriter(headingText, 30, 300);
+
   const features = [
     { icon: calendarIcon, text: "Helping you manage your time by optimizing your calendar" },
     { icon: handIcon, text: "Seamlessly connecting you to people throughout the organization" },
     { icon: confirmationIcon, text: "Keeping you on top of your essential tasks such as gathering feedback and training" },
   ];
+
+  const outroText = "Over time I will get to know you and get smarter about how to work for you. For now, let's start by setting up a few things I can help you with.";
+
+  // Stagger feature typing after heading completes
+  const feat0 = useTypewriter(features[0].text, 20, 0, headingDone);
+  const feat1 = useTypewriter(features[1].text, 20, 0, feat0.done);
+  const feat2 = useTypewriter(features[2].text, 20, 0, feat1.done);
+  const featDisplayed = [feat0, feat1, feat2];
+
+  const outro = useTypewriter(outroText, 20, 0, feat2.done);
 
   return (
     <motion.div
@@ -50,32 +103,51 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
       <div style={{ maxWidth: "616px", width: "100%" }}>
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground font-light mb-8"
-          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
+          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif", minHeight: "80px" }}
         >
-          I'm here to make your work life a little easier by:
+          {headingDisplayed}
         </h2>
 
         <div className="flex flex-col gap-5 mb-8">
-          {features.map((f, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <img src={f.icon} alt="" className="w-10 h-10 shrink-0" />
-              <p className="text-[16px] leading-[24px] text-foreground font-light">{f.text}</p>
-            </div>
-          ))}
+          {features.map((f, i) => {
+            const show = i === 0 ? headingDone : featDisplayed[i - 1].done;
+            if (!show && featDisplayed[i].displayed === "") return null;
+            return (
+              <motion.div
+                key={i}
+                className="flex items-center gap-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={f.icon} alt="" className="w-10 h-10 shrink-0" />
+                <p className="text-[16px] leading-[24px] text-foreground font-light">
+                  {featDisplayed[i].displayed}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-6" style={{ maxWidth: "520px" }}>
-          Over time I will get to know you and get smarter about how to work for you.
-          For now, let's start by setting up a few things I can help you with.
-        </p>
+        {feat2.done && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+            <p className="text-[16px] leading-[24px] text-foreground font-light mb-6" style={{ maxWidth: "520px" }}>
+              {outro.displayed}
+            </p>
+          </motion.div>
+        )}
 
-        <button
-          onClick={onGetStarted}
-          className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
-          style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
-        >
-          Get started
-        </button>
+        {outro.done && (
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+            <button
+              onClick={onGetStarted}
+              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
+              style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+            >
+              Get started
+            </button>
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );
@@ -88,7 +160,7 @@ interface CarouselStep {
   heading: string;
   description: string;
   userBubble?: string;
-  showBubbleOnAction?: boolean; // bubble only shows after "Do it now"
+  showBubbleOnAction?: boolean;
   options?: { icon: string; label: string }[];
 }
 
@@ -99,7 +171,7 @@ const steps: CarouselStep[] = [
     description:
       "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
     userBubble: "Yes, manage my calendar",
-    showBubbleOnAction: true, // only after clicking "Do it now"
+    showBubbleOnAction: true,
   },
   {
     icon: "✈️",
@@ -135,27 +207,60 @@ const steps: CarouselStep[] = [
   },
 ];
 
-// ─── Single carousel step ───────────────────────────────────────────
+// ─── Single carousel step with typewriter ────────────────────────────
 
 function CarouselStepView({
   step,
   onAction,
   showBubble,
+  isActive,
 }: {
   step: CarouselStep;
   onAction: (action: "now" | "later") => void;
   showBubble: boolean;
+  isActive: boolean;
 }) {
   const [selectedOption, setSelectedOption] = useState(0);
+  const [hasBeenActive, setHasBeenActive] = useState(false);
+
+  useEffect(() => {
+    if (isActive && !hasBeenActive) setHasBeenActive(true);
+  }, [isActive, hasBeenActive]);
+
+  const plainHeading = step.heading.replace(/\n/g, " ");
+  const plainDesc = step.description.replace(/\*\*/g, "");
+
+  const heading = useTypewriter(plainHeading, 30, 200, hasBeenActive);
+  const desc = useTypewriter(plainDesc, 15, 0, heading.done);
 
   const shouldShowBubble = step.userBubble && (step.showBubbleOnAction ? showBubble : true);
+
+  // Render description with bold markdown
+  const renderDesc = (text: string) => {
+    if (!step.description.includes("**")) return text;
+    // Map displayed text back to bold segments
+    const parts = step.description.split("**");
+    let charIndex = 0;
+    return parts.map((part, i) => {
+      const cleanPart = part;
+      const start = charIndex;
+      const end = charIndex + cleanPart.length;
+      charIndex = end;
+      const visiblePart = text.slice(start, Math.min(end, text.length));
+      if (start >= text.length) return null;
+      return i % 2 === 1 ? (
+        <strong key={i} className="font-semibold underline">{visiblePart}</strong>
+      ) : (
+        <span key={i}>{visiblePart}</span>
+      );
+    });
+  };
 
   return (
     <div
       className="min-h-screen flex flex-col justify-center px-16 py-20 relative"
       style={{ minHeight: "100vh" }}
     >
-      {/* User bubble top-right */}
       <AnimatePresence>
         {shouldShowBubble && (
           <motion.div
@@ -193,39 +298,34 @@ function CarouselStepView({
         )}
       </AnimatePresence>
 
-      {/* Main content */}
       <div style={{ maxWidth: "616px" }}>
         <span className="text-[40px] mb-4 block">{step.icon}</span>
         <h2
-          className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light whitespace-pre-line"
-          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
+          className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
+          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif", minHeight: "80px" }}
         >
-          {step.heading}
+          {heading.displayed}
         </h2>
-        <p
-          className="text-[16px] leading-[24px] text-foreground font-light mb-6"
-          style={{ maxWidth: "520px" }}
-        >
-          {step.description.includes("**") ? (
-            <>
-              {step.description.split("**").map((part, i) =>
-                i % 2 === 1 ? (
-                  <strong key={i} className="font-semibold underline">
-                    {part}
-                  </strong>
-                ) : (
-                  <span key={i}>{part}</span>
-                )
-              )}
-            </>
-          ) : (
-            step.description
-          )}
-        </p>
 
-        {/* Layout options grid */}
-        {step.options && (
-          <div className="grid grid-cols-2 gap-3 mb-6" style={{ maxWidth: "480px" }}>
+        {heading.done && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+            <p
+              className="text-[16px] leading-[24px] text-foreground font-light mb-6"
+              style={{ maxWidth: "520px" }}
+            >
+              {renderDesc(desc.displayed)}
+            </p>
+          </motion.div>
+        )}
+
+        {step.options && desc.done && (
+          <motion.div
+            className="grid grid-cols-2 gap-3 mb-6"
+            style={{ maxWidth: "480px" }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
             {step.options.map((opt, i) => (
               <button
                 key={opt.label}
@@ -240,9 +340,7 @@ function CarouselStepView({
               >
                 <div className="flex items-center gap-3">
                   <span className="text-[18px]">{opt.icon}</span>
-                  <span className="text-[15px] text-foreground font-medium">
-                    {opt.label}
-                  </span>
+                  <span className="text-[15px] text-foreground font-medium">{opt.label}</span>
                 </div>
                 <div
                   className={cn(
@@ -250,32 +348,36 @@ function CarouselStepView({
                     selectedOption === i ? "border-foreground" : "border-[#C4C0B9]"
                   )}
                 >
-                  {selectedOption === i && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-foreground" />
-                  )}
+                  {selectedOption === i && <div className="w-2.5 h-2.5 rounded-full bg-foreground" />}
                 </div>
               </button>
             ))}
-          </div>
+          </motion.div>
         )}
 
-        {/* CTAs */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => onAction("now")}
-            className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
-            style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+        {desc.done && (
+          <motion.div
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            Do it now
-          </button>
-          <button
-            onClick={() => onAction("later")}
-            className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors hover:bg-[#DDD5C8]"
-            style={{ border: "1px solid #7D7A7A", color: "#202020" }}
-          >
-            Schedule for later
-          </button>
-        </div>
+            <button
+              onClick={() => onAction("now")}
+              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
+              style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+            >
+              Do it now
+            </button>
+            <button
+              onClick={() => onAction("later")}
+              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors hover:bg-[#DDD5C8]"
+              style={{ border: "1px solid #7D7A7A", color: "#202020" }}
+            >
+              Schedule for later
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );
@@ -292,7 +394,6 @@ export function OnboardingFlow() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Scroll-based step tracking
   useEffect(() => {
     if (phase !== "carousel") return;
     const container = scrollRef.current;
@@ -331,20 +432,13 @@ export function OnboardingFlow() {
   const handleAction = (stepIndex: number, action: "now" | "later") => {
     if (action === "now") {
       setBubbleShown((prev) => ({ ...prev, [stepIndex]: true }));
-      // Delay scrolling so the bubble can animate in
       setTimeout(() => {
-        if (stepIndex < steps.length - 1) {
-          scrollToStep(stepIndex + 1);
-        }
+        if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
       }, 600);
     } else {
-      if (stepIndex < steps.length - 1) {
-        scrollToStep(stepIndex + 1);
-      }
+      if (stepIndex < steps.length - 1) scrollToStep(stepIndex + 1);
     }
   };
-
-  // ─── Render phases ─────────────────────────────────────────────────
 
   if (phase === "welcome" || phase === "intro") {
     return (
@@ -363,14 +457,9 @@ export function OnboardingFlow() {
 
   return (
     <div className="flex-1 flex h-full bg-background relative overflow-hidden">
-      {/* Navigation dots */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2.5">
         {steps.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => scrollToStep(i)}
-            className="transition-all duration-300"
-          >
+          <button key={i} onClick={() => scrollToStep(i)} className="transition-all duration-300">
             {currentStep === i ? (
               <div className="w-[3px] h-6 rounded-full bg-foreground" />
             ) : (
@@ -380,7 +469,6 @@ export function OnboardingFlow() {
         ))}
       </div>
 
-      {/* Scrollable carousel */}
       <div
         ref={scrollRef}
         className="flex-1 overflow-y-auto scroll-smooth"
@@ -389,15 +477,14 @@ export function OnboardingFlow() {
         {steps.map((step, i) => (
           <div
             key={i}
-            ref={(el) => {
-              stepRefs.current[i] = el;
-            }}
+            ref={(el) => { stepRefs.current[i] = el; }}
             style={{ scrollSnapAlign: "start" }}
           >
             <CarouselStepView
               step={step}
               onAction={(action) => handleAction(i, action)}
               showBubble={!!bubbleShown[i]}
+              isActive={currentStep === i}
             />
           </div>
         ))}
