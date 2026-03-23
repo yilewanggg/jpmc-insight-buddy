@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, MoreHorizontal, ThumbsUp, ThumbsDown, CornerDownRight } from "lucide-react";
 import calendarCardImage from "@/assets/calendar-card.png";
 import calendarCardHoverImage from "@/assets/calendar-card-hover.jpg";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
