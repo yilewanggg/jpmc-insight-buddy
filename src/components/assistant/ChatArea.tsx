@@ -2095,16 +2095,16 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
             transition={{ duration: 0.12 }}
             className="absolute bottom-full left-0 right-0 mb-1 mx-0 z-50"
           >
-            <div className="bg-white rounded-[10px] shadow-[0_2px_16px_rgba(0,0,0,0.10)] py-1.5 px-0">
+            <div className="bg-white rounded-xl shadow-lg py-1.5 px-1.5" style={{ border: '1px solid #E8E4DE' }}>
               {filtered.map((cmd) => {
                 const matchIndex = filterText ? cmd.label.toLowerCase().indexOf(filterText) : -1;
                 return (
                   <button
                     key={cmd.label}
                     onClick={() => { onSelect(cmd.label); setOpen(false); onClose?.(); }}
-                    className="w-full text-left px-4 py-2.5 hover:bg-[#F5F5F5] transition-colors flex items-baseline gap-3"
+                    className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors flex items-baseline gap-3"
                   >
-                    <span className="text-[14px] font-semibold text-[#1A1714] min-w-[72px]">
+                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground min-w-[72px]">
                       {matchIndex >= 0 ? (
                         <>
                           {cmd.label.slice(0, matchIndex)}
@@ -2113,7 +2113,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                         </>
                       ) : cmd.label}
                     </span>
-                    <span className="text-[13px] font-normal text-[#999996]">{cmd.desc}</span>
+                    <span className="text-[12px] font-normal text-[#B5B3AE]">{cmd.desc}</span>
                   </button>
                 );
               })}
