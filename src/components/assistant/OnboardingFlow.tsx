@@ -249,7 +249,7 @@ function CarouselStepView({
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center py-20 relative"
+      className="min-h-screen flex flex-col items-center pt-[30vh] py-20 relative"
       style={{ minHeight: "100vh" }}
     >
 
@@ -257,7 +257,7 @@ function CarouselStepView({
         <span className="text-[40px] mb-4 block">{step.icon}</span>
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
-          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif", minHeight: "80px" }}
+          style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
         >
           {heading.displayed}
         </h2>
