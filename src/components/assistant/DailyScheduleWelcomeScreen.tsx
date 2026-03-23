@@ -154,7 +154,7 @@ function InlineCalendarWidget() {
               <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{event.time}</span>
             </div>
             {/* Event bar */}
-            <div className="flex-1 py-2.5 pr-4 flex items-center group/event">
+            <div className="flex-1 py-2.5 pr-6 flex items-center group/event">
               <div
                 className="rounded-md px-3 py-2.5 flex-1"
                 style={{
