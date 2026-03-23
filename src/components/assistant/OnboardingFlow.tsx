@@ -376,10 +376,28 @@ export function OnboardingFlow() {
   }, [phase]);
 
   const scrollToStep = (index: number) => {
-    const ref = stepRefs.current[index];
-    if (ref && scrollRef.current) {
-      ref.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    const target = stepRefs.current[index];
+    const container = scrollRef.current;
+    if (!target || !container) return;
+
+    const targetTop = target.offsetTop - (container.clientHeight - target.clientHeight) / 2;
+    const start = container.scrollTop;
+    const distance = targetTop - start;
+    const duration = 1200; // ms
+    let startTime: number | null = null;
+
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      container.scrollTop = start + distance * easeInOutCubic(progress);
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   };
 
   const handleAction = (stepIndex: number, action: "now" | "later") => {
