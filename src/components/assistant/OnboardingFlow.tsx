@@ -159,7 +159,8 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
 // ─── Carousel data ───────────────────────────────────────────────────
 
 interface CarouselStep {
-  icon: string;
+  icon?: string;
+  iconSvg?: string;
   heading: string;
   description: string;
   options?: { icon: string; label: string }[];
@@ -167,13 +168,13 @@ interface CarouselStep {
 
 const steps: CarouselStep[] = [
   {
-    icon: "📅",
+    iconSvg: calendarCarouselIcon,
     heading: "I can manage and schedule\nmeetings for you.",
     description:
       "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
   },
   {
-    icon: "✈️",
+    iconSvg: planeIcon,
     heading: "I can take care of travel\nplanning for you.",
     description:
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
@@ -183,18 +184,6 @@ const steps: CarouselStep[] = [
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
-  },
-  {
-    icon: "🔲",
-    heading: "I can adapt to how\nyou like to work.",
-    description:
-      "You can always drag the corner and resize this window or you can choose from a few default sizes below.",
-    options: [
-      { icon: "⬜", label: "Default" },
-      { icon: "🖥️", label: "Fullscreen" },
-      { icon: "📱", label: "Panel" },
-      { icon: "🪟", label: "Widget" },
-    ],
   },
   {
     icon: "🎉",
