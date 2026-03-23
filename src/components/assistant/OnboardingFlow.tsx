@@ -234,7 +234,7 @@ function CarouselStepView({
       const visiblePart = text.slice(start, Math.min(end, text.length));
       if (start >= text.length) return null;
       return i % 2 === 1 ? (
-        <strong key={i} className="font-semibold underline">{visiblePart}</strong>
+        <span key={i} className="font-semibold" style={{ color: "#8F5A39" }}>{visiblePart}</span>
       ) : (
         <span key={i}>{visiblePart}</span>
       );
