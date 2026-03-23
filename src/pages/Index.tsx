@@ -4,6 +4,7 @@ import { ChatArea, type ChatFlow } from "@/components/assistant/ChatArea";
 import { cn } from "@/lib/utils";
 
 const flowTabs: { id: ChatFlow; label: string }[] = [
+  { id: "onboarding", label: "Onboarding" },
   { id: "daily-digest", label: "Daily Digest" },
   { id: "feedback", label: "Give Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },

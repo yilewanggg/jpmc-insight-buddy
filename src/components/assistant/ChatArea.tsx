@@ -16,7 +16,7 @@ import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 import { DailyScheduleWelcomeScreen, DailyScheduleResponse, MoveDesignJamResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
 
-export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule";
+export type ChatFlow = "daily-digest" | "feedback" | "book-a-seat" | "daily-schedule" | "onboarding";
 
 
 interface Message {
