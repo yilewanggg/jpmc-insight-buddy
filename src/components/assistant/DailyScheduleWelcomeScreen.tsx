@@ -67,9 +67,9 @@ interface ScheduleEvent {
 }
 
 const scheduleEvents: ScheduleEvent[] = [
-  { time: "9 AM", title: "QA Review", location: "Microsoft Teams", color: "#7EC8E3", width: "85%" },
-  { time: "10AM", title: "QA Review", location: "Microsoft Teams", color: "#7EC8E3", width: "100%" },
-  { time: "11AM", title: "Tentative: Internal", location: "Room 03", color: "#7EC8E3", width: "60%", status: "tentative" },
+  { time: "9 AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "85%" },
+  { time: "10AM", title: "QA Review", location: "Microsoft Teams", color: "#A6D7F0", width: "100%" },
+  { time: "11AM", title: "Tentative: Internal", location: "Room 03", color: "#A6D7F0", width: "60%", status: "tentative" },
   { time: "12 AM", title: "Declined: Priya 1:1", location: "Microsoft Teams", color: "#D4D4D4", width: "50%", status: "declined" },
 ];
 
@@ -124,7 +124,7 @@ function InlineCalendarWidget() {
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#7EC8E3' }} />
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
           <span className="text-[14px] leading-[20px] tracking-[0.16px] font-medium text-foreground">August 27, 2025</span>
           <div className="flex items-center gap-1">
             <button className="w-6 h-6 flex items-center justify-center rounded hover:bg-muted/50 transition-colors text-muted-foreground">
@@ -154,12 +154,11 @@ function InlineCalendarWidget() {
               <span className="text-[12px] leading-[16px] tracking-[0px] text-muted-foreground">{event.time}</span>
             </div>
             {/* Event bar */}
-            <div className="flex-1 py-2.5 pr-4 flex items-center">
+            <div className="flex-1 py-2.5 pr-4 flex items-center group/event">
               <div
                 className="rounded-md px-3 py-2.5 flex-1"
                 style={{
                   backgroundColor: event.status === "declined" ? '#F0EDED' : '#E8F4FA',
-                  maxWidth: event.width,
                   opacity: event.status === "declined" ? 0.7 : 1,
                 }}
               >
@@ -171,7 +170,7 @@ function InlineCalendarWidget() {
                 </p>
               </div>
               {/* Overflow button */}
-              <div className="relative ml-2 shrink-0">
+              <div className="relative ml-2 shrink-0 opacity-0 group-hover/event:opacity-100 transition-opacity">
                 <button
                   ref={(el) => { buttonRefs.current[idx] = el; }}
                   onClick={() => setOpenMenu(openMenu === idx ? null : idx)}
@@ -265,7 +264,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <p className="mb-4 underline decoration-foreground/30 underline-offset-4">
+            <p className="mb-4">
               <TypedText text={followUp.displayed} showCursor={!followUp.done} />
             </p>
           </motion.div>
