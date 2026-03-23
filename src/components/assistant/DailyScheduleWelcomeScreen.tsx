@@ -170,7 +170,7 @@ function InlineCalendarWidget() {
                 </p>
               </div>
               {/* Overflow button */}
-              <div className="relative ml-2 shrink-0">
+              <div className="relative ml-2 shrink-0 opacity-0 group-hover/event:opacity-100 transition-opacity">
                 <button
                   ref={(el) => { buttonRefs.current[idx] = el; }}
                   onClick={() => setOpenMenu(openMenu === idx ? null : idx)}
