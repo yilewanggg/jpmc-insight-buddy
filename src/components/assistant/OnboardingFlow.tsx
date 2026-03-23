@@ -5,6 +5,8 @@ import calendarIcon from "@/assets/calendar-icon.svg";
 import handIcon from "@/assets/hand-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
 import trainingIcon from "@/assets/training-icon.svg";
+import calendarCarouselIcon from "@/assets/calendar-carousel-icon.svg";
+import planeIcon from "@/assets/plane-icon.svg";
 
 // ─── Typewriter hook ─────────────────────────────────────────────────
 
@@ -157,7 +159,8 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
 // ─── Carousel data ───────────────────────────────────────────────────
 
 interface CarouselStep {
-  icon: string;
+  icon?: string;
+  iconSvg?: string;
   heading: string;
   description: string;
   options?: { icon: string; label: string }[];
@@ -165,13 +168,13 @@ interface CarouselStep {
 
 const steps: CarouselStep[] = [
   {
-    icon: "📅",
+    iconSvg: calendarCarouselIcon,
     heading: "I can manage and schedule\nmeetings for you.",
     description:
       "If something comes up that needs your time, I can find a slot in your calendar and get it scheduled. Is it okay for me to manage your calendar when needed?",
   },
   {
-    icon: "✈️",
+    iconSvg: planeIcon,
     heading: "I can take care of travel\nplanning for you.",
     description:
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
@@ -181,18 +184,6 @@ const steps: CarouselStep[] = [
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
-  },
-  {
-    icon: "🔲",
-    heading: "I can adapt to how\nyou like to work.",
-    description:
-      "You can always drag the corner and resize this window or you can choose from a few default sizes below.",
-    options: [
-      { icon: "⬜", label: "Default" },
-      { icon: "🖥️", label: "Fullscreen" },
-      { icon: "📱", label: "Panel" },
-      { icon: "🪟", label: "Widget" },
-    ],
   },
   {
     icon: "🎉",
@@ -254,7 +245,11 @@ function CarouselStepView({
       style={{ minHeight: "100vh" }}
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
-        <span className="text-[40px] mb-4 block">{step.icon}</span>
+        {step.iconSvg ? (
+          <img src={step.iconSvg} alt="" className="w-10 h-10 mb-4 block" />
+        ) : (
+          <span className="text-[40px] mb-4 block">{step.icon}</span>
+        )}
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
           style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
