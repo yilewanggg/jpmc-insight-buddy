@@ -200,7 +200,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
     }
   }, [calendarVisible, followUpVisible]);
 
-  const followUpText = "At 11 AM you've got an Internal onsite in Room 03. Want me to book you a seat at the office for the Internal?";
+  const followUpText = "I noticed you have a clash at 9 AM between **QA Review** and **Design Jam**.\n\nI can move Design Jam to 10 AM — Anna is available then. Would you like me to reschedule it?";
   const followUp = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
 
   useEffect(() => {
