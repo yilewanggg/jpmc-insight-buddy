@@ -2021,6 +2021,16 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
         if (i >= text.length) clearInterval(interval);
       }, 25);
     }
+    if (activeFlow === "daily-schedule" && !scheduleAutoTyped && messages.length === 0) {
+      setScheduleAutoTyped(true);
+      const text = "Show my meeting schedule for tomorrow";
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setInput(text.slice(0, i));
+        if (i >= text.length) clearInterval(interval);
+      }, 25);
+    }
   };
 
   const handleSend = async (text?: string) => {
