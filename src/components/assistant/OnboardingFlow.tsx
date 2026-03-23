@@ -249,11 +249,10 @@ function CarouselStepView({
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center pt-[30vh] py-20 relative"
+      className="min-h-screen flex flex-col items-center pt-[30vh] relative"
       style={{ minHeight: "100vh" }}
     >
-
-      <div style={{ maxWidth: "616px" }}>
+      <div style={{ maxWidth: "616px", width: "616px" }}>
         <span className="text-[40px] mb-4 block">{step.icon}</span>
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
