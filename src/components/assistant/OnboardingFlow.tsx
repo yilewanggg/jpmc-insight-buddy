@@ -246,9 +246,9 @@ function CarouselStepView({
     >
       <div style={{ maxWidth: "616px", width: "616px" }}>
         {step.iconSvg ? (
-          <img src={step.iconSvg} alt="" className="w-10 h-10 mb-4 block" />
+          <img src={step.iconSvg} alt="" className="w-16 h-16 mb-4 block" />
         ) : (
-          <span className="text-[40px] mb-4 block">{step.icon}</span>
+          <span className="text-[64px] mb-4 block leading-none">{step.icon}</span>
         )}
         <h2
           className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground mb-4 font-light"
@@ -418,7 +418,12 @@ export function OnboardingFlow() {
   }
 
   return (
-    <div className="flex-1 flex h-full bg-background relative overflow-hidden">
+    <motion.div
+      className="flex-1 flex h-full bg-background relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2.5">
         {steps.map((_, i) => (
           <button key={i} onClick={() => scrollToStep(i)} className="transition-all duration-300">
@@ -448,6 +453,6 @@ export function OnboardingFlow() {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
