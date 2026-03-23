@@ -182,7 +182,7 @@ const steps: CarouselStep[] = [
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
   },
   {
-    icon: "📢",
+    iconSvg: megaphoneIcon,
     heading: "I can make suggestions to\noptimize the way you work.",
     description:
       "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
