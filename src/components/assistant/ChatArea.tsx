@@ -1936,6 +1936,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [feedbackAutoTyped, setFeedbackAutoTyped] = useState(false);
+  const [scheduleAutoTyped, setScheduleAutoTyped] = useState(false);
   const [isWaitingForAssistant, setIsWaitingForAssistant] = useState(false);
   
   const lastMessageRef = useRef<HTMLDivElement>(null);
