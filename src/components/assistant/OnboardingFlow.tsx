@@ -95,12 +95,12 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
 
   return (
     <motion.div
-      className="flex-1 flex flex-col items-center justify-center h-full bg-background px-16"
+      className="flex-1 flex flex-col items-center pt-[30vh] h-full bg-background px-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ maxWidth: "616px", width: "100%" }}>
+      <div style={{ maxWidth: "616px", width: "616px" }}>
         <h2
           className="text-[32px] leading-[24px] tracking-[-0.5px] text-foreground font-light"
           style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}
