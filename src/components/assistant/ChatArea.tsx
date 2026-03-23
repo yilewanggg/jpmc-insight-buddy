@@ -55,6 +55,7 @@ const REFINED_FEEDBACK_RESPONSE = "__REFINED_FEEDBACK__";
 const REVIEW_FEEDBACK_RESPONSE = "__REVIEW_FEEDBACK__";
 const FEEDBACK_SENT_RESPONSE = "__FEEDBACK_SENT__";
 const DAILY_SCHEDULE_RESPONSE = "__DAILY_SCHEDULE__";
+const MOVE_DESIGN_JAM_RESPONSE = "__MOVE_DESIGN_JAM__";
 
 function getResponse(input: string): string {
   const lower = input.toLowerCase();
