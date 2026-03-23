@@ -102,13 +102,13 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
     >
       <div style={{ maxWidth: "616px", width: "100%" }}>
         <h2
-          className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground font-light mb-8"
+          className="text-[32px] leading-[40px] tracking-[-0.5px] text-foreground font-light"
           style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif", minHeight: "80px" }}
         >
           {headingDisplayed}
         </h2>
 
-        <div className="flex flex-col gap-5 mb-8">
+        <div className="flex flex-col gap-5 mb-8" style={{ marginTop: "20px" }}>
           {features.map((f, i) => {
             const show = i === 0 ? headingDone : featDisplayed[i - 1].done;
             if (!show && featDisplayed[i].displayed === "") return null;
