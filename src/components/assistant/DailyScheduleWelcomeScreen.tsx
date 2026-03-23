@@ -170,19 +170,22 @@ function InlineCalendarWidget() {
               <div className="flex-1 py-2.5 pr-6 flex items-center gap-2 group/event">
                 {slot.events.map((event, evIdx) => {
                   const key = `${slotIdx}-${evIdx}`;
+                  const isDeclined = event.status === "declined";
+                  const isTentative = event.status === "tentative";
                   return (
                     <div
                       key={evIdx}
-                      className="rounded-md px-3 py-2.5 flex-1 min-w-0"
+                      className="rounded-lg px-3 py-2.5 flex-1 min-w-0"
                       style={{
-                        backgroundColor: event.status === "declined" ? '#F0EDED' : '#D9EEF7',
-                        opacity: event.status === "declined" ? 0.7 : 1,
+                        backgroundColor: isDeclined ? '#FFFFFF' : '#A6D7F0',
+                        opacity: isTentative ? 0.25 : 1,
+                        border: isDeclined ? '1px solid #A6D7F0' : isTentative ? '1px solid #A6D7F0' : 'none',
                       }}
                     >
-                      <p className="text-[13px] leading-[18px] font-medium truncate" style={{ color: event.status === "declined" ? '#999' : '#202020' }}>
+                      <p className="text-[13px] leading-[18px] font-medium truncate" style={{ color: isDeclined ? '#4A5565' : '#0A0A0A' }}>
                         {event.title}
                       </p>
-                      <p className="text-[11px] leading-[16px] truncate" style={{ color: event.status === "declined" ? '#AAA' : '#666663' }}>
+                      <p className="text-[11px] leading-[16px] truncate" style={{ color: isDeclined ? '#4A5565' : '#4A5565' }}>
                         {event.location}
                       </p>
                     </div>
