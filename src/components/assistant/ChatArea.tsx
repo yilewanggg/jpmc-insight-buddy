@@ -2151,10 +2151,13 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
                 rows={1}
                 className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground placeholder:text-[#666663] resize-none outline-none max-h-32"
               />
-              <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                <button className="w-9 h-9 rounded-lg bg-[#E9E0D3] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
-                  <span className="text-base font-medium">/</span>
-                </button>
+              <div className="flex items-center gap-1.5 shrink-0 ml-2 relative">
+                <SlashCommandMenu
+                  onSelect={(cmd) => {
+                    setInput("/" + cmd.toLowerCase() + " ");
+                    inputRef.current?.focus();
+                  }}
+                />
                 <button
                   onClick={() => handleSend()}
                   disabled={!input.trim()}
