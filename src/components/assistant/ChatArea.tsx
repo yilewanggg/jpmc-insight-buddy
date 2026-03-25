@@ -1946,6 +1946,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   const [input, setInput] = useState("");
   const [feedbackAutoTyped, setFeedbackAutoTyped] = useState(false);
   const [scheduleAutoTyped, setScheduleAutoTyped] = useState(false);
+  const [requestFeedbackAutoTyped, setRequestFeedbackAutoTyped] = useState(false);
   const [isWaitingForAssistant, setIsWaitingForAssistant] = useState(false);
   
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -1958,6 +1959,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     setInput("");
     setFeedbackAutoTyped(false);
     setScheduleAutoTyped(false);
+    setRequestFeedbackAutoTyped(false);
     setIsWaitingForAssistant(false);
     
   }, [activeFlow]);
@@ -2027,6 +2029,16 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
       const interval = setInterval(() => {
         i++;
         setInput(text.slice(0, i));
+        if (i >= text.length) clearInterval(interval);
+      }, 25);
+    }
+    if (activeFlow === "request-feedback" && !requestFeedbackAutoTyped && messages.length === 0) {
+      setRequestFeedbackAutoTyped(true);
+      const text = "Can you ask Taylor to send me some feedback?";
+      let i = 0;
+      const interval = setInterval(() => {
+        i += 2;
+        setInput(text.slice(0, Math.min(i, text.length)));
         if (i >= text.length) clearInterval(interval);
       }, 25);
     }
