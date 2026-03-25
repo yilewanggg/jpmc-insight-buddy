@@ -1989,8 +1989,9 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
           <div className="flex items-center gap-3 mb-4">
             <button
-              onClick={() => onSend("Send feedback request")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              onClick={() => !isEditing && onSend("Send feedback request")}
+              disabled={isEditing}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] tracking-[0.16px] ${isEditing ? 'opacity-40 cursor-not-allowed' : 'hover:bg-[#DDD5C8]'}`}
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
