@@ -7,6 +7,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
   { id: "onboarding", label: "Onboarding" },
   { id: "daily-digest", label: "Daily Digest" },
   { id: "feedback", label: "Give Feedback" },
+  { id: "request-feedback", label: "Request Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
   { id: "daily-schedule", label: "Daily Schedule" },
 ];
