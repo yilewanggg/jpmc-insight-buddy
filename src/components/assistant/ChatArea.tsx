@@ -1959,6 +1959,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     setInput("");
     setFeedbackAutoTyped(false);
     setScheduleAutoTyped(false);
+    setRequestFeedbackAutoTyped(false);
     setIsWaitingForAssistant(false);
     
   }, [activeFlow]);
