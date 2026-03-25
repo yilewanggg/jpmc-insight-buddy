@@ -1899,7 +1899,6 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                 setTimeout(() => {
                   setIsRefining(false);
                   setIsRefined(true);
-                  setIsEditing(false);
                 }, 2000);
               }
             }}
