@@ -2032,6 +2032,16 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
         if (i >= text.length) clearInterval(interval);
       }, 25);
     }
+    if (activeFlow === "request-feedback" && !requestFeedbackAutoTyped && messages.length === 0) {
+      setRequestFeedbackAutoTyped(true);
+      const text = "Can you ask Taylor to send me some feedback?";
+      let i = 0;
+      const interval = setInterval(() => {
+        i += 2;
+        setInput(text.slice(0, Math.min(i, text.length)));
+        if (i >= text.length) clearInterval(interval);
+      }, 25);
+    }
     if (activeFlow === "daily-schedule" && !scheduleAutoTyped && messages.length === 0) {
       setScheduleAutoTyped(true);
       const text = "Show my meeting schedule for tomorrow";
