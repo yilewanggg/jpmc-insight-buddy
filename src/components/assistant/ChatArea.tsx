@@ -1929,7 +1929,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                 </div>
                 <div className="flex items-center gap-3">
                   <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium" style={{ color: '#8F5A39' }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v4M4.93 7.93l2.83 2.83M3 16h4M7.76 20.07l2.83-2.83M16 21v-4M19.07 16.07l-2.83-2.83M21 8h-4M16.24 3.93l-2.83 2.83"/></svg>
+                    <Sparkles size={16} />
                     Refine
                   </button>
                   <button 
