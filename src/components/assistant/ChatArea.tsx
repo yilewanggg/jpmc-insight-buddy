@@ -1886,21 +1886,62 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
       </motion.div>
       {cardVisible && (
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="bg-card rounded-2xl shadow-sm mb-6 overflow-hidden group hover:shadow-md transition-shadow duration-200" style={{ maxWidth: '616px' }}>
+          <div 
+            className={`bg-card rounded-2xl shadow-sm mb-6 overflow-hidden group transition-all duration-200 cursor-pointer ${isEditing ? 'shadow-md' : 'hover:shadow-md'}`} 
+            style={{ maxWidth: '616px', border: isEditing ? '2px solid #8F5A39' : '2px solid transparent' }}
+            onClick={() => !isEditing && setIsEditing(true)}
+          >
             <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
-                <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-                  Edit
-                </button>
-              </div>
-              <div className="text-[16px] leading-[24px] text-foreground font-light">
+              {!isEditing && (
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
+                  <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                    Edit
+                  </button>
+                </div>
+              )}
+              {isEditing && (
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
+                </div>
+              )}
+              <div className="text-[16px] leading-[24px] text-foreground font-light" contentEditable={isEditing} suppressContentEditableWarning>
                 <p className="mb-4">Hi,</p>
                 <p className="mb-4">Since we've been working closely on the mobile app project, I'd love to get feedback from you. Please provide specific examples and actions I can take to improve!</p>
                 <p className="mb-0">Thanks,<br />Carmen</p>
               </div>
             </div>
+            {isEditing && (
+              <div className="flex items-center justify-between px-6 pb-4 pt-2">
+                <div className="flex items-center gap-4">
+                  <button className="text-foreground/60 hover:text-foreground transition-colors font-bold text-[16px]">B</button>
+                  <button className="text-foreground/60 hover:text-foreground transition-colors italic text-[16px]">I</button>
+                  <button className="text-foreground/60 hover:text-foreground transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  </button>
+                  <button className="text-foreground/60 hover:text-foreground transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+                  </button>
+                  <button className="text-foreground/60 hover:text-foreground transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+                  </button>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium" style={{ color: '#8F5A39' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v4M4.93 7.93l2.83 2.83M3 16h4M7.76 20.07l2.83-2.83M16 21v-4M19.07 16.07l-2.83-2.83M21 8h-4M16.24 3.93l-2.83 2.83"/></svg>
+                    Refine
+                  </button>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setIsEditing(false); }}
+                    className="px-5 py-2 rounded-full text-[14px] leading-[20px] font-medium text-white"
+                    style={{ backgroundColor: '#000000' }}
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
       )}
