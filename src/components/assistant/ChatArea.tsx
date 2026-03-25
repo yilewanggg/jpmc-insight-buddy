@@ -1850,6 +1850,8 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
   const [chipsVisible, setChipsVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isRefining, setIsRefining] = useState(false);
+  const [isRefined, setIsRefined] = useState(false);
 
   useEffect(() => {
     if (typed.done && !cardVisible) {
