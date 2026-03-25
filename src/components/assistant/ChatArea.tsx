@@ -1919,11 +1919,39 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                   <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
                 </div>
               )}
-              <div className="text-[16px] leading-[24px] text-foreground font-light" contentEditable={isEditing} suppressContentEditableWarning>
-                <p className="mb-4">Hi,</p>
-                <p className="mb-4">Since we've been working closely on the mobile app project, I'd love to get feedback from you. Please provide specific examples and actions I can take to improve!</p>
-                <p className="mb-0">Thanks,<br />Carmen</p>
-              </div>
+              {isRefining ? (
+                <div className="space-y-3 animate-pulse">
+                  <div className="h-4 rounded" style={{ backgroundColor: '#E8E3DB', width: '30%' }} />
+                  <div className="h-4 rounded" style={{ backgroundColor: '#E8E3DB', width: '100%' }} />
+                  <div className="h-4 rounded" style={{ backgroundColor: '#E8E3DB', width: '90%' }} />
+                  <div className="h-4 rounded" style={{ backgroundColor: '#E8E3DB', width: '60%' }} />
+                  <div className="h-4 rounded" style={{ backgroundColor: '#E8E3DB', width: '40%' }} />
+                </div>
+              ) : (
+                <motion.div 
+                  key={isRefined ? 'refined' : 'original'}
+                  initial={isRefined ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-[16px] leading-[24px] text-foreground font-light" 
+                  contentEditable={isEditing && !isRefined} 
+                  suppressContentEditableWarning
+                >
+                  {isRefined ? (
+                    <>
+                      <p className="mb-4">Hi, I'd love to get your feedback on our current work on the mobile app.</p>
+                      <p className="mb-4">Any specific examples or suggestions for improvement would be really helpful.</p>
+                      <p className="mb-0">Thanks,<br />Carmen</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="mb-4">Hi,</p>
+                      <p className="mb-4">Since we've been working closely on the mobile app project, I'd love to get feedback from you. Please provide specific examples and actions I can take to improve!</p>
+                      <p className="mb-0">Thanks,<br />Carmen</p>
+                    </>
+                  )}
+                </motion.div>
+              )}
             </div>
             {isEditing && (
               <div className="flex items-center justify-between px-6 pb-4 pt-2">
