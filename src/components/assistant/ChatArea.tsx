@@ -1891,7 +1891,18 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
           <div 
             className={`bg-card rounded-2xl shadow-sm mb-6 overflow-hidden group transition-all duration-200 cursor-pointer ${isEditing ? 'shadow-md' : 'hover:shadow-md'}`} 
             style={{ maxWidth: '616px', border: isEditing ? '2px solid #8F5A39' : '2px solid transparent' }}
-            onClick={() => !isEditing && setIsEditing(true)}
+            onClick={() => {
+              if (!isEditing && !isRefined) {
+                setIsEditing(true);
+              } else if (isEditing && !isRefining && !isRefined) {
+                setIsRefining(true);
+                setTimeout(() => {
+                  setIsRefining(false);
+                  setIsRefined(true);
+                  setIsEditing(false);
+                }, 2000);
+              }
+            }}
           >
             <div className="p-6">
               {!isEditing && (
