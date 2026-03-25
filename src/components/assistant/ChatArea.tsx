@@ -57,6 +57,7 @@ const REVIEW_FEEDBACK_RESPONSE = "__REVIEW_FEEDBACK__";
 const FEEDBACK_SENT_RESPONSE = "__FEEDBACK_SENT__";
 const DAILY_SCHEDULE_RESPONSE = "__DAILY_SCHEDULE__";
 const MOVE_DESIGN_JAM_RESPONSE = "__MOVE_DESIGN_JAM__";
+const REQUEST_FEEDBACK_DRAFT_RESPONSE = "__REQUEST_FEEDBACK_DRAFT__";
 
 function getResponse(input: string): string {
   const lower = input.toLowerCase();
@@ -70,6 +71,7 @@ function getResponse(input: string): string {
   if (lower.includes("setup autobook")) return SETUP_AUTOBOOK_RESPONSE;
   if (lower.includes("show me more options")) return SHOW_MORE_OPTIONS_RESPONSE;
   if (lower.includes("recently booked")) return RECENTLY_BOOKED_RESPONSE;
+  if (lower.includes("ask taylor")) return REQUEST_FEEDBACK_DRAFT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
@@ -1841,6 +1843,101 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
+function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => void }) {
+  const text = "You got it! Here's a draft request:";
+  const typed = useTypewriter(text, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [chipsVisible, setChipsVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !chipsVisible) {
+      const t = setTimeout(() => setChipsVisible(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, chipsVisible]);
+
+  useEffect(() => {
+    if (chipsVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [chipsVisible, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        style={{ maxWidth: '616px' }}
+      >
+        <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="bg-card rounded-2xl shadow-sm mb-6 overflow-hidden" style={{ maxWidth: '616px' }}>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
+                <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium" style={{ color: '#8F5A39' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                  Edit
+                </button>
+              </div>
+              <div className="text-[16px] leading-[24px] text-foreground font-light">
+                <p className="mb-4">Hi,</p>
+                <p className="mb-4">Since we've been working closely on the mobile app project, I'd love to get feedback from you. Please provide specific examples and actions I can take to improve!</p>
+                <p className="mb-0">Thanks,<br />Carmen</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+      {chipsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <button
+              onClick={() => onSend("Send feedback request")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Send feedback request
+            </button>
+            <button
+              onClick={() => onSend("Remind me later")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Remind me later
+            </button>
+          </div>
+        </motion.div>
+      )}
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
 function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
@@ -1915,6 +2012,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <DailyScheduleResponse onSend={onSend} />
         ) : msg.content === MOVE_DESIGN_JAM_RESPONSE ? (
           <MoveDesignJamResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_DRAFT_RESPONSE ? (
+          <RequestFeedbackDraftResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
