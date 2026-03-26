@@ -20,6 +20,107 @@ import { OnboardingFlow } from "@/components/assistant/OnboardingFlow";
 export type ChatFlow = "daily-digest" | "feedback" | "request-feedback" | "book-a-seat" | "daily-schedule" | "onboarding";
 
 
+function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
+  const line1 = "Great! Your feedback request has been sent to ";
+  const line2 = "Would you like to set a reminder to follow up?";
+  const typed1 = useTypewriter(line1, 15, 100);
+  const typed2 = useTypewriter(line2, 15, typed1.done ? 0 : 99999);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [chipsVisible, setChipsVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed2.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed2.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !chipsVisible) {
+      const t = setTimeout(() => setChipsVisible(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, chipsVisible]);
+
+  useEffect(() => {
+    if (chipsVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [chipsVisible, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        style={{ maxWidth: '616px' }}
+      >
+        <p className="text-[16px] leading-[24px] text-foreground mb-1 font-light">
+          <TypedText text={typed1.displayed} />
+          {typed1.done && <span className="font-semibold">Taylor Smith</span>}
+          {typed1.done && "."}
+        </p>
+        {typed1.done && (
+          <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+            <TypedText text={typed2.displayed} />
+          </p>
+        )}
+      </motion.div>
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="bg-card rounded-2xl shadow-sm mb-6 overflow-hidden" style={{ maxWidth: '616px' }}>
+            <div className="flex flex-col items-center py-8 px-6">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: '#C2E06B' }}>
+                <Check className="w-6 h-6" style={{ color: '#2D4A0E' }} strokeWidth={2.5} />
+              </div>
+              <h3 className="text-[22px] leading-[28px] font-headline mb-3">Feedback requested</h3>
+              <div className="text-[14px] leading-[20px] text-center font-light" style={{ color: '#666663' }}>
+                <p>Recipient: Taylor Smith</p>
+                <p>Time: 2:35pm Tuesday, March 16</p>
+                <p>Channel: go/feedback</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+      {chipsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <button
+              onClick={() => onSend("Set follow-up reminder")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Set follow-up reminder
+            </button>
+            <button
+              onClick={() => onSend("Ask someone else for feedback")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Ask someone else for feedback
+            </button>
+          </div>
+        </motion.div>
+      )}
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
 
 interface Message {
   id: string;
