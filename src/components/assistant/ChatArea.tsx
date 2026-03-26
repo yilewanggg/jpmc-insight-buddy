@@ -8,6 +8,7 @@ import raviPhoto from "@/assets/ravi-photo.jpg";
 import priyaPhoto from "@/assets/priya-photo.jpg";
 import seatIcon from "@/assets/seat-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
+import confirmationCheckIcon from "@/assets/confirmation-check.svg";
 import feedbackCardIcon from "@/assets/feedback-card.svg";
 import carmenProfile from "@/assets/carmen-profile.png";
 import handIcon from "@/assets/hand-icon.svg";
