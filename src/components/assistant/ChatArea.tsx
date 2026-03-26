@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"; // v3
+import { useState, useRef, useEffect } from "react"; // v4
 import { ArrowRight, CornerDownRight, ThumbsUp, ThumbsDown, MoreHorizontal, GraduationCap, ExternalLink, Calendar, Plus, Star, MapPin, Sparkles, Check } from "lucide-react";
 import calendarIcon from "@/assets/calendar-icon.svg";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
