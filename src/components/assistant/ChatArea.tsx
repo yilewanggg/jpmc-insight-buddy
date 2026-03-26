@@ -2077,10 +2077,8 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
           <div className="bg-card rounded-2xl shadow-sm mb-6 overflow-hidden" style={{ maxWidth: '616px' }}>
             <div className="flex flex-col items-center py-8 px-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: '#C2E06B' }}>
-                <Check className="w-6 h-6" style={{ color: '#2D4A0E' }} strokeWidth={2.5} />
-              </div>
-              <h3 className="text-[22px] leading-[28px] font-headline mb-3">Feedback requested</h3>
+              <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10 mb-3" />
+              <h3 className="font-headline mb-3" style={{ fontSize: '24px', lineHeight: '24px', letterSpacing: '-0.3px', fontWeight: 400 }}>Feedback requested</h3>
               <div className="text-[14px] leading-[20px] text-center font-light" style={{ color: '#666663' }}>
                 <p>Recipient: Taylor Smith</p>
                 <p>Time: 2:35pm Tuesday, March 16</p>
