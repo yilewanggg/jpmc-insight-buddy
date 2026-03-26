@@ -2301,8 +2301,10 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   }, [messages, isWaitingForAssistant]);
 
   useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+    if (activeFlow !== "feedback") {
+      inputRef.current?.focus();
+    }
+  }, [activeFlow]);
 
   const handleFocus = () => {
     inputRef.current?.focus();
