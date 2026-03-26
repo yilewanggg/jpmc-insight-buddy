@@ -73,6 +73,7 @@ function getResponse(input: string): string {
   if (lower.includes("show me more options")) return SHOW_MORE_OPTIONS_RESPONSE;
   if (lower.includes("recently booked")) return RECENTLY_BOOKED_RESPONSE;
   if (lower.includes("ask taylor")) return REQUEST_FEEDBACK_DRAFT_RESPONSE;
+  if (lower.includes("send feedback request")) return REQUEST_FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
