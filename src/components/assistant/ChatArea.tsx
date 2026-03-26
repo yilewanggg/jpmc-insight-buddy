@@ -2099,6 +2099,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <MoveDesignJamResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_DRAFT_RESPONSE ? (
           <RequestFeedbackDraftResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_SENT_RESPONSE ? (
+          <RequestFeedbackSentResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
