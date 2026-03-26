@@ -1908,7 +1908,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             }}
           >
             <div className="p-6">
-              {!isEditing && (
+              {!isEditing && !isRefined && (
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
                   <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
