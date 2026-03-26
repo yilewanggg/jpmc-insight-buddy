@@ -2534,9 +2534,9 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                onBlur={handleFocus}
+                onBlur={activeFlow !== "feedback" ? handleFocus : undefined}
                 onFocus={handleInputFocus}
-                autoFocus
+                autoFocus={activeFlow !== "feedback"}
                 placeholder="How can I help?"
                 rows={1}
                 className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground placeholder:text-[#666663] resize-none outline-none max-h-32"
