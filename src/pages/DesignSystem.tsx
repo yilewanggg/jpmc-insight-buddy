@@ -413,7 +413,7 @@ const DesignSystem = () => {
         <section id="chat" className="mb-20 scroll-mt-12">
           <SectionHeader title="Chat Patterns" description="Message bubbles, alignment, and conversation flow." />
 
-          <div className="bg-card rounded-2xl border border-border p-8 max-w-[560px]">
+          <div className="bg-secondary rounded-2xl border border-border p-8 max-w-[560px]">
             <div className="space-y-5">
               <div>
                 <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User message</p>
