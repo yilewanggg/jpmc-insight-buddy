@@ -1694,17 +1694,17 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
             {/* Profile photo */}
             <div className="flex flex-col items-center gap-4">
               <img src={carmenProfile} alt="Carmen" className="w-14 h-14 rounded-full object-cover" />
-              <h3 className="text-[24px] leading-[32px] font-normal text-foreground">Review feedback</h3>
+              <h3 className="text-[24px] leading-[32px] font-light text-foreground">Review feedback</h3>
             </div>
 
             {/* What you said */}
-            <p className="text-[14px] leading-[20px] font-semibold text-foreground text-center mt-4">What you said:</p>
+            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">What you said:</p>
             <p className="text-[14px] leading-[20px] font-light text-center mt-4" style={{ color: '#666663' }}>
               "During our client meetings, you regularly summarize discussions and confirm your understanding before offering input. Keep it up! You have great ideas. To make them easier to follow, take a pause and structure your thoughts into three concise bullet points."
             </p>
 
             {/* Based on your feedback */}
-            <p className="text-[14px] leading-[20px] font-semibold text-foreground text-center mt-4">Based on your feedback, Carmen demonstrates:</p>
+            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">Based on your feedback, Carmen demonstrates:</p>
 
             {/* Strengths & Opportunities */}
             <div className="grid grid-cols-2 gap-3 mt-4">
@@ -1713,7 +1713,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
                 <div className="flex items-center gap-2 mb-1">
                   <img src={handIcon} alt="" className="w-10 h-10" />
                   <div>
-                    <p className="text-[14px] leading-[20px] font-semibold text-foreground">Earn trust</p>
+                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
                     <p className="text-[13px] leading-[18px] font-light" style={{ color: '#666663' }}>Listen deeply</p>
                   </div>
                 </div>
@@ -1723,7 +1723,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
                 <div className="flex items-center gap-2 mb-1">
                   <img src={handIcon} alt="" className="w-10 h-10" />
                   <div>
-                    <p className="text-[14px] leading-[20px] font-semibold text-foreground">Earn trust</p>
+                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
                     <p className="text-[13px] leading-[18px] font-light" style={{ color: '#666663' }}>Create clarity</p>
                   </div>
                 </div>
