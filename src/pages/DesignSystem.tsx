@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -5,468 +6,533 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, Sparkles, Check, Calendar, Star } from "lucide-react";
+import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap } from "lucide-react";
+
+const sections = [
+  { id: "colors", label: "Colors", icon: Palette },
+  { id: "typography", label: "Typography", icon: Type },
+  { id: "spacing", label: "Spacing & Radius", icon: Square },
+  { id: "buttons", label: "Buttons", icon: MousePointer },
+  { id: "cards", label: "Cards", icon: Layout },
+  { id: "forms", label: "Form Elements", icon: Square },
+  { id: "chat", label: "Chat Patterns", icon: MessageSquare },
+  { id: "sidebar", label: "Sidebar", icon: Layout },
+  { id: "animation", label: "Animation", icon: Zap },
+];
 
 const ColorSwatch = ({ name, variable, hex, className }: { name: string; variable: string; hex: string; className?: string }) => (
-  <div className="flex items-center gap-3">
-    <div className={`w-12 h-12 rounded-lg border border-border shadow-sm ${className}`} style={{ backgroundColor: `hsl(var(${variable}))` }} />
-    <div>
+  <div className="group flex items-center gap-4 p-3 rounded-xl hover:bg-card transition-colors">
+    <div className={`w-14 h-14 rounded-xl border border-border shadow-sm shrink-0 ${className}`} style={{ backgroundColor: `hsl(var(${variable}))` }} />
+    <div className="min-w-0">
       <p className="text-[14px] leading-[20px] font-normal text-foreground">{name}</p>
-      <p className="text-[12px] leading-[16px] font-light" style={{ color: '#666663' }}>{hex} · var({variable})</p>
+      <p className="text-[12px] leading-[16px] font-light text-muted-foreground font-mono">{hex}</p>
+      <p className="text-[11px] leading-[14px] font-light text-muted-foreground font-mono opacity-60">var({variable})</p>
     </div>
   </div>
 );
 
+const SectionHeader = ({ title, description }: { title: string; description: string }) => (
+  <div className="mb-10">
+    <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline">{title}</h2>
+    <p className="text-[14px] leading-[20px] font-light text-muted-foreground mt-1">{description}</p>
+  </div>
+);
+
+const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div className="mb-10">
+    <div className="flex items-center gap-2 mb-5">
+      <h3 className="text-[13px] leading-[18px] font-semibold tracking-[0.5px] uppercase text-muted-foreground">{title}</h3>
+      <div className="flex-1 h-px bg-border" />
+    </div>
+    {children}
+  </div>
+);
+
 const DesignSystem = () => {
+  const [activeSection, setActiveSection] = useState("colors");
+
+  const scrollToSection = (id: string) => {
+    setActiveSection(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <div className="min-h-screen bg-background p-8 max-w-[1200px] mx-auto">
-      {/* Header */}
-      <div className="mb-16">
-        <h1 className="text-[40px] leading-[48px] font-light tracking-[-0.5px] text-foreground font-headline">
-          Design System
-        </h1>
-        <p className="text-[16px] leading-[24px] font-light mt-2" style={{ color: '#666663' }}>
-          JPMC Assistant · Brand guidelines & component library
-        </p>
-      </div>
+    <div className="min-h-screen bg-background flex">
+      {/* Sticky sidebar nav */}
+      <nav className="hidden lg:flex flex-col w-[220px] shrink-0 border-r border-border sticky top-0 h-screen p-6 pt-10">
+        <p className="text-[11px] leading-[14px] font-semibold tracking-[1px] uppercase text-muted-foreground mb-6">Design System</p>
+        <div className="space-y-1">
+          {sections.map(s => (
+            <button
+              key={s.id}
+              onClick={() => scrollToSection(s.id)}
+              className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-light transition-colors text-left ${
+                activeSection === s.id
+                  ? "bg-foreground text-background font-normal"
+                  : "text-muted-foreground hover:text-foreground hover:bg-card"
+              }`}
+            >
+              <s.icon className="w-3.5 h-3.5 shrink-0" />
+              {s.label}
+            </button>
+          ))}
+        </div>
+        <div className="mt-auto pt-6">
+          <p className="text-[11px] leading-[14px] font-light text-muted-foreground">JPMC Assistant</p>
+          <p className="text-[11px] leading-[14px] font-light text-muted-foreground opacity-60">v1.0</p>
+        </div>
+      </nav>
 
-      {/* ── COLORS ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Colors
-        </h2>
-
-        {/* Brand Palette */}
-        <div className="mb-8">
-          <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-4">Brand palette</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <ColorSwatch name="Bronze" variable="--jpmc-bronze" hex="#8F5A39" />
-            <ColorSwatch name="Bronze Light" variable="--jpmc-bronze-light" hex="#B08968" />
-            <ColorSwatch name="Travertine" variable="--jpmc-travertine" hex="#F4EFE7" />
-            <ColorSwatch name="Sky Blue" variable="--jpmc-sky-blue" hex="#A6D7F0" />
-            <ColorSwatch name="Black" variable="--jpmc-black" hex="#000000" />
-            <ColorSwatch name="White" variable="--jpmc-white" hex="#FFFFFF" />
+      {/* Main content */}
+      <main className="flex-1 max-w-[960px] mx-auto px-8 py-12 lg:px-16">
+        {/* Header */}
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
+              <Palette className="w-5 h-5 text-background" />
+            </div>
+            <div>
+              <p className="text-[11px] leading-[14px] font-semibold tracking-[1px] uppercase text-muted-foreground">JPMC Assistant</p>
+              <p className="text-[11px] leading-[14px] font-light text-muted-foreground">Brand guidelines & component library</p>
+            </div>
           </div>
+          <h1 className="text-[48px] leading-[56px] font-light tracking-[-0.5px] text-foreground font-headline mt-6">
+            Design System
+          </h1>
+          <p className="text-[16px] leading-[24px] font-light text-muted-foreground mt-3 max-w-[600px]">
+            A comprehensive reference for colors, typography, components, and interaction patterns used throughout the JPMC Assistant experience.
+          </p>
         </div>
 
-        {/* Semantic Colors */}
-        <div className="mb-8">
-          <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-4">Semantic tokens</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <ColorSwatch name="Background" variable="--background" hex="#F4EFE7" />
-            <ColorSwatch name="Foreground" variable="--foreground" hex="#000000" />
-            <ColorSwatch name="Primary" variable="--primary" hex="#8F5A39" />
-            <ColorSwatch name="Accent" variable="--accent" hex="#A6D7F0" />
-            <ColorSwatch name="Muted" variable="--muted" hex="#C8C0B4" />
-            <ColorSwatch name="Muted Foreground" variable="--muted-foreground" hex="#666663" />
-            <ColorSwatch name="Card" variable="--card" hex="#FFFFFF" />
-            <ColorSwatch name="Destructive" variable="--destructive" hex="#B22222" />
+        {/* ── COLORS ── */}
+        <section id="colors" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Colors" description="Brand palette, semantic tokens, and data visualization colors." />
+
+          <SubSection title="Brand palette">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+              <ColorSwatch name="Bronze" variable="--jpmc-bronze" hex="#8F5A39" />
+              <ColorSwatch name="Bronze Light" variable="--jpmc-bronze-light" hex="#B08968" />
+              <ColorSwatch name="Travertine" variable="--jpmc-travertine" hex="#F4EFE7" />
+              <ColorSwatch name="Sky Blue" variable="--jpmc-sky-blue" hex="#A6D7F0" />
+              <ColorSwatch name="Black" variable="--jpmc-black" hex="#000000" />
+              <ColorSwatch name="White" variable="--jpmc-white" hex="#FFFFFF" className="!border-border" />
+            </div>
+          </SubSection>
+
+          <SubSection title="Semantic tokens">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+              <ColorSwatch name="Background" variable="--background" hex="#F4EFE7" />
+              <ColorSwatch name="Foreground" variable="--foreground" hex="#000000" />
+              <ColorSwatch name="Primary" variable="--primary" hex="#8F5A39" />
+              <ColorSwatch name="Accent" variable="--accent" hex="#A6D7F0" />
+              <ColorSwatch name="Muted" variable="--muted" hex="#C8C0B4" />
+              <ColorSwatch name="Muted Foreground" variable="--muted-foreground" hex="#666663" />
+              <ColorSwatch name="Card" variable="--card" hex="#FFFFFF" className="!border-border" />
+              <ColorSwatch name="Destructive" variable="--destructive" hex="#B22222" />
+            </div>
+          </SubSection>
+
+          <SubSection title="Data visualization">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+              <ColorSwatch name="Success" variable="--jpmc-success" hex="#367138" />
+              <ColorSwatch name="Info" variable="--jpmc-info" hex="#2E4770" />
+              <ColorSwatch name="Error" variable="--jpmc-error" hex="#B22222" />
+              <ColorSwatch name="Gold" variable="--jpmc-gold" hex="#C4A96A" />
+            </div>
+          </SubSection>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── TYPOGRAPHY ── */}
+        <section id="typography" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Typography" description="Type scale, weights, and font families for headings and body text." />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <SubSection title="Tiempos Headline · Serif">
+                <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-8">
+                  Display and heading typeface. Light weight for elegance.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { spec: "H1 · 40/48 · Light · -0.5", text: "Welcome back, Taylor", className: "text-[40px] leading-[48px] font-light tracking-[-0.5px] font-headline" },
+                    { spec: "H2 · 28/36 · Light · -0.3", text: "Your daily schedule", className: "text-[28px] leading-[36px] font-light tracking-[-0.3px] font-headline" },
+                    { spec: "H3 · 24/32 · Light · -0.3", text: "Review feedback", className: "text-[24px] leading-[32px] font-light tracking-[-0.3px] font-headline" },
+                    { spec: "H4 · 20/28 · Light", text: "Feedback requested", className: "text-[20px] leading-[28px] font-light font-headline" },
+                  ].map(h => (
+                    <div key={h.spec} className="pb-6 border-b border-border last:border-0 last:pb-0">
+                      <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">{h.spec}</p>
+                      <p className={h.className}>{h.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </SubSection>
+            </div>
+
+            <div>
+              <SubSection title="Inter / Source Sans Pro · Sans-serif">
+                <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-8">
+                  Body, labels, and UI elements. Light to semibold weights.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { spec: "Body Large · 16/24 · Light", text: "Here's a draft feedback request for Taylor Smith based on your project.", className: "text-[16px] leading-[24px] font-light" },
+                    { spec: "Body · 14/20 · Light", text: "Listens well in meetings, ideas are good but unclearly communicated.", className: "text-[14px] leading-[20px] font-light" },
+                    { spec: "Body Semibold · 14/20 · 600", text: "What you said:", className: "text-[14px] leading-[20px] font-semibold" },
+                    { spec: "Caption · 13/18 · Light", text: "Listen deeply · Create clarity", className: "text-[13px] leading-[18px] font-light text-muted-foreground" },
+                    { spec: "Small · 12/16 · Light", text: "Secondary label or metadata", className: "text-[12px] leading-[16px] font-light text-muted-foreground" },
+                  ].map(t => (
+                    <div key={t.spec} className="pb-6 border-b border-border last:border-0 last:pb-0">
+                      <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">{t.spec}</p>
+                      <p className={t.className}>{t.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </SubSection>
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Data Viz */}
-        <div>
-          <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-4">Data visualization</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <ColorSwatch name="Success" variable="--jpmc-success" hex="#367138" />
-            <ColorSwatch name="Info" variable="--jpmc-info" hex="#2E4770" />
-            <ColorSwatch name="Error" variable="--jpmc-error" hex="#B22222" />
-            <ColorSwatch name="Gold" variable="--jpmc-gold" hex="#C4A96A" />
+        <Separator className="mb-20" />
+
+        {/* ── SPACING & RADIUS ── */}
+        <section id="spacing" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Spacing & Radius" description="Consistent spacing scale and border radius tokens." />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <SubSection title="Border radius">
+              <div className="flex items-end gap-5 mt-4">
+                {[
+                  { label: "sm", value: "4px", radius: "4px" },
+                  { label: "md", value: "6px", radius: "6px" },
+                  { label: "lg", value: "8px", radius: "8px" },
+                  { label: "xl", value: "12px", radius: "12px" },
+                  { label: "2xl", value: "16px", radius: "16px" },
+                  { label: "full", value: "9999px", radius: "9999px" },
+                ].map(r => (
+                  <div key={r.label} className="flex flex-col items-center gap-2">
+                    <div className="w-14 h-14 bg-foreground" style={{ borderRadius: r.radius }} />
+                    <p className="text-[12px] font-mono font-light text-muted-foreground">{r.label}</p>
+                    <p className="text-[10px] font-mono font-light text-muted-foreground opacity-50">{r.value}</p>
+                  </div>
+                ))}
+              </div>
+            </SubSection>
+
+            <SubSection title="Spacing scale">
+              <div className="space-y-3 mt-4">
+                {[
+                  { px: "4", desc: "Tight — icon gaps" },
+                  { px: "8", desc: "Compact — form gaps" },
+                  { px: "12", desc: "Default — element gaps" },
+                  { px: "16", desc: "Comfortable — sections" },
+                  { px: "24", desc: "Spacious — card padding" },
+                  { px: "32", desc: "Large — section breaks" },
+                  { px: "48", desc: "XL — major divisions" },
+                ].map(s => (
+                  <div key={s.px} className="flex items-center gap-4">
+                    <div className="w-10 text-right">
+                      <span className="text-[12px] font-mono font-light text-foreground">{s.px}px</span>
+                    </div>
+                    <div className="bg-primary/30 rounded-sm h-5" style={{ width: `${Number(s.px) * 2}px` }} />
+                    <span className="text-[12px] font-light text-muted-foreground">{s.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </SubSection>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Separator className="mb-16" />
+        <Separator className="mb-20" />
 
-      {/* ── TYPOGRAPHY ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Typography
-        </h2>
+        {/* ── BUTTONS ── */}
+        <section id="buttons" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Buttons" description="Button variants, sizes, states, and chat-specific action elements." />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Display / Headlines */}
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-6">Tiempos Headline</h3>
-            <p className="text-[12px] leading-[16px] font-light mb-6" style={{ color: '#666663' }}>
-              Used for headings, titles, and display text. Serif typeface.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>H1 · 40px / 48px · Light · -0.5</p>
-                <h1 className="text-[40px] leading-[48px] font-light tracking-[-0.5px] font-headline">Welcome back, Taylor</h1>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <SubSection title="Variants">
+              <div className="space-y-4">
+                {[
+                  { el: <Button>Primary</Button>, desc: "Bronze bg, white text" },
+                  { el: <Button variant="secondary">Secondary</Button>, desc: "Travertine bg" },
+                  { el: <Button variant="outline">Outline</Button>, desc: "Border only" },
+                  { el: <Button variant="ghost">Ghost</Button>, desc: "No bg, hover accent" },
+                  { el: <Button variant="destructive">Destructive</Button>, desc: "Error red" },
+                  { el: <Button variant="link">Link button</Button>, desc: "Underline on hover" },
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-5">
+                    <div className="w-[140px]">{b.el}</div>
+                    <p className="text-[12px] font-light text-muted-foreground">{b.desc}</p>
+                  </div>
+                ))}
               </div>
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>H2 · 28px / 36px · Light · -0.3</p>
-                <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] font-headline">Your daily schedule</h2>
+            </SubSection>
+
+            <div>
+              <SubSection title="Sizes">
+                <div className="flex items-center gap-3 mb-6">
+                  <Button size="sm">Small</Button>
+                  <Button size="default">Default</Button>
+                  <Button size="lg">Large</Button>
+                  <Button size="icon"><ArrowRight className="w-4 h-4" /></Button>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button disabled>Disabled</Button>
+                  <p className="text-[12px] font-light text-muted-foreground">50% opacity, no pointer events</p>
+                </div>
+              </SubSection>
+
+              <SubSection title="Chat-specific">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <button className="px-4 py-2 rounded-full text-[14px] font-light border transition-colors bg-foreground text-background">
+                      Active chip
+                    </button>
+                    <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-foreground hover:bg-muted/50 transition-colors">
+                      Choice chip
+                    </button>
+                    <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-muted-foreground opacity-50 cursor-not-allowed">
+                      Disabled
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
+                      <Sparkles className="w-3 h-3" /> Refine
+                    </button>
+                    <button className="px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </SubSection>
+            </div>
+          </div>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── CARDS ── */}
+        <section id="cards" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Cards" description="Card patterns used across the application." />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Default</p>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-[18px] font-light">Card title</CardTitle>
+                  <CardDescription>Supporting description text</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-[14px] leading-[20px] font-light">White bg, subtle border, shadow-sm. Standard content card.</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Chat response</p>
+              <div className="bg-card rounded-2xl p-5 border border-border">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
+                    <Star className="w-5 h-5 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] leading-[20px] font-normal text-foreground">Response card</p>
+                    <p className="text-[13px] leading-[18px] font-light text-muted-foreground">With icon and metadata</p>
+                  </div>
+                </div>
+                <p className="text-[14px] leading-[20px] font-light">Used for AI responses, confirmations, and interactive elements.</p>
               </div>
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>H3 · 24px / 32px · Light · -0.3</p>
-                <h3 className="text-[24px] leading-[32px] font-light tracking-[-0.3px] font-headline">Review feedback</h3>
-              </div>
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>H4 · 20px / 28px · Light</p>
-                <h4 className="text-[20px] leading-[28px] font-light font-headline">Feedback requested</h4>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Confirmation</p>
+              <div className="bg-card rounded-2xl p-6 border border-border flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-accent/30 flex items-center justify-center">
+                  <Check className="w-6 h-6 text-foreground" />
+                </div>
+                <p className="text-[24px] leading-[24px] font-light tracking-[-0.3px] font-headline">Confirmed</p>
+                <p className="text-[14px] leading-[20px] font-light text-muted-foreground">Centered layout with icon and title.</p>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Body / UI */}
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-6">Inter / Source Sans Pro</h3>
-            <p className="text-[12px] leading-[16px] font-light mb-6" style={{ color: '#666663' }}>
-              Used for body text, labels, and UI elements. Sans-serif typeface.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>Body Large · 16px / 24px · Light</p>
-                <p className="text-[16px] leading-[24px] font-light">Here's a draft feedback request for Taylor Smith based on your project.</p>
+        <Separator className="mb-20" />
+
+        {/* ── FORM ELEMENTS ── */}
+        <section id="forms" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Form Elements" description="Inputs, checkboxes, badges, and chat input patterns." />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-[800px]">
+            <SubSection title="Inputs">
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <Label>Text input</Label>
+                  <Input placeholder="Enter your name" />
+                </div>
+                <div className="space-y-2">
+                  <Label>Disabled input</Label>
+                  <Input placeholder="Cannot edit" disabled />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox id="check" />
+                  <Label htmlFor="check">Accept terms and conditions</Label>
+                </div>
               </div>
+            </SubSection>
+
+            <div>
+              <SubSection title="Chat input">
+                <div className="flex items-end gap-2 bg-card rounded-2xl border border-border p-3">
+                  <div className="flex-1">
+                    <p className="text-[14px] font-light text-muted-foreground">Ask a follow up...</p>
+                  </div>
+                  <button className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center shrink-0">
+                    <ArrowRight className="w-4 h-4 text-background" />
+                  </button>
+                </div>
+              </SubSection>
+
+              <SubSection title="Badges">
+                <div className="flex gap-2 flex-wrap">
+                  <Badge>Default</Badge>
+                  <Badge variant="secondary">Secondary</Badge>
+                  <Badge variant="outline">Outline</Badge>
+                  <Badge variant="destructive">Destructive</Badge>
+                </div>
+              </SubSection>
+            </div>
+          </div>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── CHAT PATTERNS ── */}
+        <section id="chat" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Chat Patterns" description="Message bubbles, alignment, and conversation flow." />
+
+          <div className="bg-card rounded-2xl border border-border p-8 max-w-[560px]">
+            <div className="space-y-5">
               <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>Body · 14px / 20px · Light</p>
-                <p className="text-[14px] leading-[20px] font-light">Listens well in meetings, ideas are good but unclearly communicated.</p>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User message</p>
+                <div className="flex justify-end">
+                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
+                    <p className="text-[14px] leading-[20px] font-light">Black bg, white text, 20px radius, 4px bottom-right</p>
+                  </div>
+                </div>
               </div>
+
               <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>Body Semibold · 14px / 20px · Semibold</p>
-                <p className="text-[14px] leading-[20px] font-semibold">What you said:</p>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">Assistant response</p>
+                <div className="flex justify-start">
+                  <div className="max-w-[85%]">
+                    <p className="text-[14px] leading-[20px] font-light text-foreground">
+                      No bubble bg, left-aligned. Typewriter animation with markdown rendering.
+                    </p>
+                  </div>
+                </div>
               </div>
+
               <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>Caption · 13px / 18px · Light</p>
-                <p className="text-[13px] leading-[18px] font-light" style={{ color: '#666663' }}>Listen deeply · Create clarity</p>
-              </div>
-              <div>
-                <p className="text-[12px] font-light mb-1" style={{ color: '#666663' }}>Small · 12px / 16px · Light</p>
-                <p className="text-[12px] leading-[16px] font-light" style={{ color: '#666663' }}>Secondary label or metadata</p>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User follow-up</p>
+                <div className="flex justify-end">
+                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
+                    <p className="text-[14px] leading-[20px] font-light">Spring animation: stiffness 100, damping 15</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Separator className="mb-16" />
+        <Separator className="mb-20" />
 
-      {/* ── SPACING & RADIUS ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Spacing & Radius
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-4">Border radius</h3>
-            <div className="flex items-end gap-6">
+        {/* ── SIDEBAR ── */}
+        <section id="sidebar" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Sidebar" description="Navigation sidebar tokens and states." />
+
+          <div className="flex gap-10 items-start">
+            <div className="w-[72px] bg-sidebar rounded-2xl p-3 flex flex-col items-center gap-4 shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-sidebar-accent flex items-center justify-center">
+                <Calendar className="w-5 h-5 text-sidebar-foreground" />
+              </div>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
+                <Star className="w-5 h-5 text-sidebar-foreground" />
+              </div>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
+                <MessageSquare className="w-5 h-5 text-sidebar-foreground" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-x-12 gap-y-3">
               {[
-                { label: "sm", value: "4px", radius: "4px" },
-                { label: "md", value: "6px", radius: "6px" },
-                { label: "lg", value: "8px", radius: "8px" },
-                { label: "xl", value: "12px", radius: "12px" },
-                { label: "full", value: "9999px", radius: "9999px" },
-              ].map(r => (
-                <div key={r.label} className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 bg-primary" style={{ borderRadius: r.radius }} />
-                  <p className="text-[12px] font-light" style={{ color: '#666663' }}>{r.label}</p>
-                  <p className="text-[11px] font-light" style={{ color: '#999' }}>{r.value}</p>
+                { token: "--sidebar-background", value: "#000000", label: "Background" },
+                { token: "--sidebar-foreground", value: "Warm gray", label: "Foreground" },
+                { token: "--sidebar-accent", value: "12% white", label: "Active state" },
+                { token: "--sidebar-border", value: "18% white", label: "Border" },
+                { token: "--sidebar-ring", value: "Bronze", label: "Ring / focus" },
+                { token: "--sidebar-muted", value: "50% white", label: "Muted text" },
+              ].map(t => (
+                <div key={t.token}>
+                  <p className="text-[13px] leading-[18px] font-normal text-foreground">{t.label}</p>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground">{t.value} · var({t.token})</p>
                 </div>
               ))}
             </div>
           </div>
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-4">Spacing scale</h3>
-            <div className="space-y-3">
-              {[
-                { label: "4px", desc: "Tight — icon gaps, inline spacing" },
-                { label: "8px", desc: "Compact — form field gaps" },
-                { label: "12px", desc: "Default — card padding, element gaps" },
-                { label: "16px", desc: "Comfortable — section gaps" },
-                { label: "24px", desc: "Spacious — card content padding" },
-                { label: "32px", desc: "Large — section separators" },
-              ].map(s => (
-                <div key={s.label} className="flex items-center gap-3">
-                  <div className="bg-primary/20 h-4" style={{ width: s.label }} />
-                  <p className="text-[13px] font-light text-foreground">{s.label}</p>
-                  <p className="text-[12px] font-light" style={{ color: '#666663' }}>{s.desc}</p>
-                </div>
-              ))}
-            </div>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── ANIMATION ── */}
+        <section id="animation" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Animation" description="Motion specifications for transitions and micro-interactions." />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <SubSection title="Framer Motion">
+              <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                {[
+                  { prop: "type", value: "spring" },
+                  { prop: "stiffness", value: "100" },
+                  { prop: "damping", value: "15" },
+                  { prop: "initial", value: "{ opacity: 0, y: 30 }" },
+                  { prop: "animate", value: "{ opacity: 1, y: 0 }" },
+                ].map(a => (
+                  <div key={a.prop} className="flex items-baseline gap-3">
+                    <span className="text-[12px] font-mono font-normal text-foreground w-20 shrink-0">{a.prop}</span>
+                    <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
+                  </div>
+                ))}
+              </div>
+            </SubSection>
+
+            <SubSection title="CSS Animations">
+              <div className="bg-card rounded-xl border border-border p-5 space-y-4">
+                {[
+                  { name: "Typewriter", desc: "Character-by-character text reveal" },
+                  { name: "Pulse dot", desc: "1.4s ease-in-out infinite (loading)" },
+                  { name: "Skeleton", desc: "2s shimmer before content swap" },
+                  { name: "Accordion", desc: "0.2s ease-out height transition" },
+                ].map(a => (
+                  <div key={a.name}>
+                    <p className="text-[13px] font-normal text-foreground">{a.name}</p>
+                    <p className="text-[12px] font-light text-muted-foreground">{a.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </SubSection>
           </div>
+        </section>
+
+        {/* Footer */}
+        <div className="mt-24 pb-8 pt-8 border-t border-border text-center">
+          <p className="text-[12px] leading-[16px] font-light text-muted-foreground">
+            JPMC Assistant Design System · Tailwind CSS · shadcn/ui · Framer Motion
+          </p>
         </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── BUTTONS ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Buttons
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-6">Variants</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Button>Primary</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Default — Bronze bg, white text</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="secondary">Secondary</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Secondary — Travertine bg</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="outline">Outline</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Outline — Border only</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="ghost">Ghost</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Ghost — No bg, hover accent</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="destructive">Destructive</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Destructive — Error red</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="link">Link button</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Link — Underline on hover</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground mb-6">Sizes & states</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Button size="sm">Small</Button>
-                <Button size="default">Default</Button>
-                <Button size="lg">Large</Button>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button size="icon"><ArrowRight className="w-4 h-4" /></Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>Icon button · 40×40</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button disabled>Disabled</Button>
-                <p className="text-[12px] font-light" style={{ color: '#666663' }}>50% opacity, no pointer</p>
-              </div>
-
-              {/* Chat-specific buttons */}
-              <h3 className="text-[18px] leading-[24px] font-normal text-foreground mt-8 mb-4">Chat-specific</h3>
-              <div className="flex items-center gap-3">
-                <button className="px-4 py-2 rounded-full text-[14px] font-light border transition-colors bg-foreground text-background">
-                  Choice chip (active)
-                </button>
-                <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-foreground hover:bg-muted/50 transition-colors">
-                  Choice chip
-                </button>
-              </div>
-              <div className="flex items-center gap-3 mt-2">
-                <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-muted-foreground opacity-50 cursor-not-allowed">
-                  Disabled chip
-                </button>
-              </div>
-              <div className="flex items-center gap-3 mt-2">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
-                  <Sparkles className="w-3 h-3" /> Refine
-                </button>
-                <button className="px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── CARDS ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Cards
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Default Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-[18px] font-light">Default card</CardTitle>
-              <CardDescription>White bg, subtle border, shadow-sm</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-[14px] leading-[20px] font-light">Standard content card used across the application.</p>
-            </CardContent>
-          </Card>
-
-          {/* Chat Card */}
-          <div className="bg-card rounded-2xl p-5 border border-border max-w-[360px]">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-                <Star className="w-5 h-5 text-muted-foreground" />
-              </div>
-              <div>
-                <p className="text-[14px] leading-[20px] font-normal text-foreground">Chat response card</p>
-                <p className="text-[13px] leading-[18px] font-light" style={{ color: '#666663' }}>Rounded-2xl, padded, with icon</p>
-              </div>
-            </div>
-            <p className="text-[14px] leading-[20px] font-light">Used for AI responses, confirmations, and interactive cards in the chat.</p>
-          </div>
-
-          {/* Confirmation Card */}
-          <div className="bg-card rounded-2xl p-6 border border-border max-w-[360px] flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-accent/30 flex items-center justify-center">
-              <Check className="w-6 h-6 text-foreground" />
-            </div>
-            <p className="text-[24px] leading-[24px] font-light tracking-[-0.3px] font-headline">Confirmation card</p>
-            <p className="text-[14px] leading-[20px] font-light" style={{ color: '#666663' }}>Centered layout with icon, title, and description.</p>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── FORM ELEMENTS ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Form elements
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-[800px]">
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <Label>Text input</Label>
-              <Input placeholder="Enter your name" />
-            </div>
-            <div className="space-y-2">
-              <Label>Disabled input</Label>
-              <Input placeholder="Cannot edit" disabled />
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="check" />
-              <Label htmlFor="check">Accept terms and conditions</Label>
-            </div>
-          </div>
-          <div className="space-y-6">
-            {/* Chat input */}
-            <div>
-              <Label className="mb-2 block">Chat input</Label>
-              <div className="flex items-end gap-2 bg-card rounded-2xl border border-border p-3">
-                <div className="flex-1">
-                  <p className="text-[14px] font-light" style={{ color: '#999' }}>Ask a follow up...</p>
-                </div>
-                <button className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4 text-background" />
-                </button>
-              </div>
-            </div>
-            {/* Badge */}
-            <div>
-              <Label className="mb-2 block">Badges</Label>
-              <div className="flex gap-2 flex-wrap">
-                <Badge>Default</Badge>
-                <Badge variant="secondary">Secondary</Badge>
-                <Badge variant="outline">Outline</Badge>
-                <Badge variant="destructive">Destructive</Badge>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── CHAT BUBBLES ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Chat bubbles
-        </h2>
-        <div className="max-w-[500px] space-y-4">
-          {/* User bubble */}
-          <div className="flex justify-end">
-            <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-              <p className="text-[14px] leading-[20px] font-light">User message — black bg, white text, 20px radius with 4px bottom-right</p>
-            </div>
-          </div>
-          {/* Assistant bubble */}
-          <div className="flex justify-start">
-            <div className="max-w-[85%]">
-              <p className="text-[14px] leading-[20px] font-light text-foreground">
-                Assistant response — no bubble bg, left-aligned, appears with typewriter animation. Uses markdown rendering for rich content.
-              </p>
-            </div>
-          </div>
-          {/* User bubble 2 */}
-          <div className="flex justify-end">
-            <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-              <p className="text-[14px] leading-[20px] font-light">Messages animate in with spring (stiffness: 100, damping: 15)</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── SIDEBAR ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Sidebar
-        </h2>
-        <div className="flex gap-8">
-          <div className="w-[72px] bg-sidebar rounded-2xl p-3 flex flex-col items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-sidebar-accent flex items-center justify-center">
-              <Calendar className="w-5 h-5 text-sidebar-foreground" />
-            </div>
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
-              <Star className="w-5 h-5 text-sidebar-foreground" />
-            </div>
-          </div>
-          <div className="space-y-3">
-            <p className="text-[14px] leading-[20px] font-light text-foreground">
-              <strong>Background:</strong> Black (#000) · var(--sidebar-background)
-            </p>
-            <p className="text-[14px] leading-[20px] font-light text-foreground">
-              <strong>Foreground:</strong> Warm gray · var(--sidebar-foreground)
-            </p>
-            <p className="text-[14px] leading-[20px] font-light text-foreground">
-              <strong>Active state:</strong> 12% white bg · var(--sidebar-accent)
-            </p>
-            <p className="text-[14px] leading-[20px] font-light text-foreground">
-              <strong>Border:</strong> 18% white · var(--sidebar-border)
-            </p>
-            <p className="text-[14px] leading-[20px] font-light text-foreground">
-              <strong>Ring:</strong> Bronze · var(--sidebar-ring)
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* ── ANIMATION ── */}
-      <section className="mb-16">
-        <h2 className="text-[28px] leading-[36px] font-light tracking-[-0.3px] text-foreground font-headline mb-8">
-          Animation
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[800px]">
-          <div className="space-y-3">
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground">Framer Motion</h3>
-            <div className="space-y-2">
-              <p className="text-[14px] leading-[20px] font-light"><strong>Chat bubble entry:</strong> spring, stiffness 100, damping 15</p>
-              <p className="text-[14px] leading-[20px] font-light"><strong>Initial:</strong> opacity 0, y 30</p>
-              <p className="text-[14px] leading-[20px] font-light"><strong>Animate:</strong> opacity 1, y 0</p>
-            </div>
-          </div>
-          <div className="space-y-3">
-            <h3 className="text-[18px] leading-[24px] font-normal text-foreground">CSS Animations</h3>
-            <div className="space-y-2">
-              <p className="text-[14px] leading-[20px] font-light"><strong>Typewriter:</strong> Character-by-character text reveal</p>
-              <p className="text-[14px] leading-[20px] font-light"><strong>Pulse dot:</strong> 1.4s ease-in-out infinite (loading)</p>
-              <p className="text-[14px] leading-[20px] font-light"><strong>Skeleton:</strong> 2s shimmer before content swap</p>
-              <p className="text-[14px] leading-[20px] font-light"><strong>Accordion:</strong> 0.2s ease-out height transition</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <div className="mt-24 pb-8 text-center">
-        <p className="text-[13px] leading-[18px] font-light" style={{ color: '#666663' }}>
-          JPMC Assistant Design System · Built with Tailwind CSS, shadcn/ui, Framer Motion
-        </p>
-      </div>
+      </main>
     </div>
   );
 };
