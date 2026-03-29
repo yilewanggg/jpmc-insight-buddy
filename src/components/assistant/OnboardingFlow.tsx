@@ -125,7 +125,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <img src={f.icon} alt="" className="w-10 h-10 shrink-0" />
+                <img src={f.icon} alt="" className="w-7 h-7 shrink-0" />
                 <p className="text-[16px] leading-[24px] text-foreground font-light">
                   {featDisplayed[i].displayed}
                 </p>
