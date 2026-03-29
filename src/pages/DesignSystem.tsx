@@ -460,16 +460,6 @@ const DesignSystem = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Icon: 40×40 seat illustration</span>
-                  <span>Header: 16/24, font-semibold</span>
-                  <span>Tags: 12/16, rounded, font-semibold</span>
-                  <span>Radio: 20×20, 2px border</span>
-                  <span>Green tag: #1C5917 / rgba(79,140,64,0.2)</span>
-                  <span>Blue tag: #294770 / rgba(179,214,253,0.3)</span>
-                  <span>Right padding to radio: 24px</span>
-                  <span>Linkout: top-right, 16px/24px offset</span>
-                </div>
               </div>
             </SubSection>
 
