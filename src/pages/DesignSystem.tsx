@@ -609,14 +609,6 @@ const DesignSystem = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                      <span>Logo: 40×40 rounded-full</span>
-                      <span>Body: 16/24 font-light</span>
-                      <span>Bold: font-semibold</span>
-                      <span>Gap logo→text: 14px</span>
-                      <span>No bubble background</span>
-                      <span>Typewriter animation</span>
-                    </div>
                   </div>
 
                   {/* User bubble */}
