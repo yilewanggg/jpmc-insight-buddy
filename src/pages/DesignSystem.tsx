@@ -560,7 +560,7 @@ const DesignSystem = () => {
                 { src: calendarIcon, name: "Calendar", desc: "Daily digest" },
                 { src: trainingIcon, name: "Training", desc: "Learning tasks" },
                 { src: confirmationCheckIcon, name: "Check", desc: "Confirmation states" },
-                { src: feedbackCardIcon, name: "Feedback", desc: "Feedback flow" },
+                
               ].map((icon) => (
                 <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                   <div className="w-10 h-10 flex items-center justify-center">
