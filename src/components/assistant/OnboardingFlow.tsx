@@ -329,7 +329,7 @@ function CarouselStepView({
                   className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
                   style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
                 >
-                  Go to my dashboard
+                  Let's get started
                 </button>
                 <button
                   onClick={() => onAction("later")}
