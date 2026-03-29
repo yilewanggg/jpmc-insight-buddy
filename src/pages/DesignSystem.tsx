@@ -676,18 +676,6 @@ const DesignSystem = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Container: bg-card, rounded-xl</span>
-                  <span>Padding: 10px 16px</span>
-                  <span>Text: 15/22.5, -0.3% tracking</span>
-                  <span>Placeholder: #666663</span>
-                  <span>Send btn idle: bg-muted/50</span>
-                  <span>Send btn active: bg-foreground</span>
-                  <span>Plus icon: 20×20, #666663</span>
-                  <span>Slash cmd: 1px border, rounded-lg</span>
-                  <span>Width: matches 740px content area</span>
-                  <span>Offset: 64px left (sidebar width)</span>
-                </div>
               </div>
             </SubSection>
           </div>
