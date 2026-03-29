@@ -475,12 +475,6 @@ const DesignSystem = () => {
                     "Hi! Since we've been working closely on VP hiring over the last month, I'd love to get feedback from you."
                   </p>
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Avatar: 56×56, rounded-full</span>
-                  <span>Title: Tiempos 24/32, font-light</span>
-                  <span>Body: 16/24, #666663</span>
-                  <span>Padding: 24px, centered layout</span>
-                </div>
               </div>
             </SubSection>
 
