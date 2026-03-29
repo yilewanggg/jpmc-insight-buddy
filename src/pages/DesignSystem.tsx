@@ -717,41 +717,34 @@ const DesignSystem = () => {
               Each nav icon button is 44×44px with an 18×18 icon. The rail is 64px wide.
             </p>
             <div className="flex gap-12 items-start flex-wrap">
-              {/* Idle */}
+              {/* Enabled */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
                   <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
-                <p className="text-[11px] font-mono text-muted-foreground">Idle</p>
+                <p className="text-[11px] font-mono text-muted-foreground">Enabled</p>
               </div>
               {/* Hover */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center text-foreground" style={{ backgroundColor: '#D4C9B8' }}>
-                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
                 <p className="text-[11px] font-mono text-muted-foreground">Hover</p>
               </div>
-              {/* Active */}
+              {/* Pressed */}
               <div className="flex flex-col items-center gap-3">
-                <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#DDD5C8] shadow-sm text-foreground">
-                  <Calendar className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center shadow-sm text-foreground" style={{ backgroundColor: '#D4C9B8' }}>
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
-                <p className="text-[11px] font-mono text-muted-foreground">Active</p>
+                <p className="text-[11px] font-mono text-muted-foreground">Pressed</p>
               </div>
               {/* With badge */}
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
-                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                   <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
                 </div>
                 <p className="text-[11px] font-mono text-muted-foreground">With badge</p>
-              </div>
-              {/* Profile */}
-              <div className="flex flex-col items-center gap-3">
-                <Avatar className="w-10 h-10 rounded-lg">
-                  <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
-                </Avatar>
-                <p className="text-[11px] font-mono text-muted-foreground">Profile</p>
               </div>
             </div>
           </SubSection>
