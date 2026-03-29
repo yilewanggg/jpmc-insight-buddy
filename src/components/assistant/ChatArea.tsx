@@ -1332,16 +1332,15 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
 }
 
 function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void }) {
-  const line1 = "Great! I've booked seat 04AAC091 for next week.";
+  const line1 = "Great! I've booked seat 04AAC065 for next week.";
   const line2 = "Here are your booking details:";
   const typed1 = useTypewriter(line1, 15, 100);
   const typed2 = useTypewriter(line2, 15, typed1.done ? 200 : 99999);
   const [cardVisible, setCardVisible] = useState(false);
   const [followUpVisible, setFollowUpVisible] = useState(false);
-  const [chipsVisible, setChipsVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
 
-  const followUpText = "Would you like for me to automatically book this seat for you each Monday?";
+  const followUpText = "How else can I help you?";
   const followUp = useTypewriter(followUpText, 15, followUpVisible ? 0 : 99999);
 
   useEffect(() => {
@@ -1359,18 +1358,11 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
   }, [cardVisible, followUpVisible]);
 
   useEffect(() => {
-    if (followUp.done && !chipsVisible) {
-      const t = setTimeout(() => setChipsVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [followUp.done, chipsVisible]);
-
-  useEffect(() => {
-    if (chipsVisible && !thumbsVisible) {
+    if (followUp.done && !thumbsVisible) {
       const t = setTimeout(() => setThumbsVisible(true), 300);
       return () => clearTimeout(t);
     }
-  }, [chipsVisible, thumbsVisible]);
+  }, [followUp.done, thumbsVisible]);
 
   return (
     <div>
@@ -1401,7 +1393,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
             <div className="flex items-start gap-4 p-6">
               <img src={confirmationIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="text-[16px] leading-[24px] font-normal text-foreground">Seat 04AAC091 is booked!</p>
+                <p className="text-[16px] leading-[24px] font-normal text-foreground">Seat 04AAC065 is booked!</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
               </div>
@@ -1422,36 +1414,6 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
           <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
             <TypedText text={followUp.displayed} />
           </p>
-        </motion.div>
-      )}
-      {chipsVisible && (
-        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="flex items-center gap-3 mb-4 flex-wrap">
-            <button
-              onClick={() => onSend("Setup autobook")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
-              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
-            >
-              <CornerDownRight className="w-4 h-4" />
-              Setup autobook
-            </button>
-            <button
-              onClick={() => onSend("View current bookings")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
-              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
-            >
-              <CornerDownRight className="w-4 h-4" />
-              View current bookings
-            </button>
-            <button
-              onClick={() => onSend("View this seat on the map")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
-              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
-            >
-              <CornerDownRight className="w-4 h-4" />
-              View this seat on the map
-            </button>
-          </div>
         </motion.div>
       )}
       {thumbsVisible && (
