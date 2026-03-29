@@ -521,7 +521,7 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="Profile images">
+          <SubSection title="Avatars & logos">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
               {[
                 { src: carmenProfile, name: "Carmen Vargas", desc: "Feedback card, 56×56" },
