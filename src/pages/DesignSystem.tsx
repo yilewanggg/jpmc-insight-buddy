@@ -6,9 +6,23 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink } from "lucide-react";
+import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
+import graduationIcon from "@/assets/graduation-icon.png";
+import seatIcon from "@/assets/seat-icon.svg";
+import carmenProfile from "@/assets/carmen-profile.png";
+import calendarCardImage from "@/assets/calendar-card.png";
+import calendarIcon from "@/assets/calendar-icon.svg";
+import calendarCarouselIcon from "@/assets/calendar-carousel-icon.svg";
+import handIcon from "@/assets/hand-icon.svg";
+import confirmationIcon from "@/assets/confirmation-icon.svg";
+import confirmationCheckIcon from "@/assets/confirmation-check.svg";
+import trainingIcon from "@/assets/training-icon.svg";
+import planeIcon from "@/assets/plane-icon.svg";
+import megaphoneIcon from "@/assets/megaphone-icon.svg";
+import celebrationIcon from "@/assets/celebration-icon.svg";
+import feedbackCardIcon from "@/assets/feedback-card.svg";
 
 const sections = [
   { id: "colors", label: "Colors", icon: Palette },
