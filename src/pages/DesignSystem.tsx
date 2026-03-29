@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, CornerDownRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image } from "lucide-react";
+import { ArrowRight, CornerDownRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 import graduationIcon from "@/assets/graduation-icon.png";
@@ -34,6 +34,7 @@ const sections = [
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
   { id: "sidebar", label: "Nav Bar", icon: Layout },
+  { id: "panels", label: "Side Panels", icon: Layout },
   { id: "animation", label: "Animation", icon: Zap },
 ];
 
@@ -356,12 +357,12 @@ const DesignSystem = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Selected</p>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Pressed</p>
                     <div className="flex items-center gap-3 flex-nowrap">
-                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px]" style={{ backgroundColor: '#E9E0D3', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4 shrink-0" /> Yes, book this seat
                       </button>
-                      <p className="text-[12px] font-light text-muted-foreground shrink-0">Selected: bg Travertine (#E9E0D3)</p>
+                      <p className="text-[12px] font-light text-muted-foreground shrink-0">Pressed: bg #DDD5C8</p>
                     </div>
                   </div>
                   <div>
@@ -521,7 +522,7 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="UI icons (Lucide)">
+          <SubSection title="UI icons">
             <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
               System icons from Lucide React. 18×18 in nav, 16×16 in actions, 14×14 in chips. strokeWidth 1.5.
             </p>
@@ -550,7 +551,7 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="Avatar & logo">
+          <SubSection title="Avatar">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
               <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                 <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
@@ -559,15 +560,6 @@ const DesignSystem = () => {
                 <div className="text-center">
                   <p className="text-[13px] font-normal text-foreground">JPMC Logo</p>
                   <p className="text-[11px] font-light text-muted-foreground">AI avatar, 40×40</p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
-                <Avatar className="w-14 h-14 rounded-full">
-                  <AvatarFallback className="rounded-full bg-[#E9E0D3] text-muted-foreground text-lg font-medium">TS</AvatarFallback>
-                </Avatar>
-                <div className="text-center">
-                  <p className="text-[13px] font-normal text-foreground">User Avatar</p>
-                  <p className="text-[11px] font-light text-muted-foreground">Initials fallback</p>
                 </div>
               </div>
             </div>
@@ -725,41 +717,34 @@ const DesignSystem = () => {
               Each nav icon button is 44×44px with an 18×18 icon. The rail is 64px wide.
             </p>
             <div className="flex gap-12 items-start flex-wrap">
-              {/* Idle */}
+              {/* Enabled */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
                   <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
-                <p className="text-[11px] font-mono text-muted-foreground">Idle</p>
+                <p className="text-[11px] font-mono text-muted-foreground">Enabled</p>
               </div>
               {/* Hover */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center text-foreground" style={{ backgroundColor: '#D4C9B8' }}>
-                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
                 <p className="text-[11px] font-mono text-muted-foreground">Hover</p>
               </div>
-              {/* Active */}
+              {/* Pressed */}
               <div className="flex flex-col items-center gap-3">
-                <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#DDD5C8] shadow-sm text-foreground">
-                  <Calendar className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center shadow-sm text-foreground" style={{ backgroundColor: '#D4C9B8' }}>
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                 </div>
-                <p className="text-[11px] font-mono text-muted-foreground">Active</p>
+                <p className="text-[11px] font-mono text-muted-foreground">Pressed</p>
               </div>
               {/* With badge */}
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
-                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
                   <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
                 </div>
                 <p className="text-[11px] font-mono text-muted-foreground">With badge</p>
-              </div>
-              {/* Profile */}
-              <div className="flex flex-col items-center gap-3">
-                <Avatar className="w-10 h-10 rounded-lg">
-                  <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
-                </Avatar>
-                <p className="text-[11px] font-mono text-muted-foreground">Profile</p>
               </div>
             </div>
           </SubSection>
@@ -841,6 +826,111 @@ const DesignSystem = () => {
               </div>
             </div>
           </SubSection>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── SIDE PANELS ── */}
+        <section id="panels" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Side Panels" description="Expandable panels accessible from the nav bar for tasks, notifications, calendar, and preferences." />
+
+          <div className="space-y-12">
+            <SubSection title="Tasks & Notifications">
+              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+                Activity center panel with tabbed interface. Tasks show status tags (Overdue, Due soon, Not started, In progress) with hover-reveal actions. Notifications show categorised alerts with "Do it now" CTAs.
+              </p>
+              <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
+                {/* Tab header */}
+                <div className="flex gap-6 px-6 border-b border-border pt-4">
+                  <span className="pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground relative">
+                    Tasks (4)
+                    <span className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-foreground" />
+                  </span>
+                  <span className="pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>
+                    Notifications (3)
+                  </span>
+                </div>
+                {/* Sample tasks */}
+                {[
+                  { category: "Learning", status: "Overdue", statusColor: "bg-[#A8332B26] text-[#A8332B]", title: "Complete your Cybersecurity training", due: "Due: Friday, October 8" },
+                  { category: "Learning", status: "Due soon", statusColor: "bg-[#FEF1BFbf] text-[#785C1A]", title: "Complete your Data & Security Compliance training", due: "Due: Friday, October 15" },
+                ].map((task, i) => (
+                  <div key={i} className="px-6 py-5 border-b border-border">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>{task.category}</span>
+                      <span className={`text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold ${task.statusColor}`}>{task.status}</span>
+                    </div>
+                    <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1">{task.title}</p>
+                    <p className="text-[12px] leading-[16px]" style={{ color: '#666663' }}>{task.due}</p>
+                  </div>
+                ))}
+              </div>
+            </SubSection>
+
+            <SubSection title="Calendar">
+              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+                Daily schedule view with event cards. Shows meeting times, durations, locations, and attendee avatars. Includes join buttons, copy links, and focus time blocks.
+              </p>
+              <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
+                {[
+                  { time: "9:00 AM", duration: "1h", title: "Triad/UX Design check-in", location: "Zoom ID 95722623042", hasJoin: false },
+                  { time: "9:05 AM", duration: "55m", title: "Design Team Review", location: "Zoom ID 95722623042", hasJoin: true },
+                  { time: "", duration: "3h5m", title: "Available for focus time", location: "", isFocus: true },
+                ].map((event, i) => (
+                  <div key={i} className={`px-6 py-4 ${i < 2 ? "border-b border-border" : ""}`}>
+                    {event.isFocus ? (
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
+                          <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.duration}</p>
+                        </div>
+                        <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                          Block time
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
+                          <span className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>{event.time} · {event.duration}</span>
+                        </div>
+                        <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
+                        <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.location}</p>
+                        {event.hasJoin && (
+                          <div className="flex items-center gap-2 mt-3">
+                            <button className="inline-flex items-center gap-2 h-[36px] px-4 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium">
+                              Join <ExternalLink className="w-3 h-3" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </SubSection>
+
+            <SubSection title="Preferences">
+              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+                Settings panel with expandable accordion rows. Each preference has an icon and chevron toggle.
+              </p>
+              <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
+                {[
+                  { icon: Bell, label: "Notifications" },
+                  { icon: Sparkles, label: "AI Assistant" },
+                  { icon: Star, label: "Insights" },
+                ].map((item, i) => (
+                  <div key={i} className={`px-6 py-5 flex items-center justify-between ${i < 2 ? "border-b border-border" : ""}`}>
+                    <div className="flex items-center gap-3">
+                      <item.icon className="w-[18px] h-[18px]" strokeWidth={1.5} style={{ color: '#202020' }} />
+                      <span className="text-[16px] leading-[24px] tracking-[0.16px] text-foreground">{item.label}</span>
+                    </div>
+                    <ChevronDown className="w-4 h-4" strokeWidth={1.5} style={{ color: '#666663' }} />
+                  </div>
+                ))}
+              </div>
+            </SubSection>
+          </div>
         </section>
 
         <Separator className="mb-20" />
