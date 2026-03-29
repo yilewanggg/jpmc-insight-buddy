@@ -982,13 +982,11 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
       id: "04AAC065", floor: "Floor 04", building: "4 Metrotech",
       tags: [
         { label: "Frequently booked", color: "text-[#1C5917]", bg: "rgba(79, 140, 64, 0.2)" },
-        { label: "Near team", color: "text-[#294770]", bg: "rgba(179, 214, 253, 0.3)" },
       ]
     },
     {
       id: "04AAC072", floor: "Floor 04", building: "4 Metrotech",
       tags: [
-        { label: "Frequently booked", color: "text-[#1C5917]", bg: "rgba(79, 140, 64, 0.2)" },
         { label: "Near team", color: "text-[#294770]", bg: "rgba(179, 214, 253, 0.3)" },
       ]
     },
