@@ -357,20 +357,20 @@ const DesignSystem = () => {
                   </div>
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Selected</p>
-                    <div className="flex items-center gap-3">
-                      <button className="w-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px]" style={{ backgroundColor: '#E9E0D3', color: '#202020', letterSpacing: '0.16px' }}>
-                        <CornerDownRight className="w-4 h-4" /> Yes, book this seat
+                    <div className="flex items-center gap-3 flex-nowrap">
+                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px]" style={{ backgroundColor: '#E9E0D3', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4 shrink-0" /> Yes, book this seat
                       </button>
-                      <p className="text-[12px] font-light text-muted-foreground">Selected: bg Travertine (#E9E0D3), becomes user bubble</p>
+                      <p className="text-[12px] font-light text-muted-foreground shrink-0">Selected: bg Travertine (#E9E0D3)</p>
                     </div>
                   </div>
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Unselected (after selection)</p>
-                    <div className="flex items-center gap-3">
-                      <button className="w-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-40 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        <CornerDownRight className="w-4 h-4" /> Show me more options
+                    <div className="flex items-center gap-3 flex-nowrap">
+                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-40 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4 shrink-0" /> Show me more options
                       </button>
-                      <p className="text-[12px] font-light text-muted-foreground">Unselected: opacity 40%, non-interactive</p>
+                      <p className="text-[12px] font-light text-muted-foreground shrink-0">Unselected: opacity 40%</p>
                     </div>
                   </div>
                 </div>
