@@ -30,7 +30,7 @@ const sections = [
   { id: "spacing", label: "Spacing & Radius", icon: Square },
   { id: "buttons", label: "Buttons", icon: MousePointer },
   { id: "cards", label: "Cards", icon: Layout },
-  { id: "illustrations", label: "Illustrations", icon: Image },
+  { id: "illustrations", label: "Asset Library", icon: Image },
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
   { id: "sidebar", label: "Nav Bar", icon: Layout },
@@ -489,11 +489,11 @@ const DesignSystem = () => {
 
         <Separator className="mb-20" />
 
-        {/* ── ILLUSTRATIONS ── */}
+        {/* ── ASSET LIBRARY ── */}
         <section id="illustrations" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Illustration Library" description="Icons and illustrations used across onboarding, daily digest, and book a seat flows." />
+          <SectionHeader title="Asset Library" description="Illustrations, icons, avatars, and logos used across the assistant experience." />
 
-          <SubSection title="All illustrations">
+          <SubSection title="Illustrations">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {[
                 { src: calendarCarouselIcon, name: "Meetings", desc: "Onboarding · 64×64", size: "w-16 h-16" },
@@ -521,22 +521,55 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="Avatars & logos">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+          <SubSection title="UI icons (Lucide)">
+            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+              System icons from Lucide React. 18×18 in nav, 16×16 in actions, 14×14 in chips. strokeWidth 1.5.
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
               {[
-                { src: carmenProfile, name: "Carmen Vargas", desc: "Feedback card, 56×56" },
-                { src: jpmcLogo, name: "JPMC Logo", desc: "AI avatar, 40×40" },
-              ].map((img) => (
-                <div key={img.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
-                  <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
-                    <img src={img.src} alt={img.name} className="w-14 h-14 object-cover" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[13px] font-normal text-foreground">{img.name}</p>
-                    <p className="text-[11px] font-light text-muted-foreground">{img.desc}</p>
-                  </div>
+                { icon: MessageSquare, name: "Chat" },
+                { icon: Bell, name: "Notifications" },
+                { icon: Calendar, name: "Calendar" },
+                { icon: SlidersHorizontal, name: "Preferences" },
+                { icon: ExternalLink, name: "Linkout" },
+                { icon: CornerDownRight, name: "Choice chip" },
+                { icon: ArrowRight, name: "Send" },
+                { icon: Plus, name: "Add" },
+                { icon: ThumbsUp, name: "Thumbs up" },
+                { icon: ThumbsDown, name: "Thumbs down" },
+                { icon: MoreHorizontal, name: "More" },
+                { icon: Star, name: "Star" },
+                { icon: Check, name: "Check" },
+                { icon: Sparkles, name: "Sparkles" },
+              ].map(({ icon: Icon, name }) => (
+                <div key={name} className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-card">
+                  <Icon className="w-[18px] h-[18px] text-foreground" strokeWidth={1.5} />
+                  <p className="text-[11px] font-light text-muted-foreground">{name}</p>
                 </div>
               ))}
+            </div>
+          </SubSection>
+
+          <SubSection title="Avatar & logo">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+              <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
+                <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
+                  <img src={jpmcLogo} alt="JPMC Logo" className="w-14 h-14 object-cover" />
+                </div>
+                <div className="text-center">
+                  <p className="text-[13px] font-normal text-foreground">JPMC Logo</p>
+                  <p className="text-[11px] font-light text-muted-foreground">AI avatar, 40×40</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
+                <Avatar className="w-14 h-14 rounded-full">
+                  <AvatarFallback className="rounded-full bg-[#E9E0D3] text-muted-foreground text-lg font-medium">TS</AvatarFallback>
+                </Avatar>
+                <div className="text-center">
+                  <p className="text-[13px] font-normal text-foreground">User Avatar</p>
+                  <p className="text-[11px] font-light text-muted-foreground">Initials fallback</p>
+                </div>
+              </div>
             </div>
           </SubSection>
         </section>
