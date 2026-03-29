@@ -508,11 +508,10 @@ const DesignSystem = () => {
               ].map((icon) => (
                 <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                   <div className="w-16 h-16 flex items-center justify-center">
-                    <img src={icon.src} alt={icon.name} className={icon.size} />
+                    <img src={icon.src} alt={icon.name} className="w-16 h-16" />
                   </div>
                   <div className="text-center">
                     <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
-                    <p className="text-[11px] font-light text-muted-foreground">{icon.desc}</p>
                   </div>
                 </div>
               ))}
