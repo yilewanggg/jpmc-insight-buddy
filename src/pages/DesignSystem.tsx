@@ -809,16 +809,6 @@ const DesignSystem = () => {
             </div>
           </SubSection>
         </section>
-                    <div key={a.prop} className="flex items-baseline gap-3">
-                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
-                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </SubSection>
-            </div>
-          </div>
-        </section>
 
         <Separator className="mb-20" />
 
