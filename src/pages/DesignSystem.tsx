@@ -523,48 +523,24 @@ const DesignSystem = () => {
         <section id="illustrations" className="mb-20 scroll-mt-12">
           <SectionHeader title="Illustration Library" description="Icons and illustrations used across onboarding, daily digest, and book a seat flows." />
 
-          <SubSection title="Onboarding icons (64×64)">
-            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-              Used in the onboarding carousel steps. Each icon is 64×64px.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+          <SubSection title="All illustrations">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {[
-                { src: calendarCarouselIcon, name: "Meetings", desc: "Onboarding step 1" },
-                { src: planeIcon, name: "Travel", desc: "Onboarding step 2" },
-                { src: confirmationIcon, name: "Tasks", desc: "Onboarding step 3" },
-                { src: megaphoneIcon, name: "Nudges", desc: "Onboarding step 4" },
-                { src: celebrationIcon, name: "Celebration", desc: "Final step" },
-                { src: handIcon, name: "Wave", desc: "Intro screen" },
+                { src: calendarCarouselIcon, name: "Meetings", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: planeIcon, name: "Travel", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: confirmationIcon, name: "Tasks", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: megaphoneIcon, name: "Nudges", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: celebrationIcon, name: "Celebration", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: handIcon, name: "Wave", desc: "Onboarding · 64×64", size: "w-16 h-16" },
+                { src: graduationIcon, name: "Graduation", desc: "Cards · 40×40", size: "w-10 h-10" },
+                { src: seatIcon, name: "Seat", desc: "Cards · 40×40", size: "w-10 h-10" },
+                { src: calendarIcon, name: "Calendar", desc: "Cards · 40×40", size: "w-10 h-10" },
+                { src: trainingIcon, name: "Training", desc: "Cards · 40×40", size: "w-10 h-10" },
+                { src: confirmationCheckIcon, name: "Check", desc: "Cards · 40×40", size: "w-10 h-10" },
               ].map((icon) => (
                 <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                   <div className="w-16 h-16 flex items-center justify-center">
-                    <img src={icon.src} alt={icon.name} className="w-16 h-16" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
-                    <p className="text-[11px] font-light text-muted-foreground">{icon.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </SubSection>
-
-          <SubSection title="Card illustrations (40×40)">
-            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-              Used inline within response cards. Each icon is 40×40px.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-              {[
-                { src: graduationIcon, name: "Graduation", desc: "Training cards" },
-                { src: seatIcon, name: "Seat", desc: "Book a Seat cards" },
-                { src: calendarIcon, name: "Calendar", desc: "Daily digest" },
-                { src: trainingIcon, name: "Training", desc: "Learning tasks" },
-                { src: confirmationCheckIcon, name: "Check", desc: "Confirmation states" },
-                
-              ].map((icon) => (
-                <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
-                  <div className="w-10 h-10 flex items-center justify-center">
-                    <img src={icon.src} alt={icon.name} className="w-10 h-10" />
+                    <img src={icon.src} alt={icon.name} className={icon.size} />
                   </div>
                   <div className="text-center">
                     <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
@@ -576,9 +552,6 @@ const DesignSystem = () => {
           </SubSection>
 
           <SubSection title="Profile images">
-            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-              Profile photos used in feedback and conversation flows.
-            </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
               {[
                 { src: carmenProfile, name: "Carmen Vargas", desc: "Feedback card, 56×56" },
@@ -602,7 +575,7 @@ const DesignSystem = () => {
 
         {/* ── FORM ELEMENTS ── */}
         <section id="forms" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Form Elements" description="Inputs, checkboxes, badges, and chat input patterns." />
+          <SectionHeader title="Form Elements" description="Inputs, checkboxes, and badges." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-[800px]">
             <SubSection title="Inputs">
@@ -622,27 +595,14 @@ const DesignSystem = () => {
               </div>
             </SubSection>
 
-            <div>
-              <SubSection title="Chat input">
-                <div className="flex items-end gap-2 bg-card rounded-2xl border border-border p-3">
-                  <div className="flex-1">
-                    <p className="text-[14px] font-light text-muted-foreground">Ask a follow up...</p>
-                  </div>
-                  <button className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center shrink-0">
-                    <ArrowRight className="w-4 h-4 text-background" />
-                  </button>
-                </div>
-              </SubSection>
-
-              <SubSection title="Badges">
-                <div className="flex gap-2 flex-wrap">
-                  <Badge>Default</Badge>
-                  <Badge variant="secondary">Secondary</Badge>
-                  <Badge variant="outline">Outline</Badge>
-                  <Badge variant="destructive">Destructive</Badge>
-                </div>
-              </SubSection>
-            </div>
+            <SubSection title="Badges">
+              <div className="flex gap-2 flex-wrap">
+                <Badge>Default</Badge>
+                <Badge variant="secondary">Secondary</Badge>
+                <Badge variant="outline">Outline</Badge>
+                <Badge variant="destructive">Destructive</Badge>
+              </div>
+            </SubSection>
           </div>
         </section>
 
