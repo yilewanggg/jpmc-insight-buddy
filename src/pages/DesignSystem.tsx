@@ -30,6 +30,7 @@ const sections = [
   { id: "spacing", label: "Spacing & Radius", icon: Square },
   { id: "buttons", label: "Buttons", icon: MousePointer },
   { id: "cards", label: "Cards", icon: Layout },
+  { id: "illustrations", label: "Illustrations", icon: Image },
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
   { id: "sidebar", label: "Sidebar", icon: Layout },
