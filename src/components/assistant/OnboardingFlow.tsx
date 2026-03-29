@@ -199,6 +199,7 @@ const steps: CarouselStep[] = [
     heading: "You're off to a great start!",
     description:
       "I can't wait to get to know you more as we work together. You can always **manage your preferences** later.",
+    isFinal: true,
   },
 ];
 
