@@ -551,7 +551,7 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="Avatar & logo">
+          <SubSection title="Avatar">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
               <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                 <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
@@ -560,15 +560,6 @@ const DesignSystem = () => {
                 <div className="text-center">
                   <p className="text-[13px] font-normal text-foreground">JPMC Logo</p>
                   <p className="text-[11px] font-light text-muted-foreground">AI avatar, 40×40</p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
-                <Avatar className="w-14 h-14 rounded-full">
-                  <AvatarFallback className="rounded-full bg-[#E9E0D3] text-muted-foreground text-lg font-medium">TS</AvatarFallback>
-                </Avatar>
-                <div className="text-center">
-                  <p className="text-[13px] font-normal text-foreground">User Avatar</p>
-                  <p className="text-[11px] font-light text-muted-foreground">Initials fallback</p>
                 </div>
               </div>
             </div>
