@@ -358,19 +358,19 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Selected</p>
                     <div className="flex items-center gap-3">
-                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background transition-colors text-[14px] leading-[20px]" style={{ letterSpacing: '0.16px' }}>
+                      <button className="w-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px]" style={{ backgroundColor: '#E9E0D3', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Yes, book this seat
                       </button>
-                      <p className="text-[12px] font-light text-muted-foreground">Selected: bg-foreground, text-background</p>
+                      <p className="text-[12px] font-light text-muted-foreground">Selected: bg Travertine (#E9E0D3), becomes user bubble</p>
                     </div>
                   </div>
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Unselected (after selection)</p>
                     <div className="flex items-center gap-3">
-                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-50 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="w-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-40 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Show me more options
                       </button>
-                      <p className="text-[12px] font-light text-muted-foreground">Unselected: opacity 50%</p>
+                      <p className="text-[12px] font-light text-muted-foreground">Unselected: opacity 40%, non-interactive</p>
                     </div>
                   </div>
                 </div>
