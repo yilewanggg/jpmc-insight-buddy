@@ -182,10 +182,16 @@ const steps: CarouselStep[] = [
       "That means finding the best flights, hotels, and transportation — even helping with expenses afterward. Can I handle travel bookings on your behalf?",
   },
   {
-    iconSvg: megaphoneIcon,
-    heading: "I can make suggestions to\noptimize the way you work.",
+    iconSvg: confirmationIcon,
+    heading: "I can create tasks for you.",
     description:
-      "I'll learn how you work and what's important to you so I can help you focus on the right things. Do you want me to make these suggestions for you?",
+      "I'll help turn things into clear next steps so nothing gets missed. Do you want me to start creating tasks for you?",
+  },
+  {
+    iconSvg: megaphoneIcon,
+    heading: "I can nudge you to support\nyour team.",
+    description:
+      "I'll remind you to give feedback to your peers or complete trainings at the right time. Do you want me to send these nudges?",
   },
   {
     iconSvg: celebrationIcon,
