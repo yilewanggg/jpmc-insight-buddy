@@ -947,19 +947,21 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
 }
 
 function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
-  const line1 = "Got it! Based off you booking in the past, here're some seats you might like:";
+  const line1 = "Got it! Based off your bookings in the past, here are some seats you might like.";
   const typed1 = useTypewriter(line1, 15, 100);
+  const line2 = "Would you like to book one of these seats now?";
+  const typed2 = useTypewriter(line2, 15, typed1.done ? 150 : 99999);
   const [cardVisible, setCardVisible] = useState(false);
   const [chipsVisible, setChipsVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typed1.done && !cardVisible) {
+    if (typed2.done && !cardVisible) {
       const t = setTimeout(() => setCardVisible(true), 300);
       return () => clearTimeout(t);
     }
-  }, [typed1.done, cardVisible]);
+  }, [typed2.done, cardVisible]);
 
   useEffect(() => {
     if (cardVisible && !chipsVisible) {
@@ -976,8 +978,20 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
   }, [chipsVisible, thumbsVisible]);
 
   const seats = [
-    { id: "04AAC065", floor: "Floor 04", building: "4 Metrotech", tag: "Favourite", tagColor: "bg-[#A8332B26] text-[#A8332B]" },
-    { id: "04AAC072", floor: "Floor 04", building: "4 Metrotech", tag: "Near team", tagColor: "bg-[#B3D6FD4d] text-[#294770]" },
+    {
+      id: "04AAC065", floor: "Floor 04", building: "4 Metrotech",
+      tags: [
+        { label: "Frequently booked", color: "text-[#1C5917]", bg: "rgba(79, 140, 64, 0.2)" },
+        { label: "Near team", color: "text-[#294770]", bg: "rgba(179, 214, 253, 0.3)" },
+      ]
+    },
+    {
+      id: "04AAC072", floor: "Floor 04", building: "4 Metrotech",
+      tags: [
+        { label: "Frequently booked", color: "text-[#1C5917]", bg: "rgba(79, 140, 64, 0.2)" },
+        { label: "Near team", color: "text-[#294770]", bg: "rgba(179, 214, 253, 0.3)" },
+      ]
+    },
   ];
 
   return (
@@ -989,8 +1003,13 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
         style={{ maxWidth: '616px' }}
       >
         <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mb-4">
-          <TypedText text={typed1.displayed} />
+          <TypedText text={typed1.displayed} showCursor={!typed1.done} />
         </p>
+        {typed1.done && (
+          <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mb-4">
+            <TypedText text={typed2.displayed} showCursor={!typed2.done} />
+          </p>
+        )}
       </motion.div>
       <AnimatePresence>
         {cardVisible && (
@@ -1003,7 +1022,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
         >
           <div className="rounded-xl border border-border bg-card overflow-hidden">
             {/* Card header */}
-            <div className="flex items-start justify-between p-6 pb-0">
+            <div className="flex items-start justify-between pt-4 px-6 pb-0">
               <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats suggested for you</span>
               <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
@@ -1012,14 +1031,20 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
             {/* Seats */}
             {seats.map((seat, i) => (
               <div key={seat.id}>
-                  <div className={cn("flex items-center px-6 py-3 gap-4", i === seats.length - 1 && "pb-6")}>
+                <div className={cn("flex items-center pl-6 pr-6 py-3 gap-4", i === seats.length - 1 && "pb-6")}>
                   <img src={seatIcon} alt="Seat" className="w-10 h-10 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span className="text-[16px] leading-[24px] font-normal text-foreground">Seat {seat.id}</span>
-                      <span className={cn("text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold", seat.tagColor)}>
-                        {seat.tag}
-                      </span>
+                      {seat.tags.map((tag) => (
+                        <span
+                          key={tag.label}
+                          className={cn("text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold", tag.color)}
+                          style={{ backgroundColor: tag.bg }}
+                        >
+                          {tag.label}
+                        </span>
+                      ))}
                     </div>
                     <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>
                       {seat.building} | {seat.floor}
