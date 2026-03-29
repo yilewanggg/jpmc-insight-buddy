@@ -552,35 +552,90 @@ const DesignSystem = () => {
 
         {/* ── SIDEBAR ── */}
         <section id="sidebar" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Sidebar" description="Navigation sidebar tokens and states." />
+          <SectionHeader title="Sidebar" description="Icon rail navigation with expandable panels." />
 
-          <div className="flex gap-10 items-start">
-            <div className="w-[72px] bg-sidebar rounded-2xl p-3 flex flex-col items-center gap-4 shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-sidebar-accent flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-sidebar-foreground" />
-              </div>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
-                <Star className="w-5 h-5 text-sidebar-foreground" />
-              </div>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
-                <MessageSquare className="w-5 h-5 text-sidebar-foreground" />
+          <div className="flex gap-12 items-start">
+            {/* Full nav bar specimen */}
+            <div className="flex flex-col items-center w-16 py-4 shrink-0 bg-background rounded-2xl border border-border" style={{ height: '420px' }}>
+              <nav className="flex flex-col gap-1.5 flex-1 mt-2">
+                {[
+                  { icon: MessageSquare, label: "Chats", active: true },
+                  { icon: Bell, label: "Activity center", badge: true },
+                  { icon: Calendar, label: "Calendar" },
+                  { icon: SlidersHorizontal, label: "Preferences" },
+                ].map((tab, i) => (
+                  <div key={i} className="relative group">
+                    <div
+                      className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${
+                        tab.active
+                          ? "bg-[#DDD5C8] shadow-sm text-foreground"
+                          : "bg-[#E9E0D3] text-foreground"
+                      }`}
+                    >
+                      <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                      {tab.badge && (
+                        <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
+                      )}
+                    </div>
+                    {/* Tooltip */}
+                    <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-foreground text-background text-[11px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      {tab.label}
+                    </div>
+                  </div>
+                ))}
+              </nav>
+
+              {/* Profile avatar */}
+              <div className="mt-auto flex flex-col items-center">
+                <Avatar className="w-10 h-10 rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
+                </Avatar>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-12 gap-y-3">
-              {[
-                { token: "--sidebar-background", value: "#000000", label: "Background" },
-                { token: "--sidebar-foreground", value: "Warm gray", label: "Foreground" },
-                { token: "--sidebar-accent", value: "12% white", label: "Active state" },
-                { token: "--sidebar-border", value: "18% white", label: "Border" },
-                { token: "--sidebar-ring", value: "Bronze", label: "Ring / focus" },
-                { token: "--sidebar-muted", value: "50% white", label: "Muted text" },
-              ].map(t => (
-                <div key={t.token}>
-                  <p className="text-[13px] leading-[18px] font-normal text-foreground">{t.label}</p>
-                  <p className="text-[11px] font-mono font-light text-muted-foreground">{t.value} · var({t.token})</p>
+            {/* Specs */}
+            <div className="flex-1 space-y-8">
+              <SubSection title="Nav bar specs">
+                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                  {[
+                    { prop: "Rail width", value: "64px (w-16)" },
+                    { prop: "Icon button", value: "44×44px (w-11 h-11), rounded-lg" },
+                    { prop: "Icon size", value: "18×18px, strokeWidth 1.5" },
+                    { prop: "Button gap", value: "6px (gap-1.5)" },
+                    { prop: "Idle bg", value: "#E9E0D3" },
+                    { prop: "Active bg", value: "#DDD5C8 + shadow-sm" },
+                    { prop: "Hover bg", value: "#D4C9B8" },
+                    { prop: "Badge", value: "12×12px circle, bg-destructive, top-right offset" },
+                    { prop: "Profile avatar", value: "40×40px, rounded-lg, bg-[#E9E0D3]" },
+                    { prop: "Padding", value: "py-4 (16px top/bottom)" },
+                  ].map(a => (
+                    <div key={a.prop} className="flex items-baseline gap-3">
+                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
+                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </SubSection>
+
+              <SubSection title="Expanded panel">
+                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                  {[
+                    { prop: "Panel width", value: "452px" },
+                    { prop: "Border left", value: "1px solid rgba(16,16,16,0.1)" },
+                    { prop: "Background", value: "bg-card (hsl(var(--card)))" },
+                    { prop: "Header padding", value: "24px (p-6)" },
+                    { prop: "Title", value: "Tiempos Headline, 24/34, font-light, -0.03em" },
+                    { prop: "Close btn", value: "32×32px, X icon 20×20" },
+                    { prop: "Overlay", value: "rgba(233,224,211,0.75)" },
+                    { prop: "Animation", value: "width 0→452px, 200ms, framer-motion" },
+                  ].map(a => (
+                    <div key={a.prop} className="flex items-baseline gap-3">
+                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
+                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </SubSection>
             </div>
           </div>
         </section>
