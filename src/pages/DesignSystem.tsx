@@ -421,14 +421,6 @@ const DesignSystem = () => {
                     </button>
                   </div>
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Icon: 40×40 illustration</span>
-                  <span>Title: 16/24, tracking 0.16px</span>
-                  <span>Subtitle: 14/20, #666663</span>
-                  <span>Action: pill button with linkout</span>
-                  <span>Padding: 24px (p-6)</span>
-                  <span>Bg: bg-card, rounded-2xl, shadow-sm</span>
-                </div>
               </div>
             </SubSection>
 
