@@ -413,39 +413,138 @@ const DesignSystem = () => {
 
         {/* ── CHAT PATTERNS ── */}
         <section id="chat" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Chat Patterns" description="Message bubbles, alignment, and conversation flow." />
+          <SectionHeader title="Chat Patterns" description="Message bubbles, input field, alignment, and conversation flow." />
 
-          <div className="bg-secondary rounded-2xl border border-border p-8 max-w-[560px]">
-            <div className="space-y-5">
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User message</p>
-                <div className="flex justify-end">
-                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light">Black bg, white text, 20px radius, 4px bottom-right</p>
+          <div className="space-y-12">
+            {/* Conversation specimen */}
+            <SubSection title="Conversation flow">
+              <div className="bg-background rounded-2xl border border-border p-8 max-w-[620px]">
+                <div className="space-y-8">
+                  {/* AI Response */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">AI response</p>
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                        <img src={jpmcLogo} alt="JPMC" className="w-10 h-10" />
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <p className="text-[16px] leading-[24px] font-light text-foreground mb-1">
+                          Good morning, Taylor. Here are a few things that need your attention.
+                        </p>
+                        <p className="text-[16px] leading-[24px] font-light text-foreground">
+                          You have a <strong className="font-semibold">Data Security Training</strong> due today.
+                        </p>
+                        {/* Thumbs */}
+                        <div className="flex items-center gap-3 mt-4" style={{ color: '#202020' }}>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Logo: 40×40 rounded-full</span>
+                      <span>Body: 16/24 font-light</span>
+                      <span>Bold: font-semibold</span>
+                      <span>Gap logo→text: 14px</span>
+                      <span>No bubble background</span>
+                      <span>Typewriter animation</span>
+                    </div>
+                  </div>
+
+                  {/* User bubble */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">User message</p>
+                    <div className="flex justify-end">
+                      <div className="relative" style={{ maxWidth: '492px' }}>
+                        <div className="inline-flex items-center" style={{ backgroundColor: '#E9E0D3', borderRadius: '16px', padding: '12px 24px' }}>
+                          <p className="text-[15px] leading-[22.5px] text-foreground" style={{ letterSpacing: '-0.3%' }}>Remind me later</p>
+                        </div>
+                        <svg className="absolute bottom-0 right-[16px]" width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ transform: 'translateY(10px)' }}>
+                          <path d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z" fill="#E9E0D3" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground text-right">
+                      <span>Bg: #E9E0D3 (Travertine dark)</span>
+                      <span>Radius: 16px</span>
+                      <span>Padding: 12px 24px</span>
+                      <span>Max-width: 492px</span>
+                      <span>Text: 15/22.5, -0.3% tracking</span>
+                      <span>Tail: SVG triangle bottom-right</span>
+                    </div>
+                  </div>
+
+                  {/* Choice chips */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Choice chips</p>
+                    <div className="flex items-center gap-3 ml-[52px]">
+                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        Remind me later
+                      </button>
+                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        Book time to do it later
+                      </button>
+                    </div>
+                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Border: 1px solid #7D7A7A</span>
+                      <span>Radius: full (pill)</span>
+                      <span>Padding: 10px 20px</span>
+                      <span>Text: 14/20, 0.16px tracking</span>
+                    </div>
                   </div>
                 </div>
               </div>
+            </SubSection>
 
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">Assistant response</p>
-                <div className="flex justify-start">
-                  <div className="max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light text-foreground">
-                      No bubble bg, left-aligned. Typewriter animation with markdown rendering.
-                    </p>
+            {/* Chat input */}
+            <SubSection title="Chat input field">
+              <div className="max-w-[620px]">
+                <div className="bg-background rounded-2xl border border-border p-6">
+                  <div className="relative flex items-center bg-card rounded-xl px-4 py-2.5">
+                    <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
+                      <Plus className="w-5 h-5" strokeWidth={1.5} />
+                    </button>
+                    <span className="flex-1 text-[15px] leading-[22.5px] text-[#666663]" style={{ letterSpacing: '-0.3%' }}>How can I help?</span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
+                        <span className="text-[14px] text-muted-foreground">/</span>
+                      </div>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-muted/50">
+                        <ArrowRight className="w-5 h-5 text-muted-foreground/50" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Active state */}
+                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5 ring-2 ring-ring">
+                    <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
+                      <Plus className="w-5 h-5" strokeWidth={1.5} />
+                    </button>
+                    <span className="flex-1 text-[15px] leading-[22.5px] text-foreground" style={{ letterSpacing: '-0.3%' }}>Show my pending tasks</span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
+                        <span className="text-[14px] text-muted-foreground">/</span>
+                      </div>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-foreground">
+                        <ArrowRight className="w-5 h-5 text-background" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User follow-up</p>
-                <div className="flex justify-end">
-                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light">Spring animation: stiffness 100, damping 15</p>
-                  </div>
+                <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Container: bg-card, rounded-xl</span>
+                  <span>Padding: 10px 16px</span>
+                  <span>Text: 15/22.5, -0.3% tracking</span>
+                  <span>Placeholder: #666663</span>
+                  <span>Send btn idle: bg-muted/50</span>
+                  <span>Send btn active: bg-foreground</span>
+                  <span>Plus icon: 20×20, #666663</span>
+                  <span>Slash cmd: 1px border, rounded-lg</span>
+                  <span>Width: matches 740px content area</span>
+                  <span>Offset: 64px left (sidebar width)</span>
                 </div>
               </div>
-            </div>
+            </SubSection>
           </div>
         </section>
 
