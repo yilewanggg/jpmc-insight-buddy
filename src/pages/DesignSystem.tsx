@@ -504,10 +504,10 @@ const DesignSystem = () => {
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Choice chips</p>
                     <div className="flex items-center gap-3 ml-[52px]">
                       <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        Remind me later
+                        <ArrowRight className="w-3.5 h-3.5" /> Remind me later
                       </button>
                       <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        Book time to do it later
+                        <ArrowRight className="w-3.5 h-3.5" /> Book time to do it later
                       </button>
                     </div>
                     <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
