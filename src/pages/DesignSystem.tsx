@@ -33,7 +33,7 @@ const sections = [
   { id: "illustrations", label: "Illustrations", icon: Image },
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
-  { id: "sidebar", label: "Sidebar", icon: Layout },
+  { id: "sidebar", label: "Nav Bar", icon: Layout },
   { id: "animation", label: "Animation", icon: Zap },
 ];
 
