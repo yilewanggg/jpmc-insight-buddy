@@ -34,6 +34,7 @@ const sections = [
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
   { id: "sidebar", label: "Nav Bar", icon: Layout },
+  { id: "panels", label: "Side Panels", icon: Layout },
   { id: "animation", label: "Animation", icon: Zap },
 ];
 
