@@ -522,7 +522,7 @@ const DesignSystem = () => {
             </div>
           </SubSection>
 
-          <SubSection title="UI icons (Lucide)">
+          <SubSection title="UI icons">
             <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
               System icons from Lucide React. 18×18 in nav, 16×16 in actions, 14×14 in chips. strokeWidth 1.5.
             </p>
