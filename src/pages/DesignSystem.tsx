@@ -716,16 +716,18 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Choice chips</p>
                     <div className="flex items-center gap-3 ml-[52px]">
-                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        <ArrowRight className="w-3.5 h-3.5" /> Remind me later
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Remind me later
                       </button>
-                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        <ArrowRight className="w-3.5 h-3.5" /> Book time to do it later
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Book time to do it later
                       </button>
                     </div>
                     <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Icon: CornerDownRight, 16×16</span>
                       <span>Border: 1px solid #7D7A7A</span>
                       <span>Radius: full (pill)</span>
+                      <span>Hover: bg #DDD5C8</span>
                       <span>Padding: 10px 20px</span>
                       <span>Text: 14/20, 0.16px tracking</span>
                     </div>
