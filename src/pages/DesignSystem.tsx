@@ -637,14 +637,6 @@ const DesignSystem = () => {
                         <CornerDownRight className="w-4 h-4" /> Book time to do it later
                       </button>
                     </div>
-                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                      <span>Icon: CornerDownRight, 16×16</span>
-                      <span>Border: 1px solid #7D7A7A</span>
-                      <span>Radius: full (pill)</span>
-                      <span>Hover: bg #DDD5C8</span>
-                      <span>Padding: 10px 20px</span>
-                      <span>Text: 14/20, 0.16px tracking</span>
-                    </div>
                   </div>
                 </div>
               </div>
