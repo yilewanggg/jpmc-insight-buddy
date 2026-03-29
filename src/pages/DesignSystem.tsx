@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image } from "lucide-react";
+import { ArrowRight, CornerDownRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 import graduationIcon from "@/assets/graduation-icon.png";
@@ -270,34 +270,58 @@ const DesignSystem = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <SubSection title="Action buttons">
               <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-                Used in task cards, notification cards, and calendar panels.
+                Used in task cards, notification cards, and calendar panels. Buttons hug their content (no fixed width).
               </p>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div>
-                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action</p>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Default</p>
                   <div className="flex items-center gap-5">
-                    <button className="flex items-center justify-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
-                    <p className="text-[12px] font-light text-muted-foreground">Black bg, white text, rounded-full, h-40, with linkout icon</p>
                   </div>
                 </div>
                 <div>
-                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action</p>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Hover</p>
                   <div className="flex items-center gap-5">
-                    <button className="flex items-center justify-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors">
+                      Do it now <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                    <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8, text foreground</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action · Default</p>
+                  <div className="flex items-center gap-5">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                       Schedule for later
                     </button>
-                    <p className="text-[12px] font-light text-muted-foreground">Transparent bg, 1px #7D7A7A border, rounded-full</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action · Hover</p>
+                  <div className="flex items-center gap-5">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                      Schedule for later
+                    </button>
+                    <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Linkout button (used in cards)</p>
+                  <div className="flex items-center gap-5">
+                    <button className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                      Go to My Learning <ExternalLink className="w-[13px] h-[13px]" />
+                    </button>
                   </div>
                 </div>
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Combined (as used in tasks)</p>
                   <div className="flex items-center gap-3">
-                    <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
-                    <button className="flex items-center justify-center gap-2 w-[142px] h-[40px] rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                       Schedule for later
                     </button>
                   </div>
@@ -308,24 +332,46 @@ const DesignSystem = () => {
             <div>
               <SubSection title="Choice chips">
                 <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-                  Used after AI responses for quick actions. Include leading arrow icon.
+                  Used after AI responses for quick actions. Include leading CornerDownRight icon (16px).
                 </p>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                      <ArrowRight className="w-3.5 h-3.5" /> Yes, book this seat
-                    </button>
-                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                      <ArrowRight className="w-3.5 h-3.5" /> Show me more options
-                    </button>
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Default</p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Yes, book this seat
+                      </button>
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Show me more options
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background transition-colors text-[14px] leading-[20px]" style={{ letterSpacing: '0.16px' }}>
-                      <ArrowRight className="w-3.5 h-3.5" /> Selected chip
-                    </button>
-                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-50 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                      <ArrowRight className="w-3.5 h-3.5" /> Disabled
-                    </button>
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Hover</p>
+                    <div className="flex items-center gap-3">
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Yes, book this seat
+                      </button>
+                      <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Selected</p>
+                    <div className="flex items-center gap-3">
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background transition-colors text-[14px] leading-[20px]" style={{ letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Yes, book this seat
+                      </button>
+                      <p className="text-[12px] font-light text-muted-foreground">Selected: bg-foreground, text-background</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Unselected (after selection)</p>
+                    <div className="flex items-center gap-3">
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-50 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Show me more options
+                      </button>
+                      <p className="text-[12px] font-light text-muted-foreground">Unselected: opacity 50%</p>
+                    </div>
                   </div>
                 </div>
               </SubSection>
@@ -670,16 +716,18 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Choice chips</p>
                     <div className="flex items-center gap-3 ml-[52px]">
-                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        <ArrowRight className="w-3.5 h-3.5" /> Remind me later
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Remind me later
                       </button>
-                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
-                        <ArrowRight className="w-3.5 h-3.5" /> Book time to do it later
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        <CornerDownRight className="w-4 h-4" /> Book time to do it later
                       </button>
                     </div>
                     <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Icon: CornerDownRight, 16×16</span>
                       <span>Border: 1px solid #7D7A7A</span>
                       <span>Radius: full (pill)</span>
+                      <span>Hover: bg #DDD5C8</span>
                       <span>Padding: 10px 20px</span>
                       <span>Text: 14/20, 0.16px tracking</span>
                     </div>
