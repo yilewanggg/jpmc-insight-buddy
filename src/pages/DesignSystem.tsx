@@ -33,7 +33,7 @@ const sections = [
   { id: "illustrations", label: "Illustrations", icon: Image },
   { id: "forms", label: "Form Elements", icon: Square },
   { id: "chat", label: "Chat Patterns", icon: MessageSquare },
-  { id: "sidebar", label: "Sidebar", icon: Layout },
+  { id: "sidebar", label: "Nav Bar", icon: Layout },
   { id: "animation", label: "Animation", icon: Zap },
 ];
 
@@ -421,14 +421,6 @@ const DesignSystem = () => {
                     </button>
                   </div>
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Icon: 40×40 illustration</span>
-                  <span>Title: 16/24, tracking 0.16px</span>
-                  <span>Subtitle: 14/20, #666663</span>
-                  <span>Action: pill button with linkout</span>
-                  <span>Padding: 24px (p-6)</span>
-                  <span>Bg: bg-card, rounded-2xl, shadow-sm</span>
-                </div>
               </div>
             </SubSection>
 
@@ -468,16 +460,6 @@ const DesignSystem = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Icon: 40×40 seat illustration</span>
-                  <span>Header: 16/24, font-semibold</span>
-                  <span>Tags: 12/16, rounded, font-semibold</span>
-                  <span>Radio: 20×20, 2px border</span>
-                  <span>Green tag: #1C5917 / rgba(79,140,64,0.2)</span>
-                  <span>Blue tag: #294770 / rgba(179,214,253,0.3)</span>
-                  <span>Right padding to radio: 24px</span>
-                  <span>Linkout: top-right, 16px/24px offset</span>
-                </div>
               </div>
             </SubSection>
 
@@ -493,12 +475,6 @@ const DesignSystem = () => {
                     "Hi! Since we've been working closely on VP hiring over the last month, I'd love to get feedback from you."
                   </p>
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Avatar: 56×56, rounded-full</span>
-                  <span>Title: Tiempos 24/32, font-light</span>
-                  <span>Body: 16/24, #666663</span>
-                  <span>Padding: 24px, centered layout</span>
-                </div>
               </div>
             </SubSection>
 
@@ -506,12 +482,6 @@ const DesignSystem = () => {
             <SubSection title="Calendar card (Daily Digest)">
               <div className="max-w-[420px]">
                 <img src={calendarCardImage} alt="Calendar card" className="w-full rounded-2xl shadow-sm" />
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Full-bleed image card</span>
-                  <span>Rounded-2xl, shadow-sm</span>
-                  <span>Hover state: expanded view</span>
-                  <span>Interactive calendar widget</span>
-                </div>
               </div>
             </SubSection>
           </div>
@@ -639,14 +609,6 @@ const DesignSystem = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                      <span>Logo: 40×40 rounded-full</span>
-                      <span>Body: 16/24 font-light</span>
-                      <span>Bold: font-semibold</span>
-                      <span>Gap logo→text: 14px</span>
-                      <span>No bubble background</span>
-                      <span>Typewriter animation</span>
-                    </div>
                   </div>
 
                   {/* User bubble */}
@@ -662,14 +624,6 @@ const DesignSystem = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground text-right">
-                      <span>Bg: #E9E0D3 (Travertine dark)</span>
-                      <span>Radius: 16px</span>
-                      <span>Padding: 12px 24px</span>
-                      <span>Max-width: 492px</span>
-                      <span>Text: 15/22.5, -0.3% tracking</span>
-                      <span>Tail: SVG triangle bottom-right</span>
-                    </div>
                   </div>
 
                   {/* Choice chips */}
@@ -682,14 +636,6 @@ const DesignSystem = () => {
                       <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Book time to do it later
                       </button>
-                    </div>
-                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                      <span>Icon: CornerDownRight, 16×16</span>
-                      <span>Border: 1px solid #7D7A7A</span>
-                      <span>Radius: full (pill)</span>
-                      <span>Hover: bg #DDD5C8</span>
-                      <span>Padding: 10px 20px</span>
-                      <span>Text: 14/20, 0.16px tracking</span>
                     </div>
                   </div>
                 </div>
@@ -730,18 +676,6 @@ const DesignSystem = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Container: bg-card, rounded-xl</span>
-                  <span>Padding: 10px 16px</span>
-                  <span>Text: 15/22.5, -0.3% tracking</span>
-                  <span>Placeholder: #666663</span>
-                  <span>Send btn idle: bg-muted/50</span>
-                  <span>Send btn active: bg-foreground</span>
-                  <span>Plus icon: 20×20, #666663</span>
-                  <span>Slash cmd: 1px border, rounded-lg</span>
-                  <span>Width: matches 740px content area</span>
-                  <span>Offset: 64px left (sidebar width)</span>
-                </div>
               </div>
             </SubSection>
           </div>
@@ -749,94 +683,131 @@ const DesignSystem = () => {
 
         <Separator className="mb-20" />
 
-        {/* ── SIDEBAR ── */}
+        {/* ── NAV BAR ── */}
         <section id="sidebar" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Sidebar" description="Icon rail navigation with expandable panels." />
+          <SectionHeader title="Nav Bar" description="Icon rail navigation with different icon states." />
 
-          <div className="flex gap-12 items-start">
-            {/* Full nav bar specimen */}
-            <div className="flex flex-col items-center w-16 py-4 shrink-0 bg-background rounded-2xl border border-border" style={{ height: '420px' }}>
-              <nav className="flex flex-col gap-1.5 flex-1 mt-2">
-                {[
-                  { icon: MessageSquare, label: "Chats", active: true },
-                  { icon: Bell, label: "Activity center", badge: true },
-                  { icon: Calendar, label: "Calendar" },
-                  { icon: SlidersHorizontal, label: "Preferences" },
-                ].map((tab, i) => (
-                  <div key={i} className="relative group">
-                    <div
-                      className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${
-                        tab.active
-                          ? "bg-[#DDD5C8] shadow-sm text-foreground"
-                          : "bg-[#E9E0D3] text-foreground"
-                      }`}
-                    >
-                      <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
-                      {tab.badge && (
-                        <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
-                      )}
-                    </div>
-                    {/* Tooltip */}
-                    <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-foreground text-background text-[11px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                      {tab.label}
-                    </div>
-                  </div>
-                ))}
-              </nav>
-
-              {/* Profile avatar */}
-              <div className="mt-auto flex flex-col items-center">
+          <SubSection title="Icon states">
+            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+              Each nav icon button is 44×44px with an 18×18 icon. The rail is 64px wide.
+            </p>
+            <div className="flex gap-12 items-start flex-wrap">
+              {/* Idle */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
+                  <MessageSquare className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                </div>
+                <p className="text-[11px] font-mono text-muted-foreground">Idle</p>
+              </div>
+              {/* Hover */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center text-foreground" style={{ backgroundColor: '#D4C9B8' }}>
+                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                </div>
+                <p className="text-[11px] font-mono text-muted-foreground">Hover</p>
+              </div>
+              {/* Active */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-[#DDD5C8] shadow-sm text-foreground">
+                  <Calendar className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                </div>
+                <p className="text-[11px] font-mono text-muted-foreground">Active</p>
+              </div>
+              {/* With badge */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative w-11 h-11 rounded-lg flex items-center justify-center bg-[#E9E0D3] text-foreground">
+                  <Bell className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                  <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
+                </div>
+                <p className="text-[11px] font-mono text-muted-foreground">With badge</p>
+              </div>
+              {/* Profile */}
+              <div className="flex flex-col items-center gap-3">
                 <Avatar className="w-10 h-10 rounded-lg">
                   <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
                 </Avatar>
+                <p className="text-[11px] font-mono text-muted-foreground">Profile</p>
               </div>
             </div>
+          </SubSection>
 
-            {/* Specs */}
-            <div className="flex-1 space-y-8">
-              <SubSection title="Nav bar specs">
-                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
-                  {[
-                    { prop: "Rail width", value: "64px (w-16)" },
-                    { prop: "Icon button", value: "44×44px (w-11 h-11), rounded-lg" },
-                    { prop: "Icon size", value: "18×18px, strokeWidth 1.5" },
-                    { prop: "Button gap", value: "6px (gap-1.5)" },
-                    { prop: "Idle bg", value: "#E9E0D3" },
-                    { prop: "Active bg", value: "#DDD5C8 + shadow-sm" },
-                    { prop: "Hover bg", value: "#D4C9B8" },
-                    { prop: "Badge", value: "12×12px circle, bg-destructive, top-right offset" },
-                    { prop: "Profile avatar", value: "40×40px, rounded-lg, bg-[#E9E0D3]" },
-                    { prop: "Padding", value: "py-4 (16px top/bottom)" },
-                  ].map(a => (
-                    <div key={a.prop} className="flex items-baseline gap-3">
-                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
-                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
-                    </div>
-                  ))}
+          <SubSection title="Full nav bar">
+            <div className="flex gap-12 items-start">
+              {/* Default state */}
+              <div>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Default (Chat active)</p>
+                <div className="flex flex-col items-center w-16 py-4 bg-background rounded-2xl border border-border" style={{ height: '340px' }}>
+                  <nav className="flex flex-col gap-1.5 flex-1 mt-2">
+                    {[
+                      { icon: MessageSquare, active: true },
+                      { icon: Bell, badge: true },
+                      { icon: Calendar },
+                      { icon: SlidersHorizontal },
+                    ].map((tab, i) => (
+                      <div key={i} className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${tab.active ? "bg-[#DDD5C8] shadow-sm" : "bg-[#E9E0D3]"} text-foreground`}>
+                        <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                        {tab.badge && <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />}
+                      </div>
+                    ))}
+                  </nav>
+                  <div className="mt-auto">
+                    <Avatar className="w-10 h-10 rounded-lg">
+                      <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
+                    </Avatar>
+                  </div>
                 </div>
-              </SubSection>
+              </div>
 
-              <SubSection title="Expanded panel">
-                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
-                  {[
-                    { prop: "Panel width", value: "452px" },
-                    { prop: "Border left", value: "1px solid rgba(16,16,16,0.1)" },
-                    { prop: "Background", value: "bg-card (hsl(var(--card)))" },
-                    { prop: "Header padding", value: "24px (p-6)" },
-                    { prop: "Title", value: "Tiempos Headline, 24/34, font-light, -0.03em" },
-                    { prop: "Close btn", value: "32×32px, X icon 20×20" },
-                    { prop: "Overlay", value: "rgba(233,224,211,0.75)" },
-                    { prop: "Animation", value: "width 0→452px, 200ms, framer-motion" },
-                  ].map(a => (
-                    <div key={a.prop} className="flex items-baseline gap-3">
-                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
-                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
-                    </div>
-                  ))}
+              {/* Activity active */}
+              <div>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Activity center active</p>
+                <div className="flex flex-col items-center w-16 py-4 bg-background rounded-2xl border border-border" style={{ height: '340px' }}>
+                  <nav className="flex flex-col gap-1.5 flex-1 mt-2">
+                    {[
+                      { icon: MessageSquare },
+                      { icon: Bell, active: true },
+                      { icon: Calendar },
+                      { icon: SlidersHorizontal },
+                    ].map((tab, i) => (
+                      <div key={i} className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${tab.active ? "bg-[#DDD5C8] shadow-sm" : "bg-[#E9E0D3]"} text-foreground`}>
+                        <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                      </div>
+                    ))}
+                  </nav>
+                  <div className="mt-auto">
+                    <Avatar className="w-10 h-10 rounded-lg">
+                      <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
+                    </Avatar>
+                  </div>
                 </div>
-              </SubSection>
+              </div>
+
+              {/* Calendar active */}
+              <div>
+                <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Calendar active</p>
+                <div className="flex flex-col items-center w-16 py-4 bg-background rounded-2xl border border-border" style={{ height: '340px' }}>
+                  <nav className="flex flex-col gap-1.5 flex-1 mt-2">
+                    {[
+                      { icon: MessageSquare },
+                      { icon: Bell, badge: true },
+                      { icon: Calendar, active: true },
+                      { icon: SlidersHorizontal },
+                    ].map((tab, i) => (
+                      <div key={i} className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${tab.active ? "bg-[#DDD5C8] shadow-sm" : "bg-[#E9E0D3]"} text-foreground`}>
+                        <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                        {tab.badge && <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />}
+                      </div>
+                    ))}
+                  </nav>
+                  <div className="mt-auto">
+                    <Avatar className="w-10 h-10 rounded-lg">
+                      <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
+                    </Avatar>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </SubSection>
         </section>
 
         <Separator className="mb-20" />
