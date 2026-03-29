@@ -322,20 +322,41 @@ function CarouselStepView({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <button
-              onClick={() => onAction("now")}
-              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
-              style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
-            >
-              Yes, please
-            </button>
-            <button
-              onClick={() => onAction("later")}
-              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors hover:bg-[#DDD5C8]"
-              style={{ border: "1px solid #7D7A7A", color: "#202020" }}
-            >
-              Schedule for later
-            </button>
+            {step.isFinal ? (
+              <>
+                <button
+                  onClick={() => onAction("now")}
+                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
+                  style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+                >
+                  Go to my dashboard
+                </button>
+                <button
+                  onClick={() => onAction("later")}
+                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors hover:bg-[#DDD5C8]"
+                  style={{ border: "1px solid #7D7A7A", color: "#202020" }}
+                >
+                  Review my preferences
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => onAction("now")}
+                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors"
+                  style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
+                >
+                  Yes, please
+                </button>
+                <button
+                  onClick={() => onAction("later")}
+                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-medium transition-colors hover:bg-[#DDD5C8]"
+                  style={{ border: "1px solid #7D7A7A", color: "#202020" }}
+                >
+                  Schedule for later
+                </button>
+              </>
+            )}
           </motion.div>
         )}
       </div>
