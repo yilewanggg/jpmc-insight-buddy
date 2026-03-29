@@ -624,14 +624,6 @@ const DesignSystem = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground text-right">
-                      <span>Bg: #E9E0D3 (Travertine dark)</span>
-                      <span>Radius: 16px</span>
-                      <span>Padding: 12px 24px</span>
-                      <span>Max-width: 492px</span>
-                      <span>Text: 15/22.5, -0.3% tracking</span>
-                      <span>Tail: SVG triangle bottom-right</span>
-                    </div>
                   </div>
 
                   {/* Choice chips */}
