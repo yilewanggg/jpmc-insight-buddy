@@ -84,7 +84,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
   const features = [
     { icon: calendarIcon, text: "Helping you manage your time by optimizing your calendar" },
     { icon: handIcon, text: "Seamlessly connecting you to people throughout the organization" },
-    { icon: confirmationIcon, text: "Keeping you on top of your essential tasks such as gathering feedback and training" },
+    { icon: confirmationIcon, text: "Keeping you on top of your essential tasks such as gathering feedback" },
   ];
 
   const outroText = "Over time I will get to know you and get smarter about how to work for you. For now, let's start by setting up a few things I can help you with.";
