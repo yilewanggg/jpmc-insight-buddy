@@ -459,10 +459,10 @@ function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) 
     return () => { clearTimeout(logoTimer); clearTimeout(doneTimer); };
   }, []);
 
-  const heading = useTypewriter("Hey Kyra", 45, thinkingDone ? 100 : 99999);
-  const para1Text = "I noticed that several of your meetings next week are at **4 Metrotech in Brooklyn, NY** and you usually **sit near your teammates**.";
+  const heading = useTypewriter("Hey Taylor", 45, thinkingDone ? 100 : 99999);
+  const para1Text = "I noticed that several of your meetings next week are at **4 Metrotech in Brooklyn, NY.**";
   const para1 = useTypewriter(para1Text, 15, heading.done ? 150 : 99999);
-  const para2Text = "Would you like me to help book a seat in that office **next week (March 16 - March 20)**?";
+  const para2Text = "Would you like me to **book a seat** in **Brooklyn** for **March 16 - March 20**?";
   const para2 = useTypewriter(para2Text, 15, para1.done ? 150 : 99999);
 
   useEffect(() => {
