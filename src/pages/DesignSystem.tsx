@@ -575,7 +575,7 @@ const DesignSystem = () => {
 
         {/* ── FORM ELEMENTS ── */}
         <section id="forms" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Form Elements" description="Inputs, checkboxes, badges, and chat input patterns." />
+          <SectionHeader title="Form Elements" description="Inputs, checkboxes, and badges." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-[800px]">
             <SubSection title="Inputs">
@@ -595,27 +595,14 @@ const DesignSystem = () => {
               </div>
             </SubSection>
 
-            <div>
-              <SubSection title="Chat input">
-                <div className="flex items-end gap-2 bg-card rounded-2xl border border-border p-3">
-                  <div className="flex-1">
-                    <p className="text-[14px] font-light text-muted-foreground">Ask a follow up...</p>
-                  </div>
-                  <button className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center shrink-0">
-                    <ArrowRight className="w-4 h-4 text-background" />
-                  </button>
-                </div>
-              </SubSection>
-
-              <SubSection title="Badges">
-                <div className="flex gap-2 flex-wrap">
-                  <Badge>Default</Badge>
-                  <Badge variant="secondary">Secondary</Badge>
-                  <Badge variant="outline">Outline</Badge>
-                  <Badge variant="destructive">Destructive</Badge>
-                </div>
-              </SubSection>
-            </div>
+            <SubSection title="Badges">
+              <div className="flex gap-2 flex-wrap">
+                <Badge>Default</Badge>
+                <Badge variant="secondary">Secondary</Badge>
+                <Badge variant="outline">Outline</Badge>
+                <Badge variant="destructive">Destructive</Badge>
+              </div>
+            </SubSection>
           </div>
         </section>
 
