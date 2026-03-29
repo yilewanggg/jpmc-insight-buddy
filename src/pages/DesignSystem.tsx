@@ -497,17 +497,14 @@ const DesignSystem = () => {
           <SubSection title="Illustrations">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {[
-                { src: calendarCarouselIcon, name: "Meetings", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: planeIcon, name: "Travel", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: confirmationIcon, name: "Tasks", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: megaphoneIcon, name: "Nudges", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: celebrationIcon, name: "Celebration", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: handIcon, name: "Wave", desc: "Onboarding · 64×64", size: "w-16 h-16" },
-                { src: graduationIcon, name: "Graduation", desc: "Cards · 40×40", size: "w-10 h-10" },
-                { src: seatIcon, name: "Seat", desc: "Cards · 40×40", size: "w-10 h-10" },
-                { src: calendarIcon, name: "Calendar", desc: "Cards · 40×40", size: "w-10 h-10" },
-                { src: trainingIcon, name: "Training", desc: "Cards · 40×40", size: "w-10 h-10" },
-                { src: confirmationCheckIcon, name: "Check", desc: "Cards · 40×40", size: "w-10 h-10" },
+                { src: calendarCarouselIcon, name: "Meetings" },
+                { src: planeIcon, name: "Travel" },
+                { src: confirmationIcon, name: "Tasks" },
+                { src: megaphoneIcon, name: "Nudges" },
+                { src: celebrationIcon, name: "Celebration" },
+                { src: handIcon, name: "Collaboration" },
+                { src: graduationIcon, name: "Training" },
+                { src: seatIcon, name: "Seat" },
               ].map((icon) => (
                 <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
                   <div className="w-16 h-16 flex items-center justify-center">
