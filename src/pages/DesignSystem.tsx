@@ -482,12 +482,6 @@ const DesignSystem = () => {
             <SubSection title="Calendar card (Daily Digest)">
               <div className="max-w-[420px]">
                 <img src={calendarCardImage} alt="Calendar card" className="w-full rounded-2xl shadow-sm" />
-                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
-                  <span>Full-bleed image card</span>
-                  <span>Rounded-2xl, shadow-sm</span>
-                  <span>Hover state: expanded view</span>
-                  <span>Interactive calendar widget</span>
-                </div>
               </div>
             </SubSection>
           </div>
