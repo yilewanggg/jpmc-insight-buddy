@@ -355,49 +355,201 @@ const DesignSystem = () => {
 
         {/* ── CARDS ── */}
         <section id="cards" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Cards" description="Card patterns used across the application." />
+          <SectionHeader title="Cards" description="Card patterns used across daily digest, book a seat, and feedback flows." />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Default</p>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-[18px] font-light">Card title</CardTitle>
-                  <CardDescription>Supporting description text</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[14px] leading-[20px] font-light">White bg, subtle border, shadow-sm. Standard content card.</p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div>
-              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Chat response</p>
-              <div className="bg-card rounded-2xl p-5 border border-border">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
-                    <Star className="w-5 h-5 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-[14px] leading-[20px] font-normal text-foreground">Response card</p>
-                    <p className="text-[13px] leading-[18px] font-light text-muted-foreground">With icon and metadata</p>
+          <div className="space-y-12">
+            {/* Training card */}
+            <SubSection title="Training card (Daily Digest)">
+              <div className="max-w-[620px]">
+                <div className="bg-card rounded-2xl shadow-sm overflow-hidden">
+                  <div className="flex items-start gap-4 p-6">
+                    <div className="w-10 h-10 shrink-0 flex items-center justify-center">
+                      <img src={graduationIcon} alt="Training" className="w-10 h-10" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Data Security and Compliance</p>
+                      <p className="text-[14px] leading-[20px] tracking-[0.16px] mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
+                    </div>
+                    <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                      Go to My Learning <ExternalLink className="w-[13px] h-[13px]" />
+                    </button>
                   </div>
                 </div>
-                <p className="text-[14px] leading-[20px] font-light">Used for AI responses, confirmations, and interactive elements.</p>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Confirmation</p>
-              <div className="bg-card rounded-2xl p-6 border border-border flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-accent/30 flex items-center justify-center">
-                  <Check className="w-6 h-6 text-foreground" />
+                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Icon: 40×40 illustration</span>
+                  <span>Title: 16/24, tracking 0.16px</span>
+                  <span>Subtitle: 14/20, #666663</span>
+                  <span>Action: pill button with linkout</span>
+                  <span>Padding: 24px (p-6)</span>
+                  <span>Bg: bg-card, rounded-2xl, shadow-sm</span>
                 </div>
-                <p className="text-[24px] leading-[24px] font-light tracking-[-0.3px] font-headline">Confirmed</p>
-                <p className="text-[14px] leading-[20px] font-light text-muted-foreground">Centered layout with icon and title.</p>
               </div>
-            </div>
+            </SubSection>
+
+            {/* Seat suggestion card */}
+            <SubSection title="Seat suggestion card (Book a Seat)">
+              <div className="max-w-[620px]">
+                <div className="rounded-xl border border-border bg-card overflow-hidden">
+                  <div className="flex items-start justify-between pt-4 px-6 pb-0">
+                    <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats suggested for you</span>
+                    <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                      Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
+                    </button>
+                  </div>
+                  {[
+                    { id: "04AAC065", building: "4 Metrotech Center", floor: "Floor 3", selected: true },
+                    { id: "04AAC072", building: "4 Metrotech Center", floor: "Floor 5", selected: false },
+                  ].map((seat, i) => (
+                    <div key={seat.id} className={`flex items-center pl-6 pr-6 py-3 gap-4 ${i === 1 ? "pb-6" : ""}`}>
+                      <img src={seatIcon} alt="Seat" className="w-10 h-10 shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <span className="text-[16px] leading-[24px] font-normal text-foreground">Seat {seat.id}</span>
+                          <span className="text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold text-[#1C5917]" style={{ backgroundColor: 'rgba(79, 140, 64, 0.2)' }}>
+                            Frequently booked
+                          </span>
+                          <span className="text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold text-[#294770]" style={{ backgroundColor: 'rgba(179, 214, 253, 0.3)' }}>
+                            Near team
+                          </span>
+                        </div>
+                        <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>
+                          {seat.building} | {seat.floor}
+                        </p>
+                      </div>
+                      <div className={`w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center ${seat.selected ? "border-foreground" : "border-[#7D7A7A]"}`}>
+                        {seat.selected && <div className="w-2.5 h-2.5 rounded-full bg-foreground" />}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Icon: 40×40 seat illustration</span>
+                  <span>Header: 16/24, font-semibold</span>
+                  <span>Tags: 12/16, rounded, font-semibold</span>
+                  <span>Radio: 20×20, 2px border</span>
+                  <span>Green tag: #1C5917 / rgba(79,140,64,0.2)</span>
+                  <span>Blue tag: #294770 / rgba(179,214,253,0.3)</span>
+                  <span>Right padding to radio: 24px</span>
+                  <span>Linkout: top-right, 16px/24px offset</span>
+                </div>
+              </div>
+            </SubSection>
+
+            {/* Feedback card */}
+            <SubSection title="Feedback request card">
+              <div className="max-w-[420px]">
+                <div className="bg-card rounded-2xl shadow-sm p-6 flex flex-col items-center text-center">
+                  <img src={carmenProfile} alt="Carmen Vargas" className="w-14 h-14 rounded-full object-cover mb-3" />
+                  <p className="font-headline font-light mb-2" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '0px' }}>
+                    Provide feedback for Carmen
+                  </p>
+                  <p className="font-light text-center" style={{ fontSize: '16px', lineHeight: '24px', color: '#666663' }}>
+                    "Hi! Since we've been working closely on VP hiring over the last month, I'd love to get feedback from you."
+                  </p>
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Avatar: 56×56, rounded-full</span>
+                  <span>Title: Tiempos 24/32, font-light</span>
+                  <span>Body: 16/24, #666663</span>
+                  <span>Padding: 24px, centered layout</span>
+                </div>
+              </div>
+            </SubSection>
+
+            {/* Calendar card */}
+            <SubSection title="Calendar card (Daily Digest)">
+              <div className="max-w-[420px]">
+                <img src={calendarCardImage} alt="Calendar card" className="w-full rounded-2xl shadow-sm" />
+                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Full-bleed image card</span>
+                  <span>Rounded-2xl, shadow-sm</span>
+                  <span>Hover state: expanded view</span>
+                  <span>Interactive calendar widget</span>
+                </div>
+              </div>
+            </SubSection>
           </div>
+        </section>
+
+        <Separator className="mb-20" />
+
+        {/* ── ILLUSTRATIONS ── */}
+        <section id="illustrations" className="mb-20 scroll-mt-12">
+          <SectionHeader title="Illustration Library" description="Icons and illustrations used across onboarding, daily digest, and book a seat flows." />
+
+          <SubSection title="Onboarding icons (64×64)">
+            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+              Used in the onboarding carousel steps. Each icon is 64×64px.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+              {[
+                { src: calendarCarouselIcon, name: "Meetings", desc: "Onboarding step 1" },
+                { src: planeIcon, name: "Travel", desc: "Onboarding step 2" },
+                { src: confirmationIcon, name: "Tasks", desc: "Onboarding step 3" },
+                { src: megaphoneIcon, name: "Nudges", desc: "Onboarding step 4" },
+                { src: celebrationIcon, name: "Celebration", desc: "Final step" },
+                { src: handIcon, name: "Wave", desc: "Intro screen" },
+              ].map((icon) => (
+                <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    <img src={icon.src} alt={icon.name} className="w-16 h-16" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
+                    <p className="text-[11px] font-light text-muted-foreground">{icon.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SubSection>
+
+          <SubSection title="Card illustrations (40×40)">
+            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+              Used inline within response cards. Each icon is 40×40px.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+              {[
+                { src: graduationIcon, name: "Graduation", desc: "Training cards" },
+                { src: seatIcon, name: "Seat", desc: "Book a Seat cards" },
+                { src: calendarIcon, name: "Calendar", desc: "Daily digest" },
+                { src: trainingIcon, name: "Training", desc: "Learning tasks" },
+                { src: confirmationCheckIcon, name: "Check", desc: "Confirmation states" },
+                { src: feedbackCardIcon, name: "Feedback", desc: "Feedback flow" },
+              ].map((icon) => (
+                <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <img src={icon.src} alt={icon.name} className="w-10 h-10" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
+                    <p className="text-[11px] font-light text-muted-foreground">{icon.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SubSection>
+
+          <SubSection title="Profile images">
+            <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+              Profile photos used in feedback and conversation flows.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+              {[
+                { src: carmenProfile, name: "Carmen Vargas", desc: "Feedback card, 56×56" },
+                { src: jpmcLogo, name: "JPMC Logo", desc: "AI avatar, 40×40" },
+              ].map((img) => (
+                <div key={img.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
+                  <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
+                    <img src={img.src} alt={img.name} className="w-14 h-14 object-cover" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[13px] font-normal text-foreground">{img.name}</p>
+                    <p className="text-[11px] font-light text-muted-foreground">{img.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SubSection>
         </section>
 
         <Separator className="mb-20" />
