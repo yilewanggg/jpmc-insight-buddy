@@ -6,7 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 
 const sections = [
   { id: "colors", label: "Colors", icon: Palette },
@@ -411,39 +413,138 @@ const DesignSystem = () => {
 
         {/* ── CHAT PATTERNS ── */}
         <section id="chat" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Chat Patterns" description="Message bubbles, alignment, and conversation flow." />
+          <SectionHeader title="Chat Patterns" description="Message bubbles, input field, alignment, and conversation flow." />
 
-          <div className="bg-secondary rounded-2xl border border-border p-8 max-w-[560px]">
-            <div className="space-y-5">
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User message</p>
-                <div className="flex justify-end">
-                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light">Black bg, white text, 20px radius, 4px bottom-right</p>
+          <div className="space-y-12">
+            {/* Conversation specimen */}
+            <SubSection title="Conversation flow">
+              <div className="bg-background rounded-2xl border border-border p-8 max-w-[620px]">
+                <div className="space-y-8">
+                  {/* AI Response */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">AI response</p>
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                        <img src={jpmcLogo} alt="JPMC" className="w-10 h-10" />
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <p className="text-[16px] leading-[24px] font-light text-foreground mb-1">
+                          Good morning, Taylor. Here are a few things that need your attention.
+                        </p>
+                        <p className="text-[16px] leading-[24px] font-light text-foreground">
+                          You have a <strong className="font-semibold">Data Security Training</strong> due today.
+                        </p>
+                        {/* Thumbs */}
+                        <div className="flex items-center gap-3 mt-4" style={{ color: '#202020' }}>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Logo: 40×40 rounded-full</span>
+                      <span>Body: 16/24 font-light</span>
+                      <span>Bold: font-semibold</span>
+                      <span>Gap logo→text: 14px</span>
+                      <span>No bubble background</span>
+                      <span>Typewriter animation</span>
+                    </div>
+                  </div>
+
+                  {/* User bubble */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">User message</p>
+                    <div className="flex justify-end">
+                      <div className="relative" style={{ maxWidth: '492px' }}>
+                        <div className="inline-flex items-center" style={{ backgroundColor: '#E9E0D3', borderRadius: '16px', padding: '12px 24px' }}>
+                          <p className="text-[15px] leading-[22.5px] text-foreground" style={{ letterSpacing: '-0.3%' }}>Remind me later</p>
+                        </div>
+                        <svg className="absolute bottom-0 right-[16px]" width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ transform: 'translateY(10px)' }}>
+                          <path d="M16 15.5858C16 16.4767 14.923 16.9229 14.293 16.2929L-0.293 1.70711C-0.923 1.07714 -0.477 0 0.414 0L15 0C15.552 0 16 0.44772 16 1L16 15.5858Z" fill="#E9E0D3" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground text-right">
+                      <span>Bg: #E9E0D3 (Travertine dark)</span>
+                      <span>Radius: 16px</span>
+                      <span>Padding: 12px 24px</span>
+                      <span>Max-width: 492px</span>
+                      <span>Text: 15/22.5, -0.3% tracking</span>
+                      <span>Tail: SVG triangle bottom-right</span>
+                    </div>
+                  </div>
+
+                  {/* Choice chips */}
+                  <div>
+                    <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Choice chips</p>
+                    <div className="flex items-center gap-3 ml-[52px]">
+                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        Remind me later
+                      </button>
+                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                        Book time to do it later
+                      </button>
+                    </div>
+                    <div className="mt-3 ml-[52px] grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                      <span>Border: 1px solid #7D7A7A</span>
+                      <span>Radius: full (pill)</span>
+                      <span>Padding: 10px 20px</span>
+                      <span>Text: 14/20, 0.16px tracking</span>
+                    </div>
                   </div>
                 </div>
               </div>
+            </SubSection>
 
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">Assistant response</p>
-                <div className="flex justify-start">
-                  <div className="max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light text-foreground">
-                      No bubble bg, left-aligned. Typewriter animation with markdown rendering.
-                    </p>
+            {/* Chat input */}
+            <SubSection title="Chat input field">
+              <div className="max-w-[620px]">
+                <div className="bg-background rounded-2xl border border-border p-6">
+                  <div className="relative flex items-center bg-card rounded-xl px-4 py-2.5">
+                    <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
+                      <Plus className="w-5 h-5" strokeWidth={1.5} />
+                    </button>
+                    <span className="flex-1 text-[15px] leading-[22.5px] text-[#666663]" style={{ letterSpacing: '-0.3%' }}>How can I help?</span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
+                        <span className="text-[14px] text-muted-foreground">/</span>
+                      </div>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-muted/50">
+                        <ArrowRight className="w-5 h-5 text-muted-foreground/50" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Active state */}
+                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5 ring-2 ring-ring">
+                    <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
+                      <Plus className="w-5 h-5" strokeWidth={1.5} />
+                    </button>
+                    <span className="flex-1 text-[15px] leading-[22.5px] text-foreground" style={{ letterSpacing: '-0.3%' }}>Show my pending tasks</span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
+                        <span className="text-[14px] text-muted-foreground">/</span>
+                      </div>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-foreground">
+                        <ArrowRight className="w-5 h-5 text-background" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div>
-                <p className="text-[11px] font-mono font-light text-muted-foreground mb-2">User follow-up</p>
-                <div className="flex justify-end">
-                  <div className="bg-foreground text-background rounded-[20px] rounded-br-[4px] px-5 py-3 max-w-[85%]">
-                    <p className="text-[14px] leading-[20px] font-light">Spring animation: stiffness 100, damping 15</p>
-                  </div>
+                <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-mono text-muted-foreground">
+                  <span>Container: bg-card, rounded-xl</span>
+                  <span>Padding: 10px 16px</span>
+                  <span>Text: 15/22.5, -0.3% tracking</span>
+                  <span>Placeholder: #666663</span>
+                  <span>Send btn idle: bg-muted/50</span>
+                  <span>Send btn active: bg-foreground</span>
+                  <span>Plus icon: 20×20, #666663</span>
+                  <span>Slash cmd: 1px border, rounded-lg</span>
+                  <span>Width: matches 740px content area</span>
+                  <span>Offset: 64px left (sidebar width)</span>
                 </div>
               </div>
-            </div>
+            </SubSection>
           </div>
         </section>
 
@@ -451,35 +552,90 @@ const DesignSystem = () => {
 
         {/* ── SIDEBAR ── */}
         <section id="sidebar" className="mb-20 scroll-mt-12">
-          <SectionHeader title="Sidebar" description="Navigation sidebar tokens and states." />
+          <SectionHeader title="Sidebar" description="Icon rail navigation with expandable panels." />
 
-          <div className="flex gap-10 items-start">
-            <div className="w-[72px] bg-sidebar rounded-2xl p-3 flex flex-col items-center gap-4 shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-sidebar-accent flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-sidebar-foreground" />
-              </div>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
-                <Star className="w-5 h-5 text-sidebar-foreground" />
-              </div>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sidebar-accent transition-colors">
-                <MessageSquare className="w-5 h-5 text-sidebar-foreground" />
+          <div className="flex gap-12 items-start">
+            {/* Full nav bar specimen */}
+            <div className="flex flex-col items-center w-16 py-4 shrink-0 bg-background rounded-2xl border border-border" style={{ height: '420px' }}>
+              <nav className="flex flex-col gap-1.5 flex-1 mt-2">
+                {[
+                  { icon: MessageSquare, label: "Chats", active: true },
+                  { icon: Bell, label: "Activity center", badge: true },
+                  { icon: Calendar, label: "Calendar" },
+                  { icon: SlidersHorizontal, label: "Preferences" },
+                ].map((tab, i) => (
+                  <div key={i} className="relative group">
+                    <div
+                      className={`relative w-11 h-11 rounded-lg flex items-center justify-center transition-all ${
+                        tab.active
+                          ? "bg-[#DDD5C8] shadow-sm text-foreground"
+                          : "bg-[#E9E0D3] text-foreground"
+                      }`}
+                    >
+                      <tab.icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                      {tab.badge && (
+                        <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-destructive" />
+                      )}
+                    </div>
+                    {/* Tooltip */}
+                    <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-foreground text-background text-[11px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      {tab.label}
+                    </div>
+                  </div>
+                ))}
+              </nav>
+
+              {/* Profile avatar */}
+              <div className="mt-auto flex flex-col items-center">
+                <Avatar className="w-10 h-10 rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-[#E9E0D3] text-muted-foreground text-sm font-medium">JD</AvatarFallback>
+                </Avatar>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-12 gap-y-3">
-              {[
-                { token: "--sidebar-background", value: "#000000", label: "Background" },
-                { token: "--sidebar-foreground", value: "Warm gray", label: "Foreground" },
-                { token: "--sidebar-accent", value: "12% white", label: "Active state" },
-                { token: "--sidebar-border", value: "18% white", label: "Border" },
-                { token: "--sidebar-ring", value: "Bronze", label: "Ring / focus" },
-                { token: "--sidebar-muted", value: "50% white", label: "Muted text" },
-              ].map(t => (
-                <div key={t.token}>
-                  <p className="text-[13px] leading-[18px] font-normal text-foreground">{t.label}</p>
-                  <p className="text-[11px] font-mono font-light text-muted-foreground">{t.value} · var({t.token})</p>
+            {/* Specs */}
+            <div className="flex-1 space-y-8">
+              <SubSection title="Nav bar specs">
+                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                  {[
+                    { prop: "Rail width", value: "64px (w-16)" },
+                    { prop: "Icon button", value: "44×44px (w-11 h-11), rounded-lg" },
+                    { prop: "Icon size", value: "18×18px, strokeWidth 1.5" },
+                    { prop: "Button gap", value: "6px (gap-1.5)" },
+                    { prop: "Idle bg", value: "#E9E0D3" },
+                    { prop: "Active bg", value: "#DDD5C8 + shadow-sm" },
+                    { prop: "Hover bg", value: "#D4C9B8" },
+                    { prop: "Badge", value: "12×12px circle, bg-destructive, top-right offset" },
+                    { prop: "Profile avatar", value: "40×40px, rounded-lg, bg-[#E9E0D3]" },
+                    { prop: "Padding", value: "py-4 (16px top/bottom)" },
+                  ].map(a => (
+                    <div key={a.prop} className="flex items-baseline gap-3">
+                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
+                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </SubSection>
+
+              <SubSection title="Expanded panel">
+                <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                  {[
+                    { prop: "Panel width", value: "452px" },
+                    { prop: "Border left", value: "1px solid rgba(16,16,16,0.1)" },
+                    { prop: "Background", value: "bg-card (hsl(var(--card)))" },
+                    { prop: "Header padding", value: "24px (p-6)" },
+                    { prop: "Title", value: "Tiempos Headline, 24/34, font-light, -0.03em" },
+                    { prop: "Close btn", value: "32×32px, X icon 20×20" },
+                    { prop: "Overlay", value: "rgba(233,224,211,0.75)" },
+                    { prop: "Animation", value: "width 0→452px, 200ms, framer-motion" },
+                  ].map(a => (
+                    <div key={a.prop} className="flex items-baseline gap-3">
+                      <span className="text-[12px] font-mono font-normal text-foreground w-28 shrink-0">{a.prop}</span>
+                      <span className="text-[12px] font-mono font-light text-muted-foreground">{a.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </SubSection>
             </div>
           </div>
         </section>
