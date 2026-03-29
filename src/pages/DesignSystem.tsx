@@ -253,58 +253,82 @@ const DesignSystem = () => {
           <SectionHeader title="Buttons" description="Button variants, sizes, states, and chat-specific action elements." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <SubSection title="Variants">
-              <div className="space-y-4">
-                {[
-                  { el: <Button>Primary</Button>, desc: "Bronze bg, white text" },
-                  { el: <Button variant="secondary">Secondary</Button>, desc: "Travertine bg" },
-                  { el: <Button variant="outline">Outline</Button>, desc: "Border only" },
-                  { el: <Button variant="ghost">Ghost</Button>, desc: "No bg, hover accent" },
-                  { el: <Button variant="destructive">Destructive</Button>, desc: "Error red" },
-                  { el: <Button variant="link">Link button</Button>, desc: "Underline on hover" },
-                ].map((b, i) => (
-                  <div key={i} className="flex items-center gap-5">
-                    <div className="w-[140px]">{b.el}</div>
-                    <p className="text-[12px] font-light text-muted-foreground">{b.desc}</p>
+            <SubSection title="Action buttons">
+              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+                Used in task cards, notification cards, and calendar panels.
+              </p>
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action</p>
+                  <div className="flex items-center gap-5">
+                    <button className="flex items-center justify-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
+                      Do it now <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                    <p className="text-[12px] font-light text-muted-foreground">Black bg, white text, rounded-full, h-40, with linkout icon</p>
                   </div>
-                ))}
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action</p>
+                  <div className="flex items-center gap-5">
+                    <button className="flex items-center justify-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                      Schedule for later
+                    </button>
+                    <p className="text-[12px] font-light text-muted-foreground">Transparent bg, 1px #7D7A7A border, rounded-full</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Combined (as used in tasks)</p>
+                  <div className="flex items-center gap-3">
+                    <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
+                      Do it now <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                    <button className="flex items-center justify-center gap-2 w-[142px] h-[40px] rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                      Schedule for later
+                    </button>
+                  </div>
+                </div>
               </div>
             </SubSection>
 
             <div>
-              <SubSection title="Sizes">
-                <div className="flex items-center gap-3 mb-6">
-                  <Button size="sm">Small</Button>
-                  <Button size="default">Default</Button>
-                  <Button size="lg">Large</Button>
-                  <Button size="icon"><ArrowRight className="w-4 h-4" /></Button>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button disabled>Disabled</Button>
-                  <p className="text-[12px] font-light text-muted-foreground">50% opacity, no pointer events</p>
+              <SubSection title="Choice chips">
+                <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
+                  Used after AI responses for quick actions. Include leading arrow icon.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <ArrowRight className="w-3.5 h-3.5" /> Yes, book this seat
+                    </button>
+                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <ArrowRight className="w-3.5 h-3.5" /> Show me more options
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background transition-colors text-[14px] leading-[20px]" style={{ letterSpacing: '0.16px' }}>
+                      <ArrowRight className="w-3.5 h-3.5" /> Selected chip
+                    </button>
+                    <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-50 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <ArrowRight className="w-3.5 h-3.5" /> Disabled
+                    </button>
+                  </div>
                 </div>
               </SubSection>
 
-              <SubSection title="Chat-specific">
-                <div className="space-y-4">
+              <SubSection title="Component buttons">
+                <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-4">
+                  Shadcn/UI variants for forms and dialogs.
+                </p>
+                <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <button className="px-4 py-2 rounded-full text-[14px] font-light border transition-colors bg-foreground text-background">
-                      Active chip
-                    </button>
-                    <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-foreground hover:bg-muted/50 transition-colors">
-                      Choice chip
-                    </button>
-                    <button className="px-4 py-2 rounded-full text-[14px] font-light border border-border text-muted-foreground opacity-50 cursor-not-allowed">
-                      Disabled
-                    </button>
+                    <Button>Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="outline">Outline</Button>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
-                      <Sparkles className="w-3 h-3" /> Refine
-                    </button>
-                    <button className="px-4 py-2 rounded-lg text-[13px] font-light bg-foreground text-background">
-                      Save
-                    </button>
+                  <div className="flex items-center gap-3">
+                    <Button variant="ghost">Ghost</Button>
+                    <Button variant="destructive">Destructive</Button>
+                    <Button variant="link">Link</Button>
                   </div>
                 </div>
               </SubSection>
