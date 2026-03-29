@@ -166,6 +166,7 @@ interface CarouselStep {
   heading: string;
   description: string;
   options?: { icon: string; label: string }[];
+  isFinal?: boolean;
 }
 
 const steps: CarouselStep[] = [
