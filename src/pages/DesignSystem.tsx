@@ -583,7 +583,7 @@ const DesignSystem = () => {
           <SectionHeader title="Asset Library" description="Illustrations, icons, avatars, and logos used across the assistant experience." />
 
           <SubSection title="Illustrations">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
               {[
                 { src: calendarCarouselIcon, name: "Meetings" },
                 { src: planeIcon, name: "Travel" },
@@ -594,13 +594,9 @@ const DesignSystem = () => {
                 { src: graduationIcon, name: "Training" },
                 { src: seatIcon, name: "Seat" },
               ].map((icon) => (
-                <div key={icon.name} className="flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 flex items-center justify-center">
-                    <img src={icon.src} alt={icon.name} className="w-16 h-16" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[13px] font-normal text-foreground">{icon.name}</p>
-                  </div>
+                <div key={icon.name} className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-card">
+                  <img src={icon.src} alt={icon.name} className="w-10 h-10" />
+                  <p className="text-[11px] font-light text-muted-foreground">{icon.name}</p>
                 </div>
               ))}
             </div>
