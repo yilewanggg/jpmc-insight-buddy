@@ -557,7 +557,7 @@ const DesignSystem = () => {
               <div className="max-w-[575px]">
                 <div className="bg-card rounded-2xl shadow-sm p-6">
                   <div className="flex items-start gap-4">
-                    <img src={carmenProfile} alt="Carmen" className="w-12 h-12 rounded-full object-cover shrink-0 mt-1" />
+                    <img src={carmenProfile} alt="Carmen" className="w-10 h-10 rounded-lg object-cover shrink-0 mt-1" />
                     <div>
                       <p className="font-light" style={{ fontSize: '18px', lineHeight: '28px', color: '#1A1A1A' }}>
                         "Hey everyone, I've been trying to take a more active role in code reviews and onboarding so I'd like to know how I'm doing in terms of technical leadership and mentorship."
