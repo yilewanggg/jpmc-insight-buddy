@@ -103,23 +103,28 @@ const DesignSystem = () => {
     });
   }, []);
 
-  // Auto-advance slideshow
+  // Auto-advance slideshow: scroll to section, wait, then advance
   useEffect(() => {
     if (!slideshowActive) return;
 
-    if (slideshowPhase === "in") {
-      const timer = setTimeout(() => setSlideshowPhase("visible"), 600);
-      return () => clearTimeout(timer);
+    // Scroll to the current section
+    const sectionId = sections[slideshowIndex].id;
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    if (slideshowPhase === "visible") {
-      const timer = setTimeout(() => setSlideshowPhase("out"), 2000);
-      return () => clearTimeout(timer);
-    }
-    if (slideshowPhase === "out") {
-      const timer = setTimeout(() => goToNext(), 600);
-      return () => clearTimeout(timer);
-    }
-  }, [slideshowActive, slideshowPhase, goToNext]);
+
+    // Wait for fade-in (600ms) + visible (2s) + fade-out (600ms) then advance
+    const timer = setTimeout(() => {
+      if (slideshowIndex >= sections.length - 1) {
+        setSlideshowActive(false);
+      } else {
+        setSlideshowIndex(prev => prev + 1);
+      }
+    }, 3200);
+
+    return () => clearTimeout(timer);
+  }, [slideshowActive, slideshowIndex]);
 
   // Sync active section label during slideshow
   useEffect(() => {
