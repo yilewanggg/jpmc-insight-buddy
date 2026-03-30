@@ -75,13 +75,11 @@ const DesignSystem = () => {
   const startSlideshow = useCallback(() => {
     setSlideshowActive(true);
     setSlideshowIndex(0);
-    setSlideshowPhase("in");
   }, []);
 
   const stopSlideshow = useCallback(() => {
     setSlideshowActive(false);
     setSlideshowIndex(0);
-    setSlideshowPhase("in");
   }, []);
 
   const goToNext = useCallback(() => {
@@ -90,16 +88,12 @@ const DesignSystem = () => {
         setSlideshowActive(false);
         return 0;
       }
-      setSlideshowPhase("in");
       return prev + 1;
     });
   }, []);
 
   const goToPrev = useCallback(() => {
-    setSlideshowIndex(prev => {
-      setSlideshowPhase("in");
-      return Math.max(0, prev - 1);
-    });
+    setSlideshowIndex(prev => Math.max(0, prev - 1));
   }, []);
 
   // Auto-advance slideshow: scroll to section, wait, then advance
