@@ -69,8 +69,67 @@ const SubSection = ({ title, children }: { title: string; children: React.ReactN
 
 const DesignSystem = () => {
   const [activeSection, setActiveSection] = useState("colors");
+  const [slideshowActive, setSlideshowActive] = useState(false);
+  const [slideshowIndex, setSlideshowIndex] = useState(0);
+  const [slideshowPhase, setSlideshowPhase] = useState<"in" | "visible" | "out">("in");
+
+  const startSlideshow = useCallback(() => {
+    setSlideshowActive(true);
+    setSlideshowIndex(0);
+    setSlideshowPhase("in");
+  }, []);
+
+  const stopSlideshow = useCallback(() => {
+    setSlideshowActive(false);
+    setSlideshowIndex(0);
+    setSlideshowPhase("in");
+  }, []);
+
+  const goToNext = useCallback(() => {
+    setSlideshowIndex(prev => {
+      if (prev >= sections.length - 1) {
+        setSlideshowActive(false);
+        return 0;
+      }
+      setSlideshowPhase("in");
+      return prev + 1;
+    });
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    setSlideshowIndex(prev => {
+      setSlideshowPhase("in");
+      return Math.max(0, prev - 1);
+    });
+  }, []);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    if (!slideshowActive) return;
+
+    if (slideshowPhase === "in") {
+      const timer = setTimeout(() => setSlideshowPhase("visible"), 600);
+      return () => clearTimeout(timer);
+    }
+    if (slideshowPhase === "visible") {
+      const timer = setTimeout(() => setSlideshowPhase("out"), 2000);
+      return () => clearTimeout(timer);
+    }
+    if (slideshowPhase === "out") {
+      const timer = setTimeout(() => goToNext(), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [slideshowActive, slideshowPhase, goToNext]);
+
+  // Sync active section label during slideshow
+  useEffect(() => {
+    if (slideshowActive) {
+      setActiveSection(sections[slideshowIndex].id);
+    }
+  }, [slideshowActive, slideshowIndex]);
 
   const scrollToSection = (id: string) => {
+    if (slideshowActive) stopSlideshow();
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
