@@ -691,8 +691,8 @@ const DesignSystem = () => {
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
                         <span className="text-[14px] text-muted-foreground">/</span>
                       </div>
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-foreground">
-                        <ArrowRight className="w-5 h-5 text-background" />
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-foreground">
+                        <ArrowRight className="w-4 h-4 text-background" />
                       </div>
                     </div>
                   </div>
