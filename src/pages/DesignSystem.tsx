@@ -559,11 +559,11 @@ const DesignSystem = () => {
                   <div className="flex items-start gap-4">
                     <img src={carmenProfile} alt="Carmen" className="w-10 h-10 rounded-lg object-cover shrink-0 mt-1" />
                     <div>
-                      <p className="font-extralight" style={{ fontSize: '16px', lineHeight: '24px', color: '#1A1A1A' }}>
+                      <p style={{ fontSize: '16px', lineHeight: '24px', color: '#1A1A1A', fontWeight: 200 }}>
                         "Hey everyone, I've been trying to take a more active role in code reviews and onboarding so I'd like to know how I'm doing in terms of technical leadership and mentorship."
                       </p>
-                      <p className="mt-4 font-semibold" style={{ fontSize: '16px', lineHeight: '24px' }}>Carmen</p>
-                      <p className="font-light" style={{ fontSize: '14px', lineHeight: '20px', color: '#666663' }}>Vice president, CIB</p>
+                      <p className="mt-4" style={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>Carmen</p>
+                      <p style={{ fontSize: '14px', lineHeight: '20px', color: '#666663', fontWeight: 200 }}>Vice president, CIB</p>
                     </div>
                   </div>
                 </div>
