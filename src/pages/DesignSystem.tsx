@@ -481,7 +481,7 @@ const DesignSystem = () => {
 
             {/* Calendar card */}
             <SubSection title="Calendar card (Daily Digest)">
-              <div className="max-w-[420px]">
+              <div className="max-w-[620px]">
                 <img src={calendarCardImage} alt="Calendar card" className="w-full rounded-2xl shadow-sm" />
               </div>
             </SubSection>
@@ -676,13 +676,13 @@ const DesignSystem = () => {
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
                         <span className="text-[14px] text-muted-foreground">/</span>
                       </div>
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-muted/50">
-                        <ArrowRight className="w-5 h-5 text-muted-foreground/50" />
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-muted/50">
+                        <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
                       </div>
                     </div>
                   </div>
                   {/* Active state */}
-                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5 ring-2 ring-ring">
+                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5">
                     <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
                       <Plus className="w-5 h-5" strokeWidth={1.5} />
                     </button>
@@ -691,8 +691,8 @@ const DesignSystem = () => {
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
                         <span className="text-[14px] text-muted-foreground">/</span>
                       </div>
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-foreground">
-                        <ArrowRight className="w-5 h-5 text-background" />
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-foreground">
+                        <ArrowRight className="w-4 h-4 text-background" />
                       </div>
                     </div>
                   </div>
@@ -863,48 +863,6 @@ const DesignSystem = () => {
               </div>
             </SubSection>
 
-            <SubSection title="Calendar">
-              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-                Daily schedule view with event cards. Shows meeting times, durations, locations, and attendee avatars. Includes join buttons, copy links, and focus time blocks.
-              </p>
-              <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
-                {[
-                  { time: "9:00 AM", duration: "1h", title: "Triad/UX Design check-in", location: "Zoom ID 95722623042", hasJoin: false },
-                  { time: "9:05 AM", duration: "55m", title: "Design Team Review", location: "Zoom ID 95722623042", hasJoin: true },
-                  { time: "", duration: "3h5m", title: "Available for focus time", location: "", isFocus: true },
-                ].map((event, i) => (
-                  <div key={i} className={`px-6 py-4 ${i < 2 ? "border-b border-border" : ""}`}>
-                    {event.isFocus ? (
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
-                          <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.duration}</p>
-                        </div>
-                        <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
-                          Block time
-                        </button>
-                      </div>
-                    ) : (
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
-                          <span className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>{event.time} · {event.duration}</span>
-                        </div>
-                        <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
-                        <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.location}</p>
-                        {event.hasJoin && (
-                          <div className="flex items-center gap-2 mt-3">
-                            <button className="inline-flex items-center gap-2 h-[36px] px-4 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium">
-                              Join <ExternalLink className="w-3 h-3" />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </SubSection>
 
             <SubSection title="Preferences">
               <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
