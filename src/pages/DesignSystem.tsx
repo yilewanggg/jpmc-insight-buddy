@@ -554,7 +554,7 @@ const DesignSystem = () => {
 
             {/* Feedback card */}
             <SubSection title="Feedback request card">
-              <div className="max-w-[420px]">
+              <div className="max-w-[575px]">
                 <div className="bg-card rounded-2xl shadow-sm p-6">
                   <div className="flex items-start gap-4">
                     <img src={carmenProfile} alt="Carmen" className="w-12 h-12 rounded-full object-cover shrink-0 mt-1" />
