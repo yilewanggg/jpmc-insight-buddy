@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, CornerDownRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image, ChevronDown } from "lucide-react";
+import { ArrowRight, CornerDownRight, Sparkles, Check, Calendar, Star, MessageSquare, Palette, Type, Square, MousePointer, Layout, Zap, Plus, Bell, SlidersHorizontal, ThumbsUp, ThumbsDown, MoreHorizontal, ExternalLink, Image, ChevronDown, Play, Pause, SkipForward, SkipBack } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import jpmcLogo from "@/assets/jpmc-logo-transparent.png";
 import graduationIcon from "@/assets/graduation-icon.png";
@@ -68,11 +69,77 @@ const SubSection = ({ title, children }: { title: string; children: React.ReactN
 
 const DesignSystem = () => {
   const [activeSection, setActiveSection] = useState("colors");
+  const [slideshowActive, setSlideshowActive] = useState(false);
+  const [slideshowIndex, setSlideshowIndex] = useState(0);
+
+  const startSlideshow = useCallback(() => {
+    setSlideshowActive(true);
+    setSlideshowIndex(0);
+  }, []);
+
+  const stopSlideshow = useCallback(() => {
+    setSlideshowActive(false);
+    setSlideshowIndex(0);
+  }, []);
+
+  const goToNext = useCallback(() => {
+    setSlideshowIndex(prev => {
+      if (prev >= sections.length - 1) {
+        setSlideshowActive(false);
+        return 0;
+      }
+      return prev + 1;
+    });
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    setSlideshowIndex(prev => Math.max(0, prev - 1));
+  }, []);
+
+  // Auto-advance slideshow: scroll to section, wait, then advance
+  useEffect(() => {
+    if (!slideshowActive) return;
+
+    // Scroll to the current section
+    const sectionId = sections[slideshowIndex].id;
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Wait for fade-in (600ms) + visible (2s) + fade-out (600ms) then advance
+    const timer = setTimeout(() => {
+      if (slideshowIndex >= sections.length - 1) {
+        setSlideshowActive(false);
+      } else {
+        setSlideshowIndex(prev => prev + 1);
+      }
+    }, 3200);
+
+    return () => clearTimeout(timer);
+  }, [slideshowActive, slideshowIndex]);
+
+  // Sync active section label during slideshow
+  useEffect(() => {
+    if (slideshowActive) {
+      setActiveSection(sections[slideshowIndex].id);
+    }
+  }, [slideshowActive, slideshowIndex]);
 
   const scrollToSection = (id: string) => {
+    if (slideshowActive) stopSlideshow();
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const sectionClass = (id: string) =>
+    `mb-20 scroll-mt-12 transition-all duration-[600ms] ${
+      slideshowActive
+        ? sections[slideshowIndex].id === id
+          ? "opacity-100"
+          : "opacity-5 pointer-events-none"
+        : ""
+    }`;
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -95,6 +162,27 @@ const DesignSystem = () => {
             </button>
           ))}
         </div>
+        <Separator className="my-4" />
+        <div className="flex items-center gap-2">
+          <button
+            onClick={slideshowActive ? stopSlideshow : startSlideshow}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-light transition-colors text-muted-foreground hover:text-foreground hover:bg-card w-full text-left"
+          >
+            {slideshowActive ? <Pause className="w-3.5 h-3.5 shrink-0" /> : <Play className="w-3.5 h-3.5 shrink-0" />}
+            {slideshowActive ? "Stop" : "Present"}
+          </button>
+        </div>
+        {slideshowActive && (
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <button onClick={goToPrev} className="p-1.5 rounded-md hover:bg-card text-muted-foreground hover:text-foreground transition-colors">
+              <SkipBack className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-[11px] text-muted-foreground font-mono">{slideshowIndex + 1}/{sections.length}</span>
+            <button onClick={goToNext} className="p-1.5 rounded-md hover:bg-card text-muted-foreground hover:text-foreground transition-colors">
+              <SkipForward className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
         <div className="mt-auto pt-6">
           <p className="text-[11px] leading-[14px] font-light text-muted-foreground">JPMC Assistant</p>
           <p className="text-[11px] leading-[14px] font-light text-muted-foreground opacity-60">v1.0</p>
@@ -104,7 +192,7 @@ const DesignSystem = () => {
       {/* Main content */}
       <main className="flex-1 max-w-[960px] mx-auto px-8 py-12 lg:px-16">
         {/* Header */}
-        <div className="mb-20">
+        <div className={`mb-20 transition-all duration-[600ms] ${slideshowActive ? "opacity-5 pointer-events-none" : ""}`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
               <Palette className="w-5 h-5 text-background" />
@@ -123,7 +211,7 @@ const DesignSystem = () => {
         </div>
 
         {/* ── COLORS ── */}
-        <section id="colors" className="mb-20 scroll-mt-12">
+        <section id="colors" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Colors" description="Brand palette, semantic tokens, and data visualization colors." />
 
           <SubSection title="Brand palette">
@@ -163,7 +251,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── TYPOGRAPHY ── */}
-        <section id="typography" className="mb-20 scroll-mt-12">
+        <section id="typography" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Typography" description="Type scale, weights, and font families for headings and body text." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -215,7 +303,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── SPACING & RADIUS ── */}
-        <section id="spacing" className="mb-20 scroll-mt-12">
+        <section id="spacing" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Spacing & Radius" description="Consistent spacing scale and border radius tokens." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -265,7 +353,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── BUTTONS ── */}
-        <section id="buttons" className="mb-20 scroll-mt-12">
+        <section id="buttons" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Buttons" description="Button variants, sizes, states, and chat-specific action elements." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -401,7 +489,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── CARDS ── */}
-        <section id="cards" className="mb-20 scroll-mt-12">
+        <section id="cards" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Cards" description="Card patterns used across daily digest, book a seat, and feedback flows." />
 
           <div className="space-y-12">
@@ -491,7 +579,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── ASSET LIBRARY ── */}
-        <section id="illustrations" className="mb-20 scroll-mt-12">
+        <section id="illustrations" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Asset Library" description="Illustrations, icons, avatars, and logos used across the assistant experience." />
 
           <SubSection title="Illustrations">
@@ -565,7 +653,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── FORM ELEMENTS ── */}
-        <section id="forms" className="mb-20 scroll-mt-12">
+        <section id="forms" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Form Elements" description="Inputs, checkboxes, and badges." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-[800px]">
@@ -600,7 +688,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── CHAT PATTERNS ── */}
-        <section id="chat" className="mb-20 scroll-mt-12">
+        <section id="chat" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Chat Patterns" description="Message bubbles, input field, alignment, and conversation flow." />
 
           <div className="space-y-12">
@@ -705,7 +793,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── NAV BAR ── */}
-        <section id="sidebar" className="mb-20 scroll-mt-12">
+        <section id="sidebar" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Nav Bar" description="Icon rail navigation with different icon states." />
 
           <SubSection title="Icon states">
@@ -827,7 +915,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── SIDE PANELS ── */}
-        <section id="panels" className="mb-20 scroll-mt-12">
+        <section id="panels" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Side Panels" description="Expandable panels accessible from the nav bar for tasks, notifications, calendar, and preferences." />
 
           <div className="space-y-12">
@@ -890,7 +978,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── ANIMATION ── */}
-        <section id="animation" className="mb-20 scroll-mt-12">
+        <section id="animation" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
           <SectionHeader title="Animation" description="Motion specifications for transitions and micro-interactions." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -930,7 +1018,7 @@ const DesignSystem = () => {
         </section>
 
         {/* Footer */}
-        <div className="mt-24 pb-8 pt-8 border-t border-border text-center">
+        <div className={`mt-24 pb-8 pt-8 border-t border-border text-center transition-all duration-[600ms] ${slideshowActive ? "opacity-5" : ""}`}>
           <p className="text-[12px] leading-[16px] font-light text-muted-foreground">
             JPMC Assistant Design System · Tailwind CSS · shadcn/ui · Framer Motion
           </p>
