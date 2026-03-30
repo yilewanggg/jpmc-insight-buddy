@@ -863,48 +863,6 @@ const DesignSystem = () => {
               </div>
             </SubSection>
 
-            <SubSection title="Calendar">
-              <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
-                Daily schedule view with event cards. Shows meeting times, durations, locations, and attendee avatars. Includes join buttons, copy links, and focus time blocks.
-              </p>
-              <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
-                {[
-                  { time: "9:00 AM", duration: "1h", title: "Triad/UX Design check-in", location: "Zoom ID 95722623042", hasJoin: false },
-                  { time: "9:05 AM", duration: "55m", title: "Design Team Review", location: "Zoom ID 95722623042", hasJoin: true },
-                  { time: "", duration: "3h5m", title: "Available for focus time", location: "", isFocus: true },
-                ].map((event, i) => (
-                  <div key={i} className={`px-6 py-4 ${i < 2 ? "border-b border-border" : ""}`}>
-                    {event.isFocus ? (
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
-                          <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.duration}</p>
-                        </div>
-                        <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
-                          Block time
-                        </button>
-                      </div>
-                    ) : (
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#A6D7F0' }} />
-                          <span className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>{event.time} · {event.duration}</span>
-                        </div>
-                        <p className="text-[14px] leading-[20px] tracking-[0.16px] text-foreground font-medium">{event.title}</p>
-                        <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] mt-0.5" style={{ color: '#666663' }}>{event.location}</p>
-                        {event.hasJoin && (
-                          <div className="flex items-center gap-2 mt-3">
-                            <button className="inline-flex items-center gap-2 h-[36px] px-4 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium">
-                              Join <ExternalLink className="w-3 h-3" />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </SubSection>
 
             <SubSection title="Preferences">
               <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-6">
