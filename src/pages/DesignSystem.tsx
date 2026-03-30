@@ -139,6 +139,15 @@ const DesignSystem = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const sectionClass = (id: string) =>
+    `mb-20 scroll-mt-12 transition-all duration-[600ms] ${
+      slideshowActive
+        ? sections[slideshowIndex].id === id
+          ? "opacity-100"
+          : "opacity-5 pointer-events-none"
+        : ""
+    }`;
+
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sticky sidebar nav */}
