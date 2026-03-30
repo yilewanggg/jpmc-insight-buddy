@@ -71,7 +71,6 @@ const DesignSystem = () => {
   const [activeSection, setActiveSection] = useState("colors");
   const [slideshowActive, setSlideshowActive] = useState(false);
   const [slideshowIndex, setSlideshowIndex] = useState(0);
-  const [slideshowPhase, setSlideshowPhase] = useState<"in" | "visible" | "out">("in");
 
   const startSlideshow = useCallback(() => {
     setSlideshowActive(true);
