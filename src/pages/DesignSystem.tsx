@@ -594,9 +594,9 @@ const DesignSystem = () => {
                 { src: graduationIcon, name: "Training" },
                 { src: seatIcon, name: "Seat" },
               ].map((icon) => (
-                <div key={icon.name} className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-card">
+                <div key={icon.name} className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-card aspect-square justify-center">
                   <img src={icon.src} alt={icon.name} className="w-10 h-10" />
-                  <p className="text-[11px] font-light text-muted-foreground">{icon.name}</p>
+                  <p className="text-[9px] font-light text-muted-foreground text-center leading-tight">{icon.name}</p>
                 </div>
               ))}
             </div>
