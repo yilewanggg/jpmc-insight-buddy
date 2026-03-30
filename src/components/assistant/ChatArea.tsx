@@ -404,17 +404,17 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
               </p>
               {cardVisible && (
                 <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                  <div className="bg-card rounded-2xl shadow-sm mb-6 p-6 flex flex-col items-center text-center">
-                    <img src={carmenProfile} alt="Carmen Vargas" className="w-14 h-14 rounded-full object-cover mb-3" />
-                    <p className="font-headline font-light mb-2" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '0px' }}>
-                      Provide feedback for Carmen
-                    </p>
-                    <p className="font-light text-center" style={{ fontSize: '16px', lineHeight: '24px', color: '#666663' }}>
-                      "Hi! Since we've been working closely on VP hiring over the last month, I'd love to get feedback from you. All thoughts are welcome but it would help to provide specific examples and context whenever possible."
-                      <br /><br />
-                      Thank you!<br />
-                      Carmen
-                    </p>
+                  <div className="bg-card rounded-2xl shadow-sm mb-6 p-6">
+                    <div className="flex items-start gap-4">
+                      <img src={carmenProfile} alt="Carmen" className="w-12 h-12 rounded-full object-cover shrink-0 mt-1" />
+                      <div>
+                        <p className="font-light" style={{ fontSize: '18px', lineHeight: '28px', color: '#1A1A1A' }}>
+                          "Hey everyone, I've been trying to take a more active role in code reviews and onboarding so I'd like to know how I'm doing in terms of technical leadership and mentorship."
+                        </p>
+                        <p className="mt-4 font-semibold" style={{ fontSize: '16px', lineHeight: '24px' }}>Carmen</p>
+                        <p className="font-light" style={{ fontSize: '14px', lineHeight: '20px', color: '#666663' }}>Vice president, CIB</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               )}
