@@ -211,7 +211,7 @@ const DesignSystem = () => {
         </div>
 
         {/* ── COLORS ── */}
-        <section id="colors" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="colors" className={sectionClass("colors")}>
           <SectionHeader title="Colors" description="Brand palette, semantic tokens, and data visualization colors." />
 
           <SubSection title="Brand palette">
@@ -251,7 +251,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── TYPOGRAPHY ── */}
-        <section id="typography" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="typography" className={sectionClass("typography")}>
           <SectionHeader title="Typography" description="Type scale, weights, and font families for headings and body text." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -303,7 +303,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── SPACING & RADIUS ── */}
-        <section id="spacing" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="spacing" className={sectionClass("spacing")}>
           <SectionHeader title="Spacing & Radius" description="Consistent spacing scale and border radius tokens." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -353,7 +353,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── BUTTONS ── */}
-        <section id="buttons" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="buttons" className={sectionClass("buttons")}>
           <SectionHeader title="Buttons" description="Button variants, sizes, states, and chat-specific action elements." />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -489,7 +489,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── CARDS ── */}
-        <section id="cards" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="cards" className={sectionClass("cards")}>
           <SectionHeader title="Cards" description="Card patterns used across daily digest, book a seat, and feedback flows." />
 
           <div className="space-y-12">
@@ -579,7 +579,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── ASSET LIBRARY ── */}
-        <section id="illustrations" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="illustrations" className={sectionClass("illustrations")}>
           <SectionHeader title="Asset Library" description="Illustrations, icons, avatars, and logos used across the assistant experience." />
 
           <SubSection title="Illustrations">
@@ -653,7 +653,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── FORM ELEMENTS ── */}
-        <section id="forms" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="forms" className={sectionClass("forms")}>
           <SectionHeader title="Form Elements" description="Inputs, checkboxes, and badges." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-[800px]">
@@ -688,7 +688,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── CHAT PATTERNS ── */}
-        <section id="chat" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="chat" className={sectionClass("chat")}>
           <SectionHeader title="Chat Patterns" description="Message bubbles, input field, alignment, and conversation flow." />
 
           <div className="space-y-12">
@@ -793,7 +793,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── NAV BAR ── */}
-        <section id="sidebar" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="sidebar" className={sectionClass("sidebar")}>
           <SectionHeader title="Nav Bar" description="Icon rail navigation with different icon states." />
 
           <SubSection title="Icon states">
@@ -915,7 +915,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── SIDE PANELS ── */}
-        <section id="panels" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="panels" className={sectionClass("panels")}>
           <SectionHeader title="Side Panels" description="Expandable panels accessible from the nav bar for tasks, notifications, calendar, and preferences." />
 
           <div className="space-y-12">
@@ -978,7 +978,7 @@ const DesignSystem = () => {
         <Separator className="mb-20" />
 
         {/* ── ANIMATION ── */}
-        <section id="animation" className={`mb-20 scroll-mt-12 transition-opacity duration-600 ${slideshowActive && sections[slideshowIndex].id !== (function(el){ return el })(this) ? "opacity-10" : ""}`}>
+        <section id="animation" className={sectionClass("animation")}>
           <SectionHeader title="Animation" description="Motion specifications for transitions and micro-interactions." />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
