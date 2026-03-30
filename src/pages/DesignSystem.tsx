@@ -481,7 +481,7 @@ const DesignSystem = () => {
 
             {/* Calendar card */}
             <SubSection title="Calendar card (Daily Digest)">
-              <div className="max-w-[420px]">
+              <div className="max-w-[620px]">
                 <img src={calendarCardImage} alt="Calendar card" className="w-full rounded-2xl shadow-sm" />
               </div>
             </SubSection>
