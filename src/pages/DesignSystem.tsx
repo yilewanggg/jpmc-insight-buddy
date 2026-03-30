@@ -682,7 +682,7 @@ const DesignSystem = () => {
                     </div>
                   </div>
                   {/* Active state */}
-                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5 ring-2 ring-ring">
+                  <div className="mt-4 relative flex items-center bg-card rounded-xl px-4 py-2.5">
                     <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
                       <Plus className="w-5 h-5" strokeWidth={1.5} />
                     </button>
