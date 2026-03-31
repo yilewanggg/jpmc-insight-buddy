@@ -183,27 +183,6 @@ const DesignSystem = () => {
             </button>
           ))}
         </div>
-        <Separator className="my-4" />
-        <div className="flex items-center gap-2">
-          <button
-            onClick={slideshowActive ? stopSlideshow : startSlideshow}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-light transition-colors text-muted-foreground hover:text-foreground hover:bg-card w-full text-left"
-          >
-            {slideshowActive ? <Pause className="w-3.5 h-3.5 shrink-0" /> : <Play className="w-3.5 h-3.5 shrink-0" />}
-            {slideshowActive ? "Stop" : "Present"}
-          </button>
-        </div>
-        {slideshowActive && (
-          <div className="flex items-center justify-center gap-2 mt-2">
-            <button onClick={goToPrev} className="p-1.5 rounded-md hover:bg-card text-muted-foreground hover:text-foreground transition-colors">
-              <SkipBack className="w-3.5 h-3.5" />
-            </button>
-            <span className="text-[11px] text-muted-foreground font-mono">{slideshowIndex + 1}/{sections.length}</span>
-            <button onClick={goToNext} className="p-1.5 rounded-md hover:bg-card text-muted-foreground hover:text-foreground transition-colors">
-              <SkipForward className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        )}
         <div className="mt-auto pt-6">
           <p className="text-[11px] leading-[14px] font-light text-muted-foreground">JPMC Assistant</p>
           <p className="text-[11px] leading-[14px] font-light text-muted-foreground opacity-60">v1.0</p>
