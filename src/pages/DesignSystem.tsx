@@ -318,13 +318,15 @@ const DesignSystem = () => {
                   { label: "full", value: "9999px", radius: "9999px" },
                 ].map(r => (
                   <div key={r.label} className="flex flex-col items-center gap-2">
-                    <div className="w-14 h-14 bg-foreground" style={{ borderRadius: r.radius }} />
+                    <div className="w-14 h-14 bg-muted" style={{ borderRadius: r.radius }} />
                     <p className="text-[12px] font-mono font-light text-muted-foreground">{r.label}</p>
                     <p className="text-[10px] font-mono font-light text-muted-foreground opacity-50">{r.value}</p>
                   </div>
                 ))}
               </div>
             </SubSection>
+
+            <div className="h-8" />
 
             <SubSection title="Spacing scale">
               <div className="space-y-3 mt-4">
