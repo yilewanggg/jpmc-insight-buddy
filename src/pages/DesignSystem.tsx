@@ -107,14 +107,14 @@ const DesignSystem = () => {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // Wait for fade-in (600ms) + visible (2s) + fade-out (600ms) then advance
+    // Wait for fade-in (1.2s) + visible (2s) + fade-out (1.2s) then advance
     const timer = setTimeout(() => {
       if (slideshowIndex >= sections.length - 1) {
         setSlideshowActive(false);
       } else {
         setSlideshowIndex(prev => prev + 1);
       }
-    }, 3200);
+    }, 4400);
 
     return () => clearTimeout(timer);
   }, [slideshowActive, slideshowIndex]);
@@ -133,11 +133,11 @@ const DesignSystem = () => {
   };
 
   const sectionClass = (id: string) =>
-    `mb-20 scroll-mt-12 transition-all duration-[600ms] ${
+    `mb-20 scroll-mt-12 transition-all duration-[1200ms] ease-in-out ${
       slideshowActive
         ? sections[slideshowIndex].id === id
-          ? "opacity-100"
-          : "opacity-5 pointer-events-none"
+          ? "opacity-100 scale-100"
+          : "opacity-0 pointer-events-none scale-[0.98]"
         : ""
     }`;
 
@@ -192,7 +192,7 @@ const DesignSystem = () => {
       {/* Main content */}
       <main className="flex-1 max-w-[960px] mx-auto px-8 py-12 lg:px-16">
         {/* Header */}
-        <div className={`mb-20 transition-all duration-[600ms] ${slideshowActive ? "opacity-5 pointer-events-none" : ""}`}>
+        <div className={`mb-20 transition-all duration-[1200ms] ease-in-out ${slideshowActive ? "opacity-0 pointer-events-none" : ""}`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
               <Palette className="w-5 h-5 text-background" />
@@ -1017,7 +1017,7 @@ const DesignSystem = () => {
         </section>
 
         {/* Footer */}
-        <div className={`mt-24 pb-8 pt-8 border-t border-border text-center transition-all duration-[600ms] ${slideshowActive ? "opacity-5" : ""}`}>
+        <div className={`mt-24 pb-8 pt-8 border-t border-border text-center transition-all duration-[1200ms] ease-in-out ${slideshowActive ? "opacity-0" : ""}`}>
           <p className="text-[12px] leading-[16px] font-light text-muted-foreground">
             JPMC Assistant Design System · Tailwind CSS · shadcn/ui · Framer Motion
           </p>
