@@ -192,7 +192,7 @@ const DesignSystem = () => {
       {/* Main content */}
       <main className="flex-1 max-w-[960px] mx-auto px-8 py-12 lg:px-16">
         {/* Header */}
-        <div className={`mb-20 transition-all duration-[600ms] ${slideshowActive ? "opacity-5 pointer-events-none" : ""}`}>
+        <div className={`mb-20 transition-all duration-[1200ms] ease-in-out ${slideshowActive ? "opacity-0 pointer-events-none" : ""}`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
               <Palette className="w-5 h-5 text-background" />
