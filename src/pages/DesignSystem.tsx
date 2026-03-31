@@ -133,11 +133,11 @@ const DesignSystem = () => {
   };
 
   const sectionClass = (id: string) =>
-    `mb-20 scroll-mt-12 transition-all duration-[600ms] ${
+    `mb-20 scroll-mt-12 transition-all duration-[1200ms] ease-in-out ${
       slideshowActive
         ? sections[slideshowIndex].id === id
-          ? "opacity-100"
-          : "opacity-5 pointer-events-none"
+          ? "opacity-100 scale-100"
+          : "opacity-0 pointer-events-none scale-[0.98]"
         : ""
     }`;
 
