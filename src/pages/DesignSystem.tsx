@@ -1017,7 +1017,7 @@ const DesignSystem = () => {
         </section>
 
         {/* Footer */}
-        <div className={`mt-24 pb-8 pt-8 border-t border-border text-center transition-all duration-[600ms] ${slideshowActive ? "opacity-5" : ""}`}>
+        <div className={`mt-24 pb-8 pt-8 border-t border-border text-center transition-all duration-[1200ms] ease-in-out ${slideshowActive ? "opacity-0" : ""}`}>
           <p className="text-[12px] leading-[16px] font-light text-muted-foreground">
             JPMC Assistant Design System · Tailwind CSS · shadcn/ui · Framer Motion
           </p>
