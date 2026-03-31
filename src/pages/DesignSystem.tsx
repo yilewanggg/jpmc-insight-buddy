@@ -107,14 +107,14 @@ const DesignSystem = () => {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // Wait for fade-in (600ms) + visible (2s) + fade-out (600ms) then advance
+    // Wait for fade-in (1.2s) + visible (2s) + fade-out (1.2s) then advance
     const timer = setTimeout(() => {
       if (slideshowIndex >= sections.length - 1) {
         setSlideshowActive(false);
       } else {
         setSlideshowIndex(prev => prev + 1);
       }
-    }, 3200);
+    }, 4400);
 
     return () => clearTimeout(timer);
   }, [slideshowActive, slideshowIndex]);
