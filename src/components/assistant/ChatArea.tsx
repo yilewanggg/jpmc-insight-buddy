@@ -2018,7 +2018,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
                 Go to Feedback <ExternalLink className="w-3 h-3" />
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-6 pb-5">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-1 px-6 pb-5">
               {collaborators.map((person) => (
                 <label
                   key={person.name}
