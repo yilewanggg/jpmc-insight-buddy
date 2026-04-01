@@ -2024,6 +2024,16 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
                   key={person.name}
                   className="flex items-center gap-3 py-3 cursor-pointer hover:bg-muted/30 rounded-lg px-2 -mx-2 transition-colors"
                 >
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    className="w-10 h-10 rounded-lg object-cover shrink-0"
+                    loading="lazy"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[14px] leading-[20px] font-medium text-foreground">{person.name}</p>
+                    <p className="text-[12px] leading-[16px]" style={{ color: '#666663' }}>{person.detail}</p>
+                  </div>
                   <div
                     onClick={(e) => { e.preventDefault(); toggleCheck(person.name); }}
                     className={cn(
@@ -2034,16 +2044,6 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
                     )}
                   >
                     {checked[person.name] && <Check className="w-3.5 h-3.5 text-background" strokeWidth={2.5} />}
-                  </div>
-                  <img
-                    src={person.photo}
-                    alt={person.name}
-                    className="w-10 h-10 rounded-lg object-cover shrink-0"
-                    loading="lazy"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[14px] leading-[20px] font-medium text-foreground">{person.name}</p>
-                    <p className="text-[12px] leading-[16px]" style={{ color: '#666663' }}>{person.detail}</p>
                   </div>
                 </label>
               ))}
