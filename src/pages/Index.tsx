@@ -11,6 +11,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
   { id: "request-feedback", label: "Request Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
   { id: "daily-schedule", label: "Daily Schedule" },
+  { id: "nudges", label: "Nudges" },
 ];
 
 const Index = () => {
