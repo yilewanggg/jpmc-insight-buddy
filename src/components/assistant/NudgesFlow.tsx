@@ -117,7 +117,7 @@ export function NudgesFlow() {
                             key={i}
                             src={p.photo}
                             alt={p.name}
-                            className="w-10 h-10 object-cover"
+                            className="w-8 h-8 object-cover"
                             style={{ borderRadius: '4px' }}
                           />
                         ))}
