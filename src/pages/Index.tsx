@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AssistantSidebar } from "@/components/assistant/AssistantSidebar";
 import { ChatArea, type ChatFlow } from "@/components/assistant/ChatArea";
+import { NudgesFlow } from "@/components/assistant/NudgesFlow";
 import { cn } from "@/lib/utils";
 
 const flowTabs: { id: ChatFlow; label: string }[] = [
@@ -10,6 +11,7 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
   { id: "request-feedback", label: "Request Feedback" },
   { id: "book-a-seat", label: "Book a Seat" },
   { id: "daily-schedule", label: "Daily Schedule" },
+  { id: "nudges", label: "Nudges" },
 ];
 
 const Index = () => {
@@ -47,7 +49,11 @@ const Index = () => {
             onNewChat={() => setCurrentChatId(null)}
           />
         )}
-        <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
+        {activeFlow === "nudges" ? (
+          <NudgesFlow />
+        ) : (
+          <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
+        )}
       </div>
     </div>
   );

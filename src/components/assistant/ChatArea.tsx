@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { DailyScheduleWelcomeScreen, DailyScheduleResponse, MoveDesignJamResponse } from "@/components/assistant/DailyScheduleWelcomeScreen";
 import { OnboardingFlow } from "@/components/assistant/OnboardingFlow";
 
-export type ChatFlow = "daily-digest" | "feedback" | "request-feedback" | "book-a-seat" | "daily-schedule" | "onboarding";
+export type ChatFlow = "daily-digest" | "feedback" | "request-feedback" | "book-a-seat" | "daily-schedule" | "onboarding" | "nudges";
 
 
 
