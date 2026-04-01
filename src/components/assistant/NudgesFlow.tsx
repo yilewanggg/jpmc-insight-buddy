@@ -71,7 +71,7 @@ export function NudgesFlow() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ layout: { type: "spring", stiffness: 200, damping: 25 }, opacity: { duration: 0.3 } }}
               onClick={() => !expanded && setExpanded(true)}
-              className={cn("cursor-pointer", expanded ? "w-full max-w-[700px]" : "")}
+              className={cn("cursor-pointer", expanded ? "w-full max-w-[490px]" : "")}
             >
               <motion.div
                 layout
