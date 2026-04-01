@@ -274,30 +274,32 @@ export function NudgesFlow() {
 
       {/* macOS Dock */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-40">
-        <div className="flex items-end gap-1.5 bg-white/20 backdrop-blur-xl rounded-2xl px-2.5 py-1.5 border border-white/30 shadow-lg">
+        <div className="flex items-end gap-1 bg-white/20 backdrop-blur-xl rounded-2xl px-2 py-1.5 border border-white/30 shadow-lg">
           {[
-            { emoji: "📁", label: "Finder" },
-            { emoji: "🚀", label: "Launchpad" },
-            { emoji: "⚙️", label: "Settings" },
-            { emoji: "📧", label: "Mail", active: true },
-            { emoji: "📅", label: "Calendar" },
-            { emoji: "💬", label: "Messages" },
-            { emoji: "🎵", label: "Music" },
-            { emoji: "📝", label: "Notes" },
-            { emoji: "🌐", label: "Safari" },
+            { bg: "bg-gradient-to-b from-[#3B9FEB] to-[#1A6DD1]", icon: <span className="text-white text-[13px] font-bold">F</span>, label: "Finder" },
+            { bg: "bg-gradient-to-b from-[#555] to-[#333]", icon: <span className="text-[14px]">🚀</span>, label: "Launchpad" },
+            { bg: "bg-gradient-to-b from-[#6D6D6D] to-[#4A4A4A]", icon: <span className="text-white text-[13px]">⚙</span>, label: "Settings" },
+            { bg: "bg-gradient-to-b from-[#0078D4] to-[#004E8C]", icon: <span className="text-white text-[11px] font-bold tracking-tighter">OL</span>, label: "Outlook", active: true },
+            { bg: "bg-gradient-to-b from-[#5FC9F8] to-[#2AA7DF]", icon: <span className="text-white text-[14px]">📅</span>, label: "Calendar" },
+            { bg: "bg-gradient-to-b from-[#65D872] to-[#34C759]", icon: <span className="text-white text-[14px]">💬</span>, label: "Messages" },
+            { bg: "bg-gradient-to-b from-[#FC3D39] to-[#E0312E]", icon: <span className="text-white text-[14px]">🎵</span>, label: "Music" },
+            { bg: "bg-gradient-to-b from-[#FFCC02] to-[#F0B400]", icon: <span className="text-[14px]">📝</span>, label: "Notes" },
+            { bg: "bg-gradient-to-b from-[#4A9FF5] to-[#0064D2]", icon: <span className="text-white text-[14px]">🧭</span>, label: "Safari" },
           ].map((app) => (
             <div
               key={app.label}
               className="flex flex-col items-center gap-0.5"
             >
               <div className={cn(
-                "w-9 h-9 rounded-xl flex items-center justify-center text-[18px] bg-white/10 hover:bg-white/20 transition-all hover:scale-110 cursor-pointer",
+                "w-9 h-9 rounded-xl flex items-center justify-center hover:scale-110 transition-all cursor-pointer shadow-sm",
+                app.bg
               )}>
-                {app.emoji}
+                {app.icon}
               </div>
               {app.active && <div className="w-1 h-1 rounded-full bg-white/80" />}
             </div>
           ))}
+        
         </div>
       </div>
     </div>
