@@ -201,6 +201,7 @@ export function NudgesFlow() {
               })}
             </div>
           </div>
+          </div>
         </div>
       </div>
     </div>
