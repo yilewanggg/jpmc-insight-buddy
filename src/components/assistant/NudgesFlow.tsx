@@ -58,85 +58,78 @@ export function NudgesFlow() {
     <div className="flex-1 flex flex-col items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden">
       {/* Nudge notification - above Outlook */}
       <div className={cn("flex items-center justify-center", expanded ? "mb-3" : "h-8 mb-2")}>
-        <AnimatePresence mode="wait">
-          {showNudge && !expanded && (
+        <AnimatePresence>
+          {showNudge && (
             <motion.div
-              key="collapsed"
+              layout
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              onClick={() => setExpanded(true)}
-              className="cursor-pointer"
+              transition={{ layout: { type: "spring", stiffness: 200, damping: 25 }, opacity: { duration: 0.3 } }}
+              onClick={() => !expanded && setExpanded(true)}
+              className={cn("cursor-pointer", expanded ? "w-full max-w-[700px]" : "")}
             >
-              <div className="flex items-center gap-1 bg-[#F5F0E8] text-[#333] pl-6 pr-4 py-1 rounded-full shadow-md border border-[#E5DDD0] text-[11px] tracking-tight">
-                <img src={chatBubbleIcon} alt="" className="w-5 h-5 translate-y-[1px]" />
-                <span className="font-semibold">Request feedback</span>
-                <span className="text-[#666]">from people you work with the most</span>
-                <button
-                  onClick={(e) => { e.stopPropagation(); setShowNudge(false); }}
-                  className="ml-1 w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
-                >
-                  <X className="w-3 h-3 text-[#999]" />
-                </button>
-              </div>
-            </motion.div>
-          )}
-          {showNudge && expanded && (
-            <motion.div
-              key="expanded"
-              initial={{ opacity: 0, scale: 0.9, y: -10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 25 }}
-              className="w-full max-w-[700px]"
-            >
-              <div className="bg-[#F5F0E8] rounded-2xl shadow-lg border border-[#E5DDD0] p-6">
-                {/* Header row */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2 text-[13px] tracking-tight">
+              <motion.div
+                layout
+                className={cn(
+                  "bg-[#F5F0E8] shadow-md border border-[#E5DDD0]",
+                  expanded ? "rounded-2xl p-6" : "rounded-full pl-6 pr-4 py-1"
+                )}
+              >
+                {/* Header row - always visible */}
+                <motion.div layout="position" className={cn("flex items-center", expanded ? "justify-between mb-3" : "gap-1 text-[11px] tracking-tight")}>
+                  <div className={cn("flex items-center", expanded ? "gap-2 text-[13px] tracking-tight" : "gap-1")}>
                     <img src={chatBubbleIcon} alt="" className="w-5 h-5 translate-y-[0.5px]" />
                     <span className="font-semibold text-[#333]">Request feedback</span>
                     <span className="text-[#666]">from people you work with the most</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-[11px] text-[#999]">9:51 am</span>
+                    {expanded && <span className="text-[11px] text-[#999]">9:51 am</span>}
                     <button
-                      onClick={() => { setExpanded(false); setShowNudge(false); }}
-                      className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
+                      onClick={(e) => { e.stopPropagation(); setShowNudge(false); setExpanded(false); }}
+                      className="ml-1 w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
                     >
-                      <X className="w-3.5 h-3.5 text-[#999]" />
+                      <X className={cn("text-[#999]", expanded ? "w-3.5 h-3.5" : "w-3 h-3")} />
                     </button>
                   </div>
-                </div>
+                </motion.div>
 
-                {/* Description */}
-                <p className="text-[13px] text-[#444] mb-4">
-                  Feedback can provide valuable insights to help you grow and succeed in your role.
-                </p>
-
-                {/* Profile photos */}
-                <div className="flex items-center -space-x-1.5 mb-5">
-                  {profilePhotos.map((p, i) => (
-                    <div
-                      key={i}
-                      className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[10px] font-bold border-2 border-[#F5F0E8]"
-                      style={{ backgroundColor: p.color }}
+                {/* Expanded content */}
+                <AnimatePresence>
+                  {expanded && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                      {p.initials}
-                    </div>
-                  ))}
-                </div>
+                      <p className="text-[13px] text-[#444] mb-4">
+                        Feedback can provide valuable insights to help you grow and succeed in your role.
+                      </p>
 
-                {/* Action buttons */}
-                <div className="flex items-center gap-3">
-                  <button className="bg-[#222] text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-[#333] transition-colors">
-                    Start now
-                  </button>
-                  <button className="bg-transparent text-[#333] text-[13px] font-medium px-6 py-2.5 rounded-full border border-[#ccc] hover:bg-black/5 transition-colors">
-                    Schedule for later
-                  </button>
-                </div>
-              </div>
+                      <div className="flex items-center -space-x-1.5 mb-5">
+                        {profilePhotos.map((p, i) => (
+                          <div
+                            key={i}
+                            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[10px] font-bold border-2 border-[#F5F0E8]"
+                            style={{ backgroundColor: p.color }}
+                          >
+                            {p.initials}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <button className="bg-[#222] text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-[#333] transition-colors">
+                          Start now
+                        </button>
+                        <button className="bg-transparent text-[#333] text-[13px] font-medium px-6 py-2.5 rounded-full border border-[#ccc] hover:bg-black/5 transition-colors">
+                          Schedule for later
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
