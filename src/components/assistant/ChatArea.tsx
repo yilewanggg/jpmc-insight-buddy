@@ -12,6 +12,9 @@ import confirmationCheckIcon from "@/assets/confirmation-check.svg";
 import feedbackCardIcon from "@/assets/feedback-card.svg";
 import carmenProfile from "@/assets/carmen-profile.png";
 import handIcon from "@/assets/hand-icon.svg";
+import johnMartinezPhoto from "@/assets/john-martinez-photo.jpg";
+import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
+import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
@@ -61,6 +64,7 @@ const DAILY_SCHEDULE_RESPONSE = "__DAILY_SCHEDULE__";
 const MOVE_DESIGN_JAM_RESPONSE = "__MOVE_DESIGN_JAM__";
 const REQUEST_FEEDBACK_DRAFT_RESPONSE = "__REQUEST_FEEDBACK_DRAFT__";
 const REQUEST_FEEDBACK_SENT_RESPONSE = "__REQUEST_FEEDBACK_SENT__";
+const REQUEST_FEEDBACK_COLLABORATORS_RESPONSE = "__REQUEST_FEEDBACK_COLLABORATORS__";
 
 function getResponse(input: string): string {
   const lower = input.toLowerCase();
@@ -75,6 +79,7 @@ function getResponse(input: string): string {
   if (lower.includes("show me more options")) return SHOW_MORE_OPTIONS_RESPONSE;
   if (lower.includes("recently booked")) return RECENTLY_BOOKED_RESPONSE;
   if (lower.includes("ask taylor")) return REQUEST_FEEDBACK_DRAFT_RESPONSE;
+  if (lower.includes("yes, help me request feedback") || lower.includes("yes, let's do it")) return REQUEST_FEEDBACK_COLLABORATORS_RESPONSE;
   if (lower.includes("send feedback request")) return REQUEST_FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
@@ -1946,6 +1951,143 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
+function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: string) => void }) {
+  const text = "Great! Here are people you've worked with the most.";
+  const typed = useTypewriter(text, 15, 100);
+  const para2Text = "Select the people you want to get feedback from or type other names below:";
+  const para2 = useTypewriter(para2Text, 15, typed.done ? 150 : 99999);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [chipsVisible, setChipsVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+  const [checked, setChecked] = useState<Record<string, boolean>>({});
+
+  const collaborators = [
+    { name: "John Martinez", detail: "5 meetings in last 30 days", photo: johnMartinezPhoto },
+    { name: "Anna Collins", detail: "Direct report with no recent feedback", photo: annaCollinsPhoto },
+    { name: "Carmen Martinez", detail: "10 interactions in last 30 days", photo: carmenProfile },
+    { name: "Sam Thomas", detail: "Weekly 1:1 together", photo: samThomasPhoto },
+    { name: "Priya Sharma", detail: "Collaborated on Project Synergy", photo: priyaPhoto },
+  ];
+
+  useEffect(() => {
+    if (para2.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [para2.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !chipsVisible) {
+      const t = setTimeout(() => setChipsVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, chipsVisible]);
+
+  useEffect(() => {
+    if (chipsVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [chipsVisible, thumbsVisible]);
+
+  const toggleCheck = (name: string) => {
+    setChecked(prev => ({ ...prev, [name]: !prev[name] }));
+  };
+
+  const selectedCount = Object.values(checked).filter(Boolean).length;
+
+  return (
+    <div className="flex flex-col">
+      <div className="text-[16px] leading-[24px] text-foreground font-light" style={{ width: '616px' }}>
+        <p className="mb-1">{typed.displayed}{!typed.done && <span className="animate-pulse">|</span>}</p>
+        {typed.done && (
+          <p className="mb-4">{para2.displayed}{!para2.done && <span className="animate-pulse">|</span>}</p>
+        )}
+      </div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="bg-card rounded-2xl shadow-sm overflow-hidden mb-6" style={{ width: '616px' }}>
+            <div className="flex items-center justify-between px-6 pt-5 pb-3">
+              <h3 className="text-[15px] leading-[22px] font-semibold text-foreground">Frequent collaborators</h3>
+              <button className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                Go to Feedback <ExternalLink className="w-3 h-3" />
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-6 pb-5">
+              {collaborators.map((person) => (
+                <label
+                  key={person.name}
+                  className="flex items-center gap-3 py-3 cursor-pointer hover:bg-muted/30 rounded-lg px-2 -mx-2 transition-colors"
+                >
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    className="w-10 h-10 rounded-lg object-cover shrink-0"
+                    loading="lazy"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[14px] leading-[20px] font-medium text-foreground">{person.name}</p>
+                    <p className="text-[12px] leading-[16px]" style={{ color: '#666663' }}>{person.detail}</p>
+                  </div>
+                  <div
+                    onClick={(e) => { e.preventDefault(); toggleCheck(person.name); }}
+                    className={cn(
+                      "w-5 h-5 rounded border-[1.5px] flex items-center justify-center shrink-0 transition-colors cursor-pointer",
+                      checked[person.name]
+                        ? "bg-foreground border-foreground"
+                        : "border-[#7D7A7A] bg-transparent"
+                    )}
+                  >
+                    {checked[person.name] && <Check className="w-3.5 h-3.5 text-background" strokeWidth={2.5} />}
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {chipsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <button
+              onClick={() => onSend("Send feedback request")}
+              className={cn(
+                "flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px] tracking-[0.16px]",
+                selectedCount > 0
+                  ? "bg-foreground text-background hover:bg-foreground/90"
+                  : "bg-transparent hover:bg-[#DDD5C8]"
+              )}
+              style={selectedCount === 0 ? { border: '1px solid #7D7A7A', color: '#202020' } : {}}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Request feedback{selectedCount > 0 ? ` (${selectedCount})` : ''}
+            </button>
+            <button
+              onClick={() => onSend("Remind me later")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Remind me later
+            </button>
+          </div>
+        </motion.div>
+      )}
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
 function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => void }) {
   const text = "You got it! Here's a draft request:";
   const typed = useTypewriter(text, 15, 100);
@@ -2297,6 +2439,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <DailyScheduleResponse onSend={onSend} />
         ) : msg.content === MOVE_DESIGN_JAM_RESPONSE ? (
           <MoveDesignJamResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_COLLABORATORS_RESPONSE ? (
+          <RequestFeedbackCollaboratorsResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_DRAFT_RESPONSE ? (
           <RequestFeedbackDraftResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_SENT_RESPONSE ? (
