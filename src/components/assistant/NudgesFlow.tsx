@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, Menu, ChevronDown, MoreHorizontal, Trash2, Archive, Flag, Mail, MailOpen, Filter } from "lucide-react";
+import { X, Search, Menu, ChevronDown, Trash2, Archive, Flag, MailOpen, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import chatBubbleIcon from "@/assets/chat-bubble-icon.png";
 
 const emails = [
   { id: 1, from: "Jeremiah Gibson", initials: "JG", color: "#7C3AED", subject: "Please review the updated project timeline.", preview: "Focus on delivery dates for Phase 2 a...", time: "Mon 8:05 AM", unread: true, section: "Today" },
@@ -57,15 +58,15 @@ export function NudgesFlow() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-2"
             >
-              <div className="flex items-center gap-2.5 bg-[#2D2D30] text-white px-5 py-2.5 rounded-full shadow-lg border border-white/10 text-[13px]">
-                <span className="text-base">💬</span>
-                <span className="font-medium">Request feedback</span>
-                <span className="text-white/70">from people you work with the most</span>
+              <div className="flex items-center gap-2.5 bg-[#F5F0E8] text-[#333] px-4 py-2 rounded-full shadow-md border border-[#E5DDD0] text-[13px]">
+                <img src={chatBubbleIcon} alt="" className="w-5 h-5" />
+                <span className="font-semibold">Request feedback</span>
+                <span className="text-[#666]">from people you work with the most</span>
                 <button
                   onClick={() => setShowNudge(false)}
-                  className="ml-1 w-5 h-5 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+                  className="ml-1 w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
                 >
-                  <X className="w-3 h-3 text-white/60" />
+                  <X className="w-3 h-3 text-[#999]" />
                 </button>
               </div>
             </motion.div>
