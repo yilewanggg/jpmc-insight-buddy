@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Search, Menu, ChevronDown, Trash2, Archive, Flag, MailOpen, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import chatBubbleIcon from "@/assets/chat-bubble-icon.png";
+import johnMartinezPhoto from "@/assets/john-martinez-photo.jpg";
+import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
+import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
+import carmenProfile from "@/assets/carmen-profile.png";
+import priyaPhoto from "@/assets/priya-photo.jpg";
 
 const emails = [
   { id: 1, from: "Jeremiah Gibson", initials: "JG", color: "#7C3AED", subject: "Please review the updated project timeline.", preview: "Focus on delivery dates for Phase 2 a...", time: "Mon 8:05 AM", unread: true, section: "Today" },
@@ -47,22 +52,22 @@ export function NudgesFlow() {
   const sections = ["Today", "Yesterday", "This month"];
 
   const profilePhotos = [
-    { initials: "JG", color: "#7C3AED" },
-    { initials: "DD", color: "#2563EB" },
-    { initials: "PS", color: "#16A34A" },
-    { initials: "EG", color: "#DC2626" },
-    { initials: "RM", color: "#0078D4" },
+    { name: "John Martinez", photo: johnMartinezPhoto },
+    { name: "Anna Collins", photo: annaCollinsPhoto },
+    { name: "Carmen Martinez", photo: carmenProfile },
+    { name: "Sam Thomas", photo: samThomasPhoto },
+    { name: "Priya Sharma", photo: priyaPhoto },
   ];
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden">
-      {/* Nudge notification - above Outlook */}
-      <div className={cn("flex items-center justify-center", expanded ? "mb-3" : "h-8 mb-2")}>
+    <div className="flex-1 flex items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden relative">
+      {/* Nudge notification - positioned above Outlook */}
+      <div className="absolute left-0 right-0 flex justify-center z-50" style={{ bottom: 'calc(50% + 290px)' }}>
         <AnimatePresence>
           {showNudge && (
             <motion.div
               layout
-              initial={{ y: -30, opacity: 0 }}
+              initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ layout: { type: "spring", stiffness: 200, damping: 25 }, opacity: { duration: 0.3 } }}
               onClick={() => !expanded && setExpanded(true)}
@@ -106,15 +111,15 @@ export function NudgesFlow() {
                         Feedback can provide valuable insights to help you grow and succeed in your role.
                       </p>
 
-                      <div className="flex items-center -space-x-1.5 mb-5">
+                      <div className="flex items-center -space-x-1 mb-5">
                         {profilePhotos.map((p, i) => (
-                          <div
+                          <img
                             key={i}
-                            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[10px] font-bold border-2 border-[#F5F0E8]"
-                            style={{ backgroundColor: p.color }}
-                          >
-                            {p.initials}
-                          </div>
+                            src={p.photo}
+                            alt={p.name}
+                            className="w-6 h-6 object-cover border-2 border-[#F5F0E8]"
+                            style={{ borderRadius: '4px' }}
+                          />
                         ))}
                       </div>
 
