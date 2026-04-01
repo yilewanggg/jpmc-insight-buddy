@@ -2007,7 +2007,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
 
       {cardVisible && (
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="bg-card rounded-2xl shadow-sm overflow-hidden mb-6" style={{ width: '616px' }}>
+          <div className="bg-card rounded-2xl shadow-sm overflow-hidden mb-6" style={{ width: '680px' }}>
             <div className="flex items-center justify-between px-6 pt-5 pb-3">
               <h3 className="text-[15px] leading-[22px] font-semibold text-foreground">Frequent collaborators</h3>
               <button className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
