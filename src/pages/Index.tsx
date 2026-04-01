@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AssistantSidebar } from "@/components/assistant/AssistantSidebar";
 import { ChatArea, type ChatFlow } from "@/components/assistant/ChatArea";
+import { NudgesFlow } from "@/components/assistant/NudgesFlow";
 import { cn } from "@/lib/utils";
 
 const flowTabs: { id: ChatFlow; label: string }[] = [
