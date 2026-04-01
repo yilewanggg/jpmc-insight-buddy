@@ -52,11 +52,11 @@ export function NudgesFlow() {
   const sections = ["Today", "Yesterday", "This month"];
 
   const profilePhotos = [
-    { initials: "JG", color: "#7C3AED" },
-    { initials: "DD", color: "#2563EB" },
-    { initials: "PS", color: "#16A34A" },
-    { initials: "EG", color: "#DC2626" },
-    { initials: "RM", color: "#0078D4" },
+    { name: "John Martinez", photo: johnMartinezPhoto },
+    { name: "Anna Collins", photo: annaCollinsPhoto },
+    { name: "Carmen Martinez", photo: carmenProfile },
+    { name: "Sam Thomas", photo: samThomasPhoto },
+    { name: "Priya Sharma", photo: priyaPhoto },
   ];
 
   return (
