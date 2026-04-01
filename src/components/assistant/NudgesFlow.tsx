@@ -61,8 +61,8 @@ export function NudgesFlow() {
 
   return (
     <div className="flex-1 flex items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden relative">
-      {/* Nudge notification - positioned above Outlook */}
-      <div className="absolute left-0 right-0 flex justify-center z-50" style={{ bottom: 'calc(50% + 290px)' }}>
+      {/* Nudge notification - anchored by top, expands downward */}
+      <div className="absolute left-0 right-0 flex justify-center z-50" style={{ top: 'calc(50% - 310px)' }}>
         <AnimatePresence>
           {showNudge && (
             <motion.div
