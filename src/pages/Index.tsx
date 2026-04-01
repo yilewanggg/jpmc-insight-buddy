@@ -49,7 +49,11 @@ const Index = () => {
             onNewChat={() => setCurrentChatId(null)}
           />
         )}
-        <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
+        {activeFlow === "nudges" ? (
+          <NudgesFlow />
+        ) : (
+          <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
+        )}
       </div>
     </div>
   );
