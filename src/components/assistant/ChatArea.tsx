@@ -15,6 +15,7 @@ import handIcon from "@/assets/hand-icon.svg";
 import johnMartinezPhoto from "@/assets/john-martinez-photo.jpg";
 import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
 import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
+import emilyCarterPhoto from "@/assets/emily-carter-photo.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
