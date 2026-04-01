@@ -8,6 +8,7 @@ import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
 import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
 import carmenProfile from "@/assets/carmen-profile.png";
 import priyaPhoto from "@/assets/priya-photo.jpg";
+import desktopWallpaper from "@/assets/desktop-wallpaper.jpg";
 
 const emails = [
   { id: 1, from: "Jeremiah Gibson", initials: "JG", color: "#7C3AED", subject: "Please review the updated project timeline.", preview: "Focus on delivery dates for Phase 2 a...", time: "Mon 8:05 AM", unread: true, section: "Today" },
