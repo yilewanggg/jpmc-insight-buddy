@@ -46,17 +46,16 @@ export function NudgesFlow() {
   const sections = ["Today", "Yesterday", "This month"];
 
   return (
-    <div className="flex-1 flex items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden">
-      <div className="relative w-full max-w-[1100px] rounded-xl overflow-hidden shadow-2xl border border-white/10" style={{ aspectRatio: "16/10" }}>
-        {/* Nudge notification - slides in from top */}
+    <div className="flex-1 flex flex-col items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden">
+      {/* Nudge notification - above Outlook */}
+      <div className="h-8 mb-2 flex items-center justify-center">
         <AnimatePresence>
           {showNudge && (
             <motion.div
-              initial={{ y: -60, opacity: 0 }}
+              initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -60, opacity: 0 }}
+              exit={{ y: -30, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-0.5"
             >
               <div className="flex items-center gap-2 bg-[#F5F0E8] text-[#333] px-3 py-1.5 rounded-full shadow-md border border-[#E5DDD0] text-[12px]">
                 <img src={chatBubbleIcon} alt="" className="w-5 h-5" />
@@ -72,7 +71,9 @@ export function NudgesFlow() {
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
 
+      <div className="relative w-full max-w-[1100px] rounded-xl overflow-hidden shadow-2xl border border-white/10" style={{ aspectRatio: "16/10" }}>
         {/* Outlook UI */}
         <div className="flex flex-col h-full bg-[#F3F3F3]">
           {/* Title bar */}
