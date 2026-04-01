@@ -271,6 +271,35 @@ export function NudgesFlow() {
           </div>
         </div>
       </div>
+
+      {/* macOS Dock */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-40">
+        <div className="flex items-end gap-1.5 bg-white/20 backdrop-blur-xl rounded-2xl px-2.5 py-1.5 border border-white/30 shadow-lg">
+          {[
+            { emoji: "📁", label: "Finder" },
+            { emoji: "🚀", label: "Launchpad" },
+            { emoji: "⚙️", label: "Settings" },
+            { emoji: "📧", label: "Mail", active: true },
+            { emoji: "📅", label: "Calendar" },
+            { emoji: "💬", label: "Messages" },
+            { emoji: "🎵", label: "Music" },
+            { emoji: "📝", label: "Notes" },
+            { emoji: "🌐", label: "Safari" },
+          ].map((app) => (
+            <div
+              key={app.label}
+              className="flex flex-col items-center gap-0.5"
+            >
+              <div className={cn(
+                "w-9 h-9 rounded-xl flex items-center justify-center text-[18px] bg-white/10 hover:bg-white/20 transition-all hover:scale-110 cursor-pointer",
+              )}>
+                {app.emoji}
+              </div>
+              {app.active && <div className="w-1 h-1 rounded-full bg-white/80" />}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
