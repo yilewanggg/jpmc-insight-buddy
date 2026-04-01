@@ -2569,6 +2569,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
         {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} />}
         {activeFlow === "book-a-seat" && <BookASeatWelcomeScreen key="book-a-seat" onSend={handleSend} />}
         {activeFlow === "daily-schedule" && <DailyScheduleWelcomeScreen key="daily-schedule" onSend={handleSend} />}
+        {activeFlow === "request-feedback" && <RequestFeedbackWelcomeScreen key="request-feedback" onSend={handleSend} />}
 
         {messages.length > 0 && (
           <div className="mx-auto flex flex-col" style={{ width: '740px', gap: '32px', marginTop: '32px', paddingBottom: '50vh' }}>
