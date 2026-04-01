@@ -447,7 +447,120 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
+function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
+  const [showLogo, setShowLogo] = useState(false);
+  const [thinkingDone, setThinkingDone] = useState(false);
+  const [chipsVisible, setChipsVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    const logoTimer = setTimeout(() => setShowLogo(true), 200);
+    const doneTimer = setTimeout(() => setThinkingDone(true), 1500);
+    return () => { clearTimeout(logoTimer); clearTimeout(doneTimer); };
+  }, []);
+
+  const heading = useTypewriter("Good afternoon, Kyra", 45, thinkingDone ? 100 : 99999);
+  const para1Text = "It's a good time to gather feedback from people you've worked with recently. Want me to help you send requests?";
+  const para1 = useTypewriter(para1Text, 15, heading.done ? 150 : 99999);
+
+  useEffect(() => {
+    if (para1.done && !chipsVisible) {
+      const t = setTimeout(() => setChipsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [para1.done, chipsVisible]);
+
+  useEffect(() => {
+    if (chipsVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [chipsVisible, thumbsVisible]);
+
+  return (
+    <div className="flex items-start pt-[260px] mx-auto" style={{ width: '740px' }}>
+      <motion.div
+        className="w-12 h-12 rounded-2xl flex items-center justify-center mr-4 shrink-0"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={showLogo ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <div className="relative w-10 h-10 overflow-hidden rounded-full">
+          <img src={jpmcLogo} alt="JPMC" className="w-10 h-10 relative z-10" />
+          {!thinkingDone && (
+            <motion.div
+              className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-full"
+            >
+              <motion.div
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.6) 50%, transparent 80%)',
+                  width: '200%',
+                  left: '-100%',
+                }}
+                animate={{ x: ['0%', '100%'] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.5 }}
+              />
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+      <div className="flex flex-col">
+        {thinkingDone && (
+          <>
+            <h2 className="text-[24px] leading-[32px] text-foreground mb-2 tracking-[0] mt-0.5 font-light" style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}>
+              {heading.displayed}
+            </h2>
+            {heading.done && (
+              <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ width: '616px' }}>
+                <p className="mb-4">
+                  <TypedText text={para1.displayed} showCursor={!para1.done} />
+                </p>
+                {para1.done && (
+                  <>
+                    {chipsVisible && (
+                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <button
+                            onClick={() => onSend("Yes, help me request feedback")}
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                            style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+                          >
+                            <CornerDownRight className="w-4 h-4" />
+                            Yes, let's do it
+                          </button>
+                          <button
+                            onClick={() => onSend("Remind me later")}
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                            style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+                          >
+                            <CornerDownRight className="w-4 h-4" />
+                            Remind me later
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                    {thumbsVisible && (
+                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+                        <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+                          <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [chipsVisible, setChipsVisible] = useState(false);
