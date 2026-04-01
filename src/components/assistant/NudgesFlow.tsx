@@ -111,13 +111,13 @@ export function NudgesFlow() {
                         Feedback can provide valuable insights to help you grow and succeed in your role.
                       </p>
 
-                      <div className="flex items-center -space-x-1 mb-5">
+                      <div className="flex items-center gap-1 mb-5">
                         {profilePhotos.map((p, i) => (
                           <img
                             key={i}
                             src={p.photo}
                             alt={p.name}
-                            className="w-6 h-6 object-cover border-2 border-[#F5F0E8]"
+                            className="w-10 h-10 object-cover"
                             style={{ borderRadius: '4px' }}
                           />
                         ))}
