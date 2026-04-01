@@ -2311,6 +2311,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
   const line1 = "Great, I've sent your feedback requests to three colleagues. I'll send a summary to you regularly to help you see how you're doing.";
   const typed1 = useTypewriter(line1, 15, 100);
   const [cardVisible, setCardVisible] = useState(false);
+  const [chipsVisible, setChipsVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
 
   useEffect(() => {
@@ -2321,11 +2322,18 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
   }, [typed1.done, cardVisible]);
 
   useEffect(() => {
-    if (cardVisible && !thumbsVisible) {
-      const t = setTimeout(() => setThumbsVisible(true), 500);
+    if (cardVisible && !chipsVisible) {
+      const t = setTimeout(() => setChipsVisible(true), 400);
       return () => clearTimeout(t);
     }
-  }, [cardVisible, thumbsVisible]);
+  }, [cardVisible, chipsVisible]);
+
+  useEffect(() => {
+    if (chipsVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [chipsVisible, thumbsVisible]);
 
   const people = [
     { name: "John Martinez", photo: johnMartinezPhoto },
@@ -2346,33 +2354,57 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
         </p>
       </motion.div>
       {cardVisible && (
-        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="bg-card rounded-2xl shadow-sm mb-6 overflow-hidden" style={{ maxWidth: '680px' }}>
-            <div className="flex items-center justify-between px-6 pt-5 pb-4">
-              <div className="flex items-center gap-2">
-                <img src={confirmationCheckIcon} alt="Confirmed" className="w-5 h-5" />
-                <h3 className="text-[15px] leading-[22px] font-semibold text-foreground">Feedback requested!</h3>
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-4"
+          style={{ maxWidth: '616px' }}
+        >
+          <div className="rounded-xl border border-border bg-card overflow-hidden">
+            <div className="flex items-start gap-4 p-6">
+              <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback requested!</p>
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>John Martinez, Sam Thomas, Emily Carter</p>
+                <div className="flex items-center -space-x-1.5 mt-2">
+                  {people.map((person) => (
+                    <img
+                      key={person.name}
+                      src={person.photo}
+                      alt={person.name}
+                      className="w-8 h-8 rounded-lg object-cover border-2 border-card"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
               </div>
-              <button className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
-                Go to Feedback <ExternalLink className="w-3 h-3" />
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                Go to Feedback <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
-            <div className="px-6 pb-5">
-              <p className="text-[13px] leading-[18px] mb-3 font-light" style={{ color: '#666663' }}>
-                John Martinez, Sam Thomas, Emily Carter
-              </p>
-              <div className="flex items-center -space-x-2">
-                {people.map((person) => (
-                  <img
-                    key={person.name}
-                    src={person.photo}
-                    alt={person.name}
-                    className="w-10 h-10 rounded-lg object-cover border-2 border-card"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
-            </div>
+          </div>
+        </motion.div>
+      )}
+      {chipsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3 mb-4">
+            <button
+              onClick={() => onSend("Yes, send next request")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              Yes, send next request
+            </button>
+            <button
+              onClick={() => onSend("No, remind me later")}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              style={{ border: '1px solid #7D7A7A', color: '#202020' }}
+            >
+              <CornerDownRight className="w-4 h-4" />
+              No, remind me later
+            </button>
           </div>
         </motion.div>
       )}
