@@ -42,7 +42,7 @@ const Index = () => {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {activeFlow !== "onboarding" && (
+        {activeFlow !== "onboarding" && activeFlow !== "nudges" && (
           <AssistantSidebar
             onSelectChat={setCurrentChatId}
             currentChatId={currentChatId}

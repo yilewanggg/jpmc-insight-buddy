@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, Menu, ChevronDown, MoreHorizontal, Trash2, Archive, Flag, Mail, MailOpen, Filter } from "lucide-react";
+import { X, Search, Menu, ChevronDown, Trash2, Archive, Flag, MailOpen, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import chatBubbleIcon from "@/assets/chat-bubble-icon.png";
 
 const emails = [
   { id: 1, from: "Jeremiah Gibson", initials: "JG", color: "#7C3AED", subject: "Please review the updated project timeline.", preview: "Focus on delivery dates for Phase 2 a...", time: "Mon 8:05 AM", unread: true, section: "Today" },
