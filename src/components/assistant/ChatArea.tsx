@@ -2439,6 +2439,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <DailyScheduleResponse onSend={onSend} />
         ) : msg.content === MOVE_DESIGN_JAM_RESPONSE ? (
           <MoveDesignJamResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_COLLABORATORS_RESPONSE ? (
+          <RequestFeedbackCollaboratorsResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_DRAFT_RESPONSE ? (
           <RequestFeedbackDraftResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_SENT_RESPONSE ? (
