@@ -2568,6 +2568,10 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <RequestFeedbackDraftResponse onSend={onSend} />
         ) : msg.content === REQUEST_FEEDBACK_SENT_RESPONSE ? (
           <RequestFeedbackSentResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_ANYONE_ELSE_RESPONSE ? (
+          <RequestFeedbackAnyoneElseResponse onSend={onSend} />
+        ) : msg.content === REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE ? (
+          <RequestFeedbackFinalConfirmationResponse onSend={onSend} />
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
