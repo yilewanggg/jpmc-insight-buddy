@@ -50,7 +50,7 @@ const Index = () => {
           />
         )}
         {activeFlow === "nudges" ? (
-          <NudgesFlow />
+          <NudgesFlow onStartNow={() => setActiveFlow("request-feedback")} />
         ) : (
           <ChatArea activeFlow={activeFlow} onFlowChange={setActiveFlow} />
         )}

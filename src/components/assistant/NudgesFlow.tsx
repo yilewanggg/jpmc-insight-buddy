@@ -41,7 +41,7 @@ const folders = [
   { name: "Notes", indent: true },
 ];
 
-export function NudgesFlow() {
+export function NudgesFlow({ onStartNow }: { onStartNow?: () => void }) {
   const [showNudge, setShowNudge] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -125,7 +125,7 @@ export function NudgesFlow() {
                       </div>
 
                       <div className="flex items-center gap-3">
-                        <button className="bg-[#222] text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-[#333] transition-colors">
+                        <button onClick={onStartNow} className="bg-[#222] text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-[#333] transition-colors">
                           Start now
                         </button>
                         <button className="bg-transparent text-[#333] text-[13px] font-medium px-6 py-2.5 rounded-full border border-[#ccc] hover:bg-black/5 transition-colors">
