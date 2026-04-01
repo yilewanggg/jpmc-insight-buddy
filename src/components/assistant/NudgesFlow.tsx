@@ -61,7 +61,7 @@ export function NudgesFlow() {
   ];
 
   return (
-    <div className="flex-1 flex items-center justify-center bg-[#1a1a2e] p-8 overflow-hidden relative">
+    <div className="flex-1 flex items-center justify-center p-8 overflow-hidden relative bg-cover bg-center" style={{ backgroundImage: `url(${desktopWallpaper})` }}>
       {/* Nudge notification - anchored by top, expands downward */}
       <div className="absolute left-0 right-0 flex justify-center z-50" style={{ top: 'calc(50% - 310px)' }}>
         <AnimatePresence>
