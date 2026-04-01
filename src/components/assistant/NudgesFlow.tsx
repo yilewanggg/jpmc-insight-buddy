@@ -41,7 +41,7 @@ const folders = [
   { name: "Notes", indent: true },
 ];
 
-export function NudgesFlow() {
+export function NudgesFlow({ onStartNow }: { onStartNow?: () => void }) {
   const [showNudge, setShowNudge] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
