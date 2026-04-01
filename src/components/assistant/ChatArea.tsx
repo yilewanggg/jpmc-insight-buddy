@@ -561,6 +561,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
 }
 
 
+function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [chipsVisible, setChipsVisible] = useState(false);
