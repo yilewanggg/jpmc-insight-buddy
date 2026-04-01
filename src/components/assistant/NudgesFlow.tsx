@@ -67,7 +67,7 @@ export function NudgesFlow() {
           {showNudge && (
             <motion.div
               layout
-              initial={{ y: -30, opacity: 0 }}
+              initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ layout: { type: "spring", stiffness: 200, damping: 25 }, opacity: { duration: 0.3 } }}
               onClick={() => !expanded && setExpanded(true)}
