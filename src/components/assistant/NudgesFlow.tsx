@@ -58,7 +58,7 @@ export function NudgesFlow() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <div className="flex items-center gap-1 bg-[#F5F0E8] text-[#333] pl-6 pr-4 py-1 rounded-full shadow-md border border-[#E5DDD0] text-[11px] tracking-tight">
-                <img src={chatBubbleIcon} alt="" className="w-5 h-5" />
+                <img src={chatBubbleIcon} alt="" className="w-5 h-5 translate-y-[1px]" />
                 <span className="font-semibold">Request feedback</span>
                 <span className="text-[#666]">from people you work with the most</span>
                 <button
