@@ -299,8 +299,7 @@ export function NudgesFlow() {
               {app.active && <div className="w-1 h-1 rounded-full bg-white/80" />}
             </div>
           ))}
-            </div>
-          ))}
+        
         </div>
       </div>
     </div>
