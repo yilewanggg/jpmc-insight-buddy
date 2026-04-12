@@ -86,7 +86,7 @@ export function NudgesFlow({ onStartNow }: { onStartNow?: () => void }) {
                   <div className={cn("flex items-center", expanded ? "gap-2 text-[13px] tracking-tight" : "gap-1")}>
                     <img src={chatBubbleIcon} alt="" className="w-5 h-5 translate-y-[0.5px]" />
                     <span className="font-semibold text-[#333]">Request feedback</span>
-                    <span className="text-[#666]">from people you work with the most</span>
+                    <span className="text-[#666] font-light">from people you work with the most</span>
                   </div>
                   <div className="flex items-center gap-3">
                     {expanded && <span className="text-[11px] text-[#999]">9:51 am</span>}
@@ -108,7 +108,7 @@ export function NudgesFlow({ onStartNow }: { onStartNow?: () => void }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                      <p className="text-[13px] text-[#444] mb-4">
+                      <p className="text-[13px] text-[#444] mb-4 font-light">
                         Feedback can provide valuable insights to help you grow and succeed in your role.
                       </p>
 
