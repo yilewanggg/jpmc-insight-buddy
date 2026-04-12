@@ -722,7 +722,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -830,11 +830,11 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -949,11 +949,11 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -1020,16 +1020,16 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
         {typed2.done && (
-          <p className="text-[16px] leading-[24px] text-foreground mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
             <TypedText text={typed3.displayed} />
           </p>
         )}
@@ -2131,7 +2131,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -2290,7 +2290,7 @@ function RequestFeedbackAnyoneElseResponse({ onSend }: { onSend: (text: string) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2349,7 +2349,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2465,7 +2465,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
           {typed1.done && "."}
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground mb-4 font-light">
+          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -2607,7 +2607,7 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
-              <div className="prose max-w-none text-foreground text-[16px] leading-[24px] [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
+              <div className="prose max-w-none text-foreground text-[16px] leading-[24px] font-light [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [&_strong]:font-semibold [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
                 <TypewriterMarkdown text={msg.content} speed={15} />
               </div>
             </div>
