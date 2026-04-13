@@ -1167,7 +1167,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
                         </span>
                       ))}
                     </div>
-                    <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>
+                    <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-light" style={{ color: '#666663' }}>
                       {seat.building} | {seat.floor}
                     </p>
                   </div>
@@ -1383,7 +1383,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
                           {seat.tag}
                         </span>
                       </div>
-                      <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>
+                      <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-light" style={{ color: '#666663' }}>
                         {seat.building} | {seat.floor}
                       </p>
                     </div>
@@ -1515,8 +1515,8 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
               <img src={confirmationIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-[16px] leading-[24px] font-normal text-foreground">Seat 04AAC065 is booked!</p>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-light" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-light" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
               </div>
               <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 View seat map <ExternalLink className="w-[13px] h-[13px]" />
@@ -2366,7 +2366,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
               <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback requested!</p>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>John Martinez, Sam Thomas, Emily Carter</p>
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-light" style={{ color: '#666663' }}>John Martinez, Sam Thomas, Emily Carter</p>
                 <div className="flex items-center -space-x-1.5 mt-2">
                   {people.map((person) => (
                     <img
