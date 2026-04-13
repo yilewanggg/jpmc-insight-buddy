@@ -33,7 +33,7 @@ export function ChatHistoryPanel({ onSelectChat, currentChatId, onNewChat }: Pro
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search chats..."
-            className="w-full pl-10 pr-3 py-2.5 rounded-xl text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground placeholder:text-[#666663] border-0 outline-none bg-[#1A17140a] focus:bg-[#1A17140f] transition-colors"
+            className="w-full pl-10 pr-3 py-2.5 rounded-xl text-[14px] leading-[21px] tracking-[-0.3px] text-foreground placeholder:text-[#666663] border-0 outline-none bg-[#1A17140a] focus:bg-[#1A17140f] transition-colors"
           />
         </div>
       </div>
@@ -52,10 +52,10 @@ export function ChatHistoryPanel({ onSelectChat, currentChatId, onNewChat }: Pro
               )}
             >
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground truncate">{chat.title}</span>
-                <span className="text-[12px] leading-[16px] tracking-[0px] shrink-0 ml-2" style={{ color: '#666663' }}>{chat.time}</span>
+                <span className="text-[14px] leading-[21px] tracking-[-0.3px] font-normal text-foreground truncate">{chat.title}</span>
+                <span className="text-[13px] leading-[19.5px] tracking-[0px] shrink-0 ml-2" style={{ color: '#666663' }}>{chat.time}</span>
               </div>
-              <p className="text-[12px] leading-[16px] tracking-[0px] truncate" style={{ color: '#666663' }}>{chat.preview}</p>
+              <p className="text-[13px] leading-[19.5px] tracking-[0px] truncate" style={{ color: '#666663' }}>{chat.preview}</p>
             </button>
             {i < filtered.length - 1 && <div className="border-t" style={{ borderColor: 'rgba(16, 16, 16, 0.1)' }} />}
           </div>
@@ -66,7 +66,7 @@ export function ChatHistoryPanel({ onSelectChat, currentChatId, onNewChat }: Pro
       <div className="mt-auto px-6 py-6">
         <button
           onClick={onNewChat}
-          className="w-full flex items-center justify-center gap-2 h-[40px] rounded-full text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal transition-colors bg-[#000000] text-[#FFFFFF] hover:bg-[#F4EFE7] hover:text-[#202020]"
+          className="w-full flex items-center justify-center gap-2 h-[40px] rounded-full text-[14px] leading-[21px] tracking-[-0.3px] font-normal transition-colors bg-[#000000] text-[#FFFFFF] hover:bg-[#F4EFE7] hover:text-[#202020]"
         >
           <Plus className="w-4 h-4" />
           New conversation
