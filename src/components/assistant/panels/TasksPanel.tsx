@@ -90,10 +90,10 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                     {task.statusLabel}
                   </span>
                 </div>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1">
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1 font-light">
                   {task.title}
                 </p>
-                <p className="text-[12px] leading-[16px] tracking-[0px]" style={{ color: '#666663' }}>
+                <p className="text-[12px] leading-[16px] tracking-[0px] font-light" style={{ color: '#666663' }}>
                   {task.due}
                 </p>
                 <div
@@ -139,10 +139,10 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                     {task.statusLabel}
                   </span>
                 </div>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1 line-through">
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1 line-through font-light">
                   {task.title}
                 </p>
-                <p className="text-[12px] leading-[16px] tracking-[0px]" style={{ color: '#666663' }}>
+                <p className="text-[12px] leading-[16px] tracking-[0px] font-light" style={{ color: '#666663' }}>
                   {task.due}
                 </p>
               </div>
