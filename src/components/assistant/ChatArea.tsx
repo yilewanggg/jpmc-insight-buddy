@@ -741,7 +741,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                   <div className="flex-1 min-w-0">
                     <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Complete Security & Compliance Training</p>
                     <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
-                    <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>9:05–10:30am</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light" style={{ color: '#666663' }}>9:05–10:30am</p>
                   </div>
                   <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Open Outlook <ExternalLink className="w-[13px] h-[13px]" />
@@ -2155,7 +2155,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             <div className="p-6">
               {!isEditing && !isRefined && (
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light" style={{ color: '#666663' }}>Draft message</p>
                   <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
                     Edit
@@ -2164,7 +2164,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
               )}
               {isEditing && (
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>Draft message</p>
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light" style={{ color: '#666663' }}>Draft message</p>
                 </div>
               )}
               {isRefining ? (
