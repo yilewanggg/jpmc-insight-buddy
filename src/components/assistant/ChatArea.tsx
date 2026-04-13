@@ -229,7 +229,7 @@ function WelcomeChipsAndThumbs({ show, onSend }: { show: boolean; onSend: (text:
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-medium"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -237,7 +237,7 @@ function WelcomeChipsAndThumbs({ show, onSend }: { show: boolean; onSend: (text:
             </button>
             <button
               onClick={() => onSend("Book time to do it later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-medium"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -335,7 +335,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
                     <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Data Security and Compliance</p>
                     <p className="text-[14px] leading-[20px] tracking-[0.16px] mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
                   </div>
-                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Go to My Learning <ExternalLink className="w-[13px] h-[13px]" />
                   </button>
                 </div>
@@ -532,7 +532,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
                         <div className="flex items-center gap-3 mb-4">
                           <button
                             onClick={() => onSend("Yes, let's do it")}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                           >
                             <CornerDownRight className="w-4 h-4" />
@@ -540,7 +540,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
                           </button>
                           <button
                             onClick={() => onSend("Remind me later")}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                           >
                             <CornerDownRight className="w-4 h-4" />
@@ -653,7 +653,7 @@ function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) 
                             <div className="flex items-center gap-3 mb-4">
                               <button
                                 onClick={() => onSend("Yes, help me book a seat")}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                                 style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                               >
                                 <CornerDownRight className="w-4 h-4" />
@@ -743,7 +743,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                     <p className="text-[14px] leading-[20px] tracking-[0.16px] mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
                     <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>9:05–10:30am</p>
                   </div>
-                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Open Outlook <ExternalLink className="w-[13px] h-[13px]" />
                   </button>
                 </div>
@@ -767,7 +767,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
               <div className="flex items-center gap-3 mb-4">
                 <button
                   onClick={() => onSend("Start my onboarding task")}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
@@ -775,7 +775,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                 </button>
                 <button
                   onClick={() => onSend("Start my feedback task")}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
@@ -886,7 +886,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <button
               onClick={() => onSend("Choose Ravi M")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -894,7 +894,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Choose Priya H")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -902,7 +902,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Show me more suggestions")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -963,7 +963,7 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Give feedback")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -971,7 +971,7 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1039,7 +1039,7 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, please")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1047,7 +1047,7 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("No, thanks")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1145,7 +1145,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
             {/* Card header */}
             <div className="flex items-start justify-between pt-4 px-6 pb-0">
               <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats suggested for you</span>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
@@ -1194,7 +1194,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, book this seat")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1202,7 +1202,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("Show me more options")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1261,7 +1261,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <button
               onClick={() => onSend("Near my team")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1269,7 +1269,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Close to my meetings")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1277,7 +1277,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Recently booked seats")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1367,7 +1367,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
               {/* Card header */}
               <div className="flex items-start justify-between p-6 pb-0">
                 <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats you have booked recently</span>
-                <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                   Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
                 </button>
               </div>
@@ -1422,7 +1422,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Book this seat")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1430,7 +1430,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
             </button>
             <button
               onClick={() => onSend("Show me more options")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1518,7 +1518,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
               </div>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 View seat map <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
@@ -1700,7 +1700,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
         >
           <button
             onClick={() => onSend("Use refined version")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1708,7 +1708,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           </button>
           <button
             onClick={() => onSend("Use original version")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1716,7 +1716,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           </button>
           <button
             onClick={() => onSend("Edit further")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1863,7 +1863,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
         >
           <button
             onClick={() => onSend("Send to Carmen")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1871,7 +1871,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
           </button>
           <button
             onClick={() => onSend("Send to Carmen and her manager")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -2070,7 +2070,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2248,7 +2248,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2379,7 +2379,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
                   ))}
                 </div>
               </div>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Feedback <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
@@ -2391,7 +2391,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, send next request")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2399,7 +2399,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
             </button>
             <button
               onClick={() => onSend("No, remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2490,7 +2490,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Set follow-up reminder")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2498,7 +2498,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
             </button>
             <button
               onClick={() => onSend("Ask someone else for feedback")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
