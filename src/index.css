@@ -116,7 +116,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-light;
+    @apply bg-background text-foreground font-normal;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
