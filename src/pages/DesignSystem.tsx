@@ -424,10 +424,10 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Default</p>
                     <div className="flex flex-wrap items-center gap-3">
-                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] font-normal hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Yes, book this seat
                       </button>
-                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] font-normal hover:bg-[#DDD5C8]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Show me more options
                       </button>
                     </div>
@@ -435,7 +435,7 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Hover</p>
                     <div className="flex items-center gap-3">
-                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4" /> Yes, book this seat
                       </button>
                       <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8</p>
@@ -444,7 +444,7 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Pressed</p>
                     <div className="flex items-center gap-3 flex-nowrap">
-                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4 shrink-0" /> Yes, book this seat
                       </button>
                       <p className="text-[12px] font-light text-muted-foreground shrink-0">Pressed: bg #DDD5C8</p>
@@ -453,7 +453,7 @@ const DesignSystem = () => {
                   <div>
                     <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Unselected (after selection)</p>
                     <div className="flex items-center gap-3 flex-nowrap">
-                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-40 cursor-not-allowed text-[14px] leading-[20px]" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
+                      <button className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent opacity-40 cursor-not-allowed text-[14px] leading-[20px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020', letterSpacing: '0.16px' }}>
                         <CornerDownRight className="w-4 h-4 shrink-0" /> Show me more options
                       </button>
                       <p className="text-[12px] font-light text-muted-foreground shrink-0">Unselected: opacity 40%</p>
