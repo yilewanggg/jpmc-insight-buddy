@@ -52,7 +52,7 @@ export function ChatHistoryPanel({ onSelectChat, currentChatId, onNewChat }: Pro
               )}
             >
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground truncate">{chat.title}</span>
+                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground truncate">{chat.title}</span>
                 <span className="text-[12px] leading-[16px] tracking-[0px] shrink-0 ml-2" style={{ color: '#666663' }}>{chat.time}</span>
               </div>
               <p className="text-[12px] leading-[16px] tracking-[0px] truncate" style={{ color: '#666663' }}>{chat.preview}</p>
