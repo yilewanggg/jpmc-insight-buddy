@@ -2933,7 +2933,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                 autoFocus={activeFlow !== "feedback"}
                 placeholder="How can I help?"
                 rows={1}
-                className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground placeholder:text-[#666663] resize-none outline-none max-h-32"
+                className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground font-normal placeholder:text-[#666663] placeholder:font-light resize-none outline-none max-h-32"
               />
               <div className="flex items-center gap-1.5 shrink-0 ml-2">
                 <SlashCommandMenu
