@@ -830,11 +830,11 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -949,11 +949,11 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -1020,16 +1020,16 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
         {typed2.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed3.displayed} />
           </p>
         )}
@@ -1252,7 +1252,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -1412,7 +1412,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             Would you like to book it now?
           </p>
         </motion.div>
@@ -1493,11 +1493,11 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -1532,7 +1532,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUp.displayed} />
           </p>
         </motion.div>
@@ -1572,11 +1572,11 @@ function SetupAutobookResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             {(() => {
               const t = typed2.displayed;
               const settingsStart = t.indexOf("**Settings**");
@@ -1653,7 +1653,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1671,7 +1671,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
               <Sparkles className="w-4 h-4" style={{ color: '#666663' }} strokeWidth={1.5} />
               <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Refined feedback</span>
             </div>
-            <p className="text-[16px] leading-[24px] text-foreground font-light">
+            <p className="text-[16px] leading-[24px] text-foreground font-normal">
               During our client meetings, you regularly summarize discussions and confirm your understanding before offering input. Keep it up! You have great ideas. To make them easier to follow, take a pause and structure your thoughts into three concise bullet points.
             </p>
           </div>
@@ -1685,7 +1685,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -1785,7 +1785,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1848,7 +1848,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -1924,7 +1924,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1936,7 +1936,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -2002,7 +2002,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
 
   return (
     <div className="flex flex-col">
-      <div className="text-[16px] leading-[24px] text-foreground font-light" style={{ width: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-normal" style={{ width: '616px' }}>
         <p className="mb-1">{typed.displayed}{!typed.done && <span className="animate-pulse">|</span>}</p>
         {typed.done && (
           <p className="mb-4">{para2.displayed}{!para2.done && <span className="animate-pulse">|</span>}</p>
@@ -2131,7 +2131,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -2181,7 +2181,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                   initial={isRefined ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-[16px] leading-[24px] text-foreground font-light" 
+                  className="text-[16px] leading-[24px] text-foreground font-normal" 
                   contentEditable={isEditing && !isRefined} 
                   suppressContentEditableWarning
                 >
@@ -2290,7 +2290,7 @@ function RequestFeedbackAnyoneElseResponse({ onSend }: { onSend: (text: string) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2349,7 +2349,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2465,7 +2465,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
           {typed1.done && "."}
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light mb-4 font-light">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
             <TypedText text={typed2.displayed} />
           </p>
         )}
