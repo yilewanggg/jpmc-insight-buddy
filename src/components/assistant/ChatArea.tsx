@@ -312,7 +312,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
         
           {heading.done && (
           <>
-           <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ width: '616px' }}>
+           <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
             <p className="mb-4">
               <TypedText text={para1.displayed} showCursor={!para1.done} />
             </p>
@@ -407,7 +407,7 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
       <div className="flex flex-col" style={{ width: '616px' }}>
         {thinkingDone && (
           <>
-            <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mt-2.5">
+            <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light mt-2.5">
               <p className="mb-4">
                 <TypedText text={para1.displayed} showCursor={!para1.done} />
               </p>
@@ -521,7 +521,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
               {heading.displayed}
             </h2>
             {heading.done && (
-              <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ width: '616px' }}>
+              <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
                 <p className="mb-4">
                   <TypedText text={para1.displayed} showCursor={!para1.done} />
                 </p>
@@ -637,7 +637,7 @@ function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) 
               {heading.displayed}
             </h2>
             {heading.done && (
-              <div className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ width: '616px' }}>
+              <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
                 <p className="mb-4">
                   <TypedText text={para1.displayed} showCursor={!para1.done} />
                 </p>
@@ -757,7 +757,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
               transition={{ duration: 0.5, ease: "easeOut" }}
               style={{ maxWidth: '616px', marginTop: '24px' }}
             >
-              <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold" style={{ marginBottom: '16px' }}>
+              <p className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light" style={{ marginBottom: '16px' }}>
                 <TypedText text={followUp.displayed} />
               </p>
             </motion.div>
@@ -1123,11 +1123,11 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light mb-4">
           <TypedText text={typed1.displayed} showCursor={!typed1.done} />
         </p>
         {typed1.done && (
-          <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light mb-4">
             <TypedText text={typed2.displayed} showCursor={!typed2.done} />
           </p>
         )}
@@ -1350,7 +1350,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[16px] leading-[24px] text-foreground font-light [&_strong]:font-semibold mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-light mb-4">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2607,7 +2607,7 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
-              <div className="prose max-w-none text-foreground text-[16px] leading-[24px] font-light [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [&_strong]:font-semibold [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
+              <div className="prose max-w-none text-foreground text-[16px] leading-[24px] font-light [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [[&_strong]:font-semibold_strong]:font-light [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
                 <TypewriterMarkdown text={msg.content} speed={15} />
               </div>
             </div>
