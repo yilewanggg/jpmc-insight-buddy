@@ -84,7 +84,7 @@ function EventRow({ event }: { event: CalendarEvent }) {
     >
       <div className="flex items-start gap-4">
         <div className="w-[55px] shrink-0">
-          <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-bold" style={{ color: '#666663' }}>{event.time}</p>
+          <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>{event.time}</p>
           <p className="text-[12px] leading-[16px] tracking-[0px]" style={{ color: '#666663' }}>{event.duration}</p>
         </div>
         <div className="flex items-start gap-3">
@@ -98,7 +98,7 @@ function EventRow({ event }: { event: CalendarEvent }) {
             }}
           />
           <div className="min-w-0 flex flex-col justify-center" style={{ minHeight: '44px' }}>
-            <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-bold text-foreground">{event.title}</p>
+            <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">{event.title}</p>
             <p className="text-[12px] leading-[16px] tracking-[0px] flex items-center gap-1.5" style={{ color: '#666663' }}>
               {event.location}
               {event.hasCopy && (
@@ -194,11 +194,11 @@ function EventRow({ event }: { event: CalendarEvent }) {
               <div className="relative">
                 <div className="absolute left-0 top-0 rounded-xl shadow-lg z-10 py-1.5 px-1.5 w-[200px]" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E4DE' }}>
                   <button className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors">
-                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">Message host</span>
+                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground">Message host</span>
                     <ExternalLink className="w-4 h-4" strokeWidth={1.5} style={{ color: '#202020' }} />
                   </button>
                   <button className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors">
-                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">Open Outlook</span>
+                    <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground">Open Outlook</span>
                     <ExternalLink className="w-4 h-4" strokeWidth={1.5} style={{ color: '#202020' }} />
                   </button>
                 </div>
@@ -209,7 +209,7 @@ function EventRow({ event }: { event: CalendarEvent }) {
       </div>
       {event.hasJoin && (
         <button
-          className="h-8 rounded-full bg-foreground text-background hover:opacity-90 text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium shrink-0 flex items-center justify-center whitespace-nowrap overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+          className="h-8 rounded-full bg-foreground text-background hover:opacity-90 text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal shrink-0 flex items-center justify-center whitespace-nowrap overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{ width: isHovered ? '128px' : '55px', gap: isHovered ? '8px' : '0px' }}
         >
           <span className="transition-all duration-300" style={{ opacity: isHovered ? 1 : 0, width: isHovered ? '16px' : '0px', overflow: 'hidden', flexShrink: 0 }}>
@@ -228,8 +228,8 @@ export function CalendarPanel() {
       {/* Today header */}
       <div className="px-6 pt-4 pb-2 flex items-center justify-between border-b border-border">
         <div className="flex items-baseline gap-2" style={{ gap: '8px' }}>
-          <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-bold text-foreground">Today</span>
-          <span className="text-[12px] leading-[16px] tracking-[0px] font-bold" style={{ color: '#666663' }}>February 25</span>
+          <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-medium text-foreground">Today</span>
+          <span className="text-[12px] leading-[16px] tracking-[0px] font-medium" style={{ color: '#666663' }}>February 25</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-[12px] leading-[16px] tracking-[0px]" style={{ color: '#666663' }}>Updated 19m ago</span>
@@ -246,8 +246,8 @@ export function CalendarPanel() {
 
       {/* Tomorrow header */}
       <div className="px-6 pb-2 flex items-baseline border-b border-border" style={{ gap: '8px', paddingTop: '32px' }}>
-        <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-bold text-foreground">Tomorrow</span>
-        <span className="text-[12px] leading-[16px] tracking-[0px] font-bold" style={{ color: '#666663' }}>February 26</span>
+        <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-medium text-foreground">Tomorrow</span>
+        <span className="text-[12px] leading-[16px] tracking-[0px] font-medium" style={{ color: '#666663' }}>February 26</span>
       </div>
 
       {/* Tomorrow events */}
