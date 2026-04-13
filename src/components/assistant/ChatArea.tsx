@@ -1145,7 +1145,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
             {/* Card header */}
             <div className="flex items-start justify-between pt-4 px-6 pb-0">
               <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats suggested for you</span>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
@@ -1367,7 +1367,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
               {/* Card header */}
               <div className="flex items-start justify-between p-6 pb-0">
                 <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats you have booked recently</span>
-                <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                   Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
                 </button>
               </div>
@@ -1518,7 +1518,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
               </div>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 View seat map <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
@@ -2379,7 +2379,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
                   ))}
                 </div>
               </div>
-              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px]" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+              <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Feedback <ExternalLink className="w-[13px] h-[13px]" />
               </button>
             </div>
