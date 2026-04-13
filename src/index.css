@@ -116,8 +116,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-normal;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 450;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Tiempos Headline', 'Times New Roman', serif;
