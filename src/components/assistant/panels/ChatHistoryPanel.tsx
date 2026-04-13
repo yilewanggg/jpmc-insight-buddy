@@ -66,7 +66,7 @@ export function ChatHistoryPanel({ onSelectChat, currentChatId, onNewChat }: Pro
       <div className="mt-auto px-6 py-6">
         <button
           onClick={onNewChat}
-          className="w-full flex items-center justify-center gap-2 h-[40px] rounded-full text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors bg-[#000000] text-[#FFFFFF] hover:bg-[#F4EFE7] hover:text-[#202020]"
+          className="w-full flex items-center justify-center gap-2 h-[40px] rounded-full text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal transition-colors bg-[#000000] text-[#FFFFFF] hover:bg-[#F4EFE7] hover:text-[#202020]"
         >
           <Plus className="w-4 h-4" />
           New conversation
