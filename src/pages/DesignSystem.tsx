@@ -272,9 +272,9 @@ const DesignSystem = () => {
             </div>
 
             <div>
-              <SubSection title="Inter / Source Sans Pro · Sans-serif">
+              <SubSection title="Helvetica Neue · Sans-serif">
                 <p className="text-[12px] leading-[16px] font-light text-muted-foreground mb-8">
-                  Body, labels, and UI elements. Light to semibold weights.
+                  Body, labels, and UI elements. Uses Helvetica Neue across all weights.
                 </p>
                 <div className="space-y-6">
                   {[
