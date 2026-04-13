@@ -333,7 +333,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Data Security and Compliance</p>
-                    <p className="text-[14px] leading-[20px] tracking-[0.16px] mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
                   </div>
                   <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Go to My Learning <ExternalLink className="w-[13px] h-[13px]" />
@@ -740,7 +740,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Complete Security & Compliance Training</p>
-                    <p className="text-[14px] leading-[20px] tracking-[0.16px] mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-light mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
                     <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>9:05–10:30am</p>
                   </div>
                   <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
