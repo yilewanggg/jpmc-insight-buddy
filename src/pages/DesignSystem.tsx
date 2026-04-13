@@ -755,7 +755,7 @@ const DesignSystem = () => {
                     <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full" style={{ color: '#666663' }}>
                       <Plus className="w-5 h-5" strokeWidth={1.5} />
                     </button>
-                    <span className="flex-1 text-[15px] leading-[22.5px] text-[#666663]" style={{ letterSpacing: '-0.3%' }}>How can I help?</span>
+                    <span className="flex-1 text-[15px] leading-[22.5px] font-light text-[#666663]" style={{ letterSpacing: '-0.3%' }}>How can I help?</span>
                     <div className="flex items-center gap-1.5 shrink-0 ml-2">
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ border: '1px solid rgba(0,0,0,0.1)' }}>
                         <span className="text-[14px] text-muted-foreground">/</span>
