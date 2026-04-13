@@ -12,10 +12,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Source Sans Pro'", "Arial", "sans-serif"],
+        sans: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
         serif: ["'Tiempos Headline'", "'Times New Roman'", "serif"],
         headline: ["'Tiempos Headline'", "'Times New Roman'", "serif"],
-        body: ["'Source Sans Pro'", "Arial", "sans-serif"],
+        body: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
