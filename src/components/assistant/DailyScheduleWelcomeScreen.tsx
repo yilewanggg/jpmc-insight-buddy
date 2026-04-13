@@ -253,7 +253,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
                 <button
                   key={chip.label}
                   onClick={() => onSend(chip.message)}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px]"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
