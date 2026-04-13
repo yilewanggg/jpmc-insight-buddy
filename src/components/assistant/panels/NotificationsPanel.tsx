@@ -29,7 +29,7 @@ export function NotificationsPanel() {
                 </p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground flex items-center gap-2">
                   {n.unread && <span className="w-2 h-2 rounded-full bg-foreground shrink-0" />}
-                  <span className={n.unread ? "font-medium" : "font-normal"}>{n.message}</span>
+                  <span className={n.unread ? "font-normal" : "font-light"}>{n.message}</span>
                 </p>
               </div>
               <span className="text-[12px] leading-[16px] tracking-[0px] shrink-0" style={{ color: '#666663' }}>
