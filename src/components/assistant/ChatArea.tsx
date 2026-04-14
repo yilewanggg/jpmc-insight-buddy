@@ -356,7 +356,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
+function FeedbackWelcomeScreen({ onSend, onAutoType }: { onSend: (text: string) => void; onAutoType: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
@@ -380,14 +380,23 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
     }
   }, [typed.done, thumbsVisible]);
 
-  // Auto-send the feedback text as a user bubble after welcome finishes
-  const autoSentRef = useRef(false);
+  // Auto-type the feedback text into the input field after welcome finishes
+  const autoTypedRef = useRef(false);
+  const onAutoTypeRef = useRef(onAutoType);
+  onAutoTypeRef.current = onAutoType;
   useEffect(() => {
-    if (thumbsVisible && !autoSentRef.current) {
-      autoSentRef.current = true;
-      setTimeout(() => {
-        onSendRef.current("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+    if (thumbsVisible && !autoTypedRef.current) {
+      autoTypedRef.current = true;
+      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
+      let i = 0;
+      const startDelay = setTimeout(() => {
+        const interval = setInterval(() => {
+          i++;
+          onAutoTypeRef.current(text.slice(0, i));
+          if (i >= text.length) clearInterval(interval);
+        }, 18);
       }, 800);
+      return () => clearTimeout(startDelay);
     }
   }, [thumbsVisible]);
 
@@ -2546,6 +2555,14 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   }, [messages, isWaitingForAssistant]);
 
+  // Auto-resize textarea when input changes programmatically
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, 128) + 'px';
+    }
+  }, [input]);
+
   useEffect(() => {
     if (activeFlow !== "feedback") {
       inputRef.current?.focus();
@@ -2705,7 +2722,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
       {/* Messages */}
       <div ref={scrollContainerRef} className="flex-1 overflow-y-auto scrollbar-thin">
         {activeFlow === "daily-digest" && <WelcomeScreen key="daily-digest" onSend={handleSend} />}
-        {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} />}
+        {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} onAutoType={(text) => setInput(text)} />}
         {activeFlow === "book-a-seat" && <BookASeatWelcomeScreen key="book-a-seat" onSend={handleSend} />}
         {activeFlow === "daily-schedule" && <DailyScheduleWelcomeScreen key="daily-schedule" onSend={handleSend} />}
         {activeFlow === "request-feedback" && <RequestFeedbackWelcomeScreen key="request-feedback" onSend={handleSend} />}
@@ -2761,7 +2778,11 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
               <textarea
                 ref={inputRef}
                 value={input}
-                onChange={e => setInput(e.target.value)}
+                onChange={e => {
+                  setInput(e.target.value);
+                  e.target.style.height = 'auto';
+                  e.target.style.height = Math.min(e.target.scrollHeight, 128) + 'px';
+                }}
                 onKeyDown={handleKeyDown}
                 onBlur={activeFlow !== "feedback" ? handleFocus : undefined}
                 onFocus={handleInputFocus}
