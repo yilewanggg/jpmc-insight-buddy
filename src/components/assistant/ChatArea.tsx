@@ -2563,7 +2563,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   }, [input]);
 
-
+  useEffect(() => {
     if (activeFlow !== "feedback") {
       inputRef.current?.focus();
     }
