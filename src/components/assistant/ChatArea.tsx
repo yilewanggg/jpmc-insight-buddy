@@ -2552,6 +2552,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <BookSeatConfirmResponse onSend={onSend} />
         ) : msg.content === SETUP_AUTOBOOK_RESPONSE ? (
           <SetupAutobookResponse onSend={onSend} />
+        ) : msg.content === FEEDBACK_FIRST_DRAFT_RESPONSE ? (
+          <FeedbackFirstDraftResponse onSend={onSend} />
         ) : msg.content === REFINED_FEEDBACK_RESPONSE ? (
           <RefinedFeedbackResponse onSend={onSend} />
         ) : msg.content === REVIEW_FEEDBACK_RESPONSE ? (
