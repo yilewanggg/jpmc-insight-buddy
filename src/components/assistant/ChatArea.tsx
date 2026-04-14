@@ -360,7 +360,7 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
-  const [autoSent, setAutoSent] = useState(false);
+  
   const onSendRef = useRef(onSend);
   onSendRef.current = onSend;
 
