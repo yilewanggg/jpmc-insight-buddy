@@ -26,7 +26,7 @@ export function PreferencesPanel() {
           >
             <div className="flex items-center gap-3">
               <item.icon className="w-[18px] h-[18px]" strokeWidth={1.5} style={{ color: '#202020' }} />
-              <span className="text-[16px] leading-[24px] tracking-[0.16px] text-foreground">{item.label}</span>
+              <span className="text-[13px] leading-[19.5px] tracking-[0.16px] text-foreground">{item.label}</span>
             </div>
             <ChevronDown
               className={cn("w-4 h-4 transition-transform", expandedId === item.id && "rotate-180")}
@@ -36,7 +36,7 @@ export function PreferencesPanel() {
           </button>
           {expandedId === item.id && (
             <div className="px-6 pb-5 pl-[54px]">
-              <p className="text-[14px] leading-[20px] tracking-[0.16px]" style={{ color: '#666663' }}>
+              <p className="text-[13px] leading-[19.5px] tracking-[0.16px]" style={{ color: '#666663' }}>
                 {item.label} preferences coming soon.
               </p>
             </div>
