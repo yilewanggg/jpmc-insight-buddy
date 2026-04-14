@@ -387,7 +387,7 @@ function FeedbackWelcomeScreen({ onSend, onAutoType }: { onSend: (text: string) 
   useEffect(() => {
     if (thumbsVisible && !autoTypedRef.current) {
       autoTypedRef.current = true;
-      const text = 'While preparing the March product launch, you took the lead on the social media assets...';
+      const text = 'While preparing the March product launch, you took the lead on the social';
       let i = 0;
       const startDelay = setTimeout(() => {
         const interval = setInterval(() => {
@@ -2665,7 +2665,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
   );
 }
 
-  const FEEDBACK_SHORT_TEXT = 'While preparing the March product launch, you took the lead on the social media assets...';
+  const FEEDBACK_SHORT_TEXT = 'While preparing the March product launch, you took the lead on the social';
   const FEEDBACK_FULL_TEXT = 'While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.';
 
   const handleSend = async (text?: string) => {
