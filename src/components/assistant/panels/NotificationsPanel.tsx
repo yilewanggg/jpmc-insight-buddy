@@ -24,10 +24,10 @@ export function NotificationsPanel() {
           >
             <div className="flex items-start justify-between gap-4 w-full">
               <div className="flex-1 min-w-0">
-                <p className="text-[14px] leading-[21px] tracking-[-0.3px] font-medium mb-1" style={{ color: '#666663' }}>
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium mb-1" style={{ color: '#666663' }}>
                   {n.category}
                 </p>
-                <p className="text-[14px] leading-[21px] tracking-[-0.3px] text-foreground flex items-center gap-2">
+                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground flex items-center gap-2">
                   {n.unread && <span className="w-2 h-2 rounded-full bg-foreground shrink-0" />}
                   <span className={n.unread ? "font-medium" : "font-normal"}>{n.message}</span>
                 </p>
@@ -44,7 +44,7 @@ export function NotificationsPanel() {
             >
               <div className="overflow-hidden">
                 <div className="flex items-center">
-                  <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-[#000000] text-[#FFFFFF] text-[14px] leading-[21px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] hover:text-[#202020] transition-colors">
+                  <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-[#000000] text-[#FFFFFF] text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] hover:text-[#202020] transition-colors">
                     Do it now <ExternalLink className="w-3.5 h-3.5" />
                   </button>
                 </div>
