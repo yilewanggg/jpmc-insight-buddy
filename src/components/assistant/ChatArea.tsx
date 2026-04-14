@@ -360,7 +360,9 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
-  const [autoSent, setAutoSent] = useState(false);
+  
+  const onSendRef = useRef(onSend);
+  onSendRef.current = onSend;
 
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 200);
@@ -379,15 +381,15 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   }, [typed.done, thumbsVisible]);
 
   // Auto-send the feedback text as a user bubble after welcome finishes
+  const autoSentRef = useRef(false);
   useEffect(() => {
-    if (thumbsVisible && !autoSent) {
-      setAutoSent(true);
-      const t = setTimeout(() => {
-        onSend("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+    if (thumbsVisible && !autoSentRef.current) {
+      autoSentRef.current = true;
+      setTimeout(() => {
+        onSendRef.current("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
       }, 800);
-      return () => clearTimeout(t);
     }
-  }, [thumbsVisible, autoSent, onSend]);
+  }, [thumbsVisible]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
@@ -1592,6 +1594,8 @@ function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: str
   const [cardVisible, setCardVisible] = useState(false);
   const [followUpVisible, setFollowUpVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
+  const onAutoTypeRef = useRef(onAutoType);
+  onAutoTypeRef.current = onAutoType;
 
   useEffect(() => {
     if (typed.done && !cardVisible) {
@@ -1619,19 +1623,19 @@ function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: str
 
   // Auto-type "refine for me" in the input after thumbs appear
   useEffect(() => {
-    if (thumbsVisible && onAutoType) {
+    if (thumbsVisible && onAutoTypeRef.current) {
       const text = "refine for me";
       let i = 0;
       const delay = setTimeout(() => {
         const interval = setInterval(() => {
           i++;
-          onAutoType(text.slice(0, i));
+          onAutoTypeRef.current?.(text.slice(0, i));
           if (i >= text.length) clearInterval(interval);
         }, 40);
       }, 800);
       return () => clearTimeout(delay);
     }
-  }, [thumbsVisible, onAutoType]);
+  }, [thumbsVisible]);
 
   return (
     <div>
