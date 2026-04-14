@@ -361,6 +361,8 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
   const [autoSent, setAutoSent] = useState(false);
+  const onSendRef = useRef(onSend);
+  onSendRef.current = onSend;
 
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 200);
@@ -383,11 +385,11 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
     if (thumbsVisible && !autoSent) {
       setAutoSent(true);
       const t = setTimeout(() => {
-        onSend("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+        onSendRef.current("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
       }, 800);
       return () => clearTimeout(t);
     }
-  }, [thumbsVisible, autoSent, onSend]);
+  }, [thumbsVisible, autoSent]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
