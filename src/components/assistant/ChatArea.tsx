@@ -387,7 +387,7 @@ function FeedbackWelcomeScreen({ onSend, onAutoType }: { onSend: (text: string) 
   useEffect(() => {
     if (thumbsVisible && !autoTypedRef.current) {
       autoTypedRef.current = true;
-      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
+      const text = "While preparing the March product launch...";
       let i = 0;
       const startDelay = setTimeout(() => {
         const interval = setInterval(() => {
@@ -2555,14 +2555,6 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   }, [messages, isWaitingForAssistant]);
 
-  // Auto-resize textarea when input changes programmatically
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.style.height = 'auto';
-      inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-      
-    }
-  }, [input]);
 
   useEffect(() => {
     if (activeFlow !== "feedback") {
@@ -2772,7 +2764,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
         <div className="absolute inset-x-0 -top-8 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         <div className="bg-background pb-4 pt-2 flex justify-center">
           <div style={{ width: '740px' }}>
-            <div className="relative flex items-end bg-card rounded-xl px-4 py-2.5 ml-16">
+            <div className="relative flex items-center bg-card rounded-xl px-4 py-2.5 ml-16">
               <button className="shrink-0 mr-2 w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#1A17140a] active:bg-[#1A17141a] transition-all duration-200" style={{ color: '#666663' }}>
                 <Plus className="w-5 h-5 transition-transform duration-200 hover:scale-110" strokeWidth={1.5} />
               </button>
@@ -2786,7 +2778,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                 autoFocus={activeFlow !== "feedback"}
                 placeholder="How can I help?"
                 rows={1}
-                className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground font-normal placeholder:text-[#666663] placeholder:font-normal resize-none outline-none overflow-hidden w-full"
+                className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground font-normal placeholder:text-[#666663] placeholder:font-normal resize-none outline-none max-h-32"
               />
               <div className="flex items-center gap-1.5 shrink-0 ml-2">
                 <SlashCommandMenu
