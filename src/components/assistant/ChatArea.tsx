@@ -2555,7 +2555,15 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     }
   }, [messages, isWaitingForAssistant]);
 
+  // Auto-resize textarea when input changes programmatically
   useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, 128) + 'px';
+    }
+  }, [input]);
+
+
     if (activeFlow !== "feedback") {
       inputRef.current?.focus();
     }
