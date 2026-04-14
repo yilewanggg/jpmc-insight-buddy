@@ -84,7 +84,7 @@ function EventRow({ event }: { event: CalendarEvent }) {
     >
       <div className="flex items-start gap-4">
         <div className="w-[55px] shrink-0">
-          <p className="text-[14px] leading-[21px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>{event.time}</p>
+          <p className="text-[14px] leading-[21px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>{event.time}</p>
           <p className="text-[13px] leading-[19.5px] tracking-[0px]" style={{ color: '#666663' }}>{event.duration}</p>
         </div>
         <div className="flex items-start gap-3">
@@ -98,7 +98,7 @@ function EventRow({ event }: { event: CalendarEvent }) {
             }}
           />
           <div className="min-w-0 flex flex-col justify-center" style={{ minHeight: '44px' }}>
-            <p className="text-[14px] leading-[21px] tracking-[-0.3px] font-medium text-foreground">{event.title}</p>
+            <p className="text-[14px] leading-[21px] tracking-[-0.3px] font-normal text-foreground">{event.title}</p>
             <p className="text-[13px] leading-[19.5px] tracking-[0px] flex items-center gap-1.5" style={{ color: '#666663' }}>
               {event.location}
               {event.hasCopy && (
@@ -228,8 +228,8 @@ export function CalendarPanel() {
       {/* Today header */}
       <div className="px-6 pt-4 pb-2 flex items-center justify-between border-b border-border">
         <div className="flex items-baseline gap-2" style={{ gap: '8px' }}>
-          <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-medium text-foreground">Today</span>
-          <span className="text-[13px] leading-[19.5px] tracking-[0px] font-medium" style={{ color: '#666663' }}>February 25</span>
+          <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-normal text-foreground">Today</span>
+          <span className="text-[13px] leading-[19.5px] tracking-[0px] font-normal" style={{ color: '#666663' }}>February 25</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-[13px] leading-[19.5px] tracking-[0px]" style={{ color: '#666663' }}>Updated 19m ago</span>
@@ -246,8 +246,8 @@ export function CalendarPanel() {
 
       {/* Tomorrow header */}
       <div className="px-6 pb-2 flex items-baseline border-b border-border" style={{ gap: '8px', paddingTop: '32px' }}>
-        <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-medium text-foreground">Tomorrow</span>
-        <span className="text-[13px] leading-[19.5px] tracking-[0px] font-medium" style={{ color: '#666663' }}>February 26</span>
+        <span className="text-[15px] leading-[22.5px] tracking-[-0.3px] font-normal text-foreground">Tomorrow</span>
+        <span className="text-[13px] leading-[19.5px] tracking-[0px] font-normal" style={{ color: '#666663' }}>February 26</span>
       </div>
 
       {/* Tomorrow events */}
