@@ -1565,9 +1565,235 @@ function SetupAutobookResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
-  const introText = "To strengthen your feedback, you could make it more specific and actionable. Here\u2019s a refined version:";
+function FeedbackCard({ feedbackText, onSend }: { feedbackText: string; onSend?: (text: string) => void }) {
+  return (
+    <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
+      <div className="p-6 pb-4">
+        <div className="flex items-start gap-3 mb-4">
+          <img src={carmenProfile} alt="Miriam" className="w-10 h-10 rounded-lg object-cover" style={{ objectPosition: '10% center' }} />
+          <div>
+            <p className="text-[16px] leading-[24px] font-semibold text-foreground">Feedback for Miriam</p>
+          </div>
+        </div>
+        <p className="text-[16px] leading-[24px] font-normal" style={{ color: '#666663' }}>
+          &ldquo;{feedbackText}&rdquo;
+        </p>
+      </div>
+      <div className="mx-6" style={{ borderTop: '1px solid #E8E4DE' }} />
+      <div className="px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to:</span>
+          <button className="flex items-center gap-1 text-[14px] leading-[20px] font-medium text-foreground">
+            Employee and Manager
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
+        <button
+          onClick={() => onSend?.("Send feedback to Miriam")}
+          className="px-5 py-2 rounded-lg text-[14px] leading-[20px] font-medium text-white"
+          style={{ backgroundColor: '#000000' }}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Here is your feedback for Miriam. Are you ready to **send this feedback request** or would you like me to help you **refine** it?";
   const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [followUpVisible, setFollowUpVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !followUpVisible) {
+      const t = setTimeout(() => setFollowUpVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, followUpVisible]);
+
+  const followUpText = "You can always type edits as well below.";
+  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
+
+  useEffect(() => {
+    if (followUpTyped.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [followUpTyped.done, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <FeedbackCard
+            feedbackText="While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage."
+            onSend={onSend}
+          />
+        </motion.div>
+      )}
+
+      {followUpVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+            <TypedText text={followUpTyped.displayed} />
+          </p>
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Here are my suggested edits. Would you like to send this updated version?";
+  const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <FeedbackCard
+            feedbackText={`You\u2019ve excelled at building a structured pipeline \u2013 your tracking of candidate progress through each stage is thorough, and your ability to quickly screen resumes against role requirements has kept our process moving efficiently.\n\nTo strengthen your impact further, focus on sharpening your interview assessment skills by developing more targeted behavioral questions and work on refining your data analysis capabilities to identify which campus channels and events are actually driving our best hires so we can allocate resources accordingly.`}
+            onSend={onSend}
+          />
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
+  return <RefinedFeedbackResponse onSend={onSend} />;
+}
+
+function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Thanks for sharing feedback for Miriam!";
+  const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [followUpVisible, setFollowUpVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !followUpVisible) {
+      const t = setTimeout(() => setFollowUpVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, followUpVisible]);
+
+  const followUpText = "Would you like to complete your remaining feedback requests?";
+  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
+
+  useEffect(() => {
+    if (followUpTyped.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [followUpTyped.done, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <div className="rounded-2xl p-5 flex items-center gap-4" style={{ backgroundColor: '#FFFFFF' }}>
+            <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10" />
+            <div>
+              <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback sent to Miriam</p>
+              <p className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to Employee and Manager</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {followUpVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+            <TypedText text={followUpTyped.displayed} />
+          </p>
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
   const [cardVisible, setCardVisible] = useState(false);
   const [followUpVisible, setFollowUpVisible] = useState(false);
   const [chipsVisible, setChipsVisible] = useState(false);
