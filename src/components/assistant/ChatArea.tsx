@@ -88,7 +88,7 @@ function getResponse(input: string): string {
   if (lower.includes("emily carter")) return REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE;
   if (lower.includes("send feedback to miriam")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
-  if (lower.includes("help me refine")) return REFINED_FEEDBACK_RESPONSE;
+  if (lower.includes("help me refine") || lower.includes("refine for me")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("while preparing the march") || lower.includes("march product launch")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
@@ -360,6 +360,7 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
+  const [autoSent, setAutoSent] = useState(false);
 
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 200);
@@ -376,6 +377,17 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
       return () => clearTimeout(t);
     }
   }, [typed.done, thumbsVisible]);
+
+  // Auto-send the feedback text as a user bubble after welcome finishes
+  useEffect(() => {
+    if (thumbsVisible && !autoSent) {
+      setAutoSent(true);
+      const t = setTimeout(() => {
+        onSend("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+      }, 800);
+      return () => clearTimeout(t);
+    }
+  }, [thumbsVisible, autoSent, onSend]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
@@ -1574,7 +1586,7 @@ function FeedbackCardImage({ variant, onSend }: { variant: 'v1' | 'v2'; onSend?:
   );
 }
 
-function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void }) {
+function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: string) => void; onAutoType?: (text: string) => void }) {
   const introText = "Here is your feedback for Miriam. Are you ready to **send this feedback request** or would you like me to help you **refine** it?";
   const typed = useTypewriter(introText, 15, 100);
   const [cardVisible, setCardVisible] = useState(false);
@@ -1604,6 +1616,22 @@ function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void
       return () => clearTimeout(t);
     }
   }, [followUpTyped.done, thumbsVisible]);
+
+  // Auto-type "refine for me" in the input after thumbs appear
+  useEffect(() => {
+    if (thumbsVisible && onAutoType) {
+      const text = "refine for me";
+      let i = 0;
+      const delay = setTimeout(() => {
+        const interval = setInterval(() => {
+          i++;
+          onAutoType(text.slice(0, i));
+          if (i >= text.length) clearInterval(interval);
+        }, 40);
+      }, 800);
+      return () => clearTimeout(delay);
+    }
+  }, [thumbsVisible, onAutoType]);
 
   return (
     <div>
@@ -2330,7 +2358,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
   );
 }
 
-function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: string) => void }) {
+function AiResponseWrapper({ msg, onSend, onAutoType }: { msg: Message; onSend: (text: string) => void; onAutoType?: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [ready, setReady] = useState(false);
@@ -2395,7 +2423,7 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
         ) : msg.content === SETUP_AUTOBOOK_RESPONSE ? (
           <SetupAutobookResponse onSend={onSend} />
         ) : msg.content === FEEDBACK_FIRST_DRAFT_RESPONSE ? (
-          <FeedbackFirstDraftResponse onSend={onSend} />
+          <FeedbackFirstDraftResponse onSend={onSend} onAutoType={onAutoType} />
         ) : msg.content === REFINED_FEEDBACK_RESPONSE ? (
           <RefinedFeedbackResponse onSend={onSend} />
         ) : msg.content === REVIEW_FEEDBACK_RESPONSE ? (
@@ -2525,16 +2553,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   };
 
   const handleInputFocus = () => {
-    if (activeFlow === "feedback" && !feedbackAutoTyped && messages.length === 0) {
-      setFeedbackAutoTyped(true);
-      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
-      let i = 0;
-      const interval = setInterval(() => {
-        i++;
-        setInput(text.slice(0, i));
-        if (i >= text.length) clearInterval(interval);
-      }, 25);
-    }
+    // feedback auto-type removed — now auto-sends as bubble from welcome screen
     // request-feedback auto-type removed — now uses welcome screen
     if (activeFlow === "daily-schedule" && !scheduleAutoTyped && messages.length === 0) {
       setScheduleAutoTyped(true);
@@ -2715,7 +2734,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                     </div>
                   ) : (
                     /* AI response: logo with shimmer thinking, then typed content */
-                    <AiResponseWrapper msg={msg} onSend={handleSend} />
+                    <AiResponseWrapper msg={msg} onSend={handleSend} onAutoType={(text) => setInput(text)} />
                   )}
                 </motion.div>
               ))}
