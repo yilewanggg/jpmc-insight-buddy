@@ -2560,7 +2560,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
     if (inputRef.current) {
       inputRef.current.style.height = 'auto';
       inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-      setIsMultiline(inputRef.current.scrollHeight > 30);
+      
     }
   }, [input]);
 
