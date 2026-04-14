@@ -9,9 +9,7 @@ import priyaPhoto from "@/assets/priya-photo.jpg";
 import seatIcon from "@/assets/seat-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
 import confirmationCheckIcon from "@/assets/confirmation-check.svg";
-import feedbackCardIcon from "@/assets/feedback-card.svg";
 import carmenProfile from "@/assets/carmen-profile.png";
-import handIcon from "@/assets/hand-icon.svg";
 import johnMartinezPhoto from "@/assets/john-martinez-photo.jpg";
 import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
 import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
@@ -58,6 +56,7 @@ const SHOW_MORE_OPTIONS_RESPONSE = "__SHOW_MORE_OPTIONS__";
 const RECENTLY_BOOKED_RESPONSE = "__RECENTLY_BOOKED__";
 const BOOK_SEAT_CONFIRM_RESPONSE = "__BOOK_SEAT_CONFIRM__";
 const SETUP_AUTOBOOK_RESPONSE = "__SETUP_AUTOBOOK__";
+const FEEDBACK_FIRST_DRAFT_RESPONSE = "__FEEDBACK_FIRST_DRAFT__";
 const REFINED_FEEDBACK_RESPONSE = "__REFINED_FEEDBACK__";
 const REVIEW_FEEDBACK_RESPONSE = "__REVIEW_FEEDBACK__";
 const FEEDBACK_SENT_RESPONSE = "__FEEDBACK_SENT__";
@@ -85,9 +84,12 @@ function getResponse(input: string): string {
   if (lower.includes("yes, help me request feedback") || lower.includes("yes, let's do it")) return REQUEST_FEEDBACK_COLLABORATORS_RESPONSE;
   if (lower.includes("send feedback request")) return REQUEST_FEEDBACK_ANYONE_ELSE_RESPONSE;
   if (lower.includes("emily carter")) return REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE;
+  if (lower.includes("send feedback to miriam")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
+  if (lower.includes("help me refine")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
-  if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
+  if (lower.includes("while preparing the march") || lower.includes("march product launch")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
+  if (lower.includes("listens well") || lower.includes("unclearly communicated")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
   if (lower.includes("meeting schedule")) return DAILY_SCHEDULE_RESPONSE;
   if (lower.includes("move design jam")) return MOVE_DESIGN_JAM_RESPONSE;
   if (lower.includes("compliance")) return mockResponses.compliance;
@@ -1562,9 +1564,240 @@ function SetupAutobookResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
-  const introText = "To strengthen your feedback, you could make it more specific and actionable. Here\u2019s a refined version:";
+function FeedbackCard({ feedbackText, onSend }: { feedbackText: string; onSend?: (text: string) => void }) {
+  return (
+    <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
+      <div className="p-6 pb-4">
+        <div className="flex items-start gap-3 mb-4">
+          <img src={carmenProfile} alt="Miriam" className="w-10 h-10 rounded-lg object-cover" style={{ objectPosition: '10% center' }} />
+          <div>
+            <p className="text-[16px] leading-[24px] font-semibold text-foreground">Feedback for Miriam</p>
+          </div>
+        </div>
+        <div className="text-[16px] leading-[24px] font-normal" style={{ color: '#666663' }}>
+          {feedbackText.split('\n\n').map((para, i, arr) => (
+            <p key={i} className={i < arr.length - 1 ? "mb-4" : ""}>
+              {i === 0 ? <>&ldquo;{para}</> : para}
+              {i === arr.length - 1 ? <>&rdquo;</> : null}
+            </p>
+          ))}
+        </div>
+      </div>
+      <div className="mx-6" style={{ borderTop: '1px solid #E8E4DE' }} />
+      <div className="px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to:</span>
+          <button className="flex items-center gap-1 text-[14px] leading-[20px] font-medium text-foreground">
+            Employee and Manager
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
+        <button
+          onClick={() => onSend?.("Send feedback to Miriam")}
+          className="px-5 py-2 rounded-lg text-[14px] leading-[20px] font-medium text-white"
+          style={{ backgroundColor: '#000000' }}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Here is your feedback for Miriam. Are you ready to **send this feedback request** or would you like me to help you **refine** it?";
   const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [followUpVisible, setFollowUpVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !followUpVisible) {
+      const t = setTimeout(() => setFollowUpVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, followUpVisible]);
+
+  const followUpText = "You can always type edits as well below.";
+  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
+
+  useEffect(() => {
+    if (followUpTyped.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [followUpTyped.done, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <FeedbackCard
+            feedbackText="While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage."
+            onSend={onSend}
+          />
+        </motion.div>
+      )}
+
+      {followUpVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+            <TypedText text={followUpTyped.displayed} />
+          </p>
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Here are my suggested edits. Would you like to send this updated version?";
+  const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <FeedbackCard
+            feedbackText={`You\u2019ve excelled at building a structured pipeline \u2013 your tracking of candidate progress through each stage is thorough, and your ability to quickly screen resumes against role requirements has kept our process moving efficiently.\n\nTo strengthen your impact further, focus on sharpening your interview assessment skills by developing more targeted behavioral questions and work on refining your data analysis capabilities to identify which campus channels and events are actually driving our best hires so we can allocate resources accordingly.`}
+            onSend={onSend}
+          />
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
+  return <RefinedFeedbackResponse onSend={onSend} />;
+}
+
+function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
+  const introText = "Thanks for sharing feedback for Miriam!";
+  const typed = useTypewriter(introText, 15, 100);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [followUpVisible, setFollowUpVisible] = useState(false);
+  const [thumbsVisible, setThumbsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typed.done && !cardVisible) {
+      const t = setTimeout(() => setCardVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [typed.done, cardVisible]);
+
+  useEffect(() => {
+    if (cardVisible && !followUpVisible) {
+      const t = setTimeout(() => setFollowUpVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [cardVisible, followUpVisible]);
+
+  const followUpText = "Would you like to complete your remaining feedback requests?";
+  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
+
+  useEffect(() => {
+    if (followUpTyped.done && !thumbsVisible) {
+      const t = setTimeout(() => setThumbsVisible(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [followUpTyped.done, thumbsVisible]);
+
+  return (
+    <div>
+      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+          <TypedText text={typed.displayed} />
+        </p>
+      </motion.div>
+
+      {cardVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
+          <div className="rounded-2xl p-5 flex items-center gap-4" style={{ backgroundColor: '#FFFFFF' }}>
+            <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10" />
+            <div>
+              <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback sent to Miriam</p>
+              <p className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to Employee and Manager</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {followUpVisible && (
+        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
+            <TypedText text={followUpTyped.displayed} />
+          </p>
+        </motion.div>
+      )}
+
+      {thumbsVisible && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
   const [cardVisible, setCardVisible] = useState(false);
   const [followUpVisible, setFollowUpVisible] = useState(false);
   const [chipsVisible, setChipsVisible] = useState(false);
@@ -1678,223 +1911,6 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
             <CornerDownRight className="w-4 h-4" />
             Edit further
           </button>
-        </motion.div>
-      )}
-
-      {thumbsVisible && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
-            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
-            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
-            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
-function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) {
-  const introText = "Great! Here's the refined version of your feedback. Take a quick look before sending:";
-  const typed = useTypewriter(introText, 15, 100);
-  const [cardVisible, setCardVisible] = useState(false);
-  const [followUpVisible, setFollowUpVisible] = useState(false);
-  const [chipsVisible, setChipsVisible] = useState(false);
-  const [thumbsVisible, setThumbsVisible] = useState(false);
-
-  useEffect(() => {
-    if (typed.done && !cardVisible) {
-      const t = setTimeout(() => setCardVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [typed.done, cardVisible]);
-
-  useEffect(() => {
-    if (cardVisible && !followUpVisible) {
-      const t = setTimeout(() => setFollowUpVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [cardVisible, followUpVisible]);
-
-  const followUpText = "Who would you like to share this feedback with?";
-  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
-
-  useEffect(() => {
-    if (followUpTyped.done && !chipsVisible) {
-      const t = setTimeout(() => setChipsVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [followUpTyped.done, chipsVisible]);
-
-  useEffect(() => {
-    if (chipsVisible && !thumbsVisible) {
-      const t = setTimeout(() => setThumbsVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [chipsVisible, thumbsVisible]);
-
-  return (
-    <div>
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        style={{ maxWidth: '616px' }}
-      >
-        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
-          <TypedText text={typed.displayed} />
-        </p>
-      </motion.div>
-
-      {cardVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-4"
-          style={{ maxWidth: '616px' }}
-        >
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#FFFFFF' }}>
-            {/* Profile photo */}
-            <div className="flex flex-col items-center gap-4">
-              <img src={carmenProfile} alt="Carmen" className="w-14 h-14 rounded-full object-cover" />
-              <h3 className="text-[24px] leading-[32px] font-light text-foreground">Review feedback</h3>
-            </div>
-
-            {/* What you said */}
-            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">What you said:</p>
-            <p className="text-[14px] leading-[20px] font-light text-center mt-4" style={{ color: '#666663' }}>
-              "During our client meetings, you regularly summarize discussions and confirm your understanding before offering input. Keep it up! You have great ideas. To make them easier to follow, take a pause and structure your thoughts into three concise bullet points."
-            </p>
-
-            {/* Based on your feedback */}
-            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">Based on your feedback, Carmen demonstrates:</p>
-
-            {/* Strengths & Opportunities */}
-            <div className="grid grid-cols-2 gap-3 mt-4">
-              <div className="rounded-xl p-4" style={{ backgroundColor: '#F7F7F7' }}>
-                <p className="text-[12px] leading-[16px] font-light mb-2" style={{ color: '#666663' }}>Strengths</p>
-                <div className="flex items-center gap-2 mb-1">
-                  <img src={handIcon} alt="" className="w-10 h-10" />
-                  <div>
-                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
-                    <p className="text-[13px] leading-[18px] font-normal" style={{ color: '#666663' }}>Listen deeply</p>
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-xl p-4" style={{ backgroundColor: '#F7F7F7' }}>
-                <p className="text-[12px] leading-[16px] font-light mb-2" style={{ color: '#666663' }}>Opportunities</p>
-                <div className="flex items-center gap-2 mb-1">
-                  <img src={handIcon} alt="" className="w-10 h-10" />
-                  <div>
-                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
-                    <p className="text-[13px] leading-[18px] font-normal" style={{ color: '#666663' }}>Create clarity</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {followUpVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ maxWidth: '616px' }}
-        >
-          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
-            <TypedText text={followUpTyped.displayed} />
-          </p>
-        </motion.div>
-      )}
-
-      {chipsVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-wrap gap-3 mb-4"
-        >
-          <button
-            onClick={() => onSend("Send to Carmen")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
-            style={{ border: '1px solid #7D7A7A', color: '#202020' }}
-          >
-            <CornerDownRight className="w-4 h-4" />
-            Send to Carmen
-          </button>
-          <button
-            onClick={() => onSend("Send to Carmen and her manager")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
-            style={{ border: '1px solid #7D7A7A', color: '#202020' }}
-          >
-            <CornerDownRight className="w-4 h-4" />
-            Send to Carmen and her manager
-          </button>
-        </motion.div>
-      )}
-
-      {thumbsVisible && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="flex items-center gap-3" style={{ color: '#202020' }}>
-            <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
-            <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
-            <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
-function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
-  const introText = "Nice, your feedback has been sent.";
-  const typed = useTypewriter(introText, 15, 100);
-  const [followUpVisible, setFollowUpVisible] = useState(false);
-  const [thumbsVisible, setThumbsVisible] = useState(false);
-
-  const followUpText = "Want help with another one, or would you like feedback on your own performance?";
-  const followUpTyped = useTypewriter(followUpText, 15, followUpVisible ? 100 : 99999);
-
-  useEffect(() => {
-    if (typed.done && !followUpVisible) {
-      const t = setTimeout(() => setFollowUpVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [typed.done, followUpVisible]);
-
-  useEffect(() => {
-    if (followUpTyped.done && !thumbsVisible) {
-      const t = setTimeout(() => setThumbsVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [followUpTyped.done, thumbsVisible]);
-
-  return (
-    <div>
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        style={{ maxWidth: '616px' }}
-      >
-        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
-          <TypedText text={typed.displayed} />
-        </p>
-      </motion.div>
-
-      {followUpVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ maxWidth: '616px' }}
-        >
-          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
-            <TypedText text={followUpTyped.displayed} />
-          </p>
         </motion.div>
       )}
 
@@ -2540,6 +2556,8 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
           <BookSeatConfirmResponse onSend={onSend} />
         ) : msg.content === SETUP_AUTOBOOK_RESPONSE ? (
           <SetupAutobookResponse onSend={onSend} />
+        ) : msg.content === FEEDBACK_FIRST_DRAFT_RESPONSE ? (
+          <FeedbackFirstDraftResponse onSend={onSend} />
         ) : msg.content === REFINED_FEEDBACK_RESPONSE ? (
           <RefinedFeedbackResponse onSend={onSend} />
         ) : msg.content === REVIEW_FEEDBACK_RESPONSE ? (
@@ -2671,7 +2689,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   const handleInputFocus = () => {
     if (activeFlow === "feedback" && !feedbackAutoTyped && messages.length === 0) {
       setFeedbackAutoTyped(true);
-      const text = "Listens well in meetings, ideas are good but unclearly communicated";
+      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
       let i = 0;
       const interval = setInterval(() => {
         i++;
