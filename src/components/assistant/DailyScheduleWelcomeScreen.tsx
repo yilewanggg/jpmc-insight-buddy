@@ -213,7 +213,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
 
   return (
     <div>
-      <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
         <p className="mb-4">
           <TypedText text={para.displayed} showCursor={!para.done} />
         </p>
@@ -307,7 +307,7 @@ export function MoveDesignJamResponse({ onSend }: { onSend: (text: string) => vo
 
   return (
     <div>
-      <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
         <p className="mb-4">
           <TypedText text={para.displayed} showCursor={!para.done} />
         </p>
