@@ -119,7 +119,7 @@ function CalendarOverflowMenu({ open, onClose, anchorRef }: { open: boolean; onC
           key={idx}
           className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors"
         >
-          <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">{item}</span>
+           <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground">{item}</span>
           <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={1.5} />
         </button>
       ))}
@@ -162,7 +162,7 @@ function InlineCalendarWidget() {
                 key={idx}
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#F4EFE7] transition-colors"
               >
-                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground">{item}</span>
+                <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal text-foreground">{item}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={1.5} />
               </button>
             ))}
