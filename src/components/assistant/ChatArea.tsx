@@ -1615,10 +1615,7 @@ function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void
 
       {cardVisible && (
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
-          <FeedbackCard
-            feedbackText="While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage."
-            onSend={onSend}
-          />
+          <FeedbackCardImage variant="v1" onSend={onSend} />
         </motion.div>
       )}
 
@@ -1673,10 +1670,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
 
       {cardVisible && (
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-4" style={{ maxWidth: '616px' }}>
-          <FeedbackCard
-            feedbackText={`You\u2019ve excelled at building a structured pipeline \u2013 your tracking of candidate progress through each stage is thorough, and your ability to quickly screen resumes against role requirements has kept our process moving efficiently.\n\nTo strengthen your impact further, focus on sharpening your interview assessment skills by developing more targeted behavioral questions and work on refining your data analysis capabilities to identify which campus channels and events are actually driving our best hires so we can allocate resources accordingly.`}
-            onSend={onSend}
-          />
+          <FeedbackCardImage variant="v2" onSend={onSend} />
         </motion.div>
       )}
 
