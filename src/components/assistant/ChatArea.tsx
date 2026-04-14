@@ -1768,7 +1768,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
             <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10" />
             <div>
               <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback sent to Miriam</p>
-              <p className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to Employee and Manager</p>
+              <p className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to: Miriam and her manager</p>
             </div>
           </div>
         </motion.div>
