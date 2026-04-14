@@ -380,14 +380,23 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
     }
   }, [typed.done, thumbsVisible]);
 
-  // Auto-send the feedback text as a user bubble after welcome finishes
-  const autoSentRef = useRef(false);
+  // Auto-type the feedback text into the input field after welcome finishes
+  const autoTypedRef = useRef(false);
+  const onAutoTypeRef = useRef(onAutoType);
+  onAutoTypeRef.current = onAutoType;
   useEffect(() => {
-    if (thumbsVisible && !autoSentRef.current) {
-      autoSentRef.current = true;
-      setTimeout(() => {
-        onSendRef.current("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+    if (thumbsVisible && !autoTypedRef.current) {
+      autoTypedRef.current = true;
+      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
+      let i = 0;
+      const startDelay = setTimeout(() => {
+        const interval = setInterval(() => {
+          i++;
+          onAutoTypeRef.current(text.slice(0, i));
+          if (i >= text.length) clearInterval(interval);
+        }, 18);
       }, 800);
+      return () => clearTimeout(startDelay);
     }
   }, [thumbsVisible]);
 
