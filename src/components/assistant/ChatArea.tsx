@@ -2686,7 +2686,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   const handleInputFocus = () => {
     if (activeFlow === "feedback" && !feedbackAutoTyped && messages.length === 0) {
       setFeedbackAutoTyped(true);
-      const text = "Listens well in meetings, ideas are good but unclearly communicated";
+      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
       let i = 0;
       const interval = setInterval(() => {
         i++;
