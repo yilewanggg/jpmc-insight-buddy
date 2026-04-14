@@ -1574,9 +1574,14 @@ function FeedbackCard({ feedbackText, onSend }: { feedbackText: string; onSend?:
             <p className="text-[16px] leading-[24px] font-semibold text-foreground">Feedback for Miriam</p>
           </div>
         </div>
-        <p className="text-[16px] leading-[24px] font-normal" style={{ color: '#666663' }}>
-          &ldquo;{feedbackText}&rdquo;
-        </p>
+        <div className="text-[16px] leading-[24px] font-normal" style={{ color: '#666663' }}>
+          {feedbackText.split('\n\n').map((para, i, arr) => (
+            <p key={i} className={i < arr.length - 1 ? "mb-4" : ""}>
+              {i === 0 ? <>&ldquo;{para}</> : para}
+              {i === arr.length - 1 ? <>&rdquo;</> : null}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="mx-6" style={{ borderTop: '1px solid #E8E4DE' }} />
       <div className="px-6 py-4 flex items-center justify-between">
