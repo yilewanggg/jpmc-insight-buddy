@@ -49,7 +49,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
         <button
           onClick={() => setActiveTab("tasks")}
           className={cn(
-            "pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal transition-colors relative",
+            "pb-2 text-[14px] leading-[21px] tracking-[-0.3px] font-normal transition-colors relative",
             activeTab === "tasks" ? "text-foreground" : "text-[#666663]"
           )}
         >
@@ -59,7 +59,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
         <button
           onClick={() => setActiveTab("notifications")}
           className={cn(
-            "pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal transition-colors relative",
+            "pb-2 text-[14px] leading-[21px] tracking-[-0.3px] font-normal transition-colors relative",
             activeTab === "notifications" ? "text-foreground" : "text-[#666663]"
           )}
         >
@@ -80,7 +80,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                 onMouseLeave={() => setHoveredTask(null)}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>
+                  <span className="text-[14px] leading-[21px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>
                     {task.category}
                   </span>
                   <span className={cn(
@@ -90,7 +90,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                     {task.statusLabel}
                   </span>
                 </div>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1 font-normal">
+                <p className="text-[14px] leading-[21px] tracking-[-0.3px] text-foreground mb-1 font-normal">
                   {task.title}
                 </p>
                 <p className="text-[13px] leading-[19.5px] tracking-[0px] font-normal" style={{ color: '#666663' }}>
@@ -104,10 +104,10 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                 >
                   <div className="overflow-hidden">
                     <div className="flex items-center gap-3">
-                      <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-[#000000] text-[#FFFFFF] text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] hover:text-[#202020] transition-colors">
+                      <button className="flex items-center justify-center gap-2 w-[120px] h-[40px] rounded-full bg-[#000000] text-[#FFFFFF] text-[14px] leading-[21px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] hover:text-[#202020] transition-colors">
                         Do it now <ExternalLink className="w-3.5 h-3.5" />
                       </button>
-                      <button className="flex items-center justify-center gap-2 w-[142px] h-[40px] rounded-full bg-transparent text-[#202020] text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                      <button className="flex items-center justify-center gap-2 w-[142px] h-[40px] rounded-full bg-transparent text-[#202020] text-[14px] leading-[21px] tracking-[-0.3px] font-normal hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                         Schedule for later
                       </button>
                     </div>
@@ -129,7 +129,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
             {completedOpen && completedTasks.map((task) => (
               <div key={task.id} className="px-6 py-5 border-b border-border opacity-60">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>
+                  <span className="text-[14px] leading-[21px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>
                     {task.category}
                   </span>
                   <span className={cn(
@@ -139,7 +139,7 @@ export function TasksPanel({ defaultTab = "tasks" }: TasksPanelProps) {
                     {task.statusLabel}
                   </span>
                 </div>
-                <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1 line-through font-normal">
+                <p className="text-[14px] leading-[21px] tracking-[-0.3px] text-foreground mb-1 line-through font-normal">
                   {task.title}
                 </p>
                 <p className="text-[13px] leading-[19.5px] tracking-[0px] font-normal" style={{ color: '#666663' }}>

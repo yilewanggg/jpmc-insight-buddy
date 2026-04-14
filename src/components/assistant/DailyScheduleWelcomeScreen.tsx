@@ -213,7 +213,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
 
   return (
     <div>
-      <div className="text-[13px] leading-[19.5px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
         <p className="mb-4">
           <TypedText text={para.displayed} showCursor={!para.done} />
         </p>
@@ -253,7 +253,7 @@ export function DailyScheduleResponse({ onSend }: { onSend: (text: string) => vo
                 <button
                   key={chip.label}
                   onClick={() => onSend(chip.message)}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
@@ -307,7 +307,7 @@ export function MoveDesignJamResponse({ onSend }: { onSend: (text: string) => vo
 
   return (
     <div>
-      <div className="text-[13px] leading-[19.5px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-light [[&_strong]:font-semibold_strong]:font-medium" style={{ maxWidth: '616px' }}>
         <p className="mb-4">
           <TypedText text={para.displayed} showCursor={!para.done} />
         </p>

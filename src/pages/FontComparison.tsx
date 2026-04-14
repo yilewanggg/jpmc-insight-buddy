@@ -75,7 +75,7 @@ function FontPanel({ font }: { font: { name: string; family: string } }) {
             <Calendar className="w-4 h-4" style={{ color: '#8F5A39' }} />
           </div>
           <div>
-            <p className="text-[13px] leading-[19.5px] font-medium" style={{ color: '#202020' }}>Data Security and Compliance Training</p>
+            <p className="text-[14px] leading-[20px] font-medium" style={{ color: '#202020' }}>Data Security and Compliance Training</p>
             <p className="text-[12px] leading-[16px] font-normal text-muted-foreground mt-0.5">Due by June 30, 2025</p>
           </div>
         </div>
@@ -95,7 +95,7 @@ function FontPanel({ font }: { font: { name: string; family: string } }) {
             <img src={feedbackCardIcon} alt="" className="w-5 h-5" />
           </div>
           <div>
-            <p className="text-[13px] leading-[19.5px] font-medium" style={{ color: '#202020' }}>Mid-Year Feedback Request</p>
+            <p className="text-[14px] leading-[20px] font-medium" style={{ color: '#202020' }}>Mid-Year Feedback Request</p>
             <p className="text-[12px] leading-[16px] font-normal text-muted-foreground mt-0.5">From: Sarah Chen, VP Product</p>
           </div>
         </div>

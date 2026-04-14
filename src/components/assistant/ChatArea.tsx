@@ -229,7 +229,7 @@ function WelcomeChipsAndThumbs({ show, onSend }: { show: boolean; onSend: (text:
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -237,7 +237,7 @@ function WelcomeChipsAndThumbs({ show, onSend }: { show: boolean; onSend: (text:
             </button>
             <button
               onClick={() => onSend("Book time to do it later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -312,7 +312,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
         
           {heading.done && (
           <>
-           <div className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-medium" style={{ width: '616px' }}>
+           <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-medium" style={{ width: '616px' }}>
             <p className="mb-4">
               <TypedText text={para1.displayed} showCursor={!para1.done} />
             </p>
@@ -332,10 +332,10 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
                     <img src={graduationIcon} alt="Training" className="w-10 h-10" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal text-foreground">Data Security and Compliance</p>
-                    <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
+                    <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Data Security and Compliance</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-normal mt-0.5" style={{ color: '#666663' }}>Estimated time to complete: 25 min</p>
                   </div>
-                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Go to My Learning <ExternalLink className="w-[13px] h-[13px]" />
                   </button>
                 </div>
@@ -407,7 +407,7 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
       <div className="flex flex-col" style={{ width: '616px' }}>
         {thinkingDone && (
           <>
-            <div className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mt-2.5">
+            <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mt-2.5">
               <p className="mb-4">
                 <TypedText text={para1.displayed} showCursor={!para1.done} />
               </p>
@@ -417,11 +417,11 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
                     <div className="flex items-start gap-4">
                       <img src={carmenProfile} alt="Carmen" className="w-10 h-10 rounded-lg object-cover shrink-0 mt-1" />
                       <div>
-                        <p style={{ fontSize: '13px', lineHeight: '19.5px', color: '#1A1A1A', fontWeight: 200 }}>
+                        <p style={{ fontSize: '16px', lineHeight: '24px', color: '#1A1A1A', fontWeight: 200 }}>
                           "Hey everyone, I've been trying to take a more active role in code reviews and onboarding so I'd like to know how I'm doing in terms of technical leadership and mentorship."
                         </p>
-                        <p className="mt-4" style={{ fontSize: '13px', lineHeight: '19.5px', fontWeight: 400 }}>Carmen</p>
-                        <p style={{ fontSize: '13px', lineHeight: '19.5px', color: '#666663', fontWeight: 200 }}>Vice president, CIB</p>
+                        <p className="mt-4" style={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>Carmen</p>
+                        <p style={{ fontSize: '14px', lineHeight: '20px', color: '#666663', fontWeight: 200 }}>Vice president, CIB</p>
                       </div>
                     </div>
                   </div>
@@ -521,7 +521,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
               {heading.displayed}
             </h2>
             {heading.done && (
-              <div className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
+              <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
                 <p className="mb-4">
                   <TypedText text={para1.displayed} showCursor={!para1.done} />
                 </p>
@@ -532,7 +532,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
                         <div className="flex items-center gap-3 mb-4">
                           <button
                             onClick={() => onSend("Yes, let's do it")}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                           >
                             <CornerDownRight className="w-4 h-4" />
@@ -540,7 +540,7 @@ function RequestFeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => vo
                           </button>
                           <button
                             onClick={() => onSend("Remind me later")}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                           >
                             <CornerDownRight className="w-4 h-4" />
@@ -637,7 +637,7 @@ function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) 
               {heading.displayed}
             </h2>
             {heading.done && (
-              <div className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
+              <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ width: '616px' }}>
                 <p className="mb-4">
                   <TypedText text={para1.displayed} showCursor={!para1.done} />
                 </p>
@@ -653,7 +653,7 @@ function BookASeatWelcomeScreen({ onSend }: { onSend: (text: string) => void }) 
                             <div className="flex items-center gap-3 mb-4">
                               <button
                                 onClick={() => onSend("Yes, help me book a seat")}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                                 style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                               >
                                 <CornerDownRight className="w-4 h-4" />
@@ -722,7 +722,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -739,11 +739,11 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                     <img src={calendarIcon} alt="Calendar" className="w-10 h-10" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal text-foreground">Complete Security & Compliance Training</p>
-                    <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
-                    <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>9:05–10:30am</p>
+                    <p className="text-[16px] leading-[24px] tracking-[0.16px] font-normal text-foreground">Complete Security & Compliance Training</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-normal mt-0.5" style={{ color: '#666663' }}>Wednesday, June 18</p>
+                    <p className="text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>9:05–10:30am</p>
                   </div>
-                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
+                  <button className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                     Open Outlook <ExternalLink className="w-[13px] h-[13px]" />
                   </button>
                 </div>
@@ -757,7 +757,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
               transition={{ duration: 0.5, ease: "easeOut" }}
               style={{ maxWidth: '616px', marginTop: '24px' }}
             >
-              <p className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ marginBottom: '16px' }}>
+              <p className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light" style={{ marginBottom: '16px' }}>
                 <TypedText text={followUp.displayed} />
               </p>
             </motion.div>
@@ -767,7 +767,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
               <div className="flex items-center gap-3 mb-4">
                 <button
                   onClick={() => onSend("Start my onboarding task")}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
@@ -775,7 +775,7 @@ function BlockTimeResponse({ onSend }: { onSend: (text: string) => void }) {
                 </button>
                 <button
                   onClick={() => onSend("Start my feedback task")}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
                   style={{ border: '1px solid #7D7A7A', color: '#202020' }}
                 >
                   <CornerDownRight className="w-4 h-4" />
@@ -830,11 +830,11 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -854,7 +854,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
                   <img src={raviPhoto} alt="Ravi Murthy" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
                 </div>
                 <div>
-                  <p className="text-[13px] leading-[19.5px] font-medium text-foreground">Ravi Murthy</p>
+                  <p className="text-[14px] leading-[20px] font-medium text-foreground">Ravi Murthy</p>
                   <p className="text-[13px] leading-[18px]" style={{ color: '#666663' }}>Lead Infrastructure Engineer</p>
                 </div>
               </div>
@@ -870,7 +870,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
                   <img src={priyaPhoto} alt="Priya Hegde" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
                 </div>
                 <div>
-                  <p className="text-[13px] leading-[19.5px] font-medium text-foreground">Priya Hegde</p>
+                  <p className="text-[14px] leading-[20px] font-medium text-foreground">Priya Hegde</p>
                   <p className="text-[13px] leading-[18px]" style={{ color: '#666663' }}>Lead Infrastructure Engineer</p>
                 </div>
               </div>
@@ -886,7 +886,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <button
               onClick={() => onSend("Choose Ravi M")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -894,7 +894,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Choose Priya H")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -902,7 +902,7 @@ function OnboardingBuddyResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Show me more suggestions")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -949,11 +949,11 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -963,7 +963,7 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Give feedback")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -971,7 +971,7 @@ function ChooseRaviResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1020,16 +1020,16 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
   return (
     <div>
       <div style={{ maxWidth: '616px' }}>
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
         {typed2.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed3.displayed} />
           </p>
         )}
@@ -1039,7 +1039,7 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, please")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1047,7 +1047,7 @@ function RemindMeLaterResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("No, thanks")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1123,11 +1123,11 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
           <TypedText text={typed1.displayed} showCursor={!typed1.done} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
             <TypedText text={typed2.displayed} showCursor={!typed2.done} />
           </p>
         )}
@@ -1144,7 +1144,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="rounded-xl border border-border bg-card overflow-hidden">
             {/* Card header */}
             <div className="flex items-start justify-between pt-4 px-6 pb-0">
-              <span className="text-[13px] leading-[19.5px] font-semibold text-foreground">Seats suggested for you</span>
+              <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats suggested for you</span>
               <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                 Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
               </button>
@@ -1156,7 +1156,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
                   <img src={seatIcon} alt="Seat" className="w-10 h-10 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-[13px] leading-[19.5px] font-normal text-foreground">Seat {seat.id}</span>
+                      <span className="text-[16px] leading-[24px] font-normal text-foreground">Seat {seat.id}</span>
                       {seat.tags.map((tag) => (
                         <span
                           key={tag.label}
@@ -1194,7 +1194,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, book this seat")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1202,7 +1202,7 @@ function BookSeatResponse({ onSend }: { onSend: (text: string) => void }) {
             </button>
             <button
               onClick={() => onSend("Show me more options")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1252,7 +1252,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -1261,7 +1261,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <button
               onClick={() => onSend("Near my team")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1269,7 +1269,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Close to my meetings")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1277,7 +1277,7 @@ function ShowMoreOptionsResponse({ onSend }: { onSend: (text: string) => void })
             </button>
             <button
               onClick={() => onSend("Recently booked seats")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1350,7 +1350,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mb-4">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -1366,7 +1366,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
             <div className="rounded-xl border border-border bg-card overflow-hidden">
               {/* Card header */}
               <div className="flex items-start justify-between p-6 pb-0">
-                <span className="text-[13px] leading-[19.5px] font-semibold text-foreground">Seats you have booked recently</span>
+                <span className="text-[16px] leading-[24px] font-semibold text-foreground">Seats you have booked recently</span>
                 <button className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ border: '1px solid #7D7A7A', color: '#202020' }}>
                   Go to Book a Seat <ExternalLink className="w-[13px] h-[13px]" />
                 </button>
@@ -1378,7 +1378,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
                     <img src={seatIcon} alt="Seat" className="w-10 h-10 shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-[13px] leading-[19.5px] font-normal text-foreground">Seat {seat.id}</span>
+                        <span className="text-[16px] leading-[24px] font-normal text-foreground">Seat {seat.id}</span>
                         <span className={cn("text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold", seat.tagColor)} style={{ backgroundColor: 'rgba(254, 241, 191, 0.75)' }}>
                           {seat.tag}
                         </span>
@@ -1412,7 +1412,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             Would you like to book it now?
           </p>
         </motion.div>
@@ -1422,7 +1422,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Book this seat")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1430,7 +1430,7 @@ function RecentlyBookedResponse({ onSend }: { onSend: (text: string) => void }) 
             </button>
             <button
               onClick={() => onSend("Show me more options")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -1493,11 +1493,11 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -1514,7 +1514,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
             <div className="flex items-start gap-4 p-6">
               <img src={confirmationIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="text-[13px] leading-[19.5px] font-normal text-foreground">Seat 04AAC065 is booked!</p>
+                <p className="text-[16px] leading-[24px] font-normal text-foreground">Seat 04AAC065 is booked!</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>Monday, March 16 - Friday, March 20</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>4 Metrotech | Floor 04 | Highland Park</p>
               </div>
@@ -1532,7 +1532,7 @@ function BookSeatConfirmResponse({ onSend }: { onSend: (text: string) => void })
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUp.displayed} />
           </p>
         </motion.div>
@@ -1572,11 +1572,11 @@ function SetupAutobookResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed1.displayed} />
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             {(() => {
               const t = typed2.displayed;
               const settingsStart = t.indexOf("**Settings**");
@@ -1653,7 +1653,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1669,9 +1669,9 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           <div className="rounded-2xl p-6" style={{ backgroundColor: '#FFFFFF' }}>
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4" style={{ color: '#666663' }} strokeWidth={1.5} />
-              <span className="text-[13px] leading-[19.5px] font-normal" style={{ color: '#666663' }}>Refined feedback</span>
+              <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Refined feedback</span>
             </div>
-            <p className="text-[13px] leading-[19.5px] text-foreground font-normal">
+            <p className="text-[16px] leading-[24px] text-foreground font-normal">
               During our client meetings, you regularly summarize discussions and confirm your understanding before offering input. Keep it up! You have great ideas. To make them easier to follow, take a pause and structure your thoughts into three concise bullet points.
             </p>
           </div>
@@ -1685,7 +1685,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -1700,7 +1700,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
         >
           <button
             onClick={() => onSend("Use refined version")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1708,7 +1708,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           </button>
           <button
             onClick={() => onSend("Use original version")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1716,7 +1716,7 @@ function RefinedFeedbackResponse({ onSend }: { onSend: (text: string) => void })
           </button>
           <button
             onClick={() => onSend("Edit further")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1785,7 +1785,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1806,13 +1806,13 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
             </div>
 
             {/* What you said */}
-            <p className="text-[13px] leading-[19.5px] font-light text-foreground text-center mt-4">What you said:</p>
-            <p className="text-[13px] leading-[19.5px] font-light text-center mt-4" style={{ color: '#666663' }}>
+            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">What you said:</p>
+            <p className="text-[14px] leading-[20px] font-light text-center mt-4" style={{ color: '#666663' }}>
               "During our client meetings, you regularly summarize discussions and confirm your understanding before offering input. Keep it up! You have great ideas. To make them easier to follow, take a pause and structure your thoughts into three concise bullet points."
             </p>
 
             {/* Based on your feedback */}
-            <p className="text-[13px] leading-[19.5px] font-light text-foreground text-center mt-4">Based on your feedback, Carmen demonstrates:</p>
+            <p className="text-[14px] leading-[20px] font-light text-foreground text-center mt-4">Based on your feedback, Carmen demonstrates:</p>
 
             {/* Strengths & Opportunities */}
             <div className="grid grid-cols-2 gap-3 mt-4">
@@ -1821,7 +1821,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
                 <div className="flex items-center gap-2 mb-1">
                   <img src={handIcon} alt="" className="w-10 h-10" />
                   <div>
-                    <p className="text-[13px] leading-[19.5px] font-light text-foreground">Earn trust</p>
+                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
                     <p className="text-[13px] leading-[18px] font-normal" style={{ color: '#666663' }}>Listen deeply</p>
                   </div>
                 </div>
@@ -1831,7 +1831,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
                 <div className="flex items-center gap-2 mb-1">
                   <img src={handIcon} alt="" className="w-10 h-10" />
                   <div>
-                    <p className="text-[13px] leading-[19.5px] font-light text-foreground">Earn trust</p>
+                    <p className="text-[14px] leading-[20px] font-light text-foreground">Earn trust</p>
                     <p className="text-[13px] leading-[18px] font-normal" style={{ color: '#666663' }}>Create clarity</p>
                   </div>
                 </div>
@@ -1848,7 +1848,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -1863,7 +1863,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
         >
           <button
             onClick={() => onSend("Send to Carmen")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1871,7 +1871,7 @@ function ReviewFeedbackResponse({ onSend }: { onSend: (text: string) => void }) 
           </button>
           <button
             onClick={() => onSend("Send to Carmen and her manager")}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
             style={{ border: '1px solid #7D7A7A', color: '#202020' }}
           >
             <CornerDownRight className="w-4 h-4" />
@@ -1924,7 +1924,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -1936,7 +1936,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ maxWidth: '616px' }}
         >
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4">
             <TypedText text={followUpTyped.displayed} />
           </p>
         </motion.div>
@@ -2002,7 +2002,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
 
   return (
     <div className="flex flex-col">
-      <div className="text-[13px] leading-[19.5px] text-foreground font-normal" style={{ width: '616px' }}>
+      <div className="text-[16px] leading-[24px] text-foreground font-normal" style={{ width: '616px' }}>
         <p className="mb-1">{typed.displayed}{!typed.done && <span className="animate-pulse">|</span>}</p>
         {typed.done && (
           <p className="mb-4">{para2.displayed}{!para2.done && <span className="animate-pulse">|</span>}</p>
@@ -2031,7 +2031,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
                     loading="lazy"
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] leading-[19.5px] font-medium text-foreground">{person.name}</p>
+                    <p className="text-[14px] leading-[20px] font-medium text-foreground">{person.name}</p>
                     <p className="text-[12px] leading-[16px]" style={{ color: '#666663' }}>{person.detail}</p>
                   </div>
                   <div
@@ -2058,7 +2058,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
             <button
               onClick={() => onSend("Send feedback request")}
               className={cn(
-                "flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[13px] leading-[19.5px] tracking-[0.16px]",
+                "flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors text-[14px] leading-[20px] tracking-[0.16px]",
                 selectedCount > 0
                   ? "bg-foreground text-background hover:bg-foreground/90"
                   : "bg-transparent hover:bg-[#DDD5C8]"
@@ -2070,7 +2070,7 @@ function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: strin
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2131,7 +2131,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed.displayed} />
         </p>
       </motion.div>
@@ -2155,8 +2155,8 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             <div className="p-6">
               {!isEditing && !isRefined && (
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>Draft message</p>
-                  <button className="flex items-center gap-1.5 text-[13px] leading-[19.5px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>Draft message</p>
+                  <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: '#8F5A39', backgroundColor: '#EDE8E0' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
                     Edit
                   </button>
@@ -2164,7 +2164,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
               )}
               {isEditing && (
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-[13px] leading-[19.5px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>Draft message</p>
+                  <p className="text-[14px] leading-[20px] tracking-[0.16px] font-normal" style={{ color: '#666663' }}>Draft message</p>
                 </div>
               )}
               {isRefining ? (
@@ -2181,7 +2181,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                   initial={isRefined ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-[13px] leading-[19.5px] text-foreground font-normal" 
+                  className="text-[16px] leading-[24px] text-foreground font-normal" 
                   contentEditable={isEditing && !isRefined} 
                   suppressContentEditableWarning
                 >
@@ -2217,13 +2217,13 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
                   </button>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button className="flex items-center gap-1.5 text-[13px] leading-[19.5px] tracking-[0.16px] font-medium" style={{ color: '#8F5A39' }}>
+                  <button className="flex items-center gap-1.5 text-[14px] leading-[20px] tracking-[0.16px] font-medium" style={{ color: '#8F5A39' }}>
                     <Sparkles size={16} />
                     Refine
                   </button>
                   <button 
                     onClick={(e) => { e.stopPropagation(); setIsEditing(false); }}
-                    className="px-5 py-2 rounded-full text-[13px] leading-[19.5px] font-medium text-white"
+                    className="px-5 py-2 rounded-full text-[14px] leading-[20px] font-medium text-white"
                     style={{ backgroundColor: '#000000' }}
                   >
                     Save
@@ -2240,7 +2240,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             <button
               onClick={() => !isEditing && onSend("Send feedback request")}
               disabled={isEditing}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] ${isEditing ? 'opacity-40 cursor-not-allowed' : 'hover:bg-[#DDD5C8]'}`}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent transition-colors text-[14px] leading-[20px] tracking-[0.16px] ${isEditing ? 'opacity-40 cursor-not-allowed' : 'hover:bg-[#DDD5C8]'}`}
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2248,7 +2248,7 @@ function RequestFeedbackDraftResponse({ onSend }: { onSend: (text: string) => vo
             </button>
             <button
               onClick={() => onSend("Remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2290,7 +2290,7 @@ function RequestFeedbackAnyoneElseResponse({ onSend }: { onSend: (text: string) 
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2349,7 +2349,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
           <TypedText text={typed1.displayed} />
         </p>
       </motion.div>
@@ -2365,7 +2365,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
             <div className="flex items-start gap-4 p-6">
               <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10 shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="text-[13px] leading-[19.5px] font-normal text-foreground">Feedback requested!</p>
+                <p className="text-[16px] leading-[24px] font-normal text-foreground">Feedback requested!</p>
                 <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-normal" style={{ color: '#666663' }}>John Martinez, Sam Thomas, Emily Carter</p>
                 <div className="flex items-center -space-x-1.5 mt-2">
                   {people.map((person) => (
@@ -2391,7 +2391,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Yes, send next request")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2399,7 +2399,7 @@ function RequestFeedbackFinalConfirmationResponse({ onSend }: { onSend: (text: s
             </button>
             <button
               onClick={() => onSend("No, remind me later")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2459,13 +2459,13 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
         transition={{ duration: 0.5, ease: "easeOut" }}
         style={{ maxWidth: '616px' }}
       >
-        <p className="text-[13px] leading-[19.5px] text-foreground mb-1 font-light">
+        <p className="text-[16px] leading-[24px] text-foreground mb-1 font-light">
           <TypedText text={typed1.displayed} />
           {typed1.done && <span className="font-semibold">Taylor Smith</span>}
           {typed1.done && "."}
         </p>
         {typed1.done && (
-          <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-4 font-light">
+          <p className="text-[16px] leading-[24px] text-foreground font-normal mb-4 font-light">
             <TypedText text={typed2.displayed} />
           </p>
         )}
@@ -2476,7 +2476,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
             <div className="flex flex-col items-center py-8 px-6">
               <img src={confirmationCheckIcon} alt="Confirmed" className="w-10 h-10 mb-3" />
               <h3 className="font-headline mb-3" style={{ fontSize: '24px', lineHeight: '24px', letterSpacing: '-0.3px', fontWeight: 300 }}>Feedback requested</h3>
-              <div className="text-[13px] leading-[19.5px] text-center font-normal" style={{ color: '#666663' }}>
+              <div className="text-[14px] leading-[20px] text-center font-normal" style={{ color: '#666663' }}>
                 <p>Recipient: Taylor Smith</p>
                 <p>Time: 2:35pm Tuesday, March 16</p>
                 <p>Channel: go/feedback</p>
@@ -2490,7 +2490,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
           <div className="flex items-center gap-3 mb-4">
             <button
               onClick={() => onSend("Set follow-up reminder")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2498,7 +2498,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
             </button>
             <button
               onClick={() => onSend("Ask someone else for feedback")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[13px] leading-[19.5px] tracking-[0.16px] font-normal"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent hover:bg-[#DDD5C8] transition-colors text-[14px] leading-[20px] tracking-[0.16px] font-normal"
               style={{ border: '1px solid #7D7A7A', color: '#202020' }}
             >
               <CornerDownRight className="w-4 h-4" />
@@ -2607,7 +2607,7 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
         ) : (
           <>
             <div style={{ maxWidth: '616px' }}>
-              <div className="prose max-w-none text-foreground text-[13px] leading-[19.5px] font-light [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [[&_strong]:font-semibold_strong]:font-light [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
+              <div className="prose max-w-none text-foreground text-[16px] leading-[24px] font-light [&_h2]:text-foreground [&_h2]:text-base [&_h2]:mt-2 [&_strong]:text-foreground [[&_strong]:font-semibold_strong]:font-light [&_table]:text-sm [&_blockquote]:border-jpmc-gold [&_blockquote]:text-muted-foreground [&_a]:text-jpmc-blue [&_p]:text-[16px] [&_p]:leading-[24px] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_li]:text-[16px] [&_li]:leading-[24px]">
                 <TypewriterMarkdown text={msg.content} speed={15} />
               </div>
             </div>
