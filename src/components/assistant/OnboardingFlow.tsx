@@ -126,7 +126,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
                 transition={{ duration: 0.3 }}
               >
                 <img src={f.icon} alt="" className="w-7 h-7 shrink-0" />
-                <p className="text-[16px] leading-[24px] text-foreground font-normal">
+                <p className="text-[13px] leading-[19.5px] text-foreground font-normal">
                   {featDisplayed[i].displayed}
                 </p>
               </motion.div>
@@ -136,7 +136,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
 
         {feat2.done && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-            <p className="text-[16px] leading-[24px] text-foreground font-normal mb-6" style={{ maxWidth: "520px" }}>
+            <p className="text-[13px] leading-[19.5px] text-foreground font-normal mb-6" style={{ maxWidth: "520px" }}>
               {outro.displayed}
             </p>
           </motion.div>
@@ -146,7 +146,7 @@ function IntroScreen({ onGetStarted }: { onGetStarted: () => void }) {
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <button
               onClick={onGetStarted}
-              className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-normal transition-colors"
+              className="px-6 py-2.5 rounded-full text-[13px] leading-[19.5px] tracking-[0.16px] font-normal transition-colors"
               style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
             >
               Get started
@@ -270,7 +270,7 @@ function CarouselStepView({
         {heading.done && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
             <p
-              className="text-[16px] leading-[24px] text-foreground font-normal mb-6"
+              className="text-[13px] leading-[19.5px] text-foreground font-normal mb-6"
               style={{ maxWidth: "520px" }}
             >
               {renderDesc(desc.displayed)}
@@ -326,14 +326,14 @@ function CarouselStepView({
               <>
                 <button
                   onClick={() => onAction("now")}
-                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-normal transition-colors"
+                  className="px-6 py-2.5 rounded-full text-[13px] leading-[19.5px] tracking-[0.16px] font-normal transition-colors"
                   style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
                 >
                   Let's get started
                 </button>
                 <button
                   onClick={() => onAction("later")}
-                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-normal transition-colors hover:bg-[#DDD5C8]"
+                  className="px-6 py-2.5 rounded-full text-[13px] leading-[19.5px] tracking-[0.16px] font-normal transition-colors hover:bg-[#DDD5C8]"
                   style={{ border: "1px solid #7D7A7A", color: "#202020" }}
                 >
                   Review my preferences
@@ -343,14 +343,14 @@ function CarouselStepView({
               <>
                 <button
                   onClick={() => onAction("now")}
-                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-normal transition-colors"
+                  className="px-6 py-2.5 rounded-full text-[13px] leading-[19.5px] tracking-[0.16px] font-normal transition-colors"
                   style={{ backgroundColor: "#202020", color: "#FFFFFF" }}
                 >
                   Yes, please
                 </button>
                 <button
                   onClick={() => onAction("later")}
-                  className="px-6 py-2.5 rounded-full text-[14px] leading-[20px] tracking-[0.16px] font-normal transition-colors hover:bg-[#DDD5C8]"
+                  className="px-6 py-2.5 rounded-full text-[13px] leading-[19.5px] tracking-[0.16px] font-normal transition-colors hover:bg-[#DDD5C8]"
                   style={{ border: "1px solid #7D7A7A", color: "#202020" }}
                 >
                   Schedule for later
