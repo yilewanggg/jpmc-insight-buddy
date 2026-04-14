@@ -2665,9 +2665,17 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
   );
 }
 
+  const FEEDBACK_SHORT_TEXT = 'While preparing the March product launch, you took the lead...';
+  const FEEDBACK_FULL_TEXT = 'While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.';
+
   const handleSend = async (text?: string) => {
-    const message = text || input.trim();
+    let message = text || input.trim();
     if (!message) return;
+
+    // If sending the truncated feedback preview, swap in the full text
+    if (message === FEEDBACK_SHORT_TEXT) {
+      message = FEEDBACK_FULL_TEXT;
+    }
 
     const userMsg: Message = {
       id: Date.now().toString(),
