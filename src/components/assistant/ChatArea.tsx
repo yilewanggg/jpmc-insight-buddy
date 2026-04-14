@@ -381,15 +381,15 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   }, [typed.done, thumbsVisible]);
 
   // Auto-send the feedback text as a user bubble after welcome finishes
+  const autoSentRef = useRef(false);
   useEffect(() => {
-    if (thumbsVisible && !autoSent) {
-      setAutoSent(true);
-      const t = setTimeout(() => {
+    if (thumbsVisible && !autoSentRef.current) {
+      autoSentRef.current = true;
+      setTimeout(() => {
         onSendRef.current("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
       }, 800);
-      return () => clearTimeout(t);
     }
-  }, [thumbsVisible, autoSent]);
+  }, [thumbsVisible]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
