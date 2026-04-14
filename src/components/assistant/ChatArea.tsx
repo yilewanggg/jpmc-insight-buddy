@@ -2770,7 +2770,11 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
               <textarea
                 ref={inputRef}
                 value={input}
-                onChange={e => setInput(e.target.value)}
+                onChange={e => {
+                  setInput(e.target.value);
+                  e.target.style.height = 'auto';
+                  e.target.style.height = Math.min(e.target.scrollHeight, 128) + 'px';
+                }}
                 onKeyDown={handleKeyDown}
                 onBlur={activeFlow !== "feedback" ? handleFocus : undefined}
                 onFocus={handleInputFocus}
