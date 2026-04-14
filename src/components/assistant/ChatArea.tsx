@@ -10,6 +10,8 @@ import seatIcon from "@/assets/seat-icon.svg";
 import confirmationIcon from "@/assets/confirmation-icon.svg";
 import confirmationCheckIcon from "@/assets/confirmation-check.svg";
 import carmenProfile from "@/assets/carmen-profile.png";
+import feedbackCardV1 from "@/assets/feedback-card-v1.png";
+import feedbackCardV2 from "@/assets/feedback-card-v2.png";
 import johnMartinezPhoto from "@/assets/john-martinez-photo.jpg";
 import annaCollinsPhoto from "@/assets/anna-collins-photo.jpg";
 import samThomasPhoto from "@/assets/sam-thomas-photo.jpg";
@@ -1564,42 +1566,10 @@ function SetupAutobookResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function FeedbackCard({ feedbackText, onSend }: { feedbackText: string; onSend?: (text: string) => void }) {
+function FeedbackCardImage({ variant, onSend }: { variant: 'v1' | 'v2'; onSend?: (text: string) => void }) {
   return (
-    <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
-      <div className="p-6 pb-4">
-        <div className="flex items-start gap-3 mb-4">
-          <img src={carmenProfile} alt="Miriam" className="w-10 h-10 rounded-lg object-cover" style={{ objectPosition: '10% center' }} />
-          <div>
-            <p className="text-[16px] leading-[24px] font-semibold text-foreground">Feedback for Miriam</p>
-          </div>
-        </div>
-        <div className="text-[16px] leading-[24px] font-normal" style={{ color: '#666663' }}>
-          {feedbackText.split('\n\n').map((para, i, arr) => (
-            <p key={i} className={i < arr.length - 1 ? "mb-4" : ""}>
-              {i === 0 ? <>&ldquo;{para}</> : para}
-              {i === arr.length - 1 ? <>&rdquo;</> : null}
-            </p>
-          ))}
-        </div>
-      </div>
-      <div className="mx-6" style={{ borderTop: '1px solid #E8E4DE' }} />
-      <div className="px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-1.5">
-          <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>Visible to:</span>
-          <button className="flex items-center gap-1 text-[14px] leading-[20px] font-medium text-foreground">
-            Employee and Manager
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-        </div>
-        <button
-          onClick={() => onSend?.("Send feedback to Miriam")}
-          className="px-5 py-2 rounded-lg text-[14px] leading-[20px] font-medium text-white"
-          style={{ backgroundColor: '#000000' }}
-        >
-          Send
-        </button>
-      </div>
+    <div className="rounded-2xl overflow-hidden cursor-pointer" style={{ backgroundColor: '#FFFFFF' }} onClick={() => onSend?.("Send feedback to Miriam")}>
+      <img src={variant === 'v1' ? feedbackCardV1 : feedbackCardV2} alt="Feedback for Miriam" className="w-full h-auto" />
     </div>
   );
 }
