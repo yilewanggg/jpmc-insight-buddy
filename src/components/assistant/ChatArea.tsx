@@ -355,8 +355,6 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
 function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
-  const [cardVisible, setCardVisible] = useState(false);
-  const [adviceVisible, setAdviceVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
 
   useEffect(() => {
@@ -365,32 +363,15 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
     return () => { clearTimeout(logoTimer); clearTimeout(doneTimer); };
   }, []);
 
-  const para1Text = "Complete your feedback request from Carmen:";
-  const para1 = useTypewriter(para1Text, 15, thinkingDone ? 100 : 99999);
-
-  const adviceText = "When giving feedback, consider what Carmen has done well, what she could do better, and what next steps she can take.\n\nType your thoughts, I\u2019ll help you turn them into clear, constructive feedback.";
-  const advice = useTypewriter(adviceText, 15, cardVisible ? 500 : 99999);
+  const fullText = "Miriam requested feedback from you because you work together often.\n\nPlease write your feedback below. Once you send me your first draft, I can help you refine it or you can choose to send it as-is!";
+  const typed = useTypewriter(fullText, 15, thinkingDone ? 100 : 99999);
 
   useEffect(() => {
-    if (para1.done && !cardVisible) {
-      const t = setTimeout(() => setCardVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [para1.done, cardVisible]);
-
-  useEffect(() => {
-    if (cardVisible && !adviceVisible) {
-      const t = setTimeout(() => setAdviceVisible(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [cardVisible, adviceVisible]);
-
-  useEffect(() => {
-    if (advice.done && !thumbsVisible) {
+    if (typed.done && !thumbsVisible) {
       const t = setTimeout(() => setThumbsVisible(true), 300);
       return () => clearTimeout(t);
     }
-  }, [advice.done, thumbsVisible]);
+  }, [typed.done, thumbsVisible]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
@@ -406,50 +387,25 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
       </motion.div>
       <div className="flex flex-col" style={{ width: '616px' }}>
         {thinkingDone && (
-          <>
-            <div className="text-[16px] leading-[24px] text-foreground font-normal [[&_strong]:font-semibold_strong]:font-light mt-2.5">
-              <p className="mb-4">
-                <TypedText text={para1.displayed} showCursor={!para1.done} />
-              </p>
-              {cardVisible && (
-                <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                  <div className="bg-card rounded-2xl shadow-sm mb-6 p-6">
-                    <div className="flex items-start gap-4">
-                      <img src={carmenProfile} alt="Carmen" className="w-10 h-10 rounded-lg object-cover shrink-0 mt-1" />
-                      <div>
-                        <p style={{ fontSize: '16px', lineHeight: '24px', color: '#1A1A1A', fontWeight: 200 }}>
-                          "Hey everyone, I've been trying to take a more active role in code reviews and onboarding so I'd like to know how I'm doing in terms of technical leadership and mentorship."
-                        </p>
-                        <p className="mt-4" style={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>Carmen</p>
-                        <p style={{ fontSize: '14px', lineHeight: '20px', color: '#666663', fontWeight: 200 }}>Vice president, CIB</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-              {adviceVisible && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                  {(() => {
-                    const parts = advice.displayed.split("\n\n");
-                    return parts.map((part, i) => (
-                      <p key={i} className="mb-4">
-                        {i === parts.length - 1 ? <TypedText text={part} showCursor={!advice.done} /> : <TypedText text={part} />}
-                      </p>
-                    ));
-                  })()}
-                </motion.div>
-              )}
-              {thumbsVisible && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                  <div className="flex items-center gap-3" style={{ color: '#202020' }}>
-                    <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
-                    <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
-                    <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          </>
+          <div className="text-[16px] leading-[24px] text-foreground font-normal mt-2.5">
+            {(() => {
+              const parts = typed.displayed.split("\n\n");
+              return parts.map((part, i) => (
+                <p key={i} className="mb-4">
+                  {i === parts.length - 1 ? <TypedText text={part} showCursor={!typed.done} /> : <TypedText text={part} />}
+                </p>
+              ));
+            })()}
+            {thumbsVisible && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }}>
+                <div className="flex items-center gap-3" style={{ color: '#202020' }}>
+                  <button className="hover:opacity-70 transition-opacity"><ThumbsUp className="w-4 h-4" strokeWidth={1.5} /></button>
+                  <button className="hover:opacity-70 transition-opacity"><ThumbsDown className="w-4 h-4" strokeWidth={1.5} /></button>
+                  <button className="hover:opacity-70 transition-opacity"><MoreHorizontal className="w-4 h-4" strokeWidth={1.5} /></button>
+                </div>
+              </motion.div>
+            )}
+          </div>
         )}
       </div>
     </div>
