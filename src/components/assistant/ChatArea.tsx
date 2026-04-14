@@ -1923,8 +1923,7 @@ function FeedbackSentResponse({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-
-
+function RequestFeedbackCollaboratorsResponse({ onSend }: { onSend: (text: string) => void }) {
   const text = "Great! Here are people you've worked with the most.";
   const typed = useTypewriter(text, 15, 100);
   const para2Text = "Select the people you want to get feedback from or type other names below:";
