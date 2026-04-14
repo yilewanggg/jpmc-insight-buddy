@@ -1617,6 +1617,22 @@ function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: str
     }
   }, [followUpTyped.done, thumbsVisible]);
 
+  // Auto-type "refine for me" in the input after thumbs appear
+  useEffect(() => {
+    if (thumbsVisible && onAutoType) {
+      const text = "refine for me";
+      let i = 0;
+      const delay = setTimeout(() => {
+        const interval = setInterval(() => {
+          i++;
+          onAutoType(text.slice(0, i));
+          if (i >= text.length) clearInterval(interval);
+        }, 40);
+      }, 800);
+      return () => clearTimeout(delay);
+    }
+  }, [thumbsVisible, onAutoType]);
+
   return (
     <div>
       <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }} style={{ maxWidth: '616px' }}>
