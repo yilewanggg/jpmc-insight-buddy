@@ -1586,7 +1586,7 @@ function FeedbackCardImage({ variant, onSend }: { variant: 'v1' | 'v2'; onSend?:
   );
 }
 
-function FeedbackFirstDraftResponse({ onSend }: { onSend: (text: string) => void }) {
+function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: string) => void; onAutoType?: (text: string) => void }) {
   const introText = "Here is your feedback for Miriam. Are you ready to **send this feedback request** or would you like me to help you **refine** it?";
   const typed = useTypewriter(introText, 15, 100);
   const [cardVisible, setCardVisible] = useState(false);
@@ -2342,7 +2342,7 @@ function RequestFeedbackSentResponse({ onSend }: { onSend: (text: string) => voi
   );
 }
 
-function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: string) => void }) {
+function AiResponseWrapper({ msg, onSend, onAutoType }: { msg: Message; onSend: (text: string) => void; onAutoType?: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [ready, setReady] = useState(false);
@@ -2718,7 +2718,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                     </div>
                   ) : (
                     /* AI response: logo with shimmer thinking, then typed content */
-                    <AiResponseWrapper msg={msg} onSend={handleSend} />
+                    <AiResponseWrapper msg={msg} onSend={handleSend} onAutoType={(text) => setInput(text)} />
                   )}
                 </motion.div>
               ))}
