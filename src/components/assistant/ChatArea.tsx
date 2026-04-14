@@ -356,7 +356,7 @@ function WelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   );
 }
 
-function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
+function FeedbackWelcomeScreen({ onSend, onAutoType }: { onSend: (text: string) => void; onAutoType: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
@@ -2714,7 +2714,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
       {/* Messages */}
       <div ref={scrollContainerRef} className="flex-1 overflow-y-auto scrollbar-thin">
         {activeFlow === "daily-digest" && <WelcomeScreen key="daily-digest" onSend={handleSend} />}
-        {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} />}
+        {activeFlow === "feedback" && <FeedbackWelcomeScreen key="feedback" onSend={handleSend} onAutoType={(text) => setInput(text)} />}
         {activeFlow === "book-a-seat" && <BookASeatWelcomeScreen key="book-a-seat" onSend={handleSend} />}
         {activeFlow === "daily-schedule" && <DailyScheduleWelcomeScreen key="daily-schedule" onSend={handleSend} />}
         {activeFlow === "request-feedback" && <RequestFeedbackWelcomeScreen key="request-feedback" onSend={handleSend} />}
