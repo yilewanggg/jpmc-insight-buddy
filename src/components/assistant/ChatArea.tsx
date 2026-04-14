@@ -2525,16 +2525,7 @@ export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; o
   };
 
   const handleInputFocus = () => {
-    if (activeFlow === "feedback" && !feedbackAutoTyped && messages.length === 0) {
-      setFeedbackAutoTyped(true);
-      const text = "While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.";
-      let i = 0;
-      const interval = setInterval(() => {
-        i++;
-        setInput(text.slice(0, i));
-        if (i >= text.length) clearInterval(interval);
-      }, 25);
-    }
+    // feedback auto-type removed — now auto-sends as bubble from welcome screen
     // request-feedback auto-type removed — now uses welcome screen
     if (activeFlow === "daily-schedule" && !scheduleAutoTyped && messages.length === 0) {
       setScheduleAutoTyped(true);
