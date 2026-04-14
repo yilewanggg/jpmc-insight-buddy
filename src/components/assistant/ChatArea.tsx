@@ -87,8 +87,10 @@ function getResponse(input: string): string {
   if (lower.includes("send feedback request")) return REQUEST_FEEDBACK_ANYONE_ELSE_RESPONSE;
   if (lower.includes("emily carter")) return REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
+  if (lower.includes("help me refine")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
-  if (lower.includes("listens well") || lower.includes("unclearly communicated")) return REFINED_FEEDBACK_RESPONSE;
+  if (lower.includes("while preparing the march") || lower.includes("march product launch")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
+  if (lower.includes("listens well") || lower.includes("unclearly communicated")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
   if (lower.includes("meeting schedule")) return DAILY_SCHEDULE_RESPONSE;
   if (lower.includes("move design jam")) return MOVE_DESIGN_JAM_RESPONSE;
   if (lower.includes("compliance")) return mockResponses.compliance;
