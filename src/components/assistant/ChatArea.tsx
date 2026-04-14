@@ -2789,7 +2789,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                 className="flex-1 bg-transparent text-[15px] leading-[22.5px] tracking-[-0.3%] text-foreground font-normal placeholder:text-[#666663] placeholder:font-normal resize-none outline-none"
                 style={{ maxHeight: '200px', overflow: 'auto' }}
               />
-              <div className="flex items-center gap-1.5 shrink-0 ml-2">
+              <div className="flex items-center gap-1.5 shrink-0 ml-2 mb-0.5">
                 <SlashCommandMenu
                   inputValue={input}
                   onSelect={(cmd) => {
