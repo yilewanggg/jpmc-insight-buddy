@@ -88,7 +88,7 @@ function getResponse(input: string): string {
   if (lower.includes("emily carter")) return REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE;
   if (lower.includes("send feedback to miriam")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
-  if (lower.includes("help me refine")) return REFINED_FEEDBACK_RESPONSE;
+  if (lower.includes("help me refine") || lower.includes("refine for me")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
   if (lower.includes("while preparing the march") || lower.includes("march product launch")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
   if (lower.includes("listens well") || lower.includes("unclearly communicated")) return FEEDBACK_FIRST_DRAFT_RESPONSE;
@@ -2407,7 +2407,7 @@ function AiResponseWrapper({ msg, onSend }: { msg: Message; onSend: (text: strin
         ) : msg.content === SETUP_AUTOBOOK_RESPONSE ? (
           <SetupAutobookResponse onSend={onSend} />
         ) : msg.content === FEEDBACK_FIRST_DRAFT_RESPONSE ? (
-          <FeedbackFirstDraftResponse onSend={onSend} />
+          <FeedbackFirstDraftResponse onSend={onSend} onAutoType={setInput} />
         ) : msg.content === REFINED_FEEDBACK_RESPONSE ? (
           <RefinedFeedbackResponse onSend={onSend} />
         ) : msg.content === REVIEW_FEEDBACK_RESPONSE ? (
