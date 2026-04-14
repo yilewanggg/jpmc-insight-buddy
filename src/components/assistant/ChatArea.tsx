@@ -360,6 +360,7 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
+  const [autoSent, setAutoSent] = useState(false);
 
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 200);
@@ -376,6 +377,17 @@ function FeedbackWelcomeScreen({ onSend }: { onSend: (text: string) => void }) {
       return () => clearTimeout(t);
     }
   }, [typed.done, thumbsVisible]);
+
+  // Auto-send the feedback text as a user bubble after welcome finishes
+  useEffect(() => {
+    if (thumbsVisible && !autoSent) {
+      setAutoSent(true);
+      const t = setTimeout(() => {
+        onSend("While preparing the March product launch, you took the lead on the social media assets when the designer was out. We hit our engagement targets despite the headcount shortage.");
+      }, 800);
+      return () => clearTimeout(t);
+    }
+  }, [thumbsVisible, autoSent, onSend]);
 
   return (
     <div className="flex items-start pt-[160px] mx-auto" style={{ width: '740px' }}>
