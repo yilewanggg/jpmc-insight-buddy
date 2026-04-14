@@ -2680,6 +2680,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
     };
 
     setInput("");
+    if (inputRef.current) inputRef.current.style.height = 'auto';
     setIsWaitingForAssistant(true);
 
     // Delay: 0.5s for user bubble, then 1s before AI response (logo) appears
