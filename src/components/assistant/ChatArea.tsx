@@ -387,7 +387,7 @@ function FeedbackWelcomeScreen({ onSend, onAutoType }: { onSend: (text: string) 
   useEffect(() => {
     if (thumbsVisible && !autoTypedRef.current) {
       autoTypedRef.current = true;
-      const text = "While preparing the March product launch...";
+      const text = 'While preparing the March product launch, you took the lead...';
       let i = 0;
       const startDelay = setTimeout(() => {
         const interval = setInterval(() => {
