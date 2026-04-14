@@ -1594,6 +1594,8 @@ function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: str
   const [cardVisible, setCardVisible] = useState(false);
   const [followUpVisible, setFollowUpVisible] = useState(false);
   const [thumbsVisible, setThumbsVisible] = useState(false);
+  const onAutoTypeRef = useRef(onAutoType);
+  onAutoTypeRef.current = onAutoType;
 
   useEffect(() => {
     if (typed.done && !cardVisible) {
@@ -1621,19 +1623,19 @@ function FeedbackFirstDraftResponse({ onSend, onAutoType }: { onSend: (text: str
 
   // Auto-type "refine for me" in the input after thumbs appear
   useEffect(() => {
-    if (thumbsVisible && onAutoType) {
+    if (thumbsVisible && onAutoTypeRef.current) {
       const text = "refine for me";
       let i = 0;
       const delay = setTimeout(() => {
         const interval = setInterval(() => {
           i++;
-          onAutoType(text.slice(0, i));
+          onAutoTypeRef.current?.(text.slice(0, i));
           if (i >= text.length) clearInterval(interval);
         }, 40);
       }, 800);
       return () => clearTimeout(delay);
     }
-  }, [thumbsVisible, onAutoType]);
+  }, [thumbsVisible]);
 
   return (
     <div>
