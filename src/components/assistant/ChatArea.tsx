@@ -2486,7 +2486,6 @@ const flowTabs: { id: ChatFlow; label: string }[] = [
 export function ChatArea({ activeFlow, onFlowChange }: { activeFlow: ChatFlow; onFlowChange: (flow: ChatFlow) => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [isMultiline, setIsMultiline] = useState(false);
   const [feedbackAutoTyped, setFeedbackAutoTyped] = useState(false);
   const [scheduleAutoTyped, setScheduleAutoTyped] = useState(false);
   const [requestFeedbackAutoTyped, setRequestFeedbackAutoTyped] = useState(false);
