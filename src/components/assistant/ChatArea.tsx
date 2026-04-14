@@ -86,6 +86,7 @@ function getResponse(input: string): string {
   if (lower.includes("yes, help me request feedback") || lower.includes("yes, let's do it")) return REQUEST_FEEDBACK_COLLABORATORS_RESPONSE;
   if (lower.includes("send feedback request")) return REQUEST_FEEDBACK_ANYONE_ELSE_RESPONSE;
   if (lower.includes("emily carter")) return REQUEST_FEEDBACK_FINAL_CONFIRMATION_RESPONSE;
+  if (lower.includes("send feedback to miriam")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("send to carmen")) return FEEDBACK_SENT_RESPONSE;
   if (lower.includes("help me refine")) return REFINED_FEEDBACK_RESPONSE;
   if (lower.includes("use refined version")) return REVIEW_FEEDBACK_RESPONSE;
