@@ -280,7 +280,7 @@ const DesignSystem = () => {
                   {[
                     { spec: "Body Large · 16/24 · Light", text: "Here's a draft feedback request for Taylor Smith based on your project.", className: "text-[16px] leading-[24px] font-light" },
                     { spec: "Body · 14/20 · Light", text: "Listens well in meetings, ideas are good but unclearly communicated.", className: "text-[14px] leading-[20px] font-light" },
-                    { spec: "Body Semibold · 14/20 · 600", text: "What you said:", className: "text-[14px] leading-[20px] font-semibold" },
+                    { spec: "Body Semibold · 14/20 · 500", text: "What you said:", className: "text-[14px] leading-[20px] font-medium" },
                     { spec: "Caption · 13/18 · Light", text: "Listen deeply · Create clarity", className: "text-[13px] leading-[18px] font-light text-muted-foreground" },
                     { spec: "Small · 12/16 · Light", text: "Secondary label or metadata", className: "text-[12px] leading-[16px] font-light text-muted-foreground" },
                   ].map(t => (
@@ -362,7 +362,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Default</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -370,7 +370,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Hover</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
                     <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8, text foreground</p>
@@ -404,7 +404,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Combined (as used in tasks)</p>
                   <div className="flex items-center gap-3">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
                     <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
