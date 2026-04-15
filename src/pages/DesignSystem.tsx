@@ -362,7 +362,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Default</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors whitespace-nowrap">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[14px] leading-[20px] font-normal transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -370,7 +370,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Primary action · Hover</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors whitespace-nowrap">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[14px] leading-[20px] font-normal transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
                     <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8, text foreground</p>
@@ -379,7 +379,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action · Default</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[14px] leading-[20px] font-normal transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                       Schedule for later
                     </button>
                   </div>
@@ -387,7 +387,7 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Secondary action · Hover</p>
                   <div className="flex items-center gap-5">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#DDD5C8] text-foreground text-[14px] leading-[20px] font-normal transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                       Schedule for later
                     </button>
                     <p className="text-[12px] font-light text-muted-foreground">Hover: bg #DDD5C8</p>
@@ -404,10 +404,10 @@ const DesignSystem = () => {
                 <div>
                   <p className="text-[11px] font-mono font-light text-muted-foreground mb-3">Combined (as used in tasks)</p>
                   <div className="flex items-center gap-3">
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] hover:text-foreground transition-colors whitespace-nowrap">
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-foreground text-background text-[14px] leading-[20px] font-normal hover:bg-[#DDD5C8] hover:text-foreground transition-colors whitespace-nowrap">
                       Do it now <ExternalLink className="w-3.5 h-3.5" />
                     </button>
-                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
+                    <button className="inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-transparent text-foreground text-[14px] leading-[20px] font-normal hover:bg-[#DDD5C8] transition-colors" style={{ border: '1px solid #7D7A7A' }}>
                       Schedule for later
                     </button>
                   </div>
@@ -922,11 +922,11 @@ const DesignSystem = () => {
               <div className="max-w-[452px] bg-card rounded-2xl border border-border overflow-hidden">
                 {/* Tab header */}
                 <div className="flex gap-6 px-6 border-b border-border pt-4">
-                  <span className="pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium text-foreground relative">
+                  <span className="pb-2 text-[14px] leading-[20px] font-normal text-foreground relative">
                     Tasks (4)
                     <span className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-foreground" />
                   </span>
-                  <span className="pb-2 text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>
+                  <span className="pb-2 text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>
                     Notifications (3)
                   </span>
                 </div>
@@ -937,7 +937,7 @@ const DesignSystem = () => {
                 ].map((task, i) => (
                   <div key={i} className="px-6 py-5 border-b border-border">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[13px] leading-[19.5px] tracking-[-0.3px] font-medium" style={{ color: '#666663' }}>{task.category}</span>
+                      <span className="text-[14px] leading-[20px] font-normal" style={{ color: '#666663' }}>{task.category}</span>
                       <span className={`text-[12px] leading-[16px] px-2 h-5 inline-flex items-center rounded font-semibold ${task.statusColor}`}>{task.status}</span>
                     </div>
                     <p className="text-[13px] leading-[19.5px] tracking-[-0.3px] text-foreground mb-1">{task.title}</p>
