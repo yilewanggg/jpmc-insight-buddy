@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { ExternalLink, CornerDownRight, ThumbsUp, ThumbsDown, MoreHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import graduationIcon from "@/assets/graduation-icon.png";
-import logoSparkle from "@/assets/logo-option-sparkle.png";
-import logoSearch from "@/assets/logo-option-search.png";
-import logoAtom from "@/assets/logo-option-atom.png";
+import logoSparkle from "@/assets/logo-option-sparkle-v2.png";
+import logoAtom from "@/assets/logo-option-atom-v2.png";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
@@ -157,7 +156,6 @@ const DailyDigestVariant = () => {
   // Three logo options on the original travertine background.
   const options = [
     { logo: logoSparkle, label: 'Option 1 — Sparkle' },
-    { logo: logoSearch, label: 'Option 2 — Search' },
     { logo: logoAtom, label: 'Option 3 — Atom' },
   ];
   return (
