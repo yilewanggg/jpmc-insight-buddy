@@ -57,7 +57,7 @@ function TypedText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-function VariantWelcome({ logo, label }: { logo: string; label: string }) {
+function VariantWelcome({ logo, label, transparent }: { logo: string; label: string; transparent?: boolean }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
@@ -83,7 +83,7 @@ function VariantWelcome({ logo, label }: { logo: string; label: string }) {
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="relative w-10 h-10 overflow-hidden rounded-full bg-white">
+        <div className={`relative w-10 h-10 overflow-hidden rounded-full ${transparent ? '' : 'bg-white'}`}>
           <img src={logo} alt="Assistant" className="w-10 h-10 relative z-10 object-cover" width={40} height={40} loading="lazy" />
           {thinking && !thinkingDone && (
             <motion.div
