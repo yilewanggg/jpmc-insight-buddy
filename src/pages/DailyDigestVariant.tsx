@@ -175,7 +175,7 @@ const DailyDigestVariant = () => {
       <div className="flex flex-col gap-16 py-12">
         {options.map((opt) => (
           <div key={opt.label} className="relative">
-            <VariantWelcome logo={opt.logo} label={opt.label} transparent={opt.transparent} />
+            <VariantWelcome logo={opt.logo} label={opt.label} transparent={opt.transparent} tight={opt.tight} />
           </div>
         ))}
       </div>
