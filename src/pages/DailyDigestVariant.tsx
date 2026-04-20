@@ -168,7 +168,7 @@ const DailyDigestVariant = () => {
     { logo: logoOrbitV3, label: 'Option 6 — Orbit v3 (transparent)', transparent: true },
     { logo: logoOrbitV4, label: 'Option 7 — Orbit v4 (transparent)', transparent: true },
     { logo: logoOrbitV5, label: 'Option 8 — Orbit v5 (transparent)', transparent: true },
-    { logo: logoSparkles, label: 'Option 9 — Sparkles (transparent)', transparent: true },
+    { logo: logoSparkles, label: 'Option 9 — Sparkles (transparent)', transparent: true, tight: true },
   ];
   return (
     <div className="min-h-screen w-full bg-background">
