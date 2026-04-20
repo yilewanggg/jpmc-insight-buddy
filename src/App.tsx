@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import DesignSystem from "./pages/DesignSystem.tsx";
 import FontComparison from "./pages/FontComparison.tsx";
+import DailyDigestVariant from "./pages/DailyDigestVariant.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/design-system" element={<DesignSystem />} />
           <Route path="/font-comparison" element={<FontComparison />} />
+          <Route path="/daily-digest-variant" element={<DailyDigestVariant />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
