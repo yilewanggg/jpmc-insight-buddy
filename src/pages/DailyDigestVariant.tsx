@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { ExternalLink, CornerDownRight, ThumbsUp, ThumbsDown, MoreHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
-import altLogo from "@/assets/alt-logo.png";
 import graduationIcon from "@/assets/graduation-icon.png";
+import logoSparkle from "@/assets/logo-option-sparkle.png";
+import logoSearch from "@/assets/logo-option-search.png";
+import logoAtom from "@/assets/logo-option-atom.png";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
