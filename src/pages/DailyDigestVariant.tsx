@@ -56,7 +56,7 @@ function TypedText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-function VariantWelcome() {
+function VariantWelcome({ logo, label }: { logo: string; label: string }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
@@ -68,13 +68,14 @@ function VariantWelcome() {
     return () => { clearTimeout(a); clearTimeout(b); clearTimeout(c); };
   }, []);
 
-  const heading = useTypewriter("Good morning, Kyra", 45, thinkingDone ? 100 : 99999);
+  const heading = useTypewriter(`Good morning, Kyra`, 45, thinkingDone ? 100 : 99999);
   const para1Text = "There are a few things that need your attention. You have a **Data Security and Compliance Training** that is due today. You also have a pending **Mid Year Feedback Request** due by end of the week.";
   const para1 = useTypewriter(para1Text, 15, heading.done ? 150 : 99999);
   const para2 = useTypewriter("Let's start with the training.", 18, para1.done ? 150 : 99999);
 
   return (
-    <div className="flex items-start pt-[210px] mx-auto" style={{ width: '740px' }}>
+    <div className="flex items-start pt-[80px] mx-auto" style={{ width: '740px' }}>
+      <div className="absolute -mt-8 ml-[-8px] text-[11px] uppercase tracking-[0.12em]" style={{ color: '#666663' }}>{label}</div>
       <motion.div
         className="w-12 h-12 rounded-2xl flex items-center justify-center mr-4 shrink-0"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -82,7 +83,7 @@ function VariantWelcome() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="relative w-10 h-10 overflow-hidden rounded-full bg-white">
-          <img src={altLogo} alt="Assistant" className="w-10 h-10 relative z-10 object-cover" width={40} height={40} loading="lazy" />
+          <img src={logo} alt="Assistant" className="w-10 h-10 relative z-10 object-cover" width={40} height={40} loading="lazy" />
           {thinking && !thinkingDone && (
             <motion.div
               className="absolute inset-0 z-20 pointer-events-none"
