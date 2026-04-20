@@ -82,7 +82,7 @@ function VariantWelcome({ logo, label, transparent }: { logo: string; label: str
     <div className="flex items-start pt-[80px] mx-auto" style={{ width: '740px' }}>
       <div className="absolute -mt-8 ml-[-8px] text-[11px] uppercase tracking-[0.12em]" style={{ color: '#666663' }}>{label}</div>
       <motion.div
-        className="w-12 h-12 rounded-2xl flex items-center justify-center mr-4 shrink-0"
+        className="w-12 h-12 rounded-2xl flex items-start justify-center mr-4 shrink-0"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -105,7 +105,7 @@ function VariantWelcome({ logo, label, transparent }: { logo: string; label: str
       <div className="flex flex-col">
         {thinkingDone && (
           <>
-            <h2 className="text-[24px] leading-[32px] text-foreground mb-2 tracking-[0] mt-0.5 font-light" style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}>
+            <h2 className="text-[24px] leading-[32px] text-foreground mb-2 tracking-[0] font-light" style={{ fontFamily: "'Tiempos Headline', 'Times New Roman', serif" }}>
               {heading.displayed}
             </h2>
             {heading.done && (
