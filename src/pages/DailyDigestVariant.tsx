@@ -61,7 +61,7 @@ function TypedText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-function VariantWelcome({ logo, label, transparent }: { logo: string; label: string; transparent?: boolean }) {
+function VariantWelcome({ logo, label, transparent, tight }: { logo: string; label: string; transparent?: boolean; tight?: boolean }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
@@ -82,7 +82,7 @@ function VariantWelcome({ logo, label, transparent }: { logo: string; label: str
     <div className="flex items-start pt-[80px] mx-auto" style={{ width: '740px' }}>
       <div className="absolute -mt-8 ml-[-8px] text-[11px] uppercase tracking-[0.12em]" style={{ color: '#666663' }}>{label}</div>
       <motion.div
-        className="w-12 h-12 rounded-2xl flex items-start justify-center mr-4 shrink-0"
+        className={`w-12 h-12 rounded-2xl flex items-start justify-center shrink-0 ${tight ? 'mr-1' : 'mr-4'}`}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
