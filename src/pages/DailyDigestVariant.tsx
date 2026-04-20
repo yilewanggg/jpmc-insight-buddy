@@ -7,6 +7,7 @@ import logoAtom from "@/assets/logo-option-atom-v2.png";
 import logoOrbit from "@/assets/logo-option-orbit.svg";
 import logoOrbitTransparent from "@/assets/logo-option-orbit-v2.svg";
 import logoOrbitV3 from "@/assets/logo-option-orbit-v3.svg";
+import logoOrbitV4 from "@/assets/logo-option-orbit-v4.svg";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
@@ -163,6 +164,7 @@ const DailyDigestVariant = () => {
     { logo: logoOrbit, label: 'Option 4 — Orbit' },
     { logo: logoOrbitTransparent, label: 'Option 5 — Orbit (transparent)', transparent: true },
     { logo: logoOrbitV3, label: 'Option 6 — Orbit v3 (transparent)', transparent: true },
+    { logo: logoOrbitV4, label: 'Option 7 — Orbit v4 (transparent)', transparent: true },
   ];
   return (
     <div className="min-h-screen w-full bg-background">
