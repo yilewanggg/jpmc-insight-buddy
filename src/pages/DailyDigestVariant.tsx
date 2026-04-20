@@ -154,11 +154,20 @@ function VariantWelcome({ logo, label }: { logo: string; label: string }) {
 }
 
 const DailyDigestVariant = () => {
-  // Light grey background variant + alt monogram logo.
+  // Three logo options on the original travertine background.
+  const options = [
+    { logo: logoSparkle, label: 'Option 1 — Sparkle' },
+    { logo: logoSearch, label: 'Option 2 — Search' },
+    { logo: logoAtom, label: 'Option 3 — Atom' },
+  ];
   return (
-    <div className="min-h-screen w-full" style={{ backgroundColor: '#EEEEEE' }}>
-      <div className="px-8">
-        <VariantWelcome />
+    <div className="min-h-screen w-full bg-background">
+      <div className="flex flex-col gap-16 py-12">
+        {options.map((opt) => (
+          <div key={opt.label} className="relative">
+            <VariantWelcome logo={opt.logo} label={opt.label} />
+          </div>
+        ))}
       </div>
     </div>
   );
