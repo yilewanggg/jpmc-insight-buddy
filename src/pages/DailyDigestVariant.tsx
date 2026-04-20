@@ -160,13 +160,14 @@ const DailyDigestVariant = () => {
     { logo: logoSparkle, label: 'Option 1 — Sparkle' },
     { logo: logoAtom, label: 'Option 3 — Atom' },
     { logo: logoOrbit, label: 'Option 4 — Orbit' },
+    { logo: logoOrbitTransparent, label: 'Option 5 — Orbit (transparent)', transparent: true },
   ];
   return (
     <div className="min-h-screen w-full bg-background">
       <div className="flex flex-col gap-16 py-12">
         {options.map((opt) => (
           <div key={opt.label} className="relative">
-            <VariantWelcome logo={opt.logo} label={opt.label} />
+            <VariantWelcome logo={opt.logo} label={opt.label} transparent={opt.transparent} />
           </div>
         ))}
       </div>
