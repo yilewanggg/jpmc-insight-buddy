@@ -5,6 +5,7 @@ import graduationIcon from "@/assets/graduation-icon.png";
 import logoSparkle from "@/assets/logo-option-sparkle-v2.png";
 import logoAtom from "@/assets/logo-option-atom-v2.png";
 import logoOrbit from "@/assets/logo-option-orbit.svg";
+import logoOrbitTransparent from "@/assets/logo-option-orbit-v2.svg";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
