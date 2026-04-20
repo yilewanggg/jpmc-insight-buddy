@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import graduationIcon from "@/assets/graduation-icon.png";
 import logoSparkle from "@/assets/logo-option-sparkle-v2.png";
 import logoAtom from "@/assets/logo-option-atom-v2.png";
+import logoOrbit from "@/assets/logo-option-orbit.svg";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
@@ -157,6 +158,7 @@ const DailyDigestVariant = () => {
   const options = [
     { logo: logoSparkle, label: 'Option 1 — Sparkle' },
     { logo: logoAtom, label: 'Option 3 — Atom' },
+    { logo: logoOrbit, label: 'Option 4 — Orbit' },
   ];
   return (
     <div className="min-h-screen w-full bg-background">
