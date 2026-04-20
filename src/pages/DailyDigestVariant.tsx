@@ -87,8 +87,8 @@ function VariantWelcome({ logo, label, transparent }: { logo: string; label: str
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className={`relative w-10 h-10 overflow-hidden rounded-full ${transparent ? '' : 'bg-white'}`}>
-          <img src={logo} alt="Assistant" className="w-10 h-10 relative z-10 object-cover" width={40} height={40} loading="lazy" />
+        <div className={`relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full ${transparent ? '' : 'bg-white'}`}>
+          <img src={logo} alt="Assistant" className={`relative z-10 ${transparent ? 'w-8 h-8 object-contain' : 'w-10 h-10 object-cover'}`} loading="lazy" />
           {thinking && !thinkingDone && (
             <motion.div
               className="absolute inset-0 z-20 pointer-events-none"
