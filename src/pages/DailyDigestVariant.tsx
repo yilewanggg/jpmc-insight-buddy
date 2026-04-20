@@ -5,6 +5,7 @@ import graduationIcon from "@/assets/graduation-icon.png";
 import logoSparkle from "@/assets/logo-option-sparkle-v2.png";
 import logoAtom from "@/assets/logo-option-atom-v2.png";
 import logoOrbit from "@/assets/logo-option-orbit.svg";
+import logoOrbitTransparent from "@/assets/logo-option-orbit-v2.svg";
 
 // Local copies of small helpers from ChatArea so this page is self-contained
 // and we don't risk breaking the production Daily Digest.
@@ -56,7 +57,7 @@ function TypedText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-function VariantWelcome({ logo, label }: { logo: string; label: string }) {
+function VariantWelcome({ logo, label, transparent }: { logo: string; label: string; transparent?: boolean }) {
   const [showLogo, setShowLogo] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [thinkingDone, setThinkingDone] = useState(false);
@@ -82,7 +83,7 @@ function VariantWelcome({ logo, label }: { logo: string; label: string }) {
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="relative w-10 h-10 overflow-hidden rounded-full bg-white">
+        <div className={`relative w-10 h-10 overflow-hidden rounded-full ${transparent ? '' : 'bg-white'}`}>
           <img src={logo} alt="Assistant" className="w-10 h-10 relative z-10 object-cover" width={40} height={40} loading="lazy" />
           {thinking && !thinkingDone && (
             <motion.div
@@ -159,13 +160,14 @@ const DailyDigestVariant = () => {
     { logo: logoSparkle, label: 'Option 1 — Sparkle' },
     { logo: logoAtom, label: 'Option 3 — Atom' },
     { logo: logoOrbit, label: 'Option 4 — Orbit' },
+    { logo: logoOrbitTransparent, label: 'Option 5 — Orbit (transparent)', transparent: true },
   ];
   return (
     <div className="min-h-screen w-full bg-background">
       <div className="flex flex-col gap-16 py-12">
         {options.map((opt) => (
           <div key={opt.label} className="relative">
-            <VariantWelcome logo={opt.logo} label={opt.label} />
+            <VariantWelcome logo={opt.logo} label={opt.label} transparent={opt.transparent} />
           </div>
         ))}
       </div>
