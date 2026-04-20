@@ -82,7 +82,7 @@ function VariantWelcome({ logo, label, transparent, tight }: { logo: string; lab
     <div className="flex items-start pt-[80px] mx-auto" style={{ width: '740px' }}>
       <div className="absolute -mt-8 ml-[-8px] text-[11px] uppercase tracking-[0.12em]" style={{ color: '#666663' }}>{label}</div>
       <motion.div
-        className={`w-12 h-12 rounded-2xl flex items-start justify-center shrink-0 ${tight ? 'mr-1' : 'mr-4'}`}
+        className={`w-12 h-12 rounded-2xl flex items-start justify-center shrink-0 ${tight ? 'mr-1 -mt-1' : 'mr-4'}`}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={showLogo ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
