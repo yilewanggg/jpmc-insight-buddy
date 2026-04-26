@@ -2803,7 +2803,7 @@ function SlashCommandMenu({ onSelect, inputValue, onOpen, onClose }: { onSelect:
                     "w-9 h-9 rounded-lg flex items-center justify-center transition-colors",
                     input.trim()
                       ? "bg-[#000000] text-[#FFFFFF] hover:bg-[#000000]/90"
-                      : "bg-muted/50 text-muted-foreground/50"
+                      : "bg-[#b3b3b3]/[0.16] text-[#a6a6a6]"
                   )}
                 >
                   <ArrowRight className="w-5 h-5" />
